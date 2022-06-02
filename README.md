@@ -62,7 +62,7 @@ export default function App() {
 
 ### Overlay Layer
 
-A tile layer can be added.
+An overlay layer can be added.
 
 ```typescript
 import {
