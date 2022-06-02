@@ -1,6 +1,5 @@
 {
   "name": "@jetblack/map",
-  "private": "false",
   "version": "0.1.0-alpha.1",
   "description": "A map component for React",
   "repository": "https://github.com/rob-blackbourn/jetblack-material-data-table",
