@@ -180,3 +180,11 @@ As shown in the example above some hooks are provided for interacting with the m
 
 The hooks are intentionally primitive. There are a number of excellent packages
 which can achieve this.
+
+## Acknowledgements
+
+This is largely a reworking of other libraries.
+
+In particular much of the heavy lifting was done by [Pigeon Maps](https://github.com/mariusandra/pigeon-maps).
+
+Another library which was a good source of ideas was [react-slippy-map](https://github.com/gaswelder/react-slippy-map).
