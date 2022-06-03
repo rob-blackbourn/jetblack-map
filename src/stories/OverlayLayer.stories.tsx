@@ -34,7 +34,7 @@ const Template: ComponentStory<typeof Map> = args => {
         />
         <Marker
           coordinate={BUCKINGHAM_PALACE}
-          render={point => <SVGPin point={point} />}
+          render={point => <SVGPin point={point} size={1.25} />}
         />
       </OverlayLayer>
     </Map>

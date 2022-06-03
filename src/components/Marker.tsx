@@ -38,7 +38,7 @@ function createPoints(
 }
 
 /**
- * The prop type of a [[`Marker]] component.
+ * The prop type of a [[`Marker`]] component.
  */
 export interface MarkerProps {
   /** The coordinate of the marker */
@@ -80,6 +80,7 @@ export default function Marker({ coordinate, render }: MarkerProps) {
             position: 'absolute',
             pointerEvents: 'none',
             cursor: 'pointer',
+            transform: `translate(${point.x}px, ${point.y}px)`,
           }}
         >
           {render(point)}

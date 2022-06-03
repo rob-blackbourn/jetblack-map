@@ -8,10 +8,8 @@ import { Point } from '../types'
 export interface SVGPinProps {
   /** The point in the screen coordinate system. */
   point: Point
-  /** The width of the pin */
-  width?: number
-  /** The height of the pin */
-  height?: number
+  /** The size of the pin */
+  size?: number
   /** The color of the pin */
   color?: string
   /** A handler for mouse-out events */
@@ -28,9 +26,7 @@ export interface SVGPinProps {
  * Render an SVG pin.
  */
 export default function SVGPin({
-  point,
-  width = 29,
-  height = 34,
+  size = 1,
   color = '#93C0D0',
   onMouseOut,
   onMouseOver,
@@ -38,7 +34,8 @@ export default function SVGPin({
   onContextMenu,
 }: SVGPinProps) {
   const [hover, setHover] = useState(false)
-  const { x, y } = point
+  const width = 29 * size
+  const height = 34 * size
 
   return (
     <svg
@@ -49,7 +46,7 @@ export default function SVGPin({
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       style={{
-        transform: `translate(${x - width / 2}px, ${y - (height - 1)}px)`,
+        transform: `translate(${-width / 2}px, ${-(height - 1)}px)`,
         filter: hover ? 'drop-shadow(0 0 4px rgba(0, 0, 0, .3))' : '',
       }}
     >
