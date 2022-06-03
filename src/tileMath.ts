@@ -25,6 +25,13 @@ function tile2lat(y: number, zoom: number): number {
   return (180 / Math.PI) * Math.atan(0.5 * (Math.exp(n) - Math.exp(-n)))
 }
 
+/**
+ * Convert a latitude and longitude to an x and y point in the tile coordinate system.
+ *
+ * @param coordinate The coordinate from which to calculate a tile point
+ * @param zoom The zoom level
+ * @returns The point in the tile coordinate system
+ */
 export const coordinateToTilePoint = (
   coordinate: Coordinate,
   zoom: number
@@ -33,14 +40,33 @@ export const coordinateToTilePoint = (
   y: lat2tile(coordinate.latitude, zoom),
 })
 
+/**
+ * Convert an x and y point to a longitude and latitude coordinate.
+ *
+ * @param tilePoint The x and y point in the tile coordinate system.
+ * @param zoom The zoom level
+ * @returns The coordinate as a latitude and longitude
+ */
 export const tilePointToCoordinate = (
-  tile: Point,
+  tilePoint: Point,
   zoom: number
 ): Coordinate => ({
-  latitude: tile2lat(tile.y, zoom),
-  longitude: tile2lng(tile.x, zoom),
+  latitude: tile2lat(tilePoint.y, zoom),
+  longitude: tile2lng(tilePoint.x, zoom),
 })
 
+/**
+ * Calculate scale factors.
+ *
+ * The tiles are provide at discrete zoom levels starting at 0 where a single tile represents the world.
+ *
+ * To provide smooth scrolling the width and height of the image tiles can be scaled.
+ *
+ * @param zoom The zoom level
+ * @param width The display width
+ * @param height The display height
+ * @returns An object containing the rounded zoom, the scale, the scale width and height.
+ */
 export function calcScaleInfo(
   zoom: number,
   width: number,
@@ -63,6 +89,15 @@ export function calcScaleInfo(
   }
 }
 
+/**
+ * Calculate the information required to render the tiles.
+ *
+ * @param center The coordinate for the center of the display area
+ * @param zoom The zoom level
+ * @param width The screen width
+ * @param height The screen height
+ * @returns An object containing the information required to render the tiles
+ */
 export function calcTileInfo(
   center: Coordinate,
   zoom: number,
@@ -98,22 +133,6 @@ export function calcTileInfo(
     scaleHeight,
     scale,
   }
-}
-
-export function srcSet(
-  dprs: number[],
-  tileProvider: TileProvider,
-  x: number,
-  y: number,
-  z: number
-): string {
-  if (dprs.length === 0) {
-    return ''
-  }
-  const attr = dprs
-    .map(dpr => tileProvider(x, y, z, dpr) + (dpr === 1 ? '' : ` ${dpr}x`))
-    .join(', ')
-  return attr
 }
 
 export function screenPointToCoordinate(

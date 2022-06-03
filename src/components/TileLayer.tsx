@@ -2,13 +2,28 @@ import { useContext } from 'react'
 
 import { Tile, TileProvider } from '../types'
 
-import { srcSet, calcTileInfo } from '../tileMath'
+import { calcTileInfo } from '../tileMath'
 
 import ImageTile from './ImageTile'
 import MapContext from './MapContext'
 
 import { osmTileProvider } from './providers'
 
+function srcSet(
+  dprs: number[],
+  tileProvider: TileProvider,
+  x: number,
+  y: number,
+  z: number
+): string {
+  if (dprs.length === 0) {
+    return ''
+  }
+  const attr = dprs
+    .map(dpr => tileProvider(x, y, z, dpr) + (dpr === 1 ? '' : ` ${dpr}x`))
+    .join(', ')
+  return attr
+}
 export interface TileLayerProps {
   tileProvider?: TileProvider
   dprs?: number[]
