@@ -129,7 +129,7 @@ describe('tileMath', () => {
     })
   })
 
-  describe('coordinateToScreenPoint', () => {
+  describe('coordinateToScreenPoint at zoom 4', () => {
     it('should calculate screen point for New York', () => {
       const screenPoint = coordinateToScreenPoint(
         coordinateNewYork,
@@ -187,7 +187,7 @@ describe('tileMath', () => {
     })
   })
 
-  describe('screenPointToCoordinate', () => {
+  describe('screenPointToCoordinate at zoom 4', () => {
     it('should calculate screen point for New York', () => {
       const screenPoint = screenPointToCoordinate(
         { x: -540.5720177777778, y: 377.98915302061596 },
@@ -237,6 +237,125 @@ describe('tileMath', () => {
         { x: -367.7435733333334, y: 1306.0638404602564 },
         coordinateLondon,
         4,
+        600,
+        400
+      )
+      expect(screenPoint.latitude).toBeCloseTo(coordinateBuenoAires.latitude, 6)
+      expect(screenPoint.longitude).toBeCloseTo(
+        coordinateBuenoAires.longitude,
+        6
+      )
+    })
+  })
+
+  describe('coordinateToScreenPoint at zoom 0', () => {
+    it('should calculate screen point for New York', () => {
+      const screenPoint = coordinateToScreenPoint(
+        coordinateNewYork,
+        coordinateLondon,
+        0,
+        600,
+        400
+      )
+      expect(screenPoint.x).toBeCloseTo(247.4642488888889, 6)
+      expect(screenPoint.y).toBeCloseTo(211.1243220637885, 6)
+    })
+    it('should calculate screen point for London', () => {
+      const screenPoint = coordinateToScreenPoint(
+        coordinateLondon,
+        coordinateLondon,
+        0,
+        600,
+        400
+      )
+      expect(screenPoint.x).toBeCloseTo(300, 6)
+      expect(screenPoint.y).toBeCloseTo(200, 6)
+    })
+    it('should calculate screen point for Tokyo', () => {
+      const screenPoint = coordinateToScreenPoint(
+        coordinateTokyo,
+        coordinateLondon,
+        0,
+        600,
+        400
+      )
+      expect(screenPoint.x).toBeCloseTo(399.3976177777778, 6)
+      expect(screenPoint.y).toBeCloseTo(215.6848162999904, 6)
+    })
+    it('should calculate screen point for Sydney', () => {
+      const screenPoint = coordinateToScreenPoint(
+        coordinateSydney,
+        coordinateLondon,
+        0,
+        600,
+        400
+      )
+      expect(screenPoint.x).toBeCloseTo(407.61735111111113, 6)
+      expect(screenPoint.y).toBeCloseTo(268.496854083185, 6)
+    })
+    it('should calculate screen point for Buenos Aires', () => {
+      const screenPoint = coordinateToScreenPoint(
+        coordinateBuenoAires,
+        coordinateLondon,
+        0,
+        600,
+        400
+      )
+      expect(screenPoint.x).toBeCloseTo(258.2660266666667, 6)
+      expect(screenPoint.y).toBeCloseTo(269.128990028766, 6)
+    })
+  })
+
+  describe('screenPointToCoordinate at zoom 6', () => {
+    it('should calculate screen point for New York', () => {
+      const screenPoint = screenPointToCoordinate(
+        { x: 247.4642488888889, y: 211.1243220637885 },
+        coordinateLondon,
+        0,
+        600,
+        400
+      )
+      expect(screenPoint.latitude).toBeCloseTo(coordinateNewYork.latitude, 6)
+      expect(screenPoint.longitude).toBeCloseTo(coordinateNewYork.longitude, 6)
+    })
+    it('should calculate screen point for London', () => {
+      const screenPoint = screenPointToCoordinate(
+        { x: 300, y: 200 },
+        coordinateLondon,
+        0,
+        600,
+        400
+      )
+      expect(screenPoint.latitude).toBeCloseTo(coordinateLondon.latitude, 6)
+      expect(screenPoint.longitude).toBeCloseTo(coordinateLondon.longitude, 6)
+    })
+    it('should calculate screen point for Tokyo', () => {
+      const screenPoint = screenPointToCoordinate(
+        { x: 399.3976177777778, y: 215.6848162999904 },
+        coordinateLondon,
+        0,
+        600,
+        400
+      )
+      expect(screenPoint.latitude).toBeCloseTo(coordinateTokyo.latitude, 6)
+      expect(screenPoint.longitude).toBeCloseTo(coordinateTokyo.longitude, 6)
+    })
+    it('should calculate screen point for Sydney', () => {
+      const screenPoint = screenPointToCoordinate(
+        { x: 407.61735111111113, y: 268.496854083185 },
+        coordinateLondon,
+        0,
+        600,
+        400
+      )
+      expect(screenPoint.latitude).toBeCloseTo(coordinateSydney.latitude, 6)
+      expect(screenPoint.longitude).toBeCloseTo(coordinateSydney.longitude, 6)
+    })
+    it('should calculate screen point for Buenos Aires', () => {
+      const screenPoint = screenPointToCoordinate(
+        { x: 258.2660266666667, y: 269.128990028766 },
+        coordinateLondon,
+        0,
         600,
         400
       )
