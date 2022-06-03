@@ -6,6 +6,7 @@ import MapContext from './MapContext'
  * The prop type for an [[`OverlayLater`]] component.
  */
 export interface OverlayLayerProps {
+  /** The markers to render */
   children?: React.ReactNode
 }
 
