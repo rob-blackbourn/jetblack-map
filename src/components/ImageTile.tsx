@@ -1,23 +1,45 @@
-import { Tile } from '../types'
-
+/**
+ * The props type for [[`ImageTile`]]
+ */
 export interface ImageTileProps {
-  tile: Tile
+  /** The url or the tile image */
+  url: string
+  /** An identifier for one more more candidate images */
+  srcSet: string
+  /** The left position on the screen */
+  left: number
+  /** The top position on the screen */
+  top: number
+  /** The width of the tile */
+  width: number
+  /** The height of the tile */
+  height: number
 }
 
-export default function ImageTile({ tile }: ImageTileProps) {
+/**
+ * Renders an image tile.
+ */
+export default function ImageTile({
+  url,
+  srcSet,
+  left,
+  top,
+  width,
+  height,
+}: ImageTileProps) {
   return (
     <img
       className="jetblack-map-image-tile"
-      src={tile.url}
-      srcSet={tile.srcSet}
-      width={tile.width}
-      height={tile.height}
+      src={url}
+      srcSet={srcSet}
+      width={width}
+      height={height}
       loading={'lazy'}
       alt={''}
       style={{
         position: 'absolute',
-        left: tile.left,
-        top: tile.top,
+        left: left,
+        top: top,
         willChange: 'transform',
         transformOrigin: 'top left',
         opacity: 1,

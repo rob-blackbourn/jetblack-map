@@ -1,10 +1,10 @@
 import { useContext } from 'react'
 
-import { Coordinate, Tile, TileInfo, TileProvider } from '../types'
+import { Coordinate, TileInfo, TileProvider } from '../types'
 
 import { calcScaleInfo, coordinateToTilePoint } from '../tileMath'
 
-import ImageTile from './ImageTile'
+import ImageTile, { ImageTileProps } from './ImageTile'
 import MapContext from './MapContext'
 
 import { osmTileProvider } from './providers'
@@ -97,7 +97,7 @@ export default function TileLayer({
     y: Math.min(tileMax.y, maxTiles - 1),
   }
 
-  const tiles: Tile[] = []
+  const tiles: (ImageTileProps & { key: string })[] = []
   for (let x = min.x; x <= max.x; ++x) {
     for (let y = min.y; y <= max.y; ++y) {
       // The range of tiles is from 0 to 2 ** zoom.
@@ -116,7 +116,6 @@ export default function TileLayer({
         top: (y - tileMin.y) * 256,
         width: 256,
         height: 256,
-        active: true,
       })
     }
   }
@@ -150,8 +149,8 @@ export default function TileLayer({
           transform: `translate(${left}px, ${top}px)`,
         }}
       >
-        {tiles.map(tile => (
-          <ImageTile key={tile.key} tile={tile} />
+        {tiles.map(({ key, ...props }) => (
+          <ImageTile key={key} {...props} />
         ))}
       </div>
     </div>
