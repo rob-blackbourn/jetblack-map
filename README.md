@@ -8,6 +8,10 @@ The component has a few unique features:
 * When zoomed out the map can scroll continuously in the horizontal direction.
 * It uses hooks to provide interaction with the map.
 
+## Demo
+
+You can see a demo of the map [here](https://rob-blackbourn.github.io/jetblack-example-map/).
+
 ## Installation
 
 Install from npmjs:
