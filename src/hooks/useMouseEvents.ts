@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react'
 
 import { Coordinate, Point } from '../types'
 
-import { latLng2Tile, tile2LatLng } from '../tileMath'
+import { coordinateToTilePoint, tilePointToCoordinate } from '../tileMath'
 import { GREENWICH_OBSERVATORY } from '../constants'
 
 function getRelativeMousePoint(event: MouseEvent, div: HTMLDivElement): Point {
@@ -78,8 +78,8 @@ export default function useMouseEvents({
           x: (mouseState.current.lastPoint.x - mousePoint.x) / 256,
           y: (mouseState.current.lastPoint.y - mousePoint.y) / 256,
         }
-        const tile = latLng2Tile(center, zoomRef.current as number)
-        const newCenter = tile2LatLng(
+        const tile = coordinateToTilePoint(center, zoomRef.current as number)
+        const newCenter = tilePointToCoordinate(
           { x: tile.x + tileDelta.x, y: tile.y + tileDelta.y },
           zoomRef.current as number
         )

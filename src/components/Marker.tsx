@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 
 import { Coordinate, Point } from '../types'
 
-import { calcScaleInfo, coordinateToPoint } from '../tileMath'
+import { calcScaleInfo, coordinateToScreenPoint } from '../tileMath'
 
 import MapContext from './MapContext'
 
@@ -22,7 +22,7 @@ export default function Marker({ coordinate, render }: MarkerProps) {
   const { roundedZoom, scale, scaleWidth } = calcScaleInfo(zoom, width, height)
   const maxTiles = 2 ** roundedZoom
   const expectedWidth = maxTiles * 256 * scale
-  const point = coordinateToPoint(coordinate, center, zoom, width, height)
+  const point = coordinateToScreenPoint(coordinate, center, zoom, width, height)
 
   // If the screen is zoomed out the coordinate may appear many times as the display will wrap horizontally.
   const elementPoints: Point[] = [point]

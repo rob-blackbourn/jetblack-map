@@ -25,12 +25,18 @@ function tile2lat(y: number, zoom: number): number {
   return (180 / Math.PI) * Math.atan(0.5 * (Math.exp(n) - Math.exp(-n)))
 }
 
-export const latLng2Tile = (latLng: Coordinate, zoom: number): Point => ({
-  x: lng2tile(latLng.longitude, zoom),
-  y: lat2tile(latLng.latitude, zoom),
+export const coordinateToTilePoint = (
+  coordinate: Coordinate,
+  zoom: number
+): Point => ({
+  x: lng2tile(coordinate.longitude, zoom),
+  y: lat2tile(coordinate.latitude, zoom),
 })
 
-export const tile2LatLng = (tile: Point, zoom: number): Coordinate => ({
+export const tilePointToCoordinate = (
+  tile: Point,
+  zoom: number
+): Coordinate => ({
   latitude: tile2lat(tile.y, zoom),
   longitude: tile2lng(tile.x, zoom),
 })
@@ -69,7 +75,7 @@ export function calcTileInfo(
     height
   )
 
-  const tileCenter = latLng2Tile(center, roundedZoom)
+  const tileCenter = coordinateToTilePoint(center, roundedZoom)
 
   const halfWidth = scaleWidth / 2 / 256
   const halfHeight = scaleHeight / 2 / 256
@@ -110,33 +116,33 @@ export function srcSet(
   return attr
 }
 
-export function pointToCoordinate(
+export function screenPointToCoordinate(
   screenPoint: Point,
-  projCenter: Coordinate,
+  center: Coordinate,
   zoom: number,
   width: number,
   height: number
 ): Coordinate {
   // Calculate the distance from the screen center and convert to tile units.
-  const tileDelta = {
+  const tilePoint = {
     x: (screenPoint.x - width / 2) / 256,
     y: (screenPoint.y - height / 2) / 256,
   }
 
   // Find the current center for the current zoom in tile units and add the delta.
-  const tileCenter = latLng2Tile(projCenter, zoom)
-  const newTileCenter = {
-    x: tileCenter.x + tileDelta.x,
-    y: tileCenter.y + tileDelta.y,
+  const centerTilePoint = coordinateToTilePoint(center, zoom)
+  const adjTilePoint = {
+    x: centerTilePoint.x + tilePoint.x,
+    y: centerTilePoint.y + tilePoint.y,
   }
 
   // Find the center in projection units for the given zoom level..
-  const newProjCenter = tile2LatLng(newTileCenter, zoom)
+  const newCenter = tilePointToCoordinate(adjTilePoint, zoom)
 
   // Constrain the latitude between -90 and 90 degrees.
-  const latitude = boundValue(-90, newProjCenter.latitude, 90)
+  const latitude = boundValue(-90, newCenter.latitude, 90)
 
-  let longitude = newProjCenter.longitude
+  let longitude = newCenter.longitude
   while (longitude < -180) {
     longitude += 360
   }
@@ -150,7 +156,7 @@ export function pointToCoordinate(
   }
 }
 
-export function pointToCoordinates(
+export function screenPointToCoordinates(
   screenPoint: Point,
   center: Coordinate,
   zoom: number,
@@ -162,12 +168,15 @@ export function pointToCoordinates(
     y: (screenPoint.y - height / 2) / 256,
   }
 
-  const tile = latLng2Tile(center, zoom)
-  const newTileCenter = { x: tile.x + tileDelta.x, y: tile.y + tileDelta.y }
+  const tilePoint = coordinateToTilePoint(center, zoom)
+  const adjTilePoint = {
+    x: tilePoint.x + tileDelta.x,
+    y: tilePoint.y + tileDelta.y,
+  }
 
-  const newProjCenter = tile2LatLng(newTileCenter, zoom)
-  const latitude = boundValue(-90, newProjCenter.latitude, 90)
-  let longitude = newProjCenter.longitude
+  const adjCenter = tilePointToCoordinate(adjTilePoint, zoom)
+  const latitude = boundValue(-90, adjCenter.latitude, 90)
+  let longitude = adjCenter.longitude
   while (longitude < -180) {
     longitude += 360
   }
@@ -181,19 +190,19 @@ export function pointToCoordinates(
   }
 }
 
-export function coordinateToPoint(
+export function coordinateToScreenPoint(
   coordinate: Coordinate,
   center: Coordinate,
   zoom: number,
   width: number,
   height: number
 ): Point {
-  const tileCenter = latLng2Tile(center, zoom)
+  const centerTilePoint = coordinateToTilePoint(center, zoom)
 
-  const tile = latLng2Tile(coordinate, zoom)
+  const coordinateTilePoint = coordinateToTilePoint(coordinate, zoom)
 
   return {
-    x: (tile.x - tileCenter.x) * 256 + width / 2,
-    y: (tile.y - tileCenter.y) * 256 + height / 2,
+    x: (coordinateTilePoint.x - centerTilePoint.x) * 256 + width / 2,
+    y: (coordinateTilePoint.y - centerTilePoint.y) * 256 + height / 2,
   }
 }

@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react'
 
-import { pointToCoordinate } from '../tileMath'
+import { screenPointToCoordinate } from '../tileMath'
 import { Coordinate, Point } from '../types'
 
 function getRelativeMousePoint(event: MouseEvent, div: HTMLDivElement): Point {
@@ -28,9 +28,8 @@ export default function useClick({
   onClick,
   onDoubleClick,
 }: useClickProps): void {
-  const [timeout, saveTimeout] = useState<
-    ReturnType<typeof setTimeout> | undefined
-  >()
+  const [timeout, saveTimeout] =
+    useState<ReturnType<typeof setTimeout> | undefined>()
 
   const handleClick = useCallback(
     (event: MouseEvent) => {
@@ -45,7 +44,7 @@ export default function useClick({
 
         const mousePoint: Point = getRelativeMousePoint(event, ref.current)
         const { width, height } = ref.current.getBoundingClientRect()
-        const coordinate = pointToCoordinate(
+        const coordinate = screenPointToCoordinate(
           mousePoint,
           centerRef.current as Coordinate,
           zoomRef.current as number,
