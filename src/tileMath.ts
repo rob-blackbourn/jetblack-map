@@ -142,13 +142,7 @@ export function screenPointToCoordinate(
   // Constrain the latitude between -90 and 90 degrees.
   const latitude = boundValue(-90, newCenter.latitude, 90)
 
-  let longitude = newCenter.longitude
-  while (longitude < -180) {
-    longitude += 360
-  }
-  while (longitude > 180) {
-    longitude -= 360
-  }
+  let longitude = newCenter.longitude % 180
 
   return {
     latitude,
