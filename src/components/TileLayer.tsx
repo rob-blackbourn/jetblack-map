@@ -1,8 +1,8 @@
 import { useContext } from 'react'
 
-import { Tile, TileProvider } from '../types'
+import { Coordinate, Tile, TileInfo, TileProvider } from '../types'
 
-import { calcTileInfo } from '../tileMath'
+import { calcScaleInfo, coordinateToTilePoint } from '../tileMath'
 
 import ImageTile from './ImageTile'
 import MapContext from './MapContext'
@@ -27,6 +27,43 @@ function srcSet(
 export interface TileLayerProps {
   tileProvider?: TileProvider
   dprs?: number[]
+}
+
+function calcTileInfo(
+  center: Coordinate,
+  zoom: number,
+  width: number,
+  height: number
+): TileInfo {
+  const { roundedZoom, scale, scaleWidth, scaleHeight } = calcScaleInfo(
+    zoom,
+    width,
+    height
+  )
+
+  const tileCenter = coordinateToTilePoint(center, roundedZoom)
+
+  const halfWidth = scaleWidth / 2 / 256
+  const halfHeight = scaleHeight / 2 / 256
+
+  const tileMin = {
+    x: Math.floor(tileCenter.x - halfWidth),
+    y: Math.floor(tileCenter.y - halfHeight),
+  }
+  const tileMax = {
+    x: Math.floor(tileCenter.x + halfWidth),
+    y: Math.floor(tileCenter.y + halfHeight),
+  }
+
+  return {
+    tileMin,
+    tileMax,
+    tileCenter,
+    roundedZoom,
+    scaleWidth,
+    scaleHeight,
+    scale,
+  }
 }
 
 export default function TileLayer({

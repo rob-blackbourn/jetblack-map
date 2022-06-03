@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 
 import { DEFAULT_ZOOM } from '../constants'
-import { boundValue } from '../math'
+import { boundValue } from '../tileMath'
 
 export interface useZoomWheelProps {
   defaultZoom?: number
