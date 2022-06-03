@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 
-import { Coordinate, TileInfo, TileProvider } from '../types'
+import { Coordinate, Point, ScaleInfo, TileProvider } from '../types'
 
 import { calcScaleInfo, coordinateToTilePoint } from '../tileMath'
 
@@ -24,9 +24,11 @@ function srcSet(
     .join(', ')
   return attr
 }
-export interface TileLayerProps {
-  tileProvider?: TileProvider
-  dprs?: number[]
+
+interface TileInfo extends ScaleInfo {
+  tileMin: Point
+  tileMax: Point
+  tileCenter: Point
 }
 
 function calcTileInfo(
@@ -66,6 +68,19 @@ function calcTileInfo(
   }
 }
 
+/**
+ * The props type for [[`TileLayer`]]
+ */
+export interface TileLayerProps {
+  /** The tile provider */
+  tileProvider?: TileProvider
+  /** Optional resolutions */
+  dprs?: number[]
+}
+
+/**
+ * Render a tile layer.
+ */
 export default function TileLayer({
   tileProvider = osmTileProvider,
   dprs = [],

@@ -24,28 +24,42 @@ export type Point = {
   y: number
 }
 
+/**
+ * The type for scale information returned from [[`calcScaleInfo`]]
+ */
 export interface ScaleInfo {
   roundedZoom: number
   scale: number
   scaleWidth: number
   scaleHeight: number
 }
-export interface TileInfo extends ScaleInfo {
-  tileMin: Point
-  tileMax: Point
-  tileCenter: Point
-}
 
+/**
+ * The type for the screen bounds.
+ */
 export interface Bounds {
+  /** The top */
   top: number
+  /** The left */
   left: number
+  /** The width */
   width: number
+  /** The height */
   height: number
 }
 
+/**
+ * The type for a tile provider.
+ *
+ * The tile provider takes the tile coordinates and returns an image url.
+ */
 export type TileProvider = (
+  /** The x coordinate of the tile */
   x: number,
+  /** The y coordinate of the tile */
   y: number,
-  z: number,
+  /** The zoom level */
+  zoom: number,
+  /** Optional resolutions */
   dpr?: number
 ) => string

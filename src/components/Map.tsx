@@ -11,14 +11,25 @@ import {
 
 import MapContext from './MapContext'
 
+/**
+ * The prop type for a [[`Map`]] component.
+ */
 export interface MapProps {
+  /** The center of the map */
   center?: Coordinate
+  /** The zoom level */
   zoom?: number
+  /** The screen width */
   width?: number | string
+  /** The screen height */
   height?: number | string
+  /** Map components */
   children?: React.ReactNode
 }
 
+/**
+ * Render a map.
+ */
 const Map = React.forwardRef<HTMLDivElement, MapProps>(
   (
     {

@@ -1,4 +1,4 @@
-import { Coordinate, Point, TileProvider, TileInfo, ScaleInfo } from './types'
+import { Coordinate, Point, ScaleInfo } from './types'
 
 // These functions are provided by the Open Street Map wiki.
 // See: https://wiki.openstreetmap.org/wiki/Slippy_map_tilenames
