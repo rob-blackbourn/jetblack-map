@@ -1,8 +1,11 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 
 import { DEFAULT_ZOOM } from '../constants'
-import { boundValue } from '../math'
+import { boundValue } from '../tileMath'
 
+/**
+ * The prop type for the [[`useZoomWheel`]] hook.
+ */
 export interface useZoomWheelProps {
   defaultZoom?: number
   minZoom?: number
@@ -11,6 +14,9 @@ export interface useZoomWheelProps {
   ref: React.RefObject<HTMLDivElement>
 }
 
+/**
+ * A hook to integrate the zoom wheel with a map.
+ */
 export default function useZoomWheel({
   defaultZoom = DEFAULT_ZOOM,
   minZoom = 0,

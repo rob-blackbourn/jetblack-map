@@ -2,17 +2,31 @@ import React, { useState } from 'react'
 
 import { Point } from '../types'
 
+/**
+ * The prop type for an [[`SVGPin`]] component.
+ */
 export interface SVGPinProps {
+  /** The point in the screen coordinate system. */
   point: Point
+  /** The width of the pin */
   width?: number
+  /** The height of the pin */
   height?: number
+  /** The color of the pin */
   color?: string
+  /** A handler for mouse-out events */
   onMouseOut?: (event: React.MouseEvent<SVGElement, MouseEvent>) => void
+  /** A handler for mouse-over events */
   onMouseOver?: (event: React.MouseEvent<SVGElement, MouseEvent>) => void
+  /** A handler for click events */
   onClick?: (event: React.MouseEvent<SVGElement, MouseEvent>) => void
+  /** A handler for a context menu event */
   onContextMenu?: (event: React.MouseEvent<SVGElement, MouseEvent>) => void
 }
 
+/**
+ * Render an SVG pin.
+ */
 export default function SVGPin({
   point,
   width = 29,

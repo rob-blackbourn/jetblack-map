@@ -13,6 +13,10 @@ function getRelativeMousePoint(event: MouseEvent, div: HTMLDivElement): Point {
   }
   return point
 }
+
+/**
+ * The prop type for the [[`useMouseEvents`]] hook.
+ */
 export interface useMouseEventsProps {
   ref: React.RefObject<HTMLDivElement>
   defaultCenter?: Coordinate
@@ -24,6 +28,9 @@ interface MouseState {
   lastPoint: Point
 }
 
+/**
+ * A hook for mouse events.
+ */
 export default function useMouseEvents({
   ref,
   defaultCenter = GREENWICH_OBSERVATORY,

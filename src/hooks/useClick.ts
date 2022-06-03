@@ -11,6 +11,10 @@ function getRelativeMousePoint(event: MouseEvent, div: HTMLDivElement): Point {
   }
   return point
 }
+
+/**
+ * The prop type for the [[`useClickProp`]] hook.
+ */
 export interface useClickProps {
   ref: React.RefObject<HTMLDivElement>
   centerRef: React.RefObject<Coordinate>
@@ -20,6 +24,9 @@ export interface useClickProps {
   onDoubleClick?: (coordinate: Coordinate, point: Point) => void
 }
 
+/**
+ * The useClick hook.
+ */
 export default function useClick({
   ref,
   centerRef,

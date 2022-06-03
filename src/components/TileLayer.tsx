@@ -1,19 +1,86 @@
 import { useContext } from 'react'
 
-import { Tile, TileProvider } from '../types'
+import { Coordinate, Point, ScaleInfo, TileProvider } from '../types'
 
-import { srcSet, calcTileInfo } from '../tileMath'
+import { calcScaleInfo, coordinateToTilePoint } from '../tileMath'
 
-import ImageTile from './ImageTile'
+import ImageTile, { ImageTileProps } from './ImageTile'
 import MapContext from './MapContext'
 
 import { osmTileProvider } from './providers'
 
+function srcSet(
+  dprs: number[],
+  tileProvider: TileProvider,
+  x: number,
+  y: number,
+  z: number
+): string {
+  if (dprs.length === 0) {
+    return ''
+  }
+  const attr = dprs
+    .map(dpr => tileProvider(x, y, z, dpr) + (dpr === 1 ? '' : ` ${dpr}x`))
+    .join(', ')
+  return attr
+}
+
+interface TileInfo extends ScaleInfo {
+  tileMin: Point
+  tileMax: Point
+  tileCenter: Point
+}
+
+function calcTileInfo(
+  center: Coordinate,
+  zoom: number,
+  width: number,
+  height: number
+): TileInfo {
+  const { roundedZoom, scale, scaleWidth, scaleHeight } = calcScaleInfo(
+    zoom,
+    width,
+    height
+  )
+
+  const tileCenter = coordinateToTilePoint(center, roundedZoom)
+
+  const halfWidth = scaleWidth / 2 / 256
+  const halfHeight = scaleHeight / 2 / 256
+
+  const tileMin = {
+    x: Math.floor(tileCenter.x - halfWidth),
+    y: Math.floor(tileCenter.y - halfHeight),
+  }
+  const tileMax = {
+    x: Math.floor(tileCenter.x + halfWidth),
+    y: Math.floor(tileCenter.y + halfHeight),
+  }
+
+  return {
+    tileMin,
+    tileMax,
+    tileCenter,
+    roundedZoom,
+    scaleWidth,
+    scaleHeight,
+    scale,
+  }
+}
+
+/**
+ * The props type for [[`TileLayer`]]
+ */
 export interface TileLayerProps {
+  /** The tile provider */
   tileProvider?: TileProvider
+  /** Optional resolutions */
   dprs?: number[]
 }
 
+/**
+ * Render a tile layer.
+ */
 export default function TileLayer({
   tileProvider = osmTileProvider,
   dprs = [],
@@ -45,7 +112,7 @@ export default function TileLayer({
     y: Math.min(tileMax.y, maxTiles - 1),
   }
 
-  const tiles: Tile[] = []
+  const tiles: (ImageTileProps & { key: string })[] = []
   for (let x = min.x; x <= max.x; ++x) {
     for (let y = min.y; y <= max.y; ++y) {
       // The range of tiles is from 0 to 2 ** zoom.
@@ -64,7 +131,6 @@ export default function TileLayer({
         top: (y - tileMin.y) * 256,
         width: 256,
         height: 256,
-        active: true,
       })
     }
   }
@@ -98,8 +164,8 @@ export default function TileLayer({
           transform: `translate(${left}px, ${top}px)`,
         }}
       >
-        {tiles.map(tile => (
-          <ImageTile key={tile.key} tile={tile} />
+        {tiles.map(({ key, ...props }) => (
+          <ImageTile key={key} {...props} />
         ))}
       </div>
     </div>
