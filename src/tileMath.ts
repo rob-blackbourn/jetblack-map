@@ -137,46 +137,13 @@ export function screenPointToCoordinate(
   }
 
   // Find the center in projection units for the given zoom level..
-  const newCenter = tilePointToCoordinate(adjTilePoint, zoom)
+  const coordinate = tilePointToCoordinate(adjTilePoint, zoom)
 
-  // Constrain the latitude between -90 and 90 degrees.
-  const latitude = boundValue(-90, newCenter.latitude, 90)
+  // Clip the latitude.
+  const latitude = boundValue(-90, coordinate.latitude, 90)
 
-  let longitude = newCenter.longitude % 180
-
-  return {
-    latitude,
-    longitude,
-  }
-}
-
-export function screenPointToCoordinates(
-  screenPoint: Point,
-  center: Coordinate,
-  zoom: number,
-  width: number,
-  height: number
-): Coordinate {
-  const tileDelta = {
-    x: (screenPoint.x - width / 2) / 256,
-    y: (screenPoint.y - height / 2) / 256,
-  }
-
-  const tilePoint = coordinateToTilePoint(center, zoom)
-  const adjTilePoint = {
-    x: tilePoint.x + tileDelta.x,
-    y: tilePoint.y + tileDelta.y,
-  }
-
-  const adjCenter = tilePointToCoordinate(adjTilePoint, zoom)
-  const latitude = boundValue(-90, adjCenter.latitude, 90)
-  let longitude = adjCenter.longitude
-  while (longitude < -180) {
-    longitude += 360
-  }
-  while (longitude > 180) {
-    longitude -= 360
-  }
+  // Allow the longitude to wrap.
+  let longitude = coordinate.longitude % 180
 
   return {
     latitude,
