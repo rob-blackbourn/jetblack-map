@@ -6,7 +6,7 @@ The component has a few unique features:
 
 * Is is built as a pure react component with no dependencies,
 * When zoomed out the map can scroll continuously in the horizontal direction.
-* It uses hooks to provide interaction wi the map.
+* It uses hooks to provide interaction with the map.
 
 ## Installation
 
