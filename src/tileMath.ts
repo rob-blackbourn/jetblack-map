@@ -5,7 +5,7 @@ import { boundValue } from './math'
 // See: https://wiki.openstreetmap.org/wiki/Slippy_map_tilenames
 
 const lng2tile = (lon: number, zoom: number): number =>
-  ((lon + 180) / 360) * Math.pow(2, zoom)
+  ((lon + 180) / 360) * 2 ** zoom
 
 const lat2tile = (lat: number, zoom: number): number =>
   ((1 -
@@ -14,14 +14,14 @@ const lat2tile = (lat: number, zoom: number): number =>
     ) /
       Math.PI) /
     2) *
-  Math.pow(2, zoom)
+  2 ** zoom
 
 function tile2lng(x: number, zoom: number): number {
-  return (x / Math.pow(2, zoom)) * 360 - 180
+  return (x / 2 ** zoom) * 360 - 180
 }
 
 function tile2lat(y: number, zoom: number): number {
-  const n = Math.PI - (2 * Math.PI * y) / Math.pow(2, zoom)
+  const n = Math.PI - (2 * Math.PI * y) / 2 ** zoom
   return (180 / Math.PI) * Math.atan(0.5 * (Math.exp(n) - Math.exp(-n)))
 }
 
