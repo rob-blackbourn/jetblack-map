@@ -13,7 +13,9 @@ export function srcSet(
     return ''
   }
   const attr = dprs
-    .map(dpr => tileProvider(x, y, z, dpr) + (dpr === 1 ? '' : ` ${dpr}x`))
+    .map(
+      dpr => tileProvider.makeUrl(x, y, z, dpr) + (dpr === 1 ? '' : ` ${dpr}x`)
+    )
     .join(', ')
   return attr
 }

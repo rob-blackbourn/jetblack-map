@@ -3,6 +3,7 @@ import React, { useRef } from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
 import {
+  AttributionLayer,
   Coordinate,
   Map,
   Marker,
@@ -76,6 +77,7 @@ const Template: ComponentStory<typeof Map> = args => {
         />
         <ZoomButton point={{ x: 10, y: 10 }} onChange={zoom => setZoom(zoom)} />
       </OverlayLayer>
+      <AttributionLayer />
     </Map>
   )
 }

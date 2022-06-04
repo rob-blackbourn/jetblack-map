@@ -1,3 +1,6 @@
+import AttributionLayer, {
+  AttributionLayerProps,
+} from './components/AttributionLayer'
 import ImageTile, { ImageTileProps } from './components/ImageTile'
 import Map, { MapProps } from './components/Map'
 import MapContext, { MapContextProps } from './components/MapContext'
@@ -14,6 +17,7 @@ import useMouseEvents, { useMouseEventsProps } from './hooks/useMouseEvents'
 import useZoomWheel, { useZoomWheelProps } from './hooks/useZoomWheel'
 
 export type {
+  AttributionLayerProps,
   ImageTileProps,
   MapProps,
   MapContextProps,
@@ -31,6 +35,7 @@ export type {
 }
 
 export {
+  AttributionLayer,
   ImageTile,
   Map,
   MapContext,

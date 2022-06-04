@@ -1,3 +1,5 @@
+import React from 'react'
+
 /**
  * An earth coordinate in terms of latitude and longitude.
  */
@@ -53,7 +55,7 @@ export interface Bounds {
  *
  * The tile provider takes the tile coordinates and returns an image url.
  */
-export type TileProvider = (
+export type TileUrlProvider = (
   /** The x coordinate of the tile */
   x: number,
   /** The y coordinate of the tile */
@@ -63,3 +65,8 @@ export type TileProvider = (
   /** Optional resolutions */
   dpr?: number
 ) => string
+
+export interface TileProvider {
+  makeUrl: TileUrlProvider
+  attribution: React.ReactElement
+}
