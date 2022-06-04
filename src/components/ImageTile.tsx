@@ -1,3 +1,15 @@
+import { CLASS_NAMES } from '../constants'
+
+const classNames = {
+  imageTile: [
+    CLASS_NAMES.primary,
+    CLASS_NAMES.draggable,
+    CLASS_NAMES.zoomable,
+    CLASS_NAMES.clickable,
+    'image-tile',
+  ].join(' '),
+}
+
 /**
  * The props type for [[`ImageTile`]]
  */
@@ -29,7 +41,7 @@ export default function ImageTile({
 }: ImageTileProps) {
   return (
     <img
-      className="jetblack-map-image-tile"
+      className={classNames.imageTile}
       src={url}
       srcSet={srcSet}
       width={width}

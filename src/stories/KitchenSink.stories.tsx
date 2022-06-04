@@ -10,6 +10,7 @@ import {
   Point,
   SVGPin,
   TileLayer,
+  ZoomButton,
   useClick,
   useMouseEvents,
   useZoomWheel,
@@ -74,6 +75,7 @@ const Template: ComponentStory<typeof Map> = args => {
           render={point => <SVGPin point={point} />}
         />
       </OverlayLayer>
+      <ZoomButton onChange={zoom => setZoom(zoom)} />
     </Map>
   )
 }

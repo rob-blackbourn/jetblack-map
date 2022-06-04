@@ -2,6 +2,10 @@ import React, { useState } from 'react'
 
 import { Point } from '../types'
 
+import { CLASS_NAMES } from '../constants'
+
+const classNames = { svgPin: [CLASS_NAMES.primary, 'svg-pin'].join(' ') }
+
 /**
  * The prop type for an [[`SVGPin`]] component.
  */
@@ -39,7 +43,7 @@ export default function SVGPin({
 
   return (
     <svg
-      className="jetblack-map-svg-pin"
+      className={classNames.svgPin}
       width={width}
       height={height}
       viewBox="0 0 61 71"

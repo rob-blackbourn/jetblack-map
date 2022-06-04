@@ -8,8 +8,11 @@ import { Bounds, Coordinate } from '../types'
  * This is the information that children of the map will need.
  */
 export interface MapContextProps {
+  /** The latitude and longitude of the center of the map */
   center: Coordinate
+  /** The zoom level */
   zoom: number
+  /** The bounds of the map in hte screen coordinate system */
   bounds: Bounds
 }
 
