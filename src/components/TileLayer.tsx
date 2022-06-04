@@ -7,7 +7,7 @@ import { CLASS_NAMES } from '../constants'
 import ImageTile, { ImageTileProps } from './ImageTile'
 import MapContext from './MapContext'
 
-import { osmTileProvider } from './providers'
+import { osmTileProvider } from './TileProviders'
 
 import { srcSet, calcTileInfo } from './tileLayerHelpers'
 
@@ -85,7 +85,7 @@ export default function TileLayer({
 
       tiles.push({
         key: `${x}-${y}-${roundedZoom}`,
-        url: tileProvider(tileX, y, roundedZoom),
+        url: tileProvider.makeUrl(tileX, y, roundedZoom),
         srcSet: srcSet(dprs, tileProvider, tileX, y, roundedZoom),
         left: (x - tileMin.x) * 256,
         top: (y - tileMin.y) * 256,
