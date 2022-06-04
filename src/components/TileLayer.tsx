@@ -1,71 +1,31 @@
 import { useContext } from 'react'
 
-import { Coordinate, Point, ScaleInfo, TileProvider } from '../types'
+import { ScaleInfo, TileProvider } from '../types'
 
-import { calcScaleInfo, coordinateToTilePoint } from '../tileMath'
+import { CLASS_NAMES } from '../constants'
 
 import ImageTile, { ImageTileProps } from './ImageTile'
 import MapContext from './MapContext'
 
 import { osmTileProvider } from './providers'
 
-function srcSet(
-  dprs: number[],
-  tileProvider: TileProvider,
-  x: number,
-  y: number,
-  z: number
-): string {
-  if (dprs.length === 0) {
-    return ''
-  }
-  const attr = dprs
-    .map(dpr => tileProvider(x, y, z, dpr) + (dpr === 1 ? '' : ` ${dpr}x`))
-    .join(', ')
-  return attr
-}
+import { srcSet, calcTileInfo } from './tileLayerHelpers'
 
-interface TileInfo extends ScaleInfo {
-  tileMin: Point
-  tileMax: Point
-  tileCenter: Point
-}
-
-function calcTileInfo(
-  center: Coordinate,
-  zoom: number,
-  width: number,
-  height: number
-): TileInfo {
-  const { roundedZoom, scale, scaleWidth, scaleHeight } = calcScaleInfo(
-    zoom,
-    width,
-    height
-  )
-
-  const tileCenter = coordinateToTilePoint(center, roundedZoom)
-
-  const halfWidth = scaleWidth / 2 / 256
-  const halfHeight = scaleHeight / 2 / 256
-
-  const tileMin = {
-    x: Math.floor(tileCenter.x - halfWidth),
-    y: Math.floor(tileCenter.y - halfHeight),
-  }
-  const tileMax = {
-    x: Math.floor(tileCenter.x + halfWidth),
-    y: Math.floor(tileCenter.y + halfHeight),
-  }
-
-  return {
-    tileMin,
-    tileMax,
-    tileCenter,
-    roundedZoom,
-    scaleWidth,
-    scaleHeight,
-    scale,
-  }
+const classNames = {
+  tileLayer: [
+    CLASS_NAMES.primary,
+    CLASS_NAMES.draggable,
+    CLASS_NAMES.zoomable,
+    CLASS_NAMES.clickable,
+    'tile-layer',
+  ].join(' '),
+  tile: [
+    CLASS_NAMES.primary,
+    CLASS_NAMES.draggable,
+    CLASS_NAMES.zoomable,
+    CLASS_NAMES.clickable,
+    'tile',
+  ].join(' '),
 }
 
 /**
@@ -141,7 +101,7 @@ export default function TileLayer({
 
   return (
     <div
-      className="jetblack-map-tiles"
+      className={classNames.tile}
       style={{
         width: scaleWidth,
         height: scaleHeight,
@@ -155,7 +115,7 @@ export default function TileLayer({
       }}
     >
       <div
-        className="jetblack-map-tile"
+        className={classNames.tile}
         style={{
           position: 'absolute',
           width: (tileMax.x - tileMin.x + 1) * 256,

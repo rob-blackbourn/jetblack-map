@@ -1,7 +1,8 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 
-import { DEFAULT_ZOOM } from '../constants'
+import { DEFAULTS } from '../constants'
 import { boundValue } from '../tileMath'
+import { isZoomable } from './utils'
 
 /**
  * The prop type for the [[`useZoomWheel`]] hook.
@@ -18,7 +19,7 @@ export interface useZoomWheelProps {
  * A hook to integrate the zoom wheel with a map.
  */
 export default function useZoomWheel({
-  defaultZoom = DEFAULT_ZOOM,
+  defaultZoom = DEFAULTS.zoom,
   minZoom = 0,
   maxZoom = 19,
   zoomStep = 0.1,
@@ -40,6 +41,11 @@ export default function useZoomWheel({
 
   const handleWheel = useCallback(
     (event: WheelEvent) => {
+      const target = event.target as HTMLElement
+      if (!(ref.current && target && isZoomable(target))) {
+        return
+      }
+
       // Throttle barrier
       if (
         ignoreWheelUntil.current &&

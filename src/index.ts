@@ -5,7 +5,7 @@ import Marker, { MarkerProps } from './components/Marker'
 import OverlayLayer, { OverlayLayerProps } from './components/OverlayLayer'
 import SVGPin, { SVGPinProps } from './components/SVGPin'
 import TileLayer, { TileLayerProps } from './components/TileLayer'
-import ZoomControl, { ZoomControlPops } from './components/ZoomControl'
+import ZoomButton, { ZoomButtonPops } from './components/ZoomButton'
 
 import { Bounds, Coordinate, Point } from './types'
 
@@ -21,7 +21,7 @@ export type {
   OverlayLayerProps,
   SVGPinProps,
   TileLayerProps,
-  ZoomControlPops,
+  ZoomButtonPops,
   Bounds,
   Coordinate,
   Point,
@@ -38,7 +38,7 @@ export {
   OverlayLayer,
   SVGPin,
   TileLayer,
-  ZoomControl,
+  ZoomButton,
   useClick,
   useMouseEvents,
   useZoomWheel,

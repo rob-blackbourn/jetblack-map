@@ -3,7 +3,8 @@ import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { Coordinate, Point } from '../types'
 
 import { coordinateToTilePoint, tilePointToCoordinate } from '../tileMath'
-import { GREENWICH_OBSERVATORY } from '../constants'
+import { LOCATIONS } from '../constants'
+import { isDraggable } from './utils'
 
 function getRelativeMousePoint(event: MouseEvent, div: HTMLDivElement): Point {
   const { top, left } = div.getBoundingClientRect()
@@ -33,7 +34,7 @@ interface MouseState {
  */
 export default function useMouseEvents({
   ref,
-  defaultCenter = GREENWICH_OBSERVATORY,
+  defaultCenter = LOCATIONS.greenwichObservatory,
   zoomRef,
 }: useMouseEventsProps): [
   Coordinate,
@@ -73,11 +74,12 @@ export default function useMouseEvents({
 
   const handleMouseMove = useCallback(
     (event: MouseEvent) => {
-      event.preventDefault()
-
-      if (!ref.current) {
+      const target = event.target as HTMLElement
+      if (!(ref.current && target && isDraggable(target))) {
         return
       }
+
+      event.preventDefault()
 
       if (mouseState.current.mouseDown) {
         const mousePoint: Point = getRelativeMousePoint(event, ref.current)

@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react'
 
 import { screenPointToCoordinate } from '../tileMath'
 import { Coordinate, Point } from '../types'
+import { isClickable } from './utils'
 
 function getRelativeMousePoint(event: MouseEvent, div: HTMLDivElement): Point {
   const { top, left } = div.getBoundingClientRect()
@@ -40,17 +41,21 @@ export default function useClick({
 
   const handleClick = useCallback(
     (event: MouseEvent) => {
+      const target = event.target as HTMLElement
+      if (!(ref.current && target && isClickable(target))) {
+        console.log('not clickable')
+        return
+      }
+
+      const element = ref.current
+
       if (timeout) {
         clearTimeout(timeout)
       }
 
       const newTimeout = setTimeout(() => {
-        if (!ref.current) {
-          return
-        }
-
-        const mousePoint: Point = getRelativeMousePoint(event, ref.current)
-        const { width, height } = ref.current.getBoundingClientRect()
+        const mousePoint: Point = getRelativeMousePoint(event, element)
+        const { width, height } = element.getBoundingClientRect()
         const coordinate = screenPointToCoordinate(
           mousePoint,
           centerRef.current as Coordinate,
@@ -78,10 +83,12 @@ export default function useClick({
 
     const element = ref.current
 
-    element.addEventListener('click', handleClick)
+    element.onclick = handleClick
+    // element.addEventListener('click', handleClick)
 
     return () => {
-      element.removeEventListener('click', handleClick)
+      element.onclick = null
+      // element.removeEventListener('click', handleClick)
     }
   }, [ref, handleClick])
 }

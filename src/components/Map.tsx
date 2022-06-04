@@ -2,15 +2,19 @@ import React, { useEffect, useRef, useState } from 'react'
 
 import { Bounds, Coordinate } from '../types'
 
-import {
-  GREENWICH_OBSERVATORY,
-  DEFAULT_ZOOM,
-  DEFAULT_WIDTH,
-  DEFAULT_HEIGHT,
-} from '../constants'
+import { LOCATIONS, DEFAULTS, CLASS_NAMES } from '../constants'
 
 import MapContext from './MapContext'
 
+const classNames = {
+  map: [
+    CLASS_NAMES.primary,
+    CLASS_NAMES.draggable,
+    CLASS_NAMES.zoomable,
+    CLASS_NAMES.clickable,
+    'map',
+  ].join(' '),
+}
 /**
  * The prop type for a [[`Map`]] component.
  */
@@ -33,10 +37,10 @@ export interface MapProps {
 const Map = React.forwardRef<HTMLDivElement, MapProps>(
   (
     {
-      center = GREENWICH_OBSERVATORY,
-      zoom = DEFAULT_ZOOM,
-      width = DEFAULT_WIDTH,
-      height = DEFAULT_HEIGHT,
+      center = LOCATIONS.greenwichObservatory,
+      zoom = DEFAULTS.zoom,
+      width = DEFAULTS.width,
+      height = DEFAULTS.height,
       children,
     },
     forwardedRef
@@ -72,7 +76,7 @@ const Map = React.forwardRef<HTMLDivElement, MapProps>(
         }}
       >
         <div
-          className="jetblack-map"
+          className={classNames.map}
           style={{
             width,
             height,
