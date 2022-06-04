@@ -1,7 +1,9 @@
 import { CLASS_NAMES } from '../constants'
 
 function hasClassName(element: HTMLElement, classNames: string[]): boolean {
-  const elementClassNames = element.className.trim().split(/\s+/)
+  // const elementClassNames = element.className.trim().split(/\s+/)
+  const elementClassNames =
+    element.getAttribute('class')?.trim().split(/\s+/) || []
   return classNames.every(className => elementClassNames.includes(className))
 }
 

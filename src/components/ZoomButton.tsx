@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 
 import { CLASS_NAMES } from '../constants'
+import { Point } from '../types'
 
 import MapContext from './MapContext'
 
@@ -16,6 +17,7 @@ const classNames = {
 }
 
 export interface ZoomButtonPops {
+  point?: Point
   minZoom?: number
   maxZoom?: number
   zoomStep?: number
@@ -23,6 +25,7 @@ export interface ZoomButtonPops {
 }
 
 export default function ZoomButton({
+  point = { x: 10, y: 10 },
   minZoom = 0,
   maxZoom = 19,
   zoomStep = 0.1,
@@ -38,10 +41,9 @@ export default function ZoomButton({
       className={classNames.container}
       style={{
         position: 'absolute',
-        width: width,
-        height: height,
-        top: `calc((100% - ${height}px) / 2)`,
-        left: `calc((100% - ${width}px) / 2)`,
+        pointerEvents: 'auto',
+        cursor: 'pointer',
+        transform: `translate(${point.x}px, ${point.y}px)`,
       }}
     >
       <button

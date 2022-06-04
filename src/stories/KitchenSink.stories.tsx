@@ -74,8 +74,8 @@ const Template: ComponentStory<typeof Map> = args => {
           coordinate={EMPIRE_STATE_BUILDING}
           render={point => <SVGPin point={point} />}
         />
+        <ZoomButton point={{ x: 10, y: 10 }} onChange={zoom => setZoom(zoom)} />
       </OverlayLayer>
-      <ZoomButton onChange={zoom => setZoom(zoom)} />
     </Map>
   )
 }
