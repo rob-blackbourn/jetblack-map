@@ -89,12 +89,58 @@ const Template: ComponentStory<typeof Map> = args => {
       }
     }
   }
+
+  const handleRenderFeature = (feature: Feature) => {
+    if (!(feature && feature.properties)) {
+      return null
+    }
+
+    return (
+      <dl
+        style={{
+          width: '100%',
+          overflow: 'hidden',
+          padding: 0,
+          margin: 0,
+          fontFamily: 'sans-serif',
+          fontSize: 'smaller',
+        }}
+      >
+        {Object.entries(feature.properties).map(([key, value]) => (
+          <>
+            <dt
+              style={{
+                float: 'left',
+                width: '25%',
+                padding: 0,
+                margin: 0,
+              }}
+            >
+              {key}
+            </dt>
+            <dd
+              style={{
+                float: 'left',
+                width: '75%',
+                padding: 0,
+                margin: 0,
+              }}
+            >
+              {value}
+            </dd>
+          </>
+        ))}
+      </dl>
+    )
+  }
+
   return (
     <Map ref={ref} center={center} zoom={zoom} {...args}>
       <TileLayer />
       <GeoJSONLayer
         data={data}
         requestFeatureStyle={handleRequestFeatureStyle}
+        renderPopup={handleRenderFeature}
       />
     </Map>
   )
