@@ -10,7 +10,16 @@ module.exports = {
       {
         title: 'Guides',
         childrenDir: 'guide',
-        children: [{ title: 'Getting started', source: 'getting-started.md' }],
+        children: [
+          { title: 'Getting started', source: 'getting-started.md' },
+          {
+            title: 'Setting the Center and Zoom Level',
+            source: 'center-and-zoom-level.md',
+          },
+          { title: 'Overlay Layer', source: 'overlay-layer.md' },
+          { title: 'Interaction', source: 'interaction.md' },
+          { title: 'Hooks', source: 'hooks.md' },
+        ],
       },
     ],
   },
