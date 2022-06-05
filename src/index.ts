@@ -2,8 +2,9 @@ import AttributionLayer, {
   AttributionLayerProps,
 } from './components/AttributionLayer'
 import GeoJSONLayer, {
+  FeatureState,
   GeoJSONLayerProps,
-} from './components/GeoJson/GeoJsonLayer'
+} from './components/GeoJson'
 import ImageTile, { ImageTileProps } from './components/ImageTile'
 import Map, { MapProps } from './components/Map'
 import MapContext, { MapContextProps } from './components/MapContext'
@@ -19,8 +20,11 @@ import useClick, { useClickProps } from './hooks/useClick'
 import useMouseEvents, { useMouseEventsProps } from './hooks/useMouseEvents'
 import useZoomWheel, { useZoomWheelProps } from './hooks/useZoomWheel'
 
+import { CLASS_NAMES } from './constants'
+
 export type {
   AttributionLayerProps,
+  FeatureState,
   GeoJSONLayerProps,
   ImageTileProps,
   MapProps,
@@ -52,4 +56,5 @@ export {
   useClick,
   useMouseEvents,
   useZoomWheel,
+  CLASS_NAMES,
 }

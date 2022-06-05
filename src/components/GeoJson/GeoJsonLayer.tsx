@@ -1,8 +1,13 @@
 import { Feature, FeatureCollection, GeoJSON } from 'geojson'
 import { SVGProps, useContext } from 'react'
-import MapContext from '../MapContext'
-import { FeatureComponent } from './FeatureComponent'
+
 import { CLASS_NAMES } from '../../constants'
+
+import MapContext from '../MapContext'
+
+import { RequestFeatureStyleHandler } from './types'
+
+import { FeatureComponent } from './FeatureComponent'
 
 const classNames = {
   geoJsonLayer: [
@@ -22,7 +27,7 @@ export interface GeoJSONLayerProps {
   /** The GeoJSON data */
   data: GeoJSON
   /** A callback to request the SVG props for a feature */
-  requestFeatureStyle?: (feature: Feature) => SVGProps<SVGElement> | null
+  requestFeatureStyle?: RequestFeatureStyleHandler | null
 }
 
 /**

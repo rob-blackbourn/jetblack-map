@@ -37,7 +37,7 @@ export default function SVGPin({
   onClick,
   onContextMenu,
 }: SVGPinProps) {
-  const [hover, setHover] = useState(false)
+  const [mouseOver, setMouseOver] = useState(false)
   const width = 29 * size
   const height = 34 * size
 
@@ -51,7 +51,7 @@ export default function SVGPin({
       xmlns="http://www.w3.org/2000/svg"
       style={{
         transform: `translate(${-width / 2}px, ${-(height - 1)}px)`,
-        filter: hover ? 'drop-shadow(0 0 4px rgba(0, 0, 0, .3))' : '',
+        filter: mouseOver ? 'drop-shadow(0 0 4px rgba(0, 0, 0, .3))' : '',
       }}
     >
       <g
@@ -60,11 +60,11 @@ export default function SVGPin({
         onContextMenu={event => onContextMenu && onContextMenu(event)}
         onMouseOver={event => {
           onMouseOver && onMouseOver(event)
-          setHover(true)
+          setMouseOver(true)
         }}
         onMouseOut={event => {
           onMouseOut && onMouseOut(event)
-          setHover(false)
+          setMouseOver(false)
         }}
       >
         <path
@@ -78,7 +78,7 @@ export default function SVGPin({
           cy="30.5"
           r="8.5"
           fill="white"
-          opacity={hover ? 0.98 : 0.6}
+          opacity={mouseOver ? 0.98 : 0.6}
         />
       </g>
     </svg>

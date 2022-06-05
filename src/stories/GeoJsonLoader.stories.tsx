@@ -14,6 +14,7 @@ import {
   useMouseEvents,
   useZoomWheel,
 } from '..'
+import { FeatureState } from '../components/GeoJson'
 
 export default {
   /* 👇 The title prop is optional.
@@ -67,10 +68,34 @@ const Template: ComponentStory<typeof Map> = args => {
       .then(data => setData(data))
   }, [])
 
+  const handleRequestFeatureStyle = (
+    feature: Feature,
+    state: FeatureState
+  ): SVGProps<SVGAElement> | null => {
+    if (state.mouseOver) {
+      return {
+        fill: '#93c0d099',
+        strokeWidth: '2',
+        stroke: 'white',
+        opacity: 0.5,
+      }
+    } else {
+      return {
+        fill: '#d4e6ec99',
+        strokeWidth: '1',
+        stroke: 'white',
+        r: '20',
+        opacity: 0.3,
+      }
+    }
+  }
   return (
     <Map ref={ref} center={center} zoom={zoom} {...args}>
       <TileLayer />
-      <GeoJSONLayer data={data} />
+      <GeoJSONLayer
+        data={data}
+        requestFeatureStyle={handleRequestFeatureStyle}
+      />
     </Map>
   )
 }

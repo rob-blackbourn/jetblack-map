@@ -1,8 +1,10 @@
-import React, { SVGProps } from 'react'
+import React, { SVGProps, useState } from 'react'
 
 import { Feature } from 'geojson'
 
 import { CLASS_NAMES } from '../../constants'
+
+import { RequestFeatureStyleHandler } from './types'
 
 import GeometryCollectionComponent from './GeometryCollectionComponent'
 
@@ -45,7 +47,7 @@ export interface FeatureComponentProps {
     feature: Feature
   ) => void
   /** A callback to request the SVG props for a feature */
-  requestFeatureStyle?: (feature: Feature) => SVGProps<SVGElement> | null
+  requestFeatureStyle?: RequestFeatureStyleHandler | null
 }
 
 /**
@@ -59,8 +61,11 @@ export function FeatureComponent({
   onContextMenu,
   requestFeatureStyle,
 }: FeatureComponentProps) {
+  const [mouseOver, setMouseOver] = useState(false)
+
   const featureStyle =
-    (requestFeatureStyle && requestFeatureStyle(feature)) || defaultFeatureStyle
+    (requestFeatureStyle && requestFeatureStyle(feature, { mouseOver })) ||
+    defaultFeatureStyle
 
   return (
     <g
@@ -68,8 +73,14 @@ export function FeatureComponent({
       clipRule="evenodd"
       style={{ pointerEvents: 'auto' }}
       onClick={onClick && (event => onClick(event, feature))}
-      onMouseOver={onMouseOver && (event => onMouseOver(event, feature))}
-      onMouseOut={onMouseOut && (event => onMouseOut(event, feature))}
+      onMouseOver={event => {
+        onMouseOver && onMouseOver(event, feature)
+        setMouseOver(true)
+      }}
+      onMouseOut={event => {
+        onMouseOut && onMouseOut(event, feature)
+        setMouseOver(false)
+      }}
       onContextMenu={onContextMenu && (event => onContextMenu(event, feature))}
     >
       <GeometryCollectionComponent
