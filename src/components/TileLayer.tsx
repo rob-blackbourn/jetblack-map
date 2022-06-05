@@ -1,15 +1,15 @@
 import { useContext } from 'react'
 
-import { ScaleInfo, TileProvider } from '../types'
+import { TileProvider } from '../types'
 
 import { CLASS_NAMES } from '../constants'
 
-import ImageTile, { ImageTileProps } from './ImageTile'
+import ImageTile from './ImageTile'
 import MapContext from './MapContext'
 
 import { osmTileProvider } from './TileProviders'
 
-import { srcSet, calcTileInfo } from './tileLayerHelpers'
+import { calcTileInfo, calcImageTileProps } from './tileLayerHelpers'
 
 const classNames = {
   tileLayer: [
@@ -61,39 +61,13 @@ export default function TileLayer({
     scale,
   } = calcTileInfo(center, zoom, width, height)
 
-  const maxTiles = 2 ** roundedZoom
-
-  const min = {
-    x: tileMin.x,
-    y: Math.max(tileMin.y, 0),
-  }
-  const max = {
-    x: tileMax.x,
-    y: Math.min(tileMax.y, maxTiles - 1),
-  }
-
-  const tiles: (ImageTileProps & { key: string })[] = []
-  for (let x = min.x; x <= max.x; ++x) {
-    for (let y = min.y; y <= max.y; ++y) {
-      // The range of tiles is from 0 to 2 ** zoom.
-      // When the space allows for more, wrap around.
-      let tileX = x
-      while (tileX < 0) {
-        tileX += maxTiles
-      }
-      tileX %= maxTiles
-
-      tiles.push({
-        key: `${x}-${y}-${roundedZoom}`,
-        url: tileProvider.makeUrl(tileX, y, roundedZoom),
-        srcSet: srcSet(dprs, tileProvider, tileX, y, roundedZoom),
-        left: (x - tileMin.x) * 256,
-        top: (y - tileMin.y) * 256,
-        width: 256,
-        height: 256,
-      })
-    }
-  }
+  const imageTileProps = calcImageTileProps(
+    tileMin,
+    tileMax,
+    roundedZoom,
+    tileProvider,
+    dprs
+  )
 
   // Convert the top-left from tile coordinates to screen coordinates.
   const left = -((tileCenter.x - tileMin.x) * 256 - scaleWidth / 2)
@@ -124,7 +98,7 @@ export default function TileLayer({
           transform: `translate(${left}px, ${top}px)`,
         }}
       >
-        {tiles.map(({ key, ...props }) => (
+        {imageTileProps.map(({ key, ...props }) => (
           <ImageTile key={key} {...props} />
         ))}
       </div>
