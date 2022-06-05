@@ -30,7 +30,7 @@ export default function ZoomButton({
   maxZoom = 19,
   zoomStep = 0.1,
   onChange,
-}: ZoomButtonPops): JSX.Element {
+}: ZoomButtonPops) {
   const {
     zoom,
     bounds: { width, height },

@@ -33,7 +33,7 @@ export interface MultiPointComponentProps {
 export default function MultiPointComponent({
   multiPoint,
   ...props
-}: MultiPointComponentProps & SVGProps<SVGCircleElement>): JSX.Element {
+}: MultiPointComponentProps & SVGProps<SVGCircleElement>) {
   const {
     center,
     zoom,

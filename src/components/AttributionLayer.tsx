@@ -1,7 +1,9 @@
+import React from 'react'
+
 import { osmTileProvider } from './TileProviders'
 
 export interface AttributionLayerProps {
-  attribution?: JSX.Element
+  attribution?: React.ReactElement
 }
 
 export default function AttributionLayer({

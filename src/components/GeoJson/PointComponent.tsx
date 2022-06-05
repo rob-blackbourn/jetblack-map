@@ -33,7 +33,7 @@ export interface PointComponentProps {
 export default function PointComponent({
   point,
   ...props
-}: PointComponentProps & SVGProps<SVGCircleElement>): JSX.Element {
+}: PointComponentProps & SVGProps<SVGCircleElement>) {
   const {
     center,
     zoom,
