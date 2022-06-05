@@ -2,7 +2,7 @@ import React from 'react'
 
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { Map, TileLayer } from '..'
+import { AttributionLayer, Map, TileLayer } from '..'
 import { stamenTileProviderFactory } from '../components/TileProviders'
 
 export default {
@@ -20,8 +20,9 @@ const Template: ComponentStory<typeof Map> = args => {
   )
 
   return (
-    <Map width="600px" height="400px">
-      <TileLayer tileProvider={tileProvider} />
+    <Map width="600px" height="400px" tileProvider={tileProvider}>
+      <TileLayer />
+      <AttributionLayer />
     </Map>
   )
 }

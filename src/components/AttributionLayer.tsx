@@ -1,8 +1,7 @@
-import React from 'react'
+import { useContext } from 'react'
 
 import { CLASS_NAMES } from '../constants'
-
-import { osmTileProvider } from './TileProviders'
+import MapContext from './MapContext'
 
 const classNames = {
   attributionLayer: [CLASS_NAMES.primary, 'attribution-layer'].join(' '),
@@ -11,16 +10,14 @@ const classNames = {
 /**
  * The prop type of an [[`AttributionLayer`]] component.
  */
-export interface AttributionLayerProps {
-  attribution?: React.ReactElement
-}
+export interface AttributionLayerProps {}
 
 /**
  * Render the attribution layer.
  */
-export default function AttributionLayer({
-  attribution = osmTileProvider.attribution,
-}: AttributionLayerProps) {
+export default function AttributionLayer({}: AttributionLayerProps) {
+  const { tileProvider } = useContext(MapContext)
+
   return (
     <div
       className={classNames.attributionLayer}
@@ -35,7 +32,7 @@ export default function AttributionLayer({
         color: '#333',
       }}
     >
-      {attribution}
+      {tileProvider.attribution}
     </div>
   )
 }

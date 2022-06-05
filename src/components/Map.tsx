@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react'
 
-import { Bounds, Coordinate } from '../types'
+import { Bounds, Coordinate, TileProvider } from '../types'
 
 import { LOCATIONS, DEFAULTS, CLASS_NAMES } from '../constants'
 
 import MapContext from './MapContext'
+import { osmTileProvider } from './TileProviders'
 
 const classNames = {
   map: [
@@ -28,6 +29,10 @@ export interface MapProps {
   width?: number | string
   /** The screen height */
   height?: number | string
+  /** The tile provider */
+  tileProvider?: TileProvider
+  /** Optional resolutions */
+  dprs?: number[]
   /** Map components */
   children?: React.ReactNode
 }
@@ -42,6 +47,8 @@ const Map = React.forwardRef<HTMLDivElement, MapProps>(
       zoom = DEFAULTS.zoom,
       width = DEFAULTS.width,
       height = DEFAULTS.height,
+      tileProvider = osmTileProvider,
+      dprs = [],
       children,
     },
     forwardedRef
@@ -74,6 +81,8 @@ const Map = React.forwardRef<HTMLDivElement, MapProps>(
           center,
           zoom,
           bounds,
+          tileProvider,
+          dprs,
         }}
       >
         <div

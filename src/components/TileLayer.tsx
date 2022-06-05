@@ -1,13 +1,9 @@
 import { useContext } from 'react'
 
-import { TileProvider } from '../types'
-
 import { CLASS_NAMES } from '../constants'
 
 import ImageTile from './ImageTile'
 import MapContext from './MapContext'
-
-import { osmTileProvider } from './TileProviders'
 
 import { calcTileInfo, calcImageTileProps } from './tileLayerHelpers'
 
@@ -31,24 +27,18 @@ const classNames = {
 /**
  * The props type of a [[`TileLayer`]] component.
  */
-export interface TileLayerProps {
-  /** The tile provider */
-  tileProvider?: TileProvider
-  /** Optional resolutions */
-  dprs?: number[]
-}
+export interface TileLayerProps {}
 
 /**
  * Render a tile layer.
  */
-export default function TileLayer({
-  tileProvider = osmTileProvider,
-  dprs = [],
-}: TileLayerProps) {
+export default function TileLayer({}: TileLayerProps) {
   const {
     bounds: { width, height },
     center,
     zoom,
+    tileProvider,
+    dprs,
   } = useContext(MapContext)
 
   const {
