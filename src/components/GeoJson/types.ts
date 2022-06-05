@@ -9,4 +9,4 @@ export interface FeatureState {
 export type RequestFeatureStyleHandler = (
   feature: Feature,
   state: FeatureState
-) => SVGProps<SVGElement>
+) => SVGProps<SVGElement> | null
