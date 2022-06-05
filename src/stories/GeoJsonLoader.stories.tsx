@@ -9,6 +9,7 @@ import {
   GeoJSONLayer,
   Map,
   TileLayer,
+  useClick,
   useMouseEvents,
   useZoomWheel,
 } from '..'
@@ -37,6 +38,24 @@ const Template: ComponentStory<typeof Map> = args => {
     ref,
     zoomRef,
     defaultCenter: GREENWICH_OBSERVATORY,
+  })
+
+  const handleClick = (coordinate: Coordinate, point: Point) => {
+    console.log('click', { coordinate, point })
+  }
+
+  const handleDoubleClick = (coordinate: Coordinate, point: Point) => {
+    console.log('doubleClick', { coordinate, point })
+    setCenter(coordinate)
+    setZoom(zoom + 1)
+  }
+
+  useClick({
+    ref,
+    centerRef,
+    zoomRef,
+    onClick: handleClick,
+    onDoubleClick: handleDoubleClick,
   })
 
   useEffect(() => {
