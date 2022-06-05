@@ -1,6 +1,9 @@
 import AttributionLayer, {
   AttributionLayerProps,
 } from './components/AttributionLayer'
+import GeoJSONLayer, {
+  GeoJSONLayerProps,
+} from './components/GeoJson/GeoJsonLayer'
 import ImageTile, { ImageTileProps } from './components/ImageTile'
 import Map, { MapProps } from './components/Map'
 import MapContext, { MapContextProps } from './components/MapContext'
@@ -18,6 +21,7 @@ import useZoomWheel, { useZoomWheelProps } from './hooks/useZoomWheel'
 
 export type {
   AttributionLayerProps,
+  GeoJSONLayerProps,
   ImageTileProps,
   MapProps,
   MapContextProps,
@@ -36,6 +40,7 @@ export type {
 
 export {
   AttributionLayer,
+  GeoJSONLayer,
   ImageTile,
   Map,
   MapContext,
