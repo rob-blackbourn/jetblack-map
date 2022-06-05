@@ -16,14 +16,25 @@ const classNames = {
   button: [CLASS_NAMES.primary, 'zoom-button'].join(' '),
 }
 
+/**
+ * The prop type for a [[`ZoomButton`]] component.
+ */
 export interface ZoomButtonPops {
+  /** The screen point where the button will be placed. */
   point?: Point
+  /** The minimum zoom level. */
   minZoom?: number
+  /** The maximum zoom level. */
   maxZoom?: number
+  /** The amount by which the zoom will be changed on each click. */
   zoomStep?: number
+  /** A callback with the requested zoom level. */
   onChange: (value: number) => void
 }
 
+/**
+ * Render a zoom button.
+ */
 export default function ZoomButton({
   point = { x: 10, y: 10 },
   minZoom = 0,

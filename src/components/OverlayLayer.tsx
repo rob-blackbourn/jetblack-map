@@ -15,7 +15,7 @@ const classNames = {
 }
 
 /**
- * The prop type for an [[`OverlayLater`]] component.
+ * The prop type of an [[`OverlayLater`]] component.
  */
 export interface OverlayLayerProps {
   /** The markers to render */

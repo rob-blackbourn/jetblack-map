@@ -3,7 +3,7 @@ import React from 'react'
 import { Bounds, Coordinate } from '../types'
 
 /**
- * The prop type for a [[`MapContext`]].
+ * The prop type of a [[`MapContext`]].
  *
  * This is the information that children of the map will need.
  */

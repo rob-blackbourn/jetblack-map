@@ -7,7 +7,7 @@ import { CLASS_NAMES } from '../constants'
 const classNames = { svgPin: [CLASS_NAMES.primary, 'svg-pin'].join(' ') }
 
 /**
- * The prop type for an [[`SVGPin`]] component.
+ * The prop type of an [[`SVGPin`]] component.
  */
 export interface SVGPinProps {
   /** The point in the screen coordinate system. */

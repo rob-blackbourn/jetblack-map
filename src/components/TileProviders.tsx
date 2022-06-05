@@ -1,7 +1,7 @@
 import { TileProvider } from '../types'
 
 /**
- * A tile provider for Open Street Map
+ * A tile provider for Open Street Map.
  */
 export const osmTileProvider: TileProvider = {
   makeUrl: (x: number, y: number, zoom: number): string => {
@@ -78,7 +78,7 @@ export function stamenTileProviderFactory(
 }
 
 /**
- * A factory for MatTiler tile providers.
+ * A factory for MapTiler tile providers.
  *
  * @param apiKey The API key
  * @param map The map to use

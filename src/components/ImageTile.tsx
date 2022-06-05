@@ -11,7 +11,7 @@ const classNames = {
 }
 
 /**
- * The props type for [[`ImageTile`]]
+ * The props type of an [[`ImageTile`]] component.
  */
 export interface ImageTileProps {
   /** The url or the tile image */

@@ -67,6 +67,8 @@ export type TileUrlProvider = (
 ) => string
 
 export interface TileProvider {
+  /** Make a tile url. */
   makeUrl: TileUrlProvider
+  /** The attribution component. */
   attribution: React.ReactElement
 }

@@ -9,7 +9,7 @@ const classNames = {
 }
 
 /**
- * The prop type for the [[`AttributionLayer`]] component.
+ * The prop type of an [[`AttributionLayer`]] component.
  */
 export interface AttributionLayerProps {
   attribution?: React.ReactElement

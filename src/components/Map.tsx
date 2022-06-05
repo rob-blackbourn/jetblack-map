@@ -15,8 +15,9 @@ const classNames = {
     'map',
   ].join(' '),
 }
+
 /**
- * The prop type for a [[`Map`]] component.
+ * The prop type of a [[`Map`]] component.
  */
 export interface MapProps {
   /** The center of the map */

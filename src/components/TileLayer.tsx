@@ -29,7 +29,7 @@ const classNames = {
 }
 
 /**
- * The props type for [[`TileLayer`]]
+ * The props type of a [[`TileLayer`]] component.
  */
 export interface TileLayerProps {
   /** The tile provider */
