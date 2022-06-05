@@ -15,11 +15,19 @@ const classNames = {
   ].join(' '),
 }
 
+/**
+ * The prop type for the [[`GeoJSONLayer`]] component.
+ */
 export interface GeoJSONLayerProps {
+  /** The GeoJSON data */
   data: GeoJSON
+  /** A callback to request the SVG props for a feature */
   requestFeatureStyle?: (feature: Feature) => SVGProps<SVGElement> | null
 }
 
+/**
+ * Render a GeoJSON layer.
+ */
 export default function GeoJSONLayer({
   data,
   requestFeatureStyle,

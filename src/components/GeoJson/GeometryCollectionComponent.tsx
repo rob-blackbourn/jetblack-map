@@ -18,10 +18,17 @@ import MultiLineStringComponent from './MultiLineStringComponent'
 import PolygonComponent from './PolygonComponent'
 import MultiPolygonComponent from './MultiPolygonComponent'
 
+/**
+ * The prop type for a [[`GeometryCollectionComponent`]].
+ */
 export interface GeometryCollectionComponentProps {
+  /** The GeoJSON geometry */
   geometry: Geometry
 }
 
+/**
+ * Renders a GeoJSON GeometryCollection.
+ */
 export default function GeometryCollectionComponent({
   geometry,
   ...props

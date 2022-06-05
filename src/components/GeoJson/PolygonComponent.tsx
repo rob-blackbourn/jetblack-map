@@ -19,10 +19,17 @@ const classNames = {
   ].join(' '),
 }
 
+/**
+ * The prop type for a [[`PolygonComponent`]].
+ */
 export interface PolygonComponentProps {
+  /** The GeoJSON Polygon */
   polygon: Polygon
 }
 
+/**
+ * Render a GeoJSON Polygon.
+ */
 export default function PolygonComponent({
   polygon,
   ...props

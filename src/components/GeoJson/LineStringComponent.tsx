@@ -19,11 +19,18 @@ const classNames = {
   ].join(' '),
 }
 
+/**
+ * The prop type for a [[`LineStringComponent`]].
+ */
 export interface LineStringComponentProps {
+  /** The GeoJSON LineString */
   lineString: LineString
 }
 
-export default function GeoJsonLineString({
+/**
+ * Render a GeoJSON LineString.
+ */
+export default function LineStringComponent({
   lineString,
   ...props
 }: LineStringComponentProps & SVGProps<SVGPathElement>) {

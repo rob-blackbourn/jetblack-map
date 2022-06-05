@@ -19,10 +19,17 @@ const classNames = {
   ].join(' '),
 }
 
+/**
+ * The prop type for a [[`MultiPolygonComponent`]].
+ */
 export interface MultiPolygonComponentProps {
+  /** The GeoJSON MultiPolygon */
   multiPolygon: MultiPolygon
 }
 
+/**
+ * Render a GeoJSON MultiPolygon.
+ */
 export default function MultiPolygonComponent({
   multiPolygon,
   ...props

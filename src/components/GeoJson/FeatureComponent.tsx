@@ -17,6 +17,9 @@ const classNames = {
   ].join(' '),
 }
 
+/**
+ * The default SVG properties.
+ */
 export const defaultFeatureStyle: SVGProps<SVGElement> = {
   fill: '#93c0d099',
   strokeWidth: '2',
@@ -24,18 +27,30 @@ export const defaultFeatureStyle: SVGProps<SVGElement> = {
   r: '10',
 }
 
+/**
+ * The prop type for [[`FeatureComponent`]].
+ */
 export interface FeatureComponentProps {
+  /** The GeoJSON Feature */
   feature: Feature
+  /** A click handler */
   onClick?: (event: React.MouseEvent<SVGElement>, feature: Feature) => void
+  /** A mouseover handler */
   onMouseOver?: (event: React.MouseEvent<SVGElement>, feature: Feature) => void
+  /** A mouseout handler */
   onMouseOut?: (event: React.MouseEvent<SVGElement>, feature: Feature) => void
+  /** A context menu handler */
   onContextMenu?: (
     event: React.MouseEvent<SVGElement>,
     feature: Feature
   ) => void
+  /** A callback to request the SVG props for a feature */
   requestFeatureStyle?: (feature: Feature) => SVGProps<SVGElement> | null
 }
 
+/**
+ * Renders a GeoJSON Feature.
+ */
 export function FeatureComponent({
   feature,
   onClick,

@@ -8,6 +8,7 @@ import {
   Coordinate,
   GeoJSONLayer,
   Map,
+  Point,
   TileLayer,
   useClick,
   useMouseEvents,

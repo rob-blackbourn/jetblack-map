@@ -19,10 +19,17 @@ const classNames = {
   ].join(' '),
 }
 
+/**
+ * The prop type for a [[`PointComponent`]]
+ */
 export interface PointComponentProps {
+  /** The GeoJSON Point */
   point: Point
 }
 
+/**
+ * Render a GeoJSON Point.
+ */
 export default function PointComponent({
   point,
   ...props

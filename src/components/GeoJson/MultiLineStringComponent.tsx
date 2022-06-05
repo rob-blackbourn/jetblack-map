@@ -19,9 +19,17 @@ const classNames = {
   ].join(' '),
 }
 
+/**
+ * The prop type for a [[`MultiLineStringComponent`]].
+ */
 export interface MultiLineStringComponentProps {
+  /** The GeoJSON MultiLineString */
   multiLineString: MultiLineString
 }
+
+/**
+ * Render a GeoJSON MultiLineString.
+ */
 export default function MultiLineStringComponent({
   multiLineString,
   ...props

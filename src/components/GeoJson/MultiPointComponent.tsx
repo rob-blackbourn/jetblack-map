@@ -19,10 +19,17 @@ const classNames = {
   ].join(' '),
 }
 
+/**
+ * The prop type for a [[`MultiPointComponent`]].
+ */
 export interface MultiPointComponentProps {
+  /** The GeoJSON MultiPoint */
   multiPoint: MultiPoint
 }
 
+/**
+ * Render a GeoJSON MultiPoint.
+ */
 export default function MultiPointComponent({
   multiPoint,
   ...props
