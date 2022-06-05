@@ -29,7 +29,7 @@ export interface GeoJSONLayerProps {
   data: GeoJSON
   /** A callback to request the SVG props for a feature */
   requestFeatureStyle?: RequestFeatureStyleHandler
-  renderPopup?: (feature: Feature) => React.ReactElement
+  renderPopup?: (feature: Feature) => React.ReactElement | null
 }
 
 /**

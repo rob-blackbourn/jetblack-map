@@ -47,7 +47,7 @@ export interface FeatureComponentProps {
     feature: Feature
   ) => void
   /** A callback to request the SVG props for a feature */
-  requestFeatureStyle?: RequestFeatureStyleHandler | null
+  requestFeatureStyle?: RequestFeatureStyleHandler
 }
 
 /**
