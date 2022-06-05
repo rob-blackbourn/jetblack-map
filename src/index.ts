@@ -14,6 +14,12 @@ import SVGPin, { SVGPinProps } from './components/SVGPin'
 import TileLayer, { TileLayerProps } from './components/TileLayer'
 import ZoomButton, { ZoomButtonPops } from './components/ZoomButton'
 
+import {
+  osmTileProvider,
+  stamenTileProviderFactory,
+  maptilerTileProviderFactory,
+} from './components/TileProviders'
+
 import { Bounds, Coordinate, Point } from './types'
 
 import useClick, { useClickProps } from './hooks/useClick'
@@ -43,6 +49,7 @@ export type {
 }
 
 export {
+  // Components
   AttributionLayer,
   GeoJSONLayer,
   ImageTile,
@@ -53,8 +60,14 @@ export {
   SVGPin,
   TileLayer,
   ZoomButton,
+  // Tile Providers
+  osmTileProvider,
+  stamenTileProviderFactory,
+  maptilerTileProviderFactory,
+  // Hooks
   useClick,
   useMouseEvents,
   useZoomWheel,
+  // Misc
   CLASS_NAMES,
 }
