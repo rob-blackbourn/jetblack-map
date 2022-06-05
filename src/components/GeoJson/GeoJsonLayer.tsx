@@ -41,7 +41,7 @@ export default function GeoJSONLayer({
   renderPopup,
 }: GeoJSONLayerProps) {
   const {
-    bounds: { width, height },
+    bounds: { width, height, top, left },
   } = useContext(MapContext)
 
   const [hoverPoint, setHoverPoint] = useState<Point>()
@@ -116,8 +116,8 @@ export default function GeoJSONLayer({
       <div
         style={{
           display: hoverPoint ? 'block' : 'none',
-          left: hoverPoint?.x,
-          top: hoverPoint?.y,
+          top: !hoverPoint ? 0 : hoverPoint.y - top,
+          left: !hoverPoint ? 0 : hoverPoint.x - left,
           position: 'absolute',
         }}
       >
