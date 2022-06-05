@@ -1,7 +1,23 @@
-import { Polygon } from 'geojson'
 import { SVGProps, useContext } from 'react'
+
+import { Polygon } from 'geojson'
+
+import { CLASS_NAMES } from '../../constants'
+
 import MapContext from '../MapContext'
+
 import { geoJsonPointToScreenPoint } from './utils'
+
+const classNames = {
+  polygon: [
+    CLASS_NAMES.primary,
+    CLASS_NAMES.draggable,
+    CLASS_NAMES.zoomable,
+    CLASS_NAMES.clickable,
+    'geojson',
+    'polygon',
+  ].join(' '),
+}
 
 export interface PolygonComponentProps {
   polygon: Polygon
@@ -30,5 +46,5 @@ export default function PolygonComponent({
     ''
   )
 
-  return <path d={p} {...props} />
+  return <path className={classNames.polygon} d={p} {...props} />
 }

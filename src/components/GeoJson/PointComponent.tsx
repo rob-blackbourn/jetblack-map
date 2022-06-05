@@ -2,8 +2,22 @@ import { SVGProps, useContext } from 'react'
 
 import { Point } from 'geojson'
 
+import { CLASS_NAMES } from '../../constants'
+
 import MapContext from '../MapContext'
+
 import { geoJsonPointToScreenPoint } from './utils'
+
+const classNames = {
+  point: [
+    CLASS_NAMES.primary,
+    CLASS_NAMES.draggable,
+    CLASS_NAMES.zoomable,
+    CLASS_NAMES.clickable,
+    'geojson',
+    'point',
+  ].join(' '),
+}
 
 export interface PointComponentProps {
   point: Point
@@ -27,5 +41,12 @@ export default function PointComponent({
     height
   )
 
-  return <circle cx={screenPoint.x} cy={screenPoint.y} {...props} />
+  return (
+    <circle
+      className={classNames.point}
+      cx={screenPoint.x}
+      cy={screenPoint.y}
+      {...props}
+    />
+  )
 }

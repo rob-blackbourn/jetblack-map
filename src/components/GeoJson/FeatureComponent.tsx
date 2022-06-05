@@ -1,6 +1,21 @@
-import React, { SVGProps, useState } from 'react'
-import GeometryCollectionComponent from './GeometryCollectionComponent'
+import React, { SVGProps } from 'react'
+
 import { Feature } from 'geojson'
+
+import { CLASS_NAMES } from '../../constants'
+
+import GeometryCollectionComponent from './GeometryCollectionComponent'
+
+const classNames = {
+  feature: [
+    CLASS_NAMES.primary,
+    CLASS_NAMES.draggable,
+    CLASS_NAMES.zoomable,
+    CLASS_NAMES.clickable,
+    'geojson',
+    'feature',
+  ].join(' '),
+}
 
 export const defaultFeatureStyle: SVGProps<SVGElement> = {
   fill: '#93c0d099',
@@ -34,6 +49,7 @@ export function FeatureComponent({
 
   return (
     <g
+      className={classNames.feature}
       clipRule="evenodd"
       style={{ pointerEvents: 'auto' }}
       onClick={onClick && (event => onClick(event, feature))}

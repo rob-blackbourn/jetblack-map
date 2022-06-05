@@ -2,6 +2,18 @@ import { Feature, FeatureCollection, GeoJSON } from 'geojson'
 import { SVGProps, useContext } from 'react'
 import MapContext from '../MapContext'
 import { FeatureComponent } from './FeatureComponent'
+import { CLASS_NAMES } from '../../constants'
+
+const classNames = {
+  geoJsonLayer: [
+    CLASS_NAMES.primary,
+    CLASS_NAMES.draggable,
+    CLASS_NAMES.zoomable,
+    CLASS_NAMES.clickable,
+    'geojson-layer',
+    'layer',
+  ].join(' '),
+}
 
 export interface GeoJSONLayerProps {
   data: GeoJSON
@@ -43,6 +55,7 @@ export default function GeoJSONLayer({
 
   return (
     <div
+      className={classNames.geoJsonLayer}
       style={{
         position: 'absolute',
         left: '0',

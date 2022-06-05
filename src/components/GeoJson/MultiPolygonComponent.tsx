@@ -1,8 +1,23 @@
-import { MultiPolygon } from 'geojson'
 import { SVGProps, useContext } from 'react'
+
+import { MultiPolygon } from 'geojson'
+
+import { CLASS_NAMES } from '../../constants'
+
 import MapContext from '../MapContext'
 
 import { geoJsonPointToScreenPoint } from './utils'
+
+const classNames = {
+  multiPolygon: [
+    CLASS_NAMES.primary,
+    CLASS_NAMES.draggable,
+    CLASS_NAMES.zoomable,
+    CLASS_NAMES.clickable,
+    'geojson',
+    'multi-polygon',
+  ].join(' '),
+}
 
 export interface MultiPolygonComponentProps {
   multiPolygon: MultiPolygon
@@ -36,7 +51,12 @@ export default function MultiPolygonComponent({
           )
         )
         .map((d, i) => (
-          <path key={`multi-polygon-${i}`} d={d} {...props} />
+          <path
+            className={classNames.multiPolygon}
+            key={`multi-polygon-${i}`}
+            d={d}
+            {...props}
+          />
         ))}
     </>
   )

@@ -1,8 +1,23 @@
 import { SVGProps, useContext } from 'react'
 
-import { geoJsonPointToScreenPoint } from './utils'
-import MapContext from '../MapContext'
 import { MultiLineString } from 'geojson'
+
+import { CLASS_NAMES } from '../../constants'
+
+import MapContext from '../MapContext'
+
+import { geoJsonPointToScreenPoint } from './utils'
+
+const classNames = {
+  multiLineString: [
+    CLASS_NAMES.primary,
+    CLASS_NAMES.draggable,
+    CLASS_NAMES.zoomable,
+    CLASS_NAMES.clickable,
+    'geojson',
+    'multi-line-string',
+  ].join(' '),
+}
 
 export interface MultiLineStringComponentProps {
   multiLineString: MultiLineString
@@ -32,7 +47,12 @@ export default function MultiLineStringComponent({
               }, '')
         )
         .map((d, i) => (
-          <path key={`multi-line-string-${i}`} d={d} {...props} />
+          <path
+            className={classNames.multiLineString}
+            key={`multi-line-string-${i}`}
+            d={d}
+            {...props}
+          />
         ))}
     </>
   )

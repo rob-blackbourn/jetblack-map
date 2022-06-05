@@ -2,9 +2,22 @@ import { useContext, SVGProps } from 'react'
 
 import { LineString } from 'geojson'
 
+import { CLASS_NAMES } from '../../constants'
+
 import MapContext from '../MapContext'
 
 import { geoJsonPointToScreenPoint } from './utils'
+
+const classNames = {
+  lineString: [
+    CLASS_NAMES.primary,
+    CLASS_NAMES.draggable,
+    CLASS_NAMES.zoomable,
+    CLASS_NAMES.clickable,
+    'geojson',
+    'line-string',
+  ].join(' '),
+}
 
 export interface LineStringComponentProps {
   lineString: LineString
@@ -30,5 +43,5 @@ export default function GeoJsonLineString({
         return a + ' ' + point.x + ' ' + point.y
       }, '')
 
-  return <path d={path} {...props} />
+  return <path className={classNames.lineString} d={path} {...props} />
 }
