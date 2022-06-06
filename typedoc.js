@@ -21,6 +21,7 @@ module.exports = {
           { title: 'Overlay Layer', source: 'overlay-layer.md' },
           { title: 'Interaction', source: 'interaction.md' },
           { title: 'GeoJSON Layer', source: 'geojson-layer.md' },
+          { title: 'GeoJSON Loading', source: 'geojson-loader.md' },
         ],
       },
     ],
