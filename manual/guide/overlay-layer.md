@@ -1,4 +1,10 @@
-An overlay layer can be added.
+An overlay layer can be added to display markers.
+
+The `Marker` component creates a `div`, the top left corner
+of which is the screen point corresponding to the coordinate.
+
+Markers have a render function which is used to display the
+desired component. The library comes with a standard pin.
 
 ```typescript
 import {

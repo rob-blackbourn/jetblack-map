@@ -24,4 +24,4 @@ export default function App() {
 
 ## What Next ?
 
-See {@page ./overlay-layer.md}
+See {@page ./tile-provider.md}

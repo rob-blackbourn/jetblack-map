@@ -14,7 +14,7 @@ import {
   useMouseEvents,
   useZoomWheel,
 } from '..'
-import { FeatureState } from '../components/GeoJson'
+import { FeatureState } from '..'
 
 export default {
   /* 👇 The title prop is optional.

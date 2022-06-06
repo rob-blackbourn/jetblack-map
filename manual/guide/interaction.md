@@ -1,4 +1,7 @@
-Hooks are provided for interaction with the map.
+Some simple hooks are provided to enable interaction with the map.
+
+The hooks are intentionally basic, as there are a large number of
+great event hook packages out there.
 
 ```typescript
 import { useRef } from 'react'
@@ -65,4 +68,4 @@ export default function App() {
 
 ## What Next ?
 
-See {@page ./hooks.md}
+See {@page ./geojson.md}

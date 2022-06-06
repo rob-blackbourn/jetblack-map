@@ -25,4 +25,4 @@ export default function TileProvider() {
 
 ## What Next ?
 
-See {@page ./attribution-layer.md}
+See {@page ./overlay-layer.md}

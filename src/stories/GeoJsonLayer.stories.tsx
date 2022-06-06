@@ -121,7 +121,7 @@ const Template: ComponentStory<typeof Map> = args => {
 
   const handleRequestFeatureStyle = (
     feature: Feature
-  ): SVGProps<SVGAElement> | null => {
+  ): SVGProps<SVGElement> | null => {
     if (feature.properties.name === 'French Cities') {
       return {
         fill: '#93c0d099',
