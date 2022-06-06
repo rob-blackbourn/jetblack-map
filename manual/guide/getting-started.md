@@ -10,8 +10,6 @@ React is a peer dependency and will not be automatically installed.
 
 ## Usage
 
-### Tile Layer
-
 Here is a basic map with the tile layer.
 
 ```typescript
