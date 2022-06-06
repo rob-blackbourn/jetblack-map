@@ -68,4 +68,4 @@ export default function App() {
 
 ## What Next ?
 
-See {@page ./geojson.md}
+See {@page ./geojson-layer.md}
