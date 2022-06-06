@@ -145,6 +145,7 @@ const Template: ComponentStory<typeof Map> = args => {
     </Map>
   )
 }
+
 export const GeoJsonLoader = Template.bind({})
 
 GeoJsonLoader.args = {

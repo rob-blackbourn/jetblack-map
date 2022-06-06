@@ -1,12 +1,9 @@
-A number of tile providers are provided. The default is the Open Street Map provider: `osmTileProvider`.
+Some tile providers request or require attribution.
 
-Some of the providers are presented as factories. This might be because they require an API token,
-or because they provide different types of maps.
-
-The following example uses [Stamen](http://maps.stamen.com) `terrain` tiles.
+The following adds an attribution layer.
 
 ```typescript
-import { Map, TileLayer, stamenTileProviderFactory } from '@jetblack/map'
+import { AttributionLayer, Map, TileLayer, stamenTileProviderFactory } from '@jetblack/map'
 
 export default function TileProvider() {
   const tileProvider = stamenTileProviderFactory('terrain')
@@ -16,6 +13,7 @@ export default function TileProvider() {
       <div style={{ margin: '0 auto' }}>
         <Map tileProvider={tileProvider}>
           <TileLayer />
+          <AttributionLayer />
         </Map>
       </div>
     </div>
