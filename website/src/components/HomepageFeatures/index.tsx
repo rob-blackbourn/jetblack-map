@@ -1,10 +1,12 @@
 import React from 'react'
 import clsx from 'clsx'
 import styles from './styles.module.css'
+import FrontPageMap from '../FrontPageMap'
 
 type FeatureItem = {
   title: string
-  Svg: React.ComponentType<React.ComponentProps<'svg'>>
+  Svg?: React.ComponentType<React.ComponentProps<'svg'>>
+  Component?: React.ReactElement
   description: JSX.Element
 }
 
@@ -21,32 +23,33 @@ const FeatureList: FeatureItem[] = [
     ),
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    title: 'Zoomoutable',
+    Component: <FrontPageMap />,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        When zoomed out the map provides a wrap-around view, repeating any
+        markers.
       </>
     ),
   },
   {
-    title: 'Powered by React',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    title: 'Interaction with hooks',
+    Svg: require('@site/static/img/react-hook.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Map interactions are controlled by hooks. This allows customizations
+        with spring or a hook library of your choice.
       </>
     ),
   },
 ]
 
-function Feature({ title, Svg, description }: FeatureItem) {
+function Feature({ title, Svg, Component, description }: FeatureItem) {
   return (
     <div className={clsx('col col--4')}>
       <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
+        {Svg && <Svg className={styles.featureSvg} role="img" />}
+        {Component && Component}
       </div>
       <div className="text--center padding-horiz--md">
         <h3>{title}</h3>
