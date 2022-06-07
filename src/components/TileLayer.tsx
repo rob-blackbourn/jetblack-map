@@ -25,14 +25,14 @@ const classNames = {
 }
 
 /**
- * The props type of a [[`TileLayer`]] component.
- */
-export interface TileLayerProps {}
-
-/**
  * Render a tile layer.
+ *
+ * @param props The props.
+ * @returns A map.
+ *
+ * @category Component
  */
-export default function TileLayer({}: TileLayerProps) {
+export default function TileLayer() {
   const {
     bounds: { width, height },
     center,

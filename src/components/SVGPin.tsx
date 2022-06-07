@@ -28,6 +28,11 @@ export interface SVGPinProps {
 
 /**
  * Render an SVG pin.
+ *
+ * @param props The props.
+ * @returns A map.
+ *
+ * @category Component
  */
 export default function SVGPin({
   size = 1,

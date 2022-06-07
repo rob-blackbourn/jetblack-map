@@ -8,14 +8,11 @@ const classNames = {
 }
 
 /**
- * The prop type of an [[`AttributionLayer`]] component.
- */
-export interface AttributionLayerProps {}
-
-/**
  * Render the attribution layer.
+ *
+ * @category Component
  */
-export default function AttributionLayer({}: AttributionLayerProps) {
+export default function AttributionLayer() {
   const { tileProvider } = useContext(MapContext)
 
   return (

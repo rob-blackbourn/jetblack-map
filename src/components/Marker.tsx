@@ -12,6 +12,8 @@ const classNames = { marker: [CLASS_NAMES.primary, 'marker'].join(' ') }
 
 /**
  * The prop type of a [[`Marker`]] component.
+ *
+ * @category Component
  */
 export interface MarkerProps {
   /** The coordinate of the marker */
@@ -22,6 +24,11 @@ export interface MarkerProps {
 
 /**
  * Render a marker component.
+ *
+ * @param props The props.
+ * @returns A map.
+ *
+ * @category Component
  */
 export default function Marker({ coordinate, render }: MarkerProps) {
   const {

@@ -24,6 +24,11 @@ export interface OverlayLayerProps {
 
 /**
  * Render an overlay layer.
+ *
+ * @param props The props.
+ * @returns A map.
+ *
+ * @category Component
  */
 export default function OverlayLayer({ children }: OverlayLayerProps) {
   const {
