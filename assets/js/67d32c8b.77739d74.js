@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[4053],{8936:function(a){a.exports=JSON.parse('{"label":"hola","permalink":"/jetblack-map/blog/tags/hola","allTagsPath":"/jetblack-map/blog/tags","count":1}')}}]);
