@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[8160],{755:function(e){e.exports=JSON.parse('{"label":"facebook","permalink":"/jetblack-map/blog/tags/facebook","allTagsPath":"/jetblack-map/blog/tags","count":1}')}}]);
