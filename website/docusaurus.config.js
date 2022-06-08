@@ -9,7 +9,7 @@ const config = {
   title: '@jetblack/map',
   tagline: 'A map component for React',
   url: 'https://rob-blackbourn.github.io/jetblack-map',
-  baseUrl: '/',
+  baseUrl: '/jetblack-map/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/location.ico',
