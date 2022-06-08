@@ -21,8 +21,9 @@
     "test": "jest",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "docs": "cd webserver && npm start",
-    "build-docs": "cd webserver && npm run build"
+    "docs": "cd website && npm start",
+    "build-docs": "cd website && npm run build",
+    "deploy-docs": "cd website && USE_SSH=true npm run deploy"
   },
   "peerDependencies": {
     "react": "^18.1.0",
