@@ -31,7 +31,7 @@ export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext()
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
+      title={`Docs for ${siteConfig.title}`}
       description="Docs for @jetblack/map <head />"
     >
       <HomepageHeader />
