@@ -1,5 +1,16 @@
 import { Point } from '../types'
 
+/**
+ * Find all the points.
+ *
+ * @param point The starting pointy.
+ * @param roundedZoom The rounded zoom
+ * @param scale The scale.
+ * @param scaleWidth The scale width.
+ * @returns A list of the points
+ *
+ * @ignore
+ */
 export function createPoints(
   point: Point,
   roundedZoom: number,

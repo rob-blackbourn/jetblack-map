@@ -1,0 +1,146 @@
+---
+sidebar_position: 6
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Interaction
+
+Some simple hooks are provided to enable interaction with the map.
+
+The hooks are intentionally basic, as there are a large number of
+great event hook packages out there.
+
+<Tabs>
+  <TabItem value='js' label='JS'>
+
+```jsx
+import { useRef } from 'react'
+import {
+  Map,
+  Marker,
+  OverlayLayer,
+  SVGPin,
+  TileLayer,
+  useClick,
+  useMouseEvents,
+  useZoomWheel,
+} from '@jetblack/map'
+
+const GREENWICH_OBSERVATORY = {
+  latitude: 51.47684676353231,
+  longitude: -0.0005261695762532147,
+}
+
+const EMPIRE_STATE_BUILDING = {
+  latitude: 40.748585815569854,
+  longitude: -73.9856543574467,
+}
+
+export default function App() {
+  const ref = useRef(null)
+
+  const [zoom, zoomRef, setZoom] = useZoomWheel({ ref, defaultZoom: 6 })
+  const [center, centerRef, setCenter] = useMouseEvents({
+    ref,
+    defaultCenter: GREENWICH_OBSERVATORY,
+    zoomRef,
+  })
+
+  const handleClick = (coordinate, point) => {
+    console.log('click', { coordinate, point })
+  }
+
+  const handleDoubleClick = (coordinate, point) => {
+    console.log('doubleClick', { coordinate, point })
+    setCenter(coordinate)
+    setZoom(zoom + 1)
+  }
+
+  useClick({ ref, centerRef, zoomRef, onClick: handleClick, onDoubleClick: handleDoubleClick })
+
+  return (
+    <div style={{ textAlign: 'center', marginTop: 50 }}>
+      <div style={{ margin: '0 auto' }}>
+        <Map center={center} zoom={zoom} width="1000px" height="600px" ref={ref}>
+          <TileLayer />
+          <OverlayLayer>
+            <Marker coordinate={GREENWICH_OBSERVATORY} render={point => <SVGPin point={point} />} />
+            <Marker coordinate={EMPIRE_STATE_BUILDING} render={point => <SVGPin point={point} />} />
+          </OverlayLayer>
+        </Map>
+      </div>
+    </div>
+  )
+}
+```
+
+  </TabItem>
+  <TabItem value='ts' label='TS'>
+
+```tsx
+import { useRef } from 'react'
+import {
+  Coordinate,
+  Map,
+  Marker,
+  OverlayLayer,
+  Point,
+  SVGPin,
+  TileLayer,
+  useClick,
+  useMouseEvents,
+  useZoomWheel,
+} from '@jetblack/map'
+
+const GREENWICH_OBSERVATORY: Coordinate = {
+  latitude: 51.47684676353231,
+  longitude: -0.0005261695762532147,
+}
+
+const EMPIRE_STATE_BUILDING: Coordinate = {
+  latitude: 40.748585815569854,
+  longitude: -73.9856543574467,
+}
+
+export default function App() {
+  const ref = useRef<HTMLDivElement>(null)
+
+  const [zoom, zoomRef, setZoom] = useZoomWheel({ ref, defaultZoom: 6 })
+  const [center, centerRef, setCenter] = useMouseEvents({
+    ref,
+    defaultCenter: GREENWICH_OBSERVATORY,
+    zoomRef,
+  })
+
+  const handleClick = (coordinate: Coordinate, point: Point) => {
+    console.log('click', { coordinate, point })
+  }
+
+  const handleDoubleClick = (coordinate: Coordinate, point: Point) => {
+    console.log('doubleClick', { coordinate, point })
+    setCenter(coordinate)
+    setZoom(zoom + 1)
+  }
+
+  useClick({ ref, centerRef, zoomRef, onClick: handleClick, onDoubleClick: handleDoubleClick })
+
+  return (
+    <div style={{ textAlign: 'center', marginTop: 50 }}>
+      <div style={{ margin: '0 auto' }}>
+        <Map center={center} zoom={zoom} width="1000px" height="600px" ref={ref}>
+          <TileLayer />
+          <OverlayLayer>
+            <Marker coordinate={GREENWICH_OBSERVATORY} render={point => <SVGPin point={point} />} />
+            <Marker coordinate={EMPIRE_STATE_BUILDING} render={point => <SVGPin point={point} />} />
+          </OverlayLayer>
+        </Map>
+      </div>
+    </div>
+  )
+}
+```
+
+  </TabItem>
+</Tabs>

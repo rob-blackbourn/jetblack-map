@@ -34,6 +34,11 @@ export interface ZoomButtonPops {
 
 /**
  * Render a zoom button.
+ *
+ * @param props The props.
+ * @returns A map.
+ *
+ * @category Component
  */
 export default function ZoomButton({
   point = { x: 10, y: 10 },

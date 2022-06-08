@@ -12,6 +12,9 @@ const classNames = {
 
 /**
  * The props type of an [[`ImageTile`]] component.
+ *
+ * @category Component
+ * @internal
  */
 export interface ImageTileProps {
   /** The url or the tile image */
@@ -29,7 +32,13 @@ export interface ImageTileProps {
 }
 
 /**
- * Renders an image tile.
+ * Render an image tile.
+ *
+ * @param props The props.
+ * @returns An image tile.
+ *
+ * @category Component
+ * @internal
  */
 export default function ImageTile({
   url,

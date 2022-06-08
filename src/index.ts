@@ -1,6 +1,4 @@
-import AttributionLayer, {
-  AttributionLayerProps,
-} from './components/AttributionLayer'
+import AttributionLayer from './components/AttributionLayer'
 import GeoJSONLayer, {
   FeatureState,
   GeoJSONLayerProps,
@@ -11,7 +9,7 @@ import MapContext, { MapContextProps } from './components/MapContext'
 import Marker, { MarkerProps } from './components/Marker'
 import OverlayLayer, { OverlayLayerProps } from './components/OverlayLayer'
 import SVGPin, { SVGPinProps } from './components/SVGPin'
-import TileLayer, { TileLayerProps } from './components/TileLayer'
+import TileLayer from './components/TileLayer'
 import ZoomButton, { ZoomButtonPops } from './components/ZoomButton'
 
 import {
@@ -29,7 +27,6 @@ import useZoomWheel, { useZoomWheelProps } from './hooks/useZoomWheel'
 import { CLASS_NAMES } from './constants'
 
 export type {
-  AttributionLayerProps,
   FeatureState,
   GeoJSONLayerProps,
   ImageTileProps,
@@ -38,7 +35,6 @@ export type {
   MarkerProps,
   OverlayLayerProps,
   SVGPinProps,
-  TileLayerProps,
   ZoomButtonPops,
   Bounds,
   Coordinate,

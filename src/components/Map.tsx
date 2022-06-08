@@ -19,6 +19,8 @@ const classNames = {
 
 /**
  * The prop type of a [[`Map`]] component.
+ *
+ * @category Component
  */
 export interface MapProps {
   /** The center of the map */
@@ -39,6 +41,11 @@ export interface MapProps {
 
 /**
  * Render a map.
+ *
+ * @param props The props.
+ * @returns A map.
+ *
+ * @category Component
  */
 const Map = React.forwardRef<HTMLDivElement, MapProps>(
   (

@@ -6,6 +6,8 @@ import { Bounds, Coordinate, TileProvider } from '../types'
  * The prop type of a [[`MapContext`]].
  *
  * This is the information that children of the map will need.
+ *
+ * @category Context
  */
 export interface MapContextProps {
   /** The latitude and longitude of the center of the map */
@@ -20,7 +22,11 @@ export interface MapContextProps {
   dprs: number[]
 }
 
-/** The map context */
+/**
+ * The map context.
+ *
+ * @category Context
+ */
 const MapContext = React.createContext<MapContextProps>({} as MapContextProps)
 
 export default MapContext
