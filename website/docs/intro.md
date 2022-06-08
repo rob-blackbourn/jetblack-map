@@ -2,6 +2,8 @@
 sidebar_position: 1
 ---
 
+import DemoMap from '@site/src/components/DemoMap'
+
 # Map
 
 A map component for React.
@@ -20,7 +22,7 @@ The component has a few unique features:
 
 ## Demo
 
-You can see a demo of the map [here](https://rob-blackbourn.github.io/jetblack-example-map/).
+<DemoMap />
 
 ## Acknowledgements
 
