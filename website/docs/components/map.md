@@ -1,9 +1,6 @@
 ---
-sidebar_position: 2
+sidebar_position: 1
 ---
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 # Map
 
@@ -19,23 +16,24 @@ The map component contains all the map features. It has the following properties
     }
     ```
 
-    A "controlled" app uses this property to move the "view" of the map 
-    around the world.
-
 * `zoom`: The zoom is a number which specifies how "zoomed in" the map is.
     The farthest zoom is `0`. For *Open Street Maps* the closest is 19.
-
-    A "controlled" street msp uses this property to zoom in and out of the map.
 
 * `width`: This is the displayed width of the map. It might be an absolute
     number like `600px` or a relative value like `100%`.
 
+    The default value is `600px`.
+
 * `height`: This is the displayed height of the map. It might be an
     absolute number like `400px` or a relative value like `100%`.
- 
+
+    The default value is `600px`.
+
  * `tileProvider`: This is an object which provides the tiles for the
     tile layer, and also an attribution. Tile providers will be discussed
-    later. If omitted the open street map provider will be used.
+    later.
+    
+    If omitted the open street map tile provider will be used.
 
-* `dprs`: This is a parameter required by some tile providers to determine
-    tile resolution.
+Movement around the map is achieved by changing the center and zoom
+properties.

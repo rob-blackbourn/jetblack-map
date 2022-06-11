@@ -17,16 +17,6 @@ export default {
   component: Map,
 } as ComponentMeta<typeof Map>
 
-const GREENWICH_OBSERVATORY: Coordinate = {
-  latitude: 51.47684676353231,
-  longitude: -0.0005261695762532147,
-}
-
-const EMPIRE_STATE_BUILDING: Coordinate = {
-  latitude: 40.748585815569854,
-  longitude: -73.9856543574467,
-}
-
 const Template: ComponentStory<typeof Map> = args => {
   const ref = useRef<HTMLDivElement>(null)
 

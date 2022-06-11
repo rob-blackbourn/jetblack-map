@@ -69,6 +69,10 @@ export type TileUrlProvider = (
 export interface TileProvider {
   /** Make a tile url. */
   makeUrl: TileUrlProvider
+  /** The minimum zoom level */
+  minZoom: number
+  /** The maximum zoom level */
+  maxZoom: number
   /** The attribution component. */
   attribution: React.ReactElement
 }
