@@ -18,7 +18,7 @@ The maximum zoom level.
 
 #### Defined in
 
-[components/ZoomButton.tsx:28](https://github.com/rob-blackbourn/jetblack-map/blob/84bdf68/src/components/ZoomButton.tsx#L28)
+[components/ZoomButton.tsx:28](https://github.com/rob-blackbourn/jetblack-map/blob/7fd5654/src/components/ZoomButton.tsx#L28)
 
 ___
 
@@ -30,7 +30,7 @@ The minimum zoom level.
 
 #### Defined in
 
-[components/ZoomButton.tsx:26](https://github.com/rob-blackbourn/jetblack-map/blob/84bdf68/src/components/ZoomButton.tsx#L26)
+[components/ZoomButton.tsx:26](https://github.com/rob-blackbourn/jetblack-map/blob/7fd5654/src/components/ZoomButton.tsx#L26)
 
 ___
 
@@ -42,7 +42,7 @@ The screen point where the button will be placed.
 
 #### Defined in
 
-[components/ZoomButton.tsx:24](https://github.com/rob-blackbourn/jetblack-map/blob/84bdf68/src/components/ZoomButton.tsx#L24)
+[components/ZoomButton.tsx:24](https://github.com/rob-blackbourn/jetblack-map/blob/7fd5654/src/components/ZoomButton.tsx#L24)
 
 ___
 
@@ -54,7 +54,7 @@ The amount by which the zoom will be changed on each click.
 
 #### Defined in
 
-[components/ZoomButton.tsx:30](https://github.com/rob-blackbourn/jetblack-map/blob/84bdf68/src/components/ZoomButton.tsx#L30)
+[components/ZoomButton.tsx:30](https://github.com/rob-blackbourn/jetblack-map/blob/7fd5654/src/components/ZoomButton.tsx#L30)
 
 ## Methods
 
@@ -76,4 +76,4 @@ A callback with the requested zoom level.
 
 #### Defined in
 
-[components/ZoomButton.tsx:32](https://github.com/rob-blackbourn/jetblack-map/blob/84bdf68/src/components/ZoomButton.tsx#L32)
+[components/ZoomButton.tsx:32](https://github.com/rob-blackbourn/jetblack-map/blob/7fd5654/src/components/ZoomButton.tsx#L32)
