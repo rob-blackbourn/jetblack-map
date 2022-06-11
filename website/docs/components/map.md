@@ -36,4 +36,5 @@ The map component contains all the map features. It has the following properties
     If omitted the open street map tile provider will be used.
 
 Movement around the map is achieved by changing the center and zoom
-properties.
+properties. Some basic hooks are provider for this which will be
+discussed later.

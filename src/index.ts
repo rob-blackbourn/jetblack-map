@@ -15,7 +15,6 @@ import ZoomButton, { ZoomButtonPops } from './components/ZoomButton'
 import {
   osmTileProvider,
   stamenTileProviderFactory,
-  maptilerTileProviderFactory,
 } from './components/TileProviders'
 
 import { Bounds, Coordinate, Point } from './types'
@@ -59,7 +58,6 @@ export {
   // Tile Providers
   osmTileProvider,
   stamenTileProviderFactory,
-  maptilerTileProviderFactory,
   // Hooks
   useClick,
   useMouseEvents,
