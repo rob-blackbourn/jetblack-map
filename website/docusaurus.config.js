@@ -134,7 +134,7 @@ const config = {
         tsconfig: '../tsconfig.json',
         sidebar: {
           categoryLabel: 'API',
-          position: 3,
+          position: 4,
           fullNames: true,
         },
       },
