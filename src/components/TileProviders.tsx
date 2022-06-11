@@ -12,7 +12,7 @@ export const osmTileProvider: TileProvider = {
   },
   attribution: (
     <span>
-      {' © '}
+      &copy;&nbsp;
       <a
         href="https://www.openstreetmap.org/copyright"
         style={{
@@ -40,10 +40,13 @@ export const osmTileProvider: TileProvider = {
 export function stamenTileProviderFactory(
   map: 'toner' | 'terrain'
 ): TileProvider {
+  const subdomains = ['a', 'b', 'c', 'd']
+
   return {
     makeUrl: (x: number, y: number, zoom: number): string => {
       const r = window.devicePixelRatio > 1 ? '@2x' : ''
-      return `https://stamen-tiles.a.ssl.fastly.net/${map}/${zoom}/${x}/${y}${r}.png`
+      const d = subdomains[(x + y + zoom) % subdomains.length]
+      return `https://stamen-tiles-${d}.a.ssl.fastly.net/${map}/${zoom}/${x}/${y}${r}.png`
     },
     attribution: (
       <span className="map-attribution">
