@@ -16,7 +16,7 @@ The prop type for the [[`useMouseEvents`]] hook.
 
 #### Defined in
 
-[hooks/useMouseEvents.ts:23](https://github.com/rob-blackbourn/jetblack-map/blob/6d243d5/src/hooks/useMouseEvents.ts#L23)
+[hooks/useMouseEvents.ts:23](https://github.com/rob-blackbourn/jetblack-map/blob/84bdf68/src/hooks/useMouseEvents.ts#L23)
 
 ___
 
@@ -26,7 +26,7 @@ ___
 
 #### Defined in
 
-[hooks/useMouseEvents.ts:22](https://github.com/rob-blackbourn/jetblack-map/blob/6d243d5/src/hooks/useMouseEvents.ts#L22)
+[hooks/useMouseEvents.ts:22](https://github.com/rob-blackbourn/jetblack-map/blob/84bdf68/src/hooks/useMouseEvents.ts#L22)
 
 ___
 
@@ -36,4 +36,4 @@ ___
 
 #### Defined in
 
-[hooks/useMouseEvents.ts:24](https://github.com/rob-blackbourn/jetblack-map/blob/6d243d5/src/hooks/useMouseEvents.ts#L24)
+[hooks/useMouseEvents.ts:24](https://github.com/rob-blackbourn/jetblack-map/blob/84bdf68/src/hooks/useMouseEvents.ts#L24)
