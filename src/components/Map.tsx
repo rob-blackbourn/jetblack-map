@@ -33,8 +33,6 @@ export interface MapProps {
   height?: number | string
   /** The tile provider */
   tileProvider?: TileProvider
-  /** Optional resolutions */
-  dprs?: number[]
   /** Map components */
   children?: React.ReactNode
 }
@@ -55,7 +53,6 @@ const Map = React.forwardRef<HTMLDivElement, MapProps>(
       width = DEFAULTS.width,
       height = DEFAULTS.height,
       tileProvider = osmTileProvider,
-      dprs = [],
       children,
     },
     forwardedRef
@@ -89,7 +86,6 @@ const Map = React.forwardRef<HTMLDivElement, MapProps>(
           zoom,
           bounds,
           tileProvider,
-          dprs,
         }}
       >
         <div

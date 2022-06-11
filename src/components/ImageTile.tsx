@@ -19,8 +19,6 @@ const classNames = {
 export interface ImageTileProps {
   /** The url or the tile image */
   url: string
-  /** An identifier for one more more candidate images */
-  srcSet: string
   /** The left position on the screen */
   left: number
   /** The top position on the screen */
@@ -42,7 +40,6 @@ export interface ImageTileProps {
  */
 export default function ImageTile({
   url,
-  srcSet,
   left,
   top,
   width,
@@ -52,7 +49,6 @@ export default function ImageTile({
     <img
       className={classNames.imageTile}
       src={url}
-      srcSet={srcSet}
       width={width}
       height={height}
       loading={'lazy'}

@@ -42,15 +42,20 @@ export interface ZoomButtonPops {
  */
 export default function ZoomButton({
   point = { x: 10, y: 10 },
-  minZoom = 0,
-  maxZoom = 19,
+  minZoom,
+  maxZoom,
   zoomStep = 0.1,
   onChange,
 }: ZoomButtonPops) {
   const {
     zoom,
-    bounds: { width, height },
+    tileProvider: { minZoom: absMinZoom, maxZoom: absMaxZoom },
   } = useContext(MapContext)
+
+  const actualMinZoom =
+    minZoom == null ? absMinZoom : Math.max(minZoom, absMinZoom)
+  const actualMaxZoom =
+    maxZoom == null ? absMaxZoom : Math.min(maxZoom, absMaxZoom)
 
   return (
     <div
@@ -85,7 +90,7 @@ export default function ZoomButton({
         onClick={event => {
           event.preventDefault()
           event.stopPropagation()
-          onChange(Math.min(zoom + zoomStep, maxZoom))
+          onChange(Math.min(zoom + zoomStep, actualMaxZoom))
         }}
       >
         +
@@ -112,7 +117,7 @@ export default function ZoomButton({
         onClick={event => {
           event.preventDefault()
           event.stopPropagation()
-          onChange(Math.max(zoom - zoomStep, minZoom))
+          onChange(Math.max(zoom - zoomStep, actualMinZoom))
         }}
       >
         –

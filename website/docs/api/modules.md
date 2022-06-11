@@ -64,7 +64,6 @@ custom_edit_url: null
 
 ## Tile Provider Functions
 
-- [maptilerTileProviderFactory](modules.md#maptilertileproviderfactory)
 - [stamenTileProviderFactory](modules.md#stamentileproviderfactory)
 
 ## Type Aliases
@@ -84,7 +83,7 @@ A point in the Cartesian coordinate system.
 
 #### Defined in
 
-[types.ts:22](https://github.com/rob-blackbourn/jetblack-map/blob/6d0c400/src/types.ts#L22)
+[types.ts:22](https://github.com/rob-blackbourn/jetblack-map/blob/6d243d5/src/types.ts#L22)
 
 ## Component Variables
 
@@ -100,7 +99,7 @@ Render a map.
 
 #### Defined in
 
-[components/Map.tsx:50](https://github.com/rob-blackbourn/jetblack-map/blob/6d0c400/src/components/Map.tsx#L50)
+[components/Map.tsx:48](https://github.com/rob-blackbourn/jetblack-map/blob/6d243d5/src/components/Map.tsx#L48)
 
 ___
 
@@ -114,7 +113,7 @@ The map context.
 
 #### Defined in
 
-[components/MapContext.ts:30](https://github.com/rob-blackbourn/jetblack-map/blob/6d0c400/src/components/MapContext.ts#L30)
+[components/MapContext.ts:28](https://github.com/rob-blackbourn/jetblack-map/blob/6d243d5/src/components/MapContext.ts#L28)
 
 ___
 
@@ -135,7 +134,7 @@ ___
 
 #### Defined in
 
-[constants.ts:40](https://github.com/rob-blackbourn/jetblack-map/blob/6d0c400/src/constants.ts#L40)
+[constants.ts:40](https://github.com/rob-blackbourn/jetblack-map/blob/6d243d5/src/constants.ts#L40)
 
 ___
 
@@ -149,7 +148,7 @@ A tile provider for Open Street Map.
 
 #### Defined in
 
-[components/TileProviders.tsx:8](https://github.com/rob-blackbourn/jetblack-map/blob/6d0c400/src/components/TileProviders.tsx#L8)
+[components/TileProviders.tsx:8](https://github.com/rob-blackbourn/jetblack-map/blob/6d243d5/src/components/TileProviders.tsx#L8)
 
 ## Component Functions
 
@@ -165,7 +164,7 @@ Render the attribution layer.
 
 #### Defined in
 
-[components/AttributionLayer.tsx:15](https://github.com/rob-blackbourn/jetblack-map/blob/6d0c400/src/components/AttributionLayer.tsx#L15)
+[components/AttributionLayer.tsx:15](https://github.com/rob-blackbourn/jetblack-map/blob/6d243d5/src/components/AttributionLayer.tsx#L15)
 
 ___
 
@@ -191,7 +190,7 @@ An image tile.
 
 #### Defined in
 
-[components/ImageTile.tsx:43](https://github.com/rob-blackbourn/jetblack-map/blob/6d0c400/src/components/ImageTile.tsx#L43)
+[components/ImageTile.tsx:41](https://github.com/rob-blackbourn/jetblack-map/blob/6d243d5/src/components/ImageTile.tsx#L41)
 
 ___
 
@@ -215,7 +214,7 @@ A map.
 
 #### Defined in
 
-[components/Marker.tsx:33](https://github.com/rob-blackbourn/jetblack-map/blob/6d0c400/src/components/Marker.tsx#L33)
+[components/Marker.tsx:33](https://github.com/rob-blackbourn/jetblack-map/blob/6d243d5/src/components/Marker.tsx#L33)
 
 ___
 
@@ -239,7 +238,7 @@ A map.
 
 #### Defined in
 
-[components/OverlayLayer.tsx:33](https://github.com/rob-blackbourn/jetblack-map/blob/6d0c400/src/components/OverlayLayer.tsx#L33)
+[components/OverlayLayer.tsx:33](https://github.com/rob-blackbourn/jetblack-map/blob/6d243d5/src/components/OverlayLayer.tsx#L33)
 
 ___
 
@@ -263,7 +262,7 @@ A map.
 
 #### Defined in
 
-[components/SVGPin.tsx:37](https://github.com/rob-blackbourn/jetblack-map/blob/6d0c400/src/components/SVGPin.tsx#L37)
+[components/SVGPin.tsx:37](https://github.com/rob-blackbourn/jetblack-map/blob/6d243d5/src/components/SVGPin.tsx#L37)
 
 ___
 
@@ -281,7 +280,7 @@ A map.
 
 #### Defined in
 
-[components/TileLayer.tsx:35](https://github.com/rob-blackbourn/jetblack-map/blob/6d0c400/src/components/TileLayer.tsx#L35)
+[components/TileLayer.tsx:35](https://github.com/rob-blackbourn/jetblack-map/blob/6d243d5/src/components/TileLayer.tsx#L35)
 
 ___
 
@@ -305,7 +304,7 @@ A map.
 
 #### Defined in
 
-[components/ZoomButton.tsx:43](https://github.com/rob-blackbourn/jetblack-map/blob/6d0c400/src/components/ZoomButton.tsx#L43)
+[components/ZoomButton.tsx:43](https://github.com/rob-blackbourn/jetblack-map/blob/6d243d5/src/components/ZoomButton.tsx#L43)
 
 ___
 
@@ -329,7 +328,7 @@ Render a GeoJSON layer.
 
 #### Defined in
 
-[components/GeoJson/GeoJsonLayer.tsx:38](https://github.com/rob-blackbourn/jetblack-map/blob/6d0c400/src/components/GeoJson/GeoJsonLayer.tsx#L38)
+[components/GeoJson/GeoJsonLayer.tsx:38](https://github.com/rob-blackbourn/jetblack-map/blob/6d243d5/src/components/GeoJson/GeoJsonLayer.tsx#L38)
 
 ___
 
@@ -351,7 +350,7 @@ The useClick hook.
 
 #### Defined in
 
-[hooks/useClick.ts:31](https://github.com/rob-blackbourn/jetblack-map/blob/6d0c400/src/hooks/useClick.ts#L31)
+[hooks/useClick.ts:31](https://github.com/rob-blackbourn/jetblack-map/blob/6d243d5/src/hooks/useClick.ts#L31)
 
 ___
 
@@ -373,7 +372,7 @@ A hook for mouse events.
 
 #### Defined in
 
-[hooks/useMouseEvents.ts:35](https://github.com/rob-blackbourn/jetblack-map/blob/6d0c400/src/hooks/useMouseEvents.ts#L35)
+[hooks/useMouseEvents.ts:35](https://github.com/rob-blackbourn/jetblack-map/blob/6d243d5/src/hooks/useMouseEvents.ts#L35)
 
 ___
 
@@ -395,36 +394,11 @@ A hook to integrate the zoom wheel with a map.
 
 #### Defined in
 
-[hooks/useZoomWheel.ts:21](https://github.com/rob-blackbourn/jetblack-map/blob/6d0c400/src/hooks/useZoomWheel.ts#L21)
+[hooks/useZoomWheel.ts:21](https://github.com/rob-blackbourn/jetblack-map/blob/6d243d5/src/hooks/useZoomWheel.ts#L21)
 
 ___
 
 ## Tile Provider Functions
-
-### maptilerTileProviderFactory
-
-▸ **maptilerTileProviderFactory**(`apiKey`, `map?`): `TileProvider`
-
-A factory for MapTiler tile providers.
-
-#### Parameters
-
-| Name | Type | Default value | Description |
-| :------ | :------ | :------ | :------ |
-| `apiKey` | `string` | `undefined` | The API key |
-| `map` | `string` | `'streets'` | The map to use |
-
-#### Returns
-
-`TileProvider`
-
-A tile provider for the requested MatTiler map
-
-#### Defined in
-
-[components/TileProviders.tsx:93](https://github.com/rob-blackbourn/jetblack-map/blob/6d0c400/src/components/TileProviders.tsx#L93)
-
-___
 
 ### stamenTileProviderFactory
 
@@ -446,4 +420,4 @@ A tile provider for the requested Stamen map
 
 #### Defined in
 
-[components/TileProviders.tsx:40](https://github.com/rob-blackbourn/jetblack-map/blob/6d0c400/src/components/TileProviders.tsx#L40)
+[components/TileProviders.tsx:42](https://github.com/rob-blackbourn/jetblack-map/blob/6d243d5/src/components/TileProviders.tsx#L42)

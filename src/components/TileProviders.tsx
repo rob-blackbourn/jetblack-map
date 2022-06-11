@@ -10,9 +10,11 @@ export const osmTileProvider: TileProvider = {
     const s = String.fromCharCode(97 + ((x + y + zoom) % 3))
     return `https://${s}.tile.openstreetmap.org/${zoom}/${x}/${y}.png`
   },
+  minZoom: 0,
+  maxZoom: 19,
   attribution: (
     <span>
-      {' © '}
+      &copy;&nbsp;
       <a
         href="https://www.openstreetmap.org/copyright"
         style={{
@@ -40,11 +42,25 @@ export const osmTileProvider: TileProvider = {
 export function stamenTileProviderFactory(
   map: 'toner' | 'terrain'
 ): TileProvider {
-  return {
-    makeUrl: (x: number, y: number, zoom: number, dpr = 1): string => {
-      const d = dpr >= 2 ? '@2x' : ''
-      return `https://stamen-tiles.a.ssl.fastly.net/${map}/${zoom}/${x}/${y}${d}.png`
+  const subdomains = ['a', 'b', 'c', 'd']
+  const zooms: { [map: string]: { minZoom: number; maxZoom: number } } = {
+    toner: {
+      minZoom: 0,
+      maxZoom: 20,
     },
+    terrain: {
+      minZoom: 0,
+      maxZoom: 18,
+    },
+  }
+
+  return {
+    makeUrl: (x: number, y: number, zoom: number): string => {
+      const r = window.devicePixelRatio > 1 ? '@2x' : ''
+      const d = subdomains[(x + y + zoom) % subdomains.length]
+      return `https://stamen-tiles-${d}.a.ssl.fastly.net/${map}/${zoom}/${x}/${y}${r}.png`
+    },
+    ...zooms[map],
     attribution: (
       <span className="map-attribution">
         Map tiles by{' '}
@@ -80,23 +96,3 @@ export function stamenTileProviderFactory(
     ),
   }
 }
-
-/**
- * A factory for MapTiler tile providers.
- *
- * @param apiKey The API key
- * @param map The map to use
- * @returns A tile provider for the requested MatTiler map
- *
- * @category Tile Provider
- */
-export const maptilerTileProviderFactory = (
-  apiKey: string,
-  map = 'streets'
-): TileProvider => ({
-  makeUrl: (x: number, y: number, z: number, dpr = 1): string => {
-    const d = dpr >= 2 ? '@2x' : ''
-    return `https://api.maptiler.com/maps/${map}/256/${z}/${x}/${y}${d}.png?key=${apiKey}`
-  },
-  attribution: <span />,
-})

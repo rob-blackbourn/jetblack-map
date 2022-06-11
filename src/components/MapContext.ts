@@ -18,8 +18,6 @@ export interface MapContextProps {
   bounds: Bounds
   /** The tile provider */
   tileProvider: TileProvider
-  /** Optional resolutions */
-  dprs: number[]
 }
 
 /**
