@@ -41,9 +41,9 @@ export function stamenTileProviderFactory(
   map: 'toner' | 'terrain'
 ): TileProvider {
   return {
-    makeUrl: (x: number, y: number, zoom: number, dpr = 1): string => {
-      const d = dpr >= 2 ? '@2x' : ''
-      return `https://stamen-tiles.a.ssl.fastly.net/${map}/${zoom}/${x}/${y}${d}.png`
+    makeUrl: (x: number, y: number, zoom: number): string => {
+      const r = window.devicePixelRatio > 1 ? '@2x' : ''
+      return `https://stamen-tiles.a.ssl.fastly.net/${map}/${zoom}/${x}/${y}${r}.png`
     },
     attribution: (
       <span className="map-attribution">
@@ -94,9 +94,9 @@ export const maptilerTileProviderFactory = (
   apiKey: string,
   map = 'streets'
 ): TileProvider => ({
-  makeUrl: (x: number, y: number, z: number, dpr = 1): string => {
-    const d = dpr >= 2 ? '@2x' : ''
-    return `https://api.maptiler.com/maps/${map}/256/${z}/${x}/${y}${d}.png?key=${apiKey}`
+  makeUrl: (x: number, y: number, z: number): string => {
+    const r = window.devicePixelRatio > 1 ? '@2x' : ''
+    return `https://api.maptiler.com/maps/${map}/256/${z}/${x}/${y}${r}.png?key=${apiKey}`
   },
   attribution: <span />,
 })

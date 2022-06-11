@@ -3,24 +3,6 @@ import { Coordinate, Point, ScaleInfo, TileProvider } from '../types'
 import { calcScaleInfo, coordinateToTilePoint } from '../tileMath'
 import { ImageTileProps } from './ImageTile'
 
-function makeSrcSet(
-  dprs: number[],
-  tileProvider: TileProvider,
-  x: number,
-  y: number,
-  z: number
-): string {
-  if (dprs.length === 0) {
-    return ''
-  }
-  const attr = dprs
-    .map(
-      dpr => tileProvider.makeUrl(x, y, z, dpr) + (dpr === 1 ? '' : ` ${dpr}x`)
-    )
-    .join(', ')
-  return attr
-}
-
 export interface TileInfo extends ScaleInfo {
   tileMin: Point
   tileMax: Point
@@ -68,8 +50,7 @@ export function calcImageTileProps(
   tileMin: Point,
   tileMax: Point,
   roundedZoom: number,
-  tileProvider: TileProvider,
-  dprs: number[]
+  tileProvider: TileProvider
 ): Array<ImageTileProps & { key: string }> {
   const maxTiles = 2 ** roundedZoom
 
@@ -96,7 +77,6 @@ export function calcImageTileProps(
       imageTileProps.push({
         key: `${x}-${y}-${roundedZoom}`,
         url: tileProvider.makeUrl(tileX, y, roundedZoom),
-        srcSet: makeSrcSet(dprs, tileProvider, tileX, y, roundedZoom),
         left: (x - tileMin.x) * 256,
         top: (y - tileMin.y) * 256,
         width: 256,

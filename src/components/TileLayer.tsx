@@ -38,7 +38,6 @@ export default function TileLayer() {
     center,
     zoom,
     tileProvider,
-    dprs,
   } = useContext(MapContext)
 
   const {
@@ -55,8 +54,7 @@ export default function TileLayer() {
     tileMin,
     tileMax,
     roundedZoom,
-    tileProvider,
-    dprs
+    tileProvider
   )
 
   // Convert the top-left from tile coordinates to screen coordinates.
