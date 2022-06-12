@@ -1,17 +1,8 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useRef } from 'react'
 
 import { screenPointToCoordinate } from '../tileMath'
 import { Coordinate, Point } from '../types'
-import { isClickable } from './utils'
-
-function getRelativeMousePoint(event: MouseEvent, div: HTMLDivElement): Point {
-  const { top, left } = div.getBoundingClientRect()
-  const point: Point = {
-    x: event.clientX - left,
-    y: event.clientY - top,
-  }
-  return point
-}
+import { getRelativeMousePoint, isClickable } from './utils'
 
 /**
  * The prop type for the [[`useClick`]] hook.

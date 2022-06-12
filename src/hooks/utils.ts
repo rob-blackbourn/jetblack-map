@@ -1,3 +1,4 @@
+import { Point } from '../types'
 import { CLASS_NAMES } from '../constants'
 
 function hasClassName(element: HTMLElement, classNames: string[]): boolean {
@@ -17,4 +18,16 @@ export function isZoomable(element: HTMLElement): boolean {
 
 export function isClickable(element: HTMLElement): boolean {
   return hasClassName(element, [CLASS_NAMES.primary, CLASS_NAMES.clickable])
+}
+
+export function getRelativeMousePoint(
+  event: MouseEvent,
+  div: HTMLDivElement
+): Point {
+  const { top, left } = div.getBoundingClientRect()
+  const point: Point = {
+    x: event.clientX - left,
+    y: event.clientY - top,
+  }
+  return point
 }

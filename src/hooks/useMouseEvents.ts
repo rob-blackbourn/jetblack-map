@@ -4,16 +4,7 @@ import { Coordinate, Point } from '../types'
 
 import { coordinateToTilePoint, tilePointToCoordinate } from '../tileMath'
 import { LOCATIONS } from '../constants'
-import { isDraggable } from './utils'
-
-function getRelativeMousePoint(event: MouseEvent, div: HTMLDivElement): Point {
-  const { top, left } = div.getBoundingClientRect()
-  const point: Point = {
-    x: event.clientX - left,
-    y: event.clientY - top,
-  }
-  return point
-}
+import { getRelativeMousePoint, isDraggable } from './utils'
 
 /**
  * The prop type for the [[`useMouseEvents`]] hook.
