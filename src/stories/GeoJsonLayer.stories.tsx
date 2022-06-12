@@ -112,10 +112,10 @@ const Template: ComponentStory<typeof Map> = args => {
 
   const ref = useRef<HTMLDivElement>(null)
 
-  const [zoom, zoomRef, setZoom] = useZoomWheel({ ref, defaultZoom: 6 })
-  const [center, centerRef, setCenter] = useMouseEvents({
+  const [zoom, setZoom] = useZoomWheel({ ref, defaultZoom: 6 })
+  const [center, setCenter] = useMouseEvents({
     ref,
-    zoomRef,
+    zoom,
     defaultCenter: GREENWICH_OBSERVATORY,
   })
 
