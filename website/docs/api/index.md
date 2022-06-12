@@ -158,16 +158,6 @@ export default function App() {
     zoom,
   })
 
-  const handleClick = (coordinate: Coordinate, point: Point) => {
-    console.log('click', { coordinate, point })
-  }
-
-  const handleDoubleClick = (coordinate: Coordinate, point: Point) => {
-    console.log('doubleClick', { coordinate, point })
-    setCenter(coordinate)
-    setZoom(zoom + 1)
-  }
-
   useClick({
     ref,
     center,
@@ -176,7 +166,7 @@ export default function App() {
       console.log('click', { coordinate, point })
     },
     onDoubleClick: (coordinate: Coordinate, point: Point) => {
-      // Set center and zoom to double clicked point.
+      // Center and zoom to the double clicked point.
       setCenter(coordinate)
       setZoom(zoom + 1)
     }
