@@ -51,7 +51,6 @@ export default function GeoJSONLayer({
     event: React.MouseEvent<SVGElement, MouseEvent>,
     feature: Feature
   ) => {
-    console.log('handleMouseOver', { hoverPoint, hoverFeature })
     setHoverPoint({ x: event.clientX, y: event.clientY })
     setHoverFeature(feature)
   }
@@ -60,7 +59,6 @@ export default function GeoJSONLayer({
     event: React.MouseEvent<SVGElement, MouseEvent>,
     feature: Feature
   ) => {
-    console.log('handleMouseOut')
     setHoverPoint(undefined)
     setHoverFeature(undefined)
   }

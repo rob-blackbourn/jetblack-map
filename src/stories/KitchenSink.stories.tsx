@@ -51,8 +51,8 @@ const Template: ComponentStory<typeof Map> = args => {
 
   const handleDoubleClick = (coordinate: Coordinate, point: Point) => {
     console.log('doubleClick', { coordinate, point })
-    setCenter(coordinate)
     setZoom(zoom + 1)
+    setCenter(coordinate)
   }
 
   useClick({
