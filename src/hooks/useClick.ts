@@ -8,18 +8,24 @@ import { getRelativeMousePoint, isClickable } from './utils'
  * The prop type for the [[`useClick`]] hook.
  */
 export interface useClickProps {
+  /** A reference to the map container. */
   ref: React.RefObject<HTMLDivElement>
+  /** The map center. */
   center: Coordinate
+  /** The current zoom level */
   zoom: number
+  /** The time to wait in milliseconds for a double click. */
   delay?: number
+  /** The handler for a single click event. */
   onClick?: (coordinate: Coordinate, point: Point) => void
+  /** The handler for a multi click event */
   onDoubleClick?: (coordinate: Coordinate, point: Point) => void
 }
 
 interface MouseState {
-  count: number
+  clickCount: number
   lastPoint: Point
-  timeout: ReturnType<typeof setTimeout> | null
+  timeoutId: ReturnType<typeof setTimeout> | null
 }
 
 /**
@@ -34,9 +40,9 @@ export default function useClick({
   onDoubleClick,
 }: useClickProps): void {
   const mouseState = useRef<MouseState>({
-    count: 0,
+    clickCount: 0,
     lastPoint: { x: 0, y: 0 },
-    timeout: null,
+    timeoutId: null,
   })
 
   const handleMouseDown = useCallback(
@@ -48,7 +54,7 @@ export default function useClick({
 
       event.preventDefault()
 
-      mouseState.current.count += 1
+      mouseState.current.clickCount += 1
       mouseState.current.lastPoint = getRelativeMousePoint(event, ref.current)
     },
     [ref]
@@ -61,21 +67,21 @@ export default function useClick({
         return
       }
 
-      if (mouseState.current.count === 0) {
+      if (mouseState.current.clickCount === 0) {
         // Not our event
         return
       }
 
       const element = ref.current
 
-      if (mouseState.current.timeout) {
-        // If this was a double click this will clear the first timeout.
-        clearTimeout(mouseState.current.timeout)
+      if (mouseState.current.timeoutId) {
+        // This was a multi click so clear the previous timeout.
+        clearTimeout(mouseState.current.timeoutId)
       }
 
       // Wait a short time before handling the event to capture double clicks.
-      mouseState.current.timeout = setTimeout(() => {
-        mouseState.current.timeout = null
+      mouseState.current.timeoutId = setTimeout(() => {
+        mouseState.current.timeoutId = null
 
         // If the down location is a long way away from the up location
         // treat it as a drag and ignore.
@@ -85,6 +91,8 @@ export default function useClick({
           y: Math.abs(mouseState.current.lastPoint.y - mousePoint.y),
         }
         if (delta.x + delta.y <= 2) {
+          // This is a real click. Find the earth coordinate and call
+          // the appropriate handler.
           const { width, height } = element.getBoundingClientRect()
           const coordinate = screenPointToCoordinate(
             mousePoint,
@@ -94,14 +102,14 @@ export default function useClick({
             height
           )
 
-          if (mouseState.current.count === 1) {
+          if (mouseState.current.clickCount === 1) {
             onClick && onClick(coordinate, mousePoint)
           } else {
             onDoubleClick && onDoubleClick(coordinate, mousePoint)
           }
         }
 
-        mouseState.current.count = 0
+        mouseState.current.clickCount = 0
       }, delay)
     },
     [ref, zoom, center]
