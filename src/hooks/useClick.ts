@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 
 import { screenPointToCoordinate } from '../tileMath'
 import { Coordinate, Point } from '../types'
@@ -14,7 +14,7 @@ function getRelativeMousePoint(event: MouseEvent, div: HTMLDivElement): Point {
 }
 
 /**
- * The prop type for the [[`useClickProp`]] hook.
+ * The prop type for the [[`useClick`]] hook.
  */
 export interface useClickProps {
   ref: React.RefObject<HTMLDivElement>
@@ -23,6 +23,12 @@ export interface useClickProps {
   delay?: number
   onClick?: (coordinate: Coordinate, point: Point) => void
   onDoubleClick?: (coordinate: Coordinate, point: Point) => void
+}
+
+interface MouseState {
+  count: number
+  lastPoint: Point
+  timeout: ReturnType<typeof setTimeout> | null
 }
 
 /**
@@ -36,43 +42,78 @@ export default function useClick({
   onClick,
   onDoubleClick,
 }: useClickProps): void {
-  const [timeout, saveTimeout] =
-    useState<ReturnType<typeof setTimeout> | undefined>()
+  const mouseState = useRef<MouseState>({
+    count: 0,
+    lastPoint: { x: 0, y: 0 },
+    timeout: null,
+  })
 
-  const handleClick = useCallback(
+  const handleMouseDown = useCallback(
     (event: MouseEvent) => {
       const target = event.target as HTMLElement
       if (!(ref.current && target && isClickable(target))) {
         return
       }
 
-      const element = ref.current
+      event.preventDefault()
 
-      if (timeout) {
-        clearTimeout(timeout)
+      mouseState.current.count += 1
+      mouseState.current.lastPoint = getRelativeMousePoint(event, ref.current)
+    },
+    [ref]
+  )
+
+  const handleMouseUp = useCallback(
+    (event: MouseEvent) => {
+      const target = event.target as HTMLElement
+      if (!(ref.current && target)) {
+        return
       }
 
-      const newTimeout = setTimeout(() => {
+      if (mouseState.current.count === 0) {
+        // Not our event
+        return
+      }
+
+      const element = ref.current
+
+      if (mouseState.current.timeout) {
+        // If this was a double click this will clear the first timeout.
+        clearTimeout(mouseState.current.timeout)
+      }
+
+      // Wait a short time before handling the event to capture double clicks.
+      mouseState.current.timeout = setTimeout(() => {
+        mouseState.current.timeout = null
+
+        // If the down location is a long way away from the up location
+        // treat it as a drag and ignore.
         const mousePoint: Point = getRelativeMousePoint(event, element)
-        const { width, height } = element.getBoundingClientRect()
-        const coordinate = screenPointToCoordinate(
-          mousePoint,
-          center,
-          zoom,
-          width,
-          height
-        )
-
-        if (event.detail === 1) {
-          onClick && onClick(coordinate, mousePoint)
-        } else {
-          onDoubleClick && onDoubleClick(coordinate, mousePoint)
+        const delta: Point = {
+          x: Math.abs(mouseState.current.lastPoint.x - mousePoint.x),
+          y: Math.abs(mouseState.current.lastPoint.y - mousePoint.y),
         }
-      }, delay)
+        if (delta.x + delta.y <= 2) {
+          const { width, height } = element.getBoundingClientRect()
+          const coordinate = screenPointToCoordinate(
+            mousePoint,
+            center,
+            zoom,
+            width,
+            height
+          )
 
-      saveTimeout(newTimeout)
+          if (mouseState.current.count === 1) {
+            onClick && onClick(coordinate, mousePoint)
+          } else {
+            onDoubleClick && onDoubleClick(coordinate, mousePoint)
+          }
+        }
+
+        mouseState.current.count = 0
+      }, delay)
     },
-    [ref, center, zoom, delay, timeout, onClick, onDoubleClick]
+    [ref, zoom, center]
   )
 
   useEffect(() => {
@@ -82,10 +123,12 @@ export default function useClick({
 
     const element = ref.current
 
-    element.onclick = handleClick
+    element.addEventListener('mousedown', handleMouseDown)
+    element.addEventListener('mouseup', handleMouseUp)
 
     return () => {
-      element.onclick = null
+      element.removeEventListener('mousedown', handleMouseDown)
+      element.removeEventListener('mouseup', handleMouseUp)
     }
-  }, [ref, handleClick])
+  }, [ref, handleMouseDown, handleMouseUp])
 }
