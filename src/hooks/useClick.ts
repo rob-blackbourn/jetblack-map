@@ -18,8 +18,8 @@ function getRelativeMousePoint(event: MouseEvent, div: HTMLDivElement): Point {
  */
 export interface useClickProps {
   ref: React.RefObject<HTMLDivElement>
-  centerRef: React.RefObject<Coordinate>
-  zoomRef: React.RefObject<number>
+  center: Coordinate
+  zoom: number
   delay?: number
   onClick?: (coordinate: Coordinate, point: Point) => void
   onDoubleClick?: (coordinate: Coordinate, point: Point) => void
@@ -30,8 +30,8 @@ export interface useClickProps {
  */
 export default function useClick({
   ref,
-  centerRef,
-  zoomRef,
+  center,
+  zoom,
   delay = 150,
   onClick,
   onDoubleClick,
@@ -58,8 +58,8 @@ export default function useClick({
         const { width, height } = element.getBoundingClientRect()
         const coordinate = screenPointToCoordinate(
           mousePoint,
-          centerRef.current as Coordinate,
-          zoomRef.current as number,
+          center,
+          zoom,
           width,
           height
         )
@@ -73,7 +73,7 @@ export default function useClick({
 
       saveTimeout(newTimeout)
     },
-    [ref, centerRef, zoomRef, delay, timeout, onClick, onDoubleClick]
+    [ref, center, zoom, delay, timeout, onClick, onDoubleClick]
   )
 
   useEffect(() => {
