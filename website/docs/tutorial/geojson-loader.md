@@ -29,16 +29,12 @@ export default function App() {
 
   const ref = useRef(null)
 
-  const [zoom, zoomRef, setZoom] = useZoomWheel({ ref, defaultZoom: 6 })
-  const [center, centerRef, setCenter] = useMouseEvents({
+  const [zoom, setZoom] = useZoomWheel({ ref, defaultZoom: 6 })
+  const [center, setCenter] = useMouseEvents({
     ref,
-    zoomRef,
+    zoom,
     defaultCenter: GREENWICH_OBSERVATORY,
   })
-
-  const handleClick = (coordinate, point) => {
-    console.log('click', { coordinate, point })
-  }
 
   const handleDoubleClick = (coordinate, point) => {
     console.log('doubleClick', { coordinate, point })
@@ -48,10 +44,15 @@ export default function App() {
 
   useClick({
     ref,
-    centerRef,
-    zoomRef,
-    onClick: handleClick,
-    onDoubleClick: handleDoubleClick,
+    center,
+    zoom,
+    onClick: (coordinate, point) => {
+      console.log('click', { coordinate, point })
+    },
+    onDoubleClick: (coordinate, point) => {
+      setCenter(coordinate)
+      setZoom(zoom + 1)
+    },
   })
 
   useEffect(() => {
@@ -119,10 +120,10 @@ export default function App() {
 
   const ref = useRef<HTMLDivElement>(null)
 
-  const [zoom, zoomRef, setZoom] = useZoomWheel({ ref, defaultZoom: 6 })
-  const [center, centerRef, setCenter] = useMouseEvents({
+  const [zoom, setZoom] = useZoomWheel({ ref, defaultZoom: 6 })
+  const [center, setCenter] = useMouseEvents({
     ref,
-    zoomRef,
+    zoom,
     defaultCenter: GREENWICH_OBSERVATORY,
   })
 
@@ -138,10 +139,15 @@ export default function App() {
 
   useClick({
     ref,
-    centerRef,
-    zoomRef,
-    onClick: handleClick,
-    onDoubleClick: handleDoubleClick,
+    center,
+    zoom,
+    onClick: (coordinate: Coordinate, point: Point) => {
+      console.log('click', { coordinate, point })
+    },
+    onDoubleClick: (coordinate: Coordinate, point: Point) => {
+      setCenter(coordinate)
+      setZoom(zoom + 1)
+    },
   })
 
   useEffect(() => {

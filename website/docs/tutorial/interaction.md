@@ -38,18 +38,18 @@ export default function App() {
   // A ref is required to bind events to the map.
   const ref = useRef(null)
 
-  const [zoom, zoomRef, setZoom] = useZoomWheel({ ref, defaultZoom: 6 })
+  const [zoom, setZoom] = useZoomWheel({ ref, defaultZoom: 6 })
 
-  const [center, centerRef, setCenter] = useMouseEvents({
+  const [center, setCenter] = useMouseEvents({
     ref,
     defaultCenter: { latitude: 51.4768, longitude: -0.0005 },
-    zoomRef,
+    zoom,
   })
 
   useClick({
     ref,
-    centerRef,
-    zoomRef,
+    center,
+    zoom,
     onClick: (coordinate, point) => console.log('click', { coordinate, point }),
     onDoubleClick: (coordinate, point) => {
       // Zoom in on the new coordinate.
@@ -92,18 +92,18 @@ export default function App() {
   // A ref is required to bind events to the map.
   const ref = useRef<HTMLDivElement>(null)
 
-  const [zoom, zoomRef, setZoom] = useZoomWheel({ ref, defaultZoom: 6 })
+  const [zoom, setZoom] = useZoomWheel({ ref, defaultZoom: 6 })
 
-  const [center, centerRef, setCenter] = useMouseEvents({
+  const [center, setCenter] = useMouseEvents({
     ref,
     defaultCenter: { latitude: 51.4768, longitude: -0.0005 },
-    zoomRef,
+    zoom,
   })
 
   useClick({
     ref,
-    centerRef,
-    zoomRef,
+    center,
+    zoom,
     onClick: (coordinate: Coordinate, point: Point)
       => console.log('click', { coordinate, point }),
     onDoubleClick: (coordinate: Coordinate, point: Point) => {

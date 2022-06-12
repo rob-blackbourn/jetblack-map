@@ -2,30 +2,19 @@
 sidebar_position: 2
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 # Center and Zoom Level
 
 Typically we will want to specify the center of the map and the zoom level.
 
-<Tabs>
-  <TabItem value='js' label='JS'>
-
 ```jsx
 import { Map, TileLayer } from '@jetblack/map'
 
-const GREENWICH_OBSERVATORY = {
-  latitude: 51.47684676353231,
-  longitude: -0.0005261695762532147,
-}
-
 export default function App() {
   return (
     <Map
         width='600px'
         height='400px'
-        center={GREENWICH_OBSERVATORY}
+        center={{ latitude: 51.4768 longitude: -0.0005 }}
         zoom={12}
     >
         <TileLayer />
@@ -33,31 +22,3 @@ export default function App() {
   )
 }
 ```
-
-  </TabItem>
-  <TabItem value='ts' label='TS'>
-
-```tsx
-import { Map, TileLayer } from '@jetblack/map'
-
-const GREENWICH_OBSERVATORY: Coordinate = {
-  latitude: 51.47684676353231,
-  longitude: -0.0005261695762532147,
-}
-
-export default function App() {
-  return (
-    <Map
-        width='600px'
-        height='400px'
-        center={GREENWICH_OBSERVATORY}
-        zoom={12}
-    >
-        <TileLayer />
-    </Map>
-  )
-}
-```
-
-  </TabItem>
-</Tabs>

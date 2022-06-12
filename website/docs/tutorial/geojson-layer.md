@@ -22,8 +22,6 @@ import {
   GeoJSONLayer,
   Map,
   TileLayer,
-  useMouseEvents,
-  useZoomWheel,
 } from '@jetblack/map'
 
 export default function App() {
@@ -92,8 +90,6 @@ import {
   GeoJSONLayer,
   Map,
   TileLayer,
-  useMouseEvents,
-  useZoomWheel,
 } from '@jetblack/map'
 
 export default function App() {

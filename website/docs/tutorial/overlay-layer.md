@@ -29,14 +29,15 @@ import {
     TileLayer
 } from '@jetblack/map'
 
-const GREENWICH_OBSERVATORY = {
+const places = {
+  greenwichObservatory: {
     latitude: 51.47684676353231,
     longitude: -0.0005261695762532147,
-}
-
-const BUCKINGHAM_PALACE = {
+  },
+  buckinghamPalace: {
     latitude: 51.501200111998415,
     longitude: -0.14182556179982908,
+  }
 }
 
 export default function App() {
@@ -44,17 +45,17 @@ export default function App() {
     <Map
         width='600px'
         height='400px'
-        center={GREENWICH_OBSERVATORY}
+        center={places.greenwichObservatory}
         zoom={11}
     >
         <TileLayer />
         <OverlayLayer>
             <Marker
-                coordinate={GREENWICH_OBSERVATORY}
+                coordinate={places.greenwichObservatory}
                 render={point => <SVGPin point={point} />}
             />
             <Marker
-                coordinate={BUCKINGHAM_PALACE}
+                coordinate={places.buckinghamPalace}
                 render={point => <SVGPin point={point} />}
             />
         </OverlayLayer>
@@ -76,14 +77,15 @@ import {
     TileLayer
 } from '@jetblack/map'
 
-const GREENWICH_OBSERVATORY: Coordinate = {
+const places: { [ name: string ]: Coordinate } = {
+  greenwichObservatory: {
     latitude: 51.47684676353231,
     longitude: -0.0005261695762532147,
-}
-
-const BUCKINGHAM_PALACE: Coordinate = {
+  },
+  buckinghamPalace: {
     latitude: 51.501200111998415,
     longitude: -0.14182556179982908,
+  }
 }
 
 export default function App() {
@@ -91,17 +93,17 @@ export default function App() {
     <Map
         width='600px'
         height='400px'
-        center={GREENWICH_OBSERVATORY}
+        center={places.greenwichObservatory}
         zoom={11}
     >
         <TileLayer />
         <OverlayLayer>
             <Marker
-                coordinate={GREENWICH_OBSERVATORY}
+                coordinate={places.greenwichObservatory}
                 render={point => <SVGPin point={point} />}
             />
             <Marker
-                coordinate={BUCKINGHAM_PALACE}
+                coordinate={places.buckinghamPalace}
                 render={point => <SVGPin point={point} />}
             />
         </OverlayLayer>
@@ -135,7 +137,11 @@ export interface CustomMarkerProps {
   color?: string
 }
 
-function CircleMarker({ radius = 10, strokeWidth = 2, color = 'red' }: CustomMarkerProps) {
+function CircleMarker({
+  radius = 10,
+  strokeWidth = 2,
+  color = 'red'
+}: CustomMarkerProps) {
   const size = radius * 2 + strokeWidth * 2
 
   return (
@@ -148,7 +154,14 @@ function CircleMarker({ radius = 10, strokeWidth = 2, color = 'red' }: CustomMar
         transform: `translate(${-size / 2}px, ${-size / 2}px)`,
       }}
     >
-      <circle cx={size / 2} cy={size / 2} r={radius} stroke={color} strokeWidth={2} fill="none" />
+      <circle
+        cx={size / 2}
+        cy={size / 2}
+        r={radius}
+        stroke={color}
+        strokeWidth={2}
+        fill="none"
+      />
     </svg>
   )
 }
@@ -160,8 +173,14 @@ This marker could be incorporated into the map as follows:
 <Map ref={ref} width="600px" height="400px" center={center} zoom={zoom}>
     <TileLayer />
     <OverlayLayer>
-    <Marker coordinate={GREENWICH_OBSERVATORY} render={point => <CircleMarker point={point} />} />
-    <Marker coordinate={BUCKINGHAM_PALACE} render={point => <CircleMarker point={point} radius={15} />} />
+    <Marker
+      coordinate={places.greenwichObservatory}
+      render={point => <CircleMarker point={point} />}
+    />
+    <Marker
+      coordinate={places.greenwichObservatory}
+      render={point => <CircleMarker point={point} radius={15} />}
+    />
     </OverlayLayer>
 </Map>
 ```
@@ -207,7 +226,14 @@ const strokeWidth = 2
         transform: `translate(${-size / 2}px, ${-size / 2}px)`,
       }}
     >
-      <circle cx={size / 2} cy={size / 2} r={scaledRadius} stroke={color} strokeWidth={2} fill="none" />
+      <circle
+        cx={size / 2}
+        cy={size / 2}
+        r={scaledRadius}
+        stroke={color}
+        strokeWidth={2}
+        fill="none"
+      />
     </svg>
   )
 }

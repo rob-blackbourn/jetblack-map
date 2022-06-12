@@ -10,13 +10,13 @@ The prop type for the [[`useClickProp`]] hook.
 
 ## Properties
 
-### centerRef
+### center
 
-• **centerRef**: `RefObject`<[`Coordinate`](Coordinate.md)\>
+• **center**: [`Coordinate`](Coordinate.md)
 
 #### Defined in
 
-[hooks/useClick.ts:21](https://github.com/rob-blackbourn/jetblack-map/blob/351cc26/src/hooks/useClick.ts#L21)
+[hooks/useClick.ts:21](https://github.com/rob-blackbourn/jetblack-map/blob/cdc3ef2/src/hooks/useClick.ts#L21)
 
 ___
 
@@ -26,7 +26,7 @@ ___
 
 #### Defined in
 
-[hooks/useClick.ts:23](https://github.com/rob-blackbourn/jetblack-map/blob/351cc26/src/hooks/useClick.ts#L23)
+[hooks/useClick.ts:23](https://github.com/rob-blackbourn/jetblack-map/blob/cdc3ef2/src/hooks/useClick.ts#L23)
 
 ___
 
@@ -36,17 +36,17 @@ ___
 
 #### Defined in
 
-[hooks/useClick.ts:20](https://github.com/rob-blackbourn/jetblack-map/blob/351cc26/src/hooks/useClick.ts#L20)
+[hooks/useClick.ts:20](https://github.com/rob-blackbourn/jetblack-map/blob/cdc3ef2/src/hooks/useClick.ts#L20)
 
 ___
 
-### zoomRef
+### zoom
 
-• **zoomRef**: `RefObject`<`number`\>
+• **zoom**: `number`
 
 #### Defined in
 
-[hooks/useClick.ts:22](https://github.com/rob-blackbourn/jetblack-map/blob/351cc26/src/hooks/useClick.ts#L22)
+[hooks/useClick.ts:22](https://github.com/rob-blackbourn/jetblack-map/blob/cdc3ef2/src/hooks/useClick.ts#L22)
 
 ## Methods
 
@@ -67,7 +67,7 @@ ___
 
 #### Defined in
 
-[hooks/useClick.ts:24](https://github.com/rob-blackbourn/jetblack-map/blob/351cc26/src/hooks/useClick.ts#L24)
+[hooks/useClick.ts:24](https://github.com/rob-blackbourn/jetblack-map/blob/cdc3ef2/src/hooks/useClick.ts#L24)
 
 ___
 
@@ -88,4 +88,4 @@ ___
 
 #### Defined in
 
-[hooks/useClick.ts:25](https://github.com/rob-blackbourn/jetblack-map/blob/351cc26/src/hooks/useClick.ts#L25)
+[hooks/useClick.ts:25](https://github.com/rob-blackbourn/jetblack-map/blob/cdc3ef2/src/hooks/useClick.ts#L25)

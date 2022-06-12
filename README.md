@@ -143,24 +143,26 @@ const EMPIRE_STATE_BUILDING: Coordinate = {
 export default function App() {
   const ref = useRef<HTMLDivElement>(null)
 
-  const [zoom, zoomRef, setZoom] = useZoomWheel({ ref, defaultZoom: 6 })
-  const [center, centerRef, setCenter] = useMouseEvents({
+  const [zoom, setZoom] = useZoomWheel({ ref, defaultZoom: 6 })
+  const [center, setCenter] = useMouseEvents({
     ref,
     defaultCenter: GREENWICH_OBSERVATORY,
-    zoomRef,
+    zoom,
   })
 
-  const handleClick = (coordinate: Coordinate, point: Point) => {
-    console.log('click', { coordinate, point })
-  }
-
-  const handleDoubleClick = (coordinate: Coordinate, point: Point) => {
-    console.log('doubleClick', { coordinate, point })
-    setCenter(coordinate)
-    setZoom(zoom + 1)
-  }
-
-  useClick({ ref, centerRef, zoomRef, onClick: handleClick, onDoubleClick: handleDoubleClick })
+  useClick({
+    ref,
+    center,
+    zoom,
+    onClick: (coordinate: Coordinate, point: Point) => {
+      console.log('click', { coordinate, point })
+    },
+    onDoubleClick: (coordinate: Coordinate, point: Point) => {
+      // Center and zoom to the double clicked point.
+      setCenter(coordinate)
+      setZoom(zoom + 1)
+    }
+  })
 
   return (
     <div style={{ textAlign: 'center', marginTop: 50 }}>
@@ -168,8 +170,14 @@ export default function App() {
         <Map center={center} zoom={zoom} width="1000px" height="600px" ref={ref}>
           <TileLayer />
           <OverlayLayer>
-            <Marker coordinate={GREENWICH_OBSERVATORY} render={point => <SVGPin point={point} />} />
-            <Marker coordinate={EMPIRE_STATE_BUILDING} render={point => <SVGPin point={point} />} />
+            <Marker
+              coordinate={GREENWICH_OBSERVATORY}
+              render={point => <SVGPin point={point} />}
+            />
+            <Marker
+              coordinate={EMPIRE_STATE_BUILDING}
+              render={point => <SVGPin point={point} />}
+            />
           </OverlayLayer>
         </Map>
       </div>

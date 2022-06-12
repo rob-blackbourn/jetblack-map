@@ -19,24 +19,25 @@ import {
   useZoomWheel,
 } from '@jetblack/map'
 
-const GREENWICH_OBSERVATORY: Coordinate = {
-  latitude: 51.47684676353231,
-  longitude: -0.0005261695762532147,
-}
-
-const EMPIRE_STATE_BUILDING: Coordinate = {
-  latitude: 40.748585815569854,
-  longitude: -73.9856543574467,
+const places: { [name: string]: Coordinate } = {
+  greenwichObservatory: {
+    latitude: 51.47684676353231,
+    longitude: -0.0005261695762532147,
+  },
+  empireStateBuilding: {
+    latitude: 40.748585815569854,
+    longitude: -73.9856543574467,
+  },
 }
 
 export default function FrontPageMap() {
   const ref = useRef<HTMLDivElement>(null)
 
-  const [zoom, zoomRef, setZoom] = useZoomWheel({ ref, defaultZoom: 4 })
-  const [center, centerRef, setCenter] = useMouseEvents({
+  const [zoom, setZoom] = useZoomWheel({ ref, defaultZoom: 4 })
+  const [center, setCenter] = useMouseEvents({
     ref,
-    defaultCenter: GREENWICH_OBSERVATORY,
-    zoomRef,
+    defaultCenter: places.greenwichObservatory,
+    zoom,
   })
 
   const handleClick = (coordinate: Coordinate, point: Point) => {
@@ -51,8 +52,8 @@ export default function FrontPageMap() {
 
   useClick({
     ref,
-    centerRef,
-    zoomRef,
+    center,
+    zoom,
     onClick: handleClick,
     onDoubleClick: handleDoubleClick,
   })
@@ -140,11 +141,11 @@ export default function FrontPageMap() {
       <TileLayer />
       <OverlayLayer>
         <Marker
-          coordinate={GREENWICH_OBSERVATORY}
+          coordinate={places.greenwichObservatory}
           render={point => <SVGPin point={point} />}
         />
         <Marker
-          coordinate={EMPIRE_STATE_BUILDING}
+          coordinate={places.empireStateBuilding}
           render={point => <SVGPin point={point} />}
         />
         <ZoomButton point={{ x: 10, y: 10 }} onChange={zoom => setZoom(zoom)} />

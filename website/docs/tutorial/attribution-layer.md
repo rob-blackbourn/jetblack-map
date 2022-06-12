@@ -15,14 +15,10 @@ export default function TileProvider() {
   const tileProvider = stamenTileProviderFactory('terrain')
 
   return (
-    <div style={{ textAlign: 'center', marginTop: 50 }}>
-      <div style={{ margin: '0 auto' }}>
-        <Map tileProvider={tileProvider}>
-          <TileLayer />
-          <AttributionLayer />
-        </Map>
-      </div>
-    </div>
+    <Map tileProvider={tileProvider} width={600} height={400}>
+      <TileLayer />
+      <AttributionLayer />
+    </Map>
   )
 }
 ```
