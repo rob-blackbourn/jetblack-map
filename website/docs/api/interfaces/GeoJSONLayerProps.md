@@ -18,7 +18,7 @@ The GeoJSON data
 
 #### Defined in
 
-[components/GeoJson/GeoJsonLayer.tsx:29](https://github.com/rob-blackbourn/jetblack-map/blob/e0ad7d5/src/components/GeoJson/GeoJsonLayer.tsx#L29)
+[components/GeoJson/GeoJsonLayer.tsx:29](https://github.com/rob-blackbourn/jetblack-map/blob/62d5ba9/src/components/GeoJson/GeoJsonLayer.tsx#L29)
 
 ___
 
@@ -30,7 +30,7 @@ A callback to request the SVG props for a feature
 
 #### Defined in
 
-[components/GeoJson/GeoJsonLayer.tsx:31](https://github.com/rob-blackbourn/jetblack-map/blob/e0ad7d5/src/components/GeoJson/GeoJsonLayer.tsx#L31)
+[components/GeoJson/GeoJsonLayer.tsx:31](https://github.com/rob-blackbourn/jetblack-map/blob/62d5ba9/src/components/GeoJson/GeoJsonLayer.tsx#L31)
 
 ## Methods
 
@@ -50,4 +50,4 @@ A callback to request the SVG props for a feature
 
 #### Defined in
 
-[components/GeoJson/GeoJsonLayer.tsx:32](https://github.com/rob-blackbourn/jetblack-map/blob/e0ad7d5/src/components/GeoJson/GeoJsonLayer.tsx#L32)
+[components/GeoJson/GeoJsonLayer.tsx:32](https://github.com/rob-blackbourn/jetblack-map/blob/62d5ba9/src/components/GeoJson/GeoJsonLayer.tsx#L32)
