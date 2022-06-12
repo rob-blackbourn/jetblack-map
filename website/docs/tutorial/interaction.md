@@ -12,66 +12,62 @@ Some simple hooks are provided to enable interaction with the map.
 The hooks are intentionally basic, as there are a large number of
 great event hook packages out there.
 
+Three hooks are provided:
+
+* `useMouseEvents`: Handles dragging the map,
+* `useZoomWheel`: Updates the zoom level when the wheel moves.
+* `useClick`: Registers callbacks for single or double clicks on the mouse.
+
+A ref is used to bind the mouse events to the map elements.
+
 <Tabs>
   <TabItem value='js' label='JS'>
 
 ```jsx
 import { useRef } from 'react'
+
 import {
   Map,
-  Marker,
-  OverlayLayer,
-  SVGPin,
   TileLayer,
   useClick,
   useMouseEvents,
   useZoomWheel,
 } from '@jetblack/map'
 
-const GREENWICH_OBSERVATORY = {
-  latitude: 51.47684676353231,
-  longitude: -0.0005261695762532147,
-}
-
-const EMPIRE_STATE_BUILDING = {
-  latitude: 40.748585815569854,
-  longitude: -73.9856543574467,
-}
-
 export default function App() {
+  // A ref is required to bind events to the map.
   const ref = useRef(null)
 
   const [zoom, zoomRef, setZoom] = useZoomWheel({ ref, defaultZoom: 6 })
+
   const [center, centerRef, setCenter] = useMouseEvents({
     ref,
-    defaultCenter: GREENWICH_OBSERVATORY,
+    defaultCenter: { latitude: 51.4768, longitude: -0.0005 },
     zoomRef,
   })
 
-  const handleClick = (coordinate, point) => {
-    console.log('click', { coordinate, point })
-  }
-
-  const handleDoubleClick = (coordinate, point) => {
-    console.log('doubleClick', { coordinate, point })
-    setCenter(coordinate)
-    setZoom(zoom + 1)
-  }
-
-  useClick({ ref, centerRef, zoomRef, onClick: handleClick, onDoubleClick: handleDoubleClick })
+  useClick({
+    ref,
+    centerRef,
+    zoomRef,
+    onClick: (coordinate, point) => console.log('click', { coordinate, point }),
+    onDoubleClick: (coordinate, point) => {
+      // Zoom in on the new coordinate.
+      setCenter(coordinate)
+      setZoom(zoom + 1)
+    }
+  })
 
   return (
-    <div style={{ textAlign: 'center', marginTop: 50 }}>
-      <div style={{ margin: '0 auto' }}>
-        <Map center={center} zoom={zoom} width="1000px" height="600px" ref={ref}>
-          <TileLayer />
-          <OverlayLayer>
-            <Marker coordinate={GREENWICH_OBSERVATORY} render={point => <SVGPin point={point} />} />
-            <Marker coordinate={EMPIRE_STATE_BUILDING} render={point => <SVGPin point={point} />} />
-          </OverlayLayer>
-        </Map>
-      </div>
-    </div>
+    <Map
+      ref={ref}        // Bind the ref to the map component.
+      center={center}  // The useMouseEvents hook updates the center property.
+      zoom={zoom}      // The useZoomWheel hook updates the zoom property.
+      width="1000px"
+      height="600px"
+    >
+      <TileLayer />
+    </Map>
   )
 }
 ```
@@ -81,63 +77,52 @@ export default function App() {
 
 ```tsx
 import { useRef } from 'react'
+
 import {
   Coordinate,
   Map,
-  Marker,
-  OverlayLayer,
   Point,
-  SVGPin,
   TileLayer,
   useClick,
   useMouseEvents,
   useZoomWheel,
 } from '@jetblack/map'
 
-const GREENWICH_OBSERVATORY: Coordinate = {
-  latitude: 51.47684676353231,
-  longitude: -0.0005261695762532147,
-}
-
-const EMPIRE_STATE_BUILDING: Coordinate = {
-  latitude: 40.748585815569854,
-  longitude: -73.9856543574467,
-}
-
 export default function App() {
+  // A ref is required to bind events to the map.
   const ref = useRef<HTMLDivElement>(null)
 
   const [zoom, zoomRef, setZoom] = useZoomWheel({ ref, defaultZoom: 6 })
+
   const [center, centerRef, setCenter] = useMouseEvents({
     ref,
-    defaultCenter: GREENWICH_OBSERVATORY,
+    defaultCenter: { latitude: 51.4768, longitude: -0.0005 },
     zoomRef,
   })
 
-  const handleClick = (coordinate: Coordinate, point: Point) => {
-    console.log('click', { coordinate, point })
-  }
-
-  const handleDoubleClick = (coordinate: Coordinate, point: Point) => {
-    console.log('doubleClick', { coordinate, point })
-    setCenter(coordinate)
-    setZoom(zoom + 1)
-  }
-
-  useClick({ ref, centerRef, zoomRef, onClick: handleClick, onDoubleClick: handleDoubleClick })
+  useClick({
+    ref,
+    centerRef,
+    zoomRef,
+    onClick: (coordinate: Coordinate, point: Point)
+      => console.log('click', { coordinate, point }),
+    onDoubleClick: (coordinate: Coordinate, point: Point) => {
+      // Zoom in on the new coordinate.
+      setCenter(coordinate)
+      setZoom(zoom + 1)
+    }
+  })
 
   return (
-    <div style={{ textAlign: 'center', marginTop: 50 }}>
-      <div style={{ margin: '0 auto' }}>
-        <Map center={center} zoom={zoom} width="1000px" height="600px" ref={ref}>
-          <TileLayer />
-          <OverlayLayer>
-            <Marker coordinate={GREENWICH_OBSERVATORY} render={point => <SVGPin point={point} />} />
-            <Marker coordinate={EMPIRE_STATE_BUILDING} render={point => <SVGPin point={point} />} />
-          </OverlayLayer>
-        </Map>
-      </div>
-    </div>
+    <Map
+      ref={ref}        // Bind the ref to the map component.
+      center={center}  // The useMouseEvents hook updates the center property.
+      zoom={zoom}      // The useZoomWheel hook updates the zoom property.
+      width="1000px"
+      height="600px"
+    >
+      <TileLayer />
+    </Map>
   )
 }
 ```
