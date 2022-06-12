@@ -52,7 +52,7 @@ export default function MultiPointComponent({
             key={`multi-point-${i}`}
             cx={screenPoint.x}
             cy={screenPoint.y}
-            {...(props as SVGProps<SVGCircleElement>)}
+            {...props}
           />
         ))}
     </>
