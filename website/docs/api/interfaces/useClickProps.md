@@ -6,7 +6,7 @@ sidebar_position: 0
 custom_edit_url: null
 ---
 
-The prop type for the [[`useClickProp`]] hook.
+The prop type for the [[`useClick`]] hook.
 
 ## Properties
 
@@ -16,7 +16,7 @@ The prop type for the [[`useClickProp`]] hook.
 
 #### Defined in
 
-[hooks/useClick.ts:21](https://github.com/rob-blackbourn/jetblack-map/blob/62d5ba9/src/hooks/useClick.ts#L21)
+[hooks/useClick.ts:21](https://github.com/rob-blackbourn/jetblack-map/blob/0fa3bb0/src/hooks/useClick.ts#L21)
 
 ___
 
@@ -26,7 +26,7 @@ ___
 
 #### Defined in
 
-[hooks/useClick.ts:23](https://github.com/rob-blackbourn/jetblack-map/blob/62d5ba9/src/hooks/useClick.ts#L23)
+[hooks/useClick.ts:23](https://github.com/rob-blackbourn/jetblack-map/blob/0fa3bb0/src/hooks/useClick.ts#L23)
 
 ___
 
@@ -36,7 +36,7 @@ ___
 
 #### Defined in
 
-[hooks/useClick.ts:20](https://github.com/rob-blackbourn/jetblack-map/blob/62d5ba9/src/hooks/useClick.ts#L20)
+[hooks/useClick.ts:20](https://github.com/rob-blackbourn/jetblack-map/blob/0fa3bb0/src/hooks/useClick.ts#L20)
 
 ___
 
@@ -46,7 +46,7 @@ ___
 
 #### Defined in
 
-[hooks/useClick.ts:22](https://github.com/rob-blackbourn/jetblack-map/blob/62d5ba9/src/hooks/useClick.ts#L22)
+[hooks/useClick.ts:22](https://github.com/rob-blackbourn/jetblack-map/blob/0fa3bb0/src/hooks/useClick.ts#L22)
 
 ## Methods
 
@@ -67,7 +67,7 @@ ___
 
 #### Defined in
 
-[hooks/useClick.ts:24](https://github.com/rob-blackbourn/jetblack-map/blob/62d5ba9/src/hooks/useClick.ts#L24)
+[hooks/useClick.ts:24](https://github.com/rob-blackbourn/jetblack-map/blob/0fa3bb0/src/hooks/useClick.ts#L24)
 
 ___
 
@@ -88,4 +88,4 @@ ___
 
 #### Defined in
 
-[hooks/useClick.ts:25](https://github.com/rob-blackbourn/jetblack-map/blob/62d5ba9/src/hooks/useClick.ts#L25)
+[hooks/useClick.ts:25](https://github.com/rob-blackbourn/jetblack-map/blob/0fa3bb0/src/hooks/useClick.ts#L25)
