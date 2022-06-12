@@ -25,13 +25,7 @@ export default function useZoomWheel({
   zoomStep = 0.1,
   ref,
 }: useZoomWheelProps): [number, (zoom: number) => void] {
-  const [zoom, _setZoom] = useState(defaultZoom)
-  const zoomRef = useRef(zoom)
-
-  const setZoom = useCallback((zoom: number) => {
-    zoomRef.current = zoom
-    _setZoom(zoom)
-  }, [])
+  const [zoom, setZoom] = useState(defaultZoom)
 
   const ignoreWheelUntil = useRef<number>()
 

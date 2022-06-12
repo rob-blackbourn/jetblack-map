@@ -37,17 +37,11 @@ export default function useMouseEvents({
   defaultCenter = LOCATIONS.greenwichObservatory,
   zoom,
 }: useMouseEventsProps): [Coordinate, (center: Coordinate) => void] {
-  const [center, _setCenter] = useState(defaultCenter)
-  const centerRef = useRef(center)
+  const [center, setCenter] = useState(defaultCenter)
   const mouseState = useRef<MouseState>({
     mouseDown: false,
     lastPoint: { x: 0, y: 0 },
   })
-
-  const setCenter = useCallback((center: Coordinate) => {
-    centerRef.current = center
-    _setCenter(center)
-  }, [])
 
   const handleMouseDown = useCallback(
     (event: MouseEvent) => {
