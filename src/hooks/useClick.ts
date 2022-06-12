@@ -43,7 +43,6 @@ export default function useClick({
     (event: MouseEvent) => {
       const target = event.target as HTMLElement
       if (!(ref.current && target && isClickable(target))) {
-        console.log('not clickable')
         return
       }
 
@@ -84,11 +83,9 @@ export default function useClick({
     const element = ref.current
 
     element.onclick = handleClick
-    // element.addEventListener('click', handleClick)
 
     return () => {
       element.onclick = null
-      // element.removeEventListener('click', handleClick)
     }
   }, [ref, handleClick])
 }
