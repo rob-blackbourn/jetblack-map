@@ -4,10 +4,24 @@
         <title>@jetblack/map Blog</title>
         <link>https://rob-blackbourn.github.io/jetblack-map/jetblack-map/blog</link>
         <description>@jetblack/map Blog</description>
-        <lastBuildDate>Sun, 12 Jun 2022 17:26:00 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 13 Jun 2022 17:22:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[Release 0.1.0-alpha.15]]></title>
+            <link>https://rob-blackbourn.github.io/jetblack-map/jetblack-map/blog/release-0-1-0-alpha-15</link>
+            <guid>release-0-1-0-alpha-15</guid>
+            <pubDate>Mon, 13 Jun 2022 17:22:00 GMT</pubDate>
+            <description><![CDATA[Many breaking changes in this release.]]></description>
+            <content:encoded><![CDATA[<p>Many breaking changes in this release.</p><p>The primary goal was to support tile providers that served tiles of sizes other
+than 256 square (in particular 512 square, which seems to becoming very common).</p><p>This required:</p><ul><li>Adding tile width and height to the tile providers,</li><li>Passing tile width and height through to coordinate calculators,</li><li>Passing tile width and height to the interaction hooks (which calculate coordinates).</li></ul><p>The requirement to pass the tile size to so many places made it clear that the
+map (in it's current state) makes no sense without the tile layer. Because of
+this the tile layer is now always present in the map, and not exported.</p><p>As the tile provider is so significant I considered making it a mandatory
+property, but decided against it. I did make the tile width and height mandatory
+in the interaction hooks, to provide a hint that they need to be set correctly.</p><p>Rob</p>]]></content:encoded>
+            <category>release</category>
+        </item>
         <item>
             <title><![CDATA[Release 0.1.0-alpha.14]]></title>
             <link>https://rob-blackbourn.github.io/jetblack-map/jetblack-map/blog/release-0-1-0-alpha-14</link>
