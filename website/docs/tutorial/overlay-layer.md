@@ -26,7 +26,6 @@ import {
     Marker,
     OverlayLayer,
     SVGPin,
-    TileLayer
 } from '@jetblack/map'
 
 const places = {
@@ -48,7 +47,6 @@ export default function App() {
         center={places.greenwichObservatory}
         zoom={11}
     >
-        <TileLayer />
         <OverlayLayer>
             <Marker
                 coordinate={places.greenwichObservatory}
@@ -74,7 +72,6 @@ import {
     Marker,
     OverlayLayer,
     SVGPin,
-    TileLayer
 } from '@jetblack/map'
 
 const places: { [ name: string ]: Coordinate } = {
@@ -96,7 +93,6 @@ export default function App() {
         center={places.greenwichObservatory}
         zoom={11}
     >
-        <TileLayer />
         <OverlayLayer>
             <Marker
                 coordinate={places.greenwichObservatory}
@@ -171,7 +167,6 @@ This marker could be incorporated into the map as follows:
 
 ```tsx
 <Map ref={ref} width="600px" height="400px" center={center} zoom={zoom}>
-    <TileLayer />
     <OverlayLayer>
     <Marker
       coordinate={places.greenwichObservatory}

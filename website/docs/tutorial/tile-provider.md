@@ -12,15 +12,17 @@ or because they provide different types of maps.
 The following example uses [Stamen](http://maps.stamen.com) `terrain` tiles.
 
 ```typescript
-import { Map, TileLayer, stamenTileProviderFactory } from '@jetblack/map'
+import { Map, stamenTileProviderFactory } from '@jetblack/map'
 
 export default function TileProvider() {
   const tileProvider = stamenTileProviderFactory('terrain')
 
   return (
-    <Map tileProvider={tileProvider} width={600} height={400}>
-      <TileLayer />
-    </Map>
+    <Map
+      tileProvider={tileProvider}
+      width={600}
+      height={400}
+    />
   )
 }
 ```

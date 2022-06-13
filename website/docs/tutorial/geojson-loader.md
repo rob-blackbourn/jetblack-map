@@ -18,7 +18,6 @@ import React, { useEffect, useRef, useState } from 'react'
 import {
   GeoJSONLayer,
   Map,
-  TileLayer,
   useClick,
   useMouseEvents,
   useZoomWheel,
@@ -33,19 +32,17 @@ export default function App() {
   const [center, setCenter] = useMouseEvents({
     ref,
     zoom,
+    tileWidth: 256,
+    tileHeight: 256,
     defaultCenter: GREENWICH_OBSERVATORY,
   })
-
-  const handleDoubleClick = (coordinate, point) => {
-    console.log('doubleClick', { coordinate, point })
-    setCenter(coordinate)
-    setZoom(zoom + 1)
-  }
 
   useClick({
     ref,
     center,
     zoom,
+    tileWidth: 256,
+    tileHeight: 256,
     onClick: (coordinate, point) => {
       console.log('click', { coordinate, point })
     },
@@ -84,7 +81,6 @@ export default function App() {
 
   return (
     <Map ref={ref} center={center} zoom={zoom} {...args}>
-      <TileLayer />
       <GeoJSONLayer
         data={data}
         requestFeatureStyle={handleRequestFeatureStyle}
@@ -109,7 +105,6 @@ import {
   GeoJSONLayer,
   Map,
   Point,
-  TileLayer,
   useClick,
   useMouseEvents,
   useZoomWheel,
@@ -124,23 +119,17 @@ export default function App() {
   const [center, setCenter] = useMouseEvents({
     ref,
     zoom,
+    tileWidth: 256,
+    tileHeight: 256,
     defaultCenter: GREENWICH_OBSERVATORY,
   })
-
-  const handleClick = (coordinate: Coordinate, point: Point) => {
-    console.log('click', { coordinate, point })
-  }
-
-  const handleDoubleClick = (coordinate: Coordinate, point: Point) => {
-    console.log('doubleClick', { coordinate, point })
-    setCenter(coordinate)
-    setZoom(zoom + 1)
-  }
 
   useClick({
     ref,
     center,
     zoom,
+    tileWidth: 256,
+    tileHeight: 256,
     onClick: (coordinate: Coordinate, point: Point) => {
       console.log('click', { coordinate, point })
     },
@@ -182,7 +171,6 @@ export default function App() {
 
   return (
     <Map ref={ref} center={center} zoom={zoom} {...args}>
-      <TileLayer />
       <GeoJSONLayer
         data={data}
         requestFeatureStyle={handleRequestFeatureStyle}

@@ -32,18 +32,16 @@ React is a peer dependency and will not be automatically installed.
 
 ## Usage
 
-### Tile Layer
+### Basic
 
-Here is a basic map with the tile layer.
+Here is a basic map using the default tile provider.
 
 ```typescript
-import { Map, TileLayer } from '@jetblack/map'
+import { Map } from '@jetblack/map'
 
 export default function App() {
   return (
-    <Map width='600px' height='400px'>
-        <TileLayer />
-    </Map>
+    <Map width='600px' height='400px' />
   )
 }
 ```
@@ -51,7 +49,7 @@ export default function App() {
 Typically we will want to specify the center of the map and the zoom level.
 
 ```typescript
-import { Map, TileLayer } from '@jetblack/map'
+import { Map } from '@jetblack/map'
 
 const GREENWICH_OBSERVATORY: Coordinate = {
   latitude: 51.47684676353231,
@@ -65,9 +63,7 @@ export default function App() {
         height='400px'
         center={GREENWICH_OBSERVATORY}
         zoom={12}
-    >
-        <TileLayer />
-    </Map>
+    />
   )
 }
 ```
@@ -81,8 +77,7 @@ import {
     Map,
     Marker,
     OverlayLayer,
-    SVGPin,
-    TileLayer
+    SVGPin
 } from '@jetblack/map'
 
 const GREENWICH_OBSERVATORY: Coordinate = {
@@ -103,7 +98,6 @@ export default function App() {
         center={GREENWICH_OBSERVATORY}
         zoom={11}
     >
-        <TileLayer />
         <OverlayLayer>
             <Marker
                 coordinate={GREENWICH_OBSERVATORY}
@@ -123,6 +117,9 @@ export default function App() {
 
 Hooks are provided for interaction with the map.
 
+The default tile provider is Open Street Map (`osmTileProvider`), which has a
+tile width and height of 256.
+
 ```typescript
 import { useRef } from 'react'
 import {
@@ -132,7 +129,6 @@ import {
   OverlayLayer,
   Point,
   SVGPin,
-  TileLayer,
   useClick,
   useMouseEvents,
   useZoomWheel,
@@ -156,12 +152,16 @@ export default function App() {
     ref,
     defaultCenter: GREENWICH_OBSERVATORY,
     zoom,
+    tileWidth: 256,
+    tileHeight: 256
   })
 
   useClick({
     ref,
     center,
     zoom,
+    tileWidth: 256,
+    tileHeight: 256,
     onClick: (coordinate: Coordinate, point: Point) => {
       console.log('click', { coordinate, point })
     },
@@ -176,7 +176,6 @@ export default function App() {
     <div style={{ textAlign: 'center', marginTop: 50 }}>
       <div style={{ margin: '0 auto' }}>
         <Map center={center} zoom={zoom} width="1000px" height="600px" ref={ref}>
-          <TileLayer />
           <OverlayLayer>
             <Marker
               coordinate={GREENWICH_OBSERVATORY}

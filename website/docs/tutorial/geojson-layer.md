@@ -18,11 +18,7 @@ The data can be supplied directly.
   <TabItem value='js' label='JS'>
 
 ```jsx
-import {
-  GeoJSONLayer,
-  Map,
-  TileLayer,
-} from '@jetblack/map'
+import { GeoJSONLayer, Map } from '@jetblack/map'
 
 export default function App() {
   const data = {
@@ -69,7 +65,6 @@ export default function App() {
 
   return (
     <Map ref={ref} center={center} zoom={zoom} {...args}>
-      <TileLayer />
       <GeoJSONLayer
         data={data}
         requestFeatureStyle={handleRequestFeatureStyle}
@@ -89,7 +84,6 @@ import {
   Coordinate,
   GeoJSONLayer,
   Map,
-  TileLayer,
 } from '@jetblack/map'
 
 export default function App() {
@@ -139,7 +133,6 @@ export default function App() {
 
   return (
     <Map ref={ref} center={center} zoom={zoom} {...args}>
-      <TileLayer />
       <GeoJSONLayer
         data={data}
         requestFeatureStyle={handleRequestFeatureStyle}

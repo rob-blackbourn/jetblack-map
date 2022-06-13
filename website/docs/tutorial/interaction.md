@@ -28,7 +28,6 @@ import { useRef } from 'react'
 
 import {
   Map,
-  TileLayer,
   useClick,
   useMouseEvents,
   useZoomWheel,
@@ -44,12 +43,16 @@ export default function App() {
     ref,
     defaultCenter: { latitude: 51.4768, longitude: -0.0005 },
     zoom,
+    tileWidth: 256,
+    tileHeight: 256,
   })
 
   useClick({
     ref,
     center,
     zoom,
+    tileWidth: 256,
+    tileHeight: 256,
     onClick: (coordinate, point) => console.log('click', { coordinate, point }),
     onDoubleClick: (coordinate, point) => {
       // Zoom in on the new coordinate.
@@ -65,9 +68,7 @@ export default function App() {
       zoom={zoom}      // The useZoomWheel hook updates the zoom property.
       width="1000px"
       height="600px"
-    >
-      <TileLayer />
-    </Map>
+    />
   )
 }
 ```
@@ -82,7 +83,6 @@ import {
   Coordinate,
   Map,
   Point,
-  TileLayer,
   useClick,
   useMouseEvents,
   useZoomWheel,
@@ -98,12 +98,16 @@ export default function App() {
     ref,
     defaultCenter: { latitude: 51.4768, longitude: -0.0005 },
     zoom,
+    tileWidth: 256,
+    tileHeight: 256,
   })
 
   useClick({
     ref,
     center,
     zoom,
+    tileWidth: 256,
+    tileHeight: 256,
     onClick: (coordinate: Coordinate, point: Point)
       => console.log('click', { coordinate, point }),
     onDoubleClick: (coordinate: Coordinate, point: Point) => {
@@ -120,9 +124,7 @@ export default function App() {
       zoom={zoom}      // The useZoomWheel hook updates the zoom property.
       width="1000px"
       height="600px"
-    >
-      <TileLayer />
-    </Map>
+    />
   )
 }
 ```

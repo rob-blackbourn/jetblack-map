@@ -12,7 +12,6 @@ import {
   OverlayLayer,
   Point,
   SVGPin,
-  TileLayer,
   ZoomButton,
   useClick,
   useMouseEvents,
@@ -38,6 +37,8 @@ export default function FrontPageMap() {
     ref,
     defaultCenter: places.greenwichObservatory,
     zoom,
+    tileWidth: 256,
+    tileHeight: 256,
   })
 
   const handleClick = (coordinate: Coordinate, point: Point) => {
@@ -54,6 +55,8 @@ export default function FrontPageMap() {
     ref,
     center,
     zoom,
+    tileWidth: 256,
+    tileHeight: 256,
     onClick: handleClick,
     onDoubleClick: handleDoubleClick,
   })
@@ -138,7 +141,6 @@ export default function FrontPageMap() {
 
   return (
     <Map center={center} zoom={zoom} width="600px" height="400px" ref={ref}>
-      <TileLayer />
       <OverlayLayer>
         <Marker
           coordinate={places.greenwichObservatory}

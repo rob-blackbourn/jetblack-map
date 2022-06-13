@@ -7,7 +7,7 @@ sidebar_position: 2
 Typically we will want to specify the center of the map and the zoom level.
 
 ```jsx
-import { Map, TileLayer } from '@jetblack/map'
+import { Map } from '@jetblack/map'
 
 export default function App() {
   return (
@@ -16,9 +16,7 @@ export default function App() {
         height='400px'
         center={{ latitude: 51.4768 longitude: -0.0005 }}
         zoom={12}
-    >
-        <TileLayer />
-    </Map>
+    />
   )
 }
 ```

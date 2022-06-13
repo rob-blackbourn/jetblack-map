@@ -18,7 +18,7 @@ The center of the map
 
 #### Defined in
 
-[components/Map.tsx:27](https://github.com/rob-blackbourn/jetblack-map/blob/0fa3bb0/src/components/Map.tsx#L27)
+[components/Map.tsx:22](https://github.com/rob-blackbourn/jetblack-map/blob/74a170a/src/components/Map.tsx#L22)
 
 ___
 
@@ -30,7 +30,7 @@ Map components
 
 #### Defined in
 
-[components/Map.tsx:37](https://github.com/rob-blackbourn/jetblack-map/blob/0fa3bb0/src/components/Map.tsx#L37)
+[components/Map.tsx:32](https://github.com/rob-blackbourn/jetblack-map/blob/74a170a/src/components/Map.tsx#L32)
 
 ___
 
@@ -42,7 +42,7 @@ The screen height
 
 #### Defined in
 
-[components/Map.tsx:33](https://github.com/rob-blackbourn/jetblack-map/blob/0fa3bb0/src/components/Map.tsx#L33)
+[components/Map.tsx:28](https://github.com/rob-blackbourn/jetblack-map/blob/74a170a/src/components/Map.tsx#L28)
 
 ___
 
@@ -54,7 +54,7 @@ The tile provider
 
 #### Defined in
 
-[components/Map.tsx:35](https://github.com/rob-blackbourn/jetblack-map/blob/0fa3bb0/src/components/Map.tsx#L35)
+[components/Map.tsx:30](https://github.com/rob-blackbourn/jetblack-map/blob/74a170a/src/components/Map.tsx#L30)
 
 ___
 
@@ -66,7 +66,7 @@ The screen width
 
 #### Defined in
 
-[components/Map.tsx:31](https://github.com/rob-blackbourn/jetblack-map/blob/0fa3bb0/src/components/Map.tsx#L31)
+[components/Map.tsx:26](https://github.com/rob-blackbourn/jetblack-map/blob/74a170a/src/components/Map.tsx#L26)
 
 ___
 
@@ -78,4 +78,4 @@ The zoom level
 
 #### Defined in
 
-[components/Map.tsx:29](https://github.com/rob-blackbourn/jetblack-map/blob/0fa3bb0/src/components/Map.tsx#L29)
+[components/Map.tsx:24](https://github.com/rob-blackbourn/jetblack-map/blob/74a170a/src/components/Map.tsx#L24)

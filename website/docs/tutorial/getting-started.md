@@ -16,16 +16,14 @@ React is a peer dependency and will not be automatically installed.
 
 ## Usage
 
-Here is a basic map with the tile layer.
+Here is a basic map with the default tile provider.
 
 ```tsx
-import { Map, TileLayer } from '@jetblack/map'
+import { Map } from '@jetblack/map'
 
 export default function App() {
   return (
-    <Map width='600px' height='400px'>
-      <TileLayer />
-    </Map>
+    <Map width='600px' height='400px' />
   )
 }
 ```

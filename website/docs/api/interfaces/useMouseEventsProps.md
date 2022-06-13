@@ -16,7 +16,7 @@ The prop type for the [[`useMouseEvents`]] hook.
 
 #### Defined in
 
-[hooks/useMouseEvents.ts:23](https://github.com/rob-blackbourn/jetblack-map/blob/0fa3bb0/src/hooks/useMouseEvents.ts#L23)
+[hooks/useMouseEvents.ts:14](https://github.com/rob-blackbourn/jetblack-map/blob/74a170a/src/hooks/useMouseEvents.ts#L14)
 
 ___
 
@@ -26,7 +26,27 @@ ___
 
 #### Defined in
 
-[hooks/useMouseEvents.ts:22](https://github.com/rob-blackbourn/jetblack-map/blob/0fa3bb0/src/hooks/useMouseEvents.ts#L22)
+[hooks/useMouseEvents.ts:13](https://github.com/rob-blackbourn/jetblack-map/blob/74a170a/src/hooks/useMouseEvents.ts#L13)
+
+___
+
+### tileHeight
+
+• **tileHeight**: `number`
+
+#### Defined in
+
+[hooks/useMouseEvents.ts:17](https://github.com/rob-blackbourn/jetblack-map/blob/74a170a/src/hooks/useMouseEvents.ts#L17)
+
+___
+
+### tileWidth
+
+• **tileWidth**: `number`
+
+#### Defined in
+
+[hooks/useMouseEvents.ts:16](https://github.com/rob-blackbourn/jetblack-map/blob/74a170a/src/hooks/useMouseEvents.ts#L16)
 
 ___
 
@@ -36,4 +56,4 @@ ___
 
 #### Defined in
 
-[hooks/useMouseEvents.ts:24](https://github.com/rob-blackbourn/jetblack-map/blob/0fa3bb0/src/hooks/useMouseEvents.ts#L24)
+[hooks/useMouseEvents.ts:15](https://github.com/rob-blackbourn/jetblack-map/blob/74a170a/src/hooks/useMouseEvents.ts#L15)

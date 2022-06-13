@@ -1,12 +1,12 @@
 ---
-sidebar_position: 5
+sidebar_position: 4
 ---
 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-import { Coordinate, Map, Marker, OverlayLayer, SVGPin, TileLayer } from '@jetblack/map'
+import { Coordinate, Map, Marker, OverlayLayer, SVGPin } from '@jetblack/map'
 
 # Marker
 
@@ -29,7 +29,6 @@ a render function for a component.
   }}
   zoom={11}
 >
-  <TileLayer />
   <OverlayLayer>
     <Marker
       coordinate={{
@@ -52,7 +51,7 @@ a render function for a component.
   <TabItem value='js' label='JS'>
 
 ```jsx
-import { Map, Marker, OverlayLayer, SVGPin, TileLayer } from '@jetblack/map'
+import { Map, Marker, OverlayLayer, SVGPin } from '@jetblack/map'
 
 export default function App() {
   const GREENWICH_OBSERVATORY = {
@@ -72,7 +71,6 @@ export default function App() {
       center={BUCKINGHAM_PALACE}
       zoom={11}
     >
-      <TileLayer />
       <OverlayLayer>
         <Marker
           coordinate={GREENWICH_OBSERVATORY}
@@ -92,7 +90,7 @@ export default function App() {
   <TabItem value='ts' label='TS'>
 
 ```tsx
-import { Coordinate, Map, Marker, OverlayLayer, SVGPin, TileLayer } from '@jetblack/map'
+import { Coordinate, Map, Marker, OverlayLayer, SVGPin } from '@jetblack/map'
 
 export default function App() {
   const GREENWICH_OBSERVATORY: Coordinate = {
@@ -112,7 +110,6 @@ export default function App() {
       center={BUCKINGHAM_PALACE}
       zoom={11}
     >
-      <TileLayer />
       <OverlayLayer>
         <Marker
           coordinate={GREENWICH_OBSERVATORY}

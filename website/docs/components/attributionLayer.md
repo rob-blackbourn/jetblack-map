@@ -1,8 +1,8 @@
 ---
-sidebar_position: 7
+sidebar_position: 6
 ---
 
-import { AttributionLayer, Map, TileLayer } from '@jetblack/map'
+import { AttributionLayer, Map } from '@jetblack/map'
 
 # AttributionLayer
 
@@ -11,15 +11,13 @@ attribution taken from the tile provider. It takes no properties,
 as it uses the map context.
 
 <Map width='600px' height='400px'>
-  <TileLayer />
   <AttributionLayer />
 </Map>
 
 ```jsx
-import { AttributionLayer, Map, TileLayer } from '@jetblack/map'
+import { AttributionLayer, Map } from '@jetblack/map'
 
 <Map width='600px' height='400px'>
-  <TileLayer />
   <AttributionLayer />
 </Map>
 ```
