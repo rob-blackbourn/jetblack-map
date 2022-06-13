@@ -5,16 +5,11 @@ import { Bounds, Coordinate, TileProvider } from '../types'
 import { LOCATIONS, DEFAULTS, CLASS_NAMES } from '../constants'
 
 import MapContext from './MapContext'
+import TileLayer from './TileLayer'
 import { osmTileProvider } from './TileProviders'
 
 const classNames = {
-  map: [
-    CLASS_NAMES.primary,
-    CLASS_NAMES.draggable,
-    CLASS_NAMES.zoomable,
-    CLASS_NAMES.clickable,
-    'map',
-  ].join(' '),
+  map: [CLASS_NAMES.primary, CLASS_NAMES.draggable, CLASS_NAMES.zoomable, CLASS_NAMES.clickable, 'map'].join(' '),
 }
 
 /**
@@ -59,9 +54,7 @@ const Map = React.forwardRef<HTMLDivElement, MapProps>(
   ) => {
     // Use a local ref if a forwarded ref is not available.
     const localRef = useRef<HTMLDivElement>(null)
-    const ref = forwardedRef
-      ? (forwardedRef as React.MutableRefObject<HTMLDivElement>)
-      : localRef
+    const ref = forwardedRef ? (forwardedRef as React.MutableRefObject<HTMLDivElement>) : localRef
 
     // The screen coordinate system is bounded by the containing div rectangle.
     const [bounds, setBounds] = useState<Bounds>({
@@ -100,6 +93,7 @@ const Map = React.forwardRef<HTMLDivElement, MapProps>(
           }}
           ref={ref}
         >
+          <TileLayer />
           {children}
         </div>
       </MapContext.Provider>

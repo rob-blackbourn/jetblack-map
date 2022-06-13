@@ -2,7 +2,7 @@ import React from 'react'
 
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { AttributionLayer, Map, TileLayer } from '..'
+import { AttributionLayer, Map } from '..'
 import { stamenTileProviderFactory } from '../components/TileProviders'
 
 export default {
@@ -11,13 +11,10 @@ export default {
 } as ComponentMeta<typeof Map>
 
 const Template: ComponentStory<typeof Map> = args => {
-  const tileProvider = stamenTileProviderFactory(
-    (args as any).map as 'terrain' | 'toner'
-  )
+  const tileProvider = stamenTileProviderFactory((args as any).map as 'terrain' | 'toner')
 
   return (
     <Map width="600px" height="400px" tileProvider={tileProvider}>
-      <TileLayer />
       <AttributionLayer />
     </Map>
   )

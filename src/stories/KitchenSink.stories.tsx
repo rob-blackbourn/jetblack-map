@@ -10,12 +10,12 @@ import {
   OverlayLayer,
   Point,
   SVGPin,
-  TileLayer,
   ZoomButton,
   useClick,
   useMouseEvents,
   useZoomWheel,
 } from '..'
+import { osmTileProvider } from '../components/TileProviders'
 
 export default {
   /* 👇 The title prop is optional.
@@ -43,38 +43,28 @@ const Template: ComponentStory<typeof Map> = args => {
   const [center, setCenter] = useMouseEvents({
     ref,
     zoom,
+    tileWidth: osmTileProvider.tileWidth,
+    tileHeight: osmTileProvider.tileHeight,
   })
-
-  const handleClick = (coordinate: Coordinate, point: Point) => {
-    console.log('click', { coordinate, point })
-  }
-
-  const handleDoubleClick = (coordinate: Coordinate, point: Point) => {
-    console.log('doubleClick', { coordinate, point })
-    setZoom(zoom + 1)
-    setCenter(coordinate)
-  }
 
   useClick({
     ref,
     center,
     zoom,
-    onClick: handleClick,
-    onDoubleClick: handleDoubleClick,
+    tileWidth: osmTileProvider.tileWidth,
+    tileHeight: osmTileProvider.tileHeight,
+    onClick: (coordinate: Coordinate, point: Point) => console.log('click', { coordinate, point }),
+    onDoubleClick: (coordinate: Coordinate, point: Point) => {
+      setZoom(zoom + 1)
+      setCenter(coordinate)
+    },
   })
 
   return (
-    <Map center={center} zoom={zoom} width="1000px" height="600px" ref={ref}>
-      <TileLayer />
+    <Map center={center} zoom={zoom} tileProvider={osmTileProvider} width="1000px" height="600px" ref={ref}>
       <OverlayLayer>
-        <Marker
-          coordinate={GREENWICH_OBSERVATORY}
-          render={point => <SVGPin point={point} />}
-        />
-        <Marker
-          coordinate={EMPIRE_STATE_BUILDING}
-          render={point => <SVGPin point={point} />}
-        />
+        <Marker coordinate={GREENWICH_OBSERVATORY} render={point => <SVGPin point={point} />} />
+        <Marker coordinate={EMPIRE_STATE_BUILDING} render={point => <SVGPin point={point} />} />
         <ZoomButton point={{ x: 10, y: 10 }} onChange={zoom => setZoom(zoom)} />
       </OverlayLayer>
       <AttributionLayer />

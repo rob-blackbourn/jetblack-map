@@ -2,7 +2,7 @@ import React from 'react'
 
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { Coordinate, Map, Marker, OverlayLayer, SVGPin, TileLayer } from '..'
+import { Coordinate, Map, Marker, OverlayLayer, SVGPin } from '..'
 
 export default {
   /* 👇 The title prop is optional.
@@ -26,16 +26,9 @@ const BUCKINGHAM_PALACE: Coordinate = {
 const Template: ComponentStory<typeof Map> = args => {
   return (
     <Map {...args}>
-      <TileLayer />
       <OverlayLayer>
-        <Marker
-          coordinate={GREENWICH_OBSERVATORY}
-          render={point => <SVGPin point={point} />}
-        />
-        <Marker
-          coordinate={BUCKINGHAM_PALACE}
-          render={point => <SVGPin point={point} size={1.25} />}
-        />
+        <Marker coordinate={GREENWICH_OBSERVATORY} render={point => <SVGPin point={point} />} />
+        <Marker coordinate={BUCKINGHAM_PALACE} render={point => <SVGPin point={point} size={1.25} />} />
       </OverlayLayer>
     </Map>
   )
