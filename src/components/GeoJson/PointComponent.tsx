@@ -30,30 +30,15 @@ export interface PointComponentProps {
 /**
  * Render a GeoJSON Point.
  */
-export default function PointComponent({
-  point,
-  ...props
-}: PointComponentProps & SVGProps<SVGCircleElement>) {
+export default function PointComponent({ point, ...props }: PointComponentProps & SVGProps<SVGCircleElement>) {
   const {
     center,
     zoom,
     bounds: { width, height },
+    tileProvider: { tileWidth, tileHeight },
   } = useContext(MapContext)
 
-  const screenPoint = geoJsonPointToScreenPoint(
-    point.coordinates,
-    center,
-    zoom,
-    width,
-    height
-  )
+  const screenPoint = geoJsonPointToScreenPoint(point.coordinates, center, zoom, width, height, tileWidth, tileHeight)
 
-  return (
-    <circle
-      className={classNames.point}
-      cx={screenPoint.x}
-      cy={screenPoint.y}
-      {...props}
-    />
-  )
+  return <circle className={classNames.point} cx={screenPoint.x} cy={screenPoint.y} {...props} />
 }

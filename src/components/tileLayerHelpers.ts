@@ -1,4 +1,4 @@
-import { Coordinate, Point, ScaleInfo, TileProvider } from '../types'
+import { Coordinate, Point, ScaleInfo, TileUrlProvider } from '../types'
 
 import { calcScaleInfo, coordinateToTilePoint } from '../tileMath'
 import { ImageTileProps } from './ImageTile'
@@ -13,18 +13,16 @@ export function calcTileInfo(
   center: Coordinate,
   zoom: number,
   width: number,
-  height: number
+  height: number,
+  tileWidth: number,
+  tileHeight: number
 ): TileInfo {
-  const { roundedZoom, scale, scaleWidth, scaleHeight } = calcScaleInfo(
-    zoom,
-    width,
-    height
-  )
+  const { roundedZoom, scale, scaleWidth, scaleHeight } = calcScaleInfo(zoom, width, height)
 
   const tileCenter = coordinateToTilePoint(center, roundedZoom)
 
-  const halfWidth = scaleWidth / 2 / 256
-  const halfHeight = scaleHeight / 2 / 256
+  const halfWidth = scaleWidth / 2 / tileWidth
+  const halfHeight = scaleHeight / 2 / tileHeight
 
   const tileMin = {
     x: Math.floor(tileCenter.x - halfWidth),
@@ -50,7 +48,9 @@ export function calcImageTileProps(
   tileMin: Point,
   tileMax: Point,
   roundedZoom: number,
-  tileProvider: TileProvider
+  makeUrl: TileUrlProvider,
+  tileWidth: number,
+  tileHeight: number
 ): Array<ImageTileProps & { key: string }> {
   const maxTiles = 2 ** roundedZoom
 
@@ -76,11 +76,11 @@ export function calcImageTileProps(
 
       imageTileProps.push({
         key: `${x}-${y}-${roundedZoom}`,
-        url: tileProvider.makeUrl(tileX, y, roundedZoom),
-        left: (x - tileMin.x) * 256,
-        top: (y - tileMin.y) * 256,
-        width: 256,
-        height: 256,
+        url: makeUrl(tileX, y, roundedZoom),
+        left: (x - tileMin.x) * tileWidth,
+        top: (y - tileMin.y) * tileHeight,
+        width: tileWidth,
+        height: tileHeight,
       })
     }
   }

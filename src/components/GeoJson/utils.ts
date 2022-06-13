@@ -12,8 +12,10 @@ export const geoJsonPointToScreenPoint = (
   position: Position,
   center: Coordinate,
   zoom: number,
-  width: number,
-  height: number
+  screenWidth: number,
+  screenHeight: number,
+  tileWidth: number,
+  tileHeight: number
 ): Point =>
   coordinateToScreenPoint(
     {
@@ -22,6 +24,8 @@ export const geoJsonPointToScreenPoint = (
     },
     center,
     zoom,
-    width,
-    height
+    screenWidth,
+    screenHeight,
+    tileWidth,
+    tileHeight
   )

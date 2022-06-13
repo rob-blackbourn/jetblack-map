@@ -10,8 +10,7 @@ import { Coordinate, Point, ScaleInfo } from './types'
  * @param zoom The zoom level
  * @returns The x coordinate in the tile coordinate system
  */
-const lng2tile = (lon: number, zoom: number): number =>
-  ((lon + 180) / 360) * 2 ** zoom
+const lng2tile = (lon: number, zoom: number): number => ((lon + 180) / 360) * 2 ** zoom
 
 /**
  * Calculate the y coordinate from a latitude in the tile coordinate system.
@@ -21,13 +20,7 @@ const lng2tile = (lon: number, zoom: number): number =>
  * @returns The y coordinate in the tile coordinate systsem
  */
 const lat2tile = (lat: number, zoom: number): number =>
-  ((1 -
-    Math.log(
-      Math.tan((lat * Math.PI) / 180) + 1 / Math.cos((lat * Math.PI) / 180)
-    ) /
-      Math.PI) /
-    2) *
-  2 ** zoom
+  ((1 - Math.log(Math.tan((lat * Math.PI) / 180) + 1 / Math.cos((lat * Math.PI) / 180)) / Math.PI) / 2) * 2 ** zoom
 
 /**
  * Calculate the longitude from an x coordinate in the tile coordinate system.
@@ -60,8 +53,7 @@ function tile2lat(y: number, zoom: number): number {
  * @param max The maximum allowable value
  * @returns The value bounded by the constraints
  */
-export const boundValue = (min: number, value: number, max: number): number =>
-  Math.max(min, Math.min(value, max))
+export const boundValue = (min: number, value: number, max: number): number => Math.max(min, Math.min(value, max))
 
 /**
  * Convert a latitude and longitude to an x and y point in the tile coordinate system.
@@ -70,10 +62,7 @@ export const boundValue = (min: number, value: number, max: number): number =>
  * @param zoom The zoom level
  * @returns The point in the tile coordinate system
  */
-export const coordinateToTilePoint = (
-  coordinate: Coordinate,
-  zoom: number
-): Point => ({
+export const coordinateToTilePoint = (coordinate: Coordinate, zoom: number): Point => ({
   x: lng2tile(coordinate.longitude, zoom),
   y: lat2tile(coordinate.latitude, zoom),
 })
@@ -85,10 +74,7 @@ export const coordinateToTilePoint = (
  * @param zoom The zoom level
  * @returns The coordinate as a latitude and longitude
  */
-export const tilePointToCoordinate = (
-  tilePoint: Point,
-  zoom: number
-): Coordinate => ({
+export const tilePointToCoordinate = (tilePoint: Point, zoom: number): Coordinate => ({
   latitude: tile2lat(tilePoint.y, zoom),
   longitude: tile2lng(tilePoint.x, zoom),
 })
@@ -105,11 +91,7 @@ export const tilePointToCoordinate = (
  * @param screenHeight The screen height
  * @returns An object containing the rounded zoom, the scale, the scale width and height.
  */
-export function calcScaleInfo(
-  zoom: number,
-  screenWidth: number,
-  screenHeight: number
-): ScaleInfo {
+export function calcScaleInfo(zoom: number, screenWidth: number, screenHeight: number): ScaleInfo {
   // The tiles are provided for discrete (integer) zoom values.
   // We achieve smooth scrolling by scaling the image.
   const roundedZoom = Math.round(zoom)
@@ -142,12 +124,14 @@ export function screenPointToCoordinate(
   center: Coordinate,
   zoom: number,
   screenWidth: number,
-  screenHeight: number
+  screenHeight: number,
+  tileWidth: number,
+  tileHeight: number
 ): Coordinate {
   // Calculate the distance from the screen center and convert to tile units.
   const tilePoint = {
-    x: (screenPoint.x - screenWidth / 2) / 256,
-    y: (screenPoint.y - screenHeight / 2) / 256,
+    x: (screenPoint.x - screenWidth / 2) / tileWidth,
+    y: (screenPoint.y - screenHeight / 2) / tileHeight,
   }
 
   // Find the current center for the current zoom in tile units and add the delta.
@@ -187,14 +171,16 @@ export function coordinateToScreenPoint(
   center: Coordinate,
   zoom: number,
   screenWidth: number,
-  screenHeight: number
+  screenHeight: number,
+  tileWidth: number,
+  tileHeight: number
 ): Point {
   const centerTilePoint = coordinateToTilePoint(center, zoom)
 
   const coordinateTilePoint = coordinateToTilePoint(coordinate, zoom)
 
   return {
-    x: (coordinateTilePoint.x - centerTilePoint.x) * 256 + screenWidth / 2,
-    y: (coordinateTilePoint.y - centerTilePoint.y) * 256 + screenHeight / 2,
+    x: (coordinateTilePoint.x - centerTilePoint.x) * tileWidth + screenWidth / 2,
+    y: (coordinateTilePoint.y - centerTilePoint.y) * tileHeight + screenHeight / 2,
   }
 }

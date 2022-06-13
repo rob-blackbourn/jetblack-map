@@ -2,7 +2,7 @@ import React from 'react'
 
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { Map, TileLayer } from '..'
+import { Map } from '..'
 
 export default {
   /* 👇 The title prop is optional.
@@ -13,11 +13,7 @@ export default {
   component: Map,
 } as ComponentMeta<typeof Map>
 
-const Template: ComponentStory<typeof Map> = args => (
-  <Map {...args}>
-    <TileLayer />
-  </Map>
-)
+const Template: ComponentStory<typeof Map> = args => <Map {...args} />
 
 export const MinimumConfig = Template.bind({})
 

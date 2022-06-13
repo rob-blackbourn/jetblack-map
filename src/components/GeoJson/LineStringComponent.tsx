@@ -38,14 +38,13 @@ export default function LineStringComponent({
     center,
     zoom,
     bounds: { width, height },
+    tileProvider: { tileWidth, tileHeight },
   } = useContext(MapContext)
 
   const path =
     'M' +
     lineString.coordinates
-      .map(point =>
-        geoJsonPointToScreenPoint(point, center, zoom, width, height)
-      )
+      .map(point => geoJsonPointToScreenPoint(point, center, zoom, width, height, tileWidth, tileHeight))
       .reduce((a, point) => {
         return a + ' ' + point.x + ' ' + point.y
       }, '')

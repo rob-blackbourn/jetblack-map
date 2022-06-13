@@ -15,13 +15,7 @@ const classNames = {
     CLASS_NAMES.clickable,
     'tile-layer',
   ].join(' '),
-  tile: [
-    CLASS_NAMES.primary,
-    CLASS_NAMES.draggable,
-    CLASS_NAMES.zoomable,
-    CLASS_NAMES.clickable,
-    'tile',
-  ].join(' '),
+  tile: [CLASS_NAMES.primary, CLASS_NAMES.draggable, CLASS_NAMES.zoomable, CLASS_NAMES.clickable, 'tile'].join(' '),
 }
 
 /**
@@ -37,29 +31,23 @@ export default function TileLayer() {
     bounds: { width, height },
     center,
     zoom,
-    tileProvider,
+    tileProvider: { makeUrl, tileWidth, tileHeight },
   } = useContext(MapContext)
 
-  const {
-    tileMin,
-    tileMax,
-    tileCenter,
-    roundedZoom,
-    scaleWidth,
-    scaleHeight,
-    scale,
-  } = calcTileInfo(center, zoom, width, height)
-
-  const imageTileProps = calcImageTileProps(
-    tileMin,
-    tileMax,
-    roundedZoom,
-    tileProvider
+  const { tileMin, tileMax, tileCenter, roundedZoom, scaleWidth, scaleHeight, scale } = calcTileInfo(
+    center,
+    zoom,
+    width,
+    height,
+    tileWidth,
+    tileHeight
   )
 
+  const imageTileProps = calcImageTileProps(tileMin, tileMax, roundedZoom, makeUrl, tileWidth, tileHeight)
+
   // Convert the top-left from tile coordinates to screen coordinates.
-  const left = -((tileCenter.x - tileMin.x) * 256 - scaleWidth / 2)
-  const top = -((tileCenter.y - tileMin.y) * 256 - scaleHeight / 2)
+  const left = -((tileCenter.x - tileMin.x) * tileWidth - scaleWidth / 2)
+  const top = -((tileCenter.y - tileMin.y) * tileHeight - scaleHeight / 2)
 
   return (
     <div
@@ -80,8 +68,8 @@ export default function TileLayer() {
         className={classNames.tile}
         style={{
           position: 'absolute',
-          width: (tileMax.x - tileMin.x + 1) * 256,
-          height: (tileMax.y - tileMin.y + 1) * 256,
+          width: (tileMax.x - tileMin.x + 1) * tileWidth,
+          height: (tileMax.y - tileMin.y + 1) * tileHeight,
           willChange: 'transform',
           transform: `translate(${left}px, ${top}px)`,
         }}

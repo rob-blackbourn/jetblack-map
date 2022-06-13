@@ -2,19 +2,11 @@ import React, { SVGProps, useEffect, useRef, useState } from 'react'
 
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { Feature, FeatureCollection } from 'geojson'
+import { Feature } from 'geojson'
 
-import {
-  Coordinate,
-  GeoJSONLayer,
-  Map,
-  Point,
-  TileLayer,
-  useClick,
-  useMouseEvents,
-  useZoomWheel,
-} from '..'
+import { Coordinate, GeoJSONLayer, Map, Point, useClick, useMouseEvents, useZoomWheel } from '..'
 import { FeatureState } from '..'
+import { osmTileProvider } from '../components/TileProviders'
 
 export default {
   /* 👇 The title prop is optional.
@@ -40,38 +32,30 @@ const Template: ComponentStory<typeof Map> = args => {
     ref,
     zoom,
     defaultCenter: GREENWICH_OBSERVATORY,
+    tileWidth: osmTileProvider.tileWidth,
+    tileHeight: osmTileProvider.tileHeight,
   })
-
-  const handleClick = (coordinate: Coordinate, point: Point) => {
-    console.log('click', { coordinate, point })
-  }
-
-  const handleDoubleClick = (coordinate: Coordinate, point: Point) => {
-    console.log('doubleClick', { coordinate, point })
-    setCenter(coordinate)
-    setZoom(zoom + 1)
-  }
 
   useClick({
     ref,
     center,
     zoom,
-    onClick: handleClick,
-    onDoubleClick: handleDoubleClick,
+    tileWidth: osmTileProvider.tileWidth,
+    tileHeight: osmTileProvider.tileHeight,
+    onClick: (coordinate: Coordinate, point: Point) => console.log('click', { coordinate, point }),
+    onDoubleClick: (coordinate: Coordinate, point: Point) => {
+      setCenter(coordinate)
+      setZoom(zoom + 1)
+    },
   })
 
   useEffect(() => {
-    fetch(
-      'https://raw.githubusercontent.com/isellsoap/deutschlandGeoJSON/main/2_bundeslaender/4_niedrig.geo.json'
-    )
+    fetch('https://raw.githubusercontent.com/isellsoap/deutschlandGeoJSON/main/2_bundeslaender/4_niedrig.geo.json')
       .then(response => response.json())
       .then(data => setData(data))
   }, [])
 
-  const handleRequestFeatureStyle = (
-    feature: Feature,
-    state: FeatureState
-  ): SVGProps<SVGAElement> | null => {
+  const handleRequestFeatureStyle = (feature: Feature, state: FeatureState): SVGProps<SVGAElement> | null => {
     if (state.mouseOver) {
       return {
         fill: '#93c0d099',
@@ -135,13 +119,8 @@ const Template: ComponentStory<typeof Map> = args => {
   }
 
   return (
-    <Map ref={ref} center={center} zoom={zoom} {...args}>
-      <TileLayer />
-      <GeoJSONLayer
-        data={data}
-        requestFeatureStyle={handleRequestFeatureStyle}
-        renderPopup={handleRenderFeature}
-      />
+    <Map ref={ref} center={center} zoom={zoom} tileProvider={osmTileProvider} {...args}>
+      <GeoJSONLayer data={data} requestFeatureStyle={handleRequestFeatureStyle} renderPopup={handleRenderFeature} />
     </Map>
   )
 }
