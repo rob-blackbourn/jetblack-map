@@ -16,7 +16,7 @@ The prop type for the [[`useZoomWheel`]] hook.
 
 #### Defined in
 
-[hooks/useZoomWheel.ts:11](https://github.com/rob-blackbourn/jetblack-map/blob/74a170a/src/hooks/useZoomWheel.ts#L11)
+[hooks/useZoomWheel.ts:11](https://github.com/rob-blackbourn/jetblack-map/blob/d109576/src/hooks/useZoomWheel.ts#L11)
 
 ___
 
@@ -26,7 +26,7 @@ ___
 
 #### Defined in
 
-[hooks/useZoomWheel.ts:13](https://github.com/rob-blackbourn/jetblack-map/blob/74a170a/src/hooks/useZoomWheel.ts#L13)
+[hooks/useZoomWheel.ts:13](https://github.com/rob-blackbourn/jetblack-map/blob/d109576/src/hooks/useZoomWheel.ts#L13)
 
 ___
 
@@ -36,7 +36,7 @@ ___
 
 #### Defined in
 
-[hooks/useZoomWheel.ts:12](https://github.com/rob-blackbourn/jetblack-map/blob/74a170a/src/hooks/useZoomWheel.ts#L12)
+[hooks/useZoomWheel.ts:12](https://github.com/rob-blackbourn/jetblack-map/blob/d109576/src/hooks/useZoomWheel.ts#L12)
 
 ___
 
@@ -46,7 +46,7 @@ ___
 
 #### Defined in
 
-[hooks/useZoomWheel.ts:15](https://github.com/rob-blackbourn/jetblack-map/blob/74a170a/src/hooks/useZoomWheel.ts#L15)
+[hooks/useZoomWheel.ts:15](https://github.com/rob-blackbourn/jetblack-map/blob/d109576/src/hooks/useZoomWheel.ts#L15)
 
 ___
 
@@ -56,4 +56,4 @@ ___
 
 #### Defined in
 
-[hooks/useZoomWheel.ts:14](https://github.com/rob-blackbourn/jetblack-map/blob/74a170a/src/hooks/useZoomWheel.ts#L14)
+[hooks/useZoomWheel.ts:14](https://github.com/rob-blackbourn/jetblack-map/blob/d109576/src/hooks/useZoomWheel.ts#L14)
