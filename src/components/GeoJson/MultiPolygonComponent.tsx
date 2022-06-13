@@ -38,6 +38,7 @@ export default function MultiPolygonComponent({
     center,
     zoom,
     bounds: { width, height },
+    tileProvider: { tileWidth, tileHeight },
   } = useContext(MapContext)
 
   return (
@@ -49,21 +50,14 @@ export default function MultiPolygonComponent({
               a +
               ' M' +
               part
-                .map(point =>
-                  geoJsonPointToScreenPoint(point, center, zoom, width, height)
-                )
+                .map(point => geoJsonPointToScreenPoint(point, center, zoom, width, height, tileWidth, tileHeight))
                 .reduce((a, pixel) => a + ' ' + pixel.x + ' ' + pixel.y, '') +
               'Z',
             ''
           )
         )
         .map((d, i) => (
-          <path
-            className={classNames.multiPolygon}
-            key={`multi-polygon-${i}`}
-            d={d}
-            {...props}
-          />
+          <path className={classNames.multiPolygon} key={`multi-polygon-${i}`} d={d} {...props} />
         ))}
     </>
   )

@@ -35,20 +35,15 @@ export default function Marker({ coordinate, render }: MarkerProps) {
     center,
     zoom,
     bounds: { width, height },
+    tileProvider: { tileWidth, tileHeight },
   } = useContext(MapContext)
 
   // Get the screen coordinate of the point.
   const { roundedZoom, scale, scaleWidth } = calcScaleInfo(zoom, width, height)
-  const markerPoint = coordinateToScreenPoint(
-    coordinate,
-    center,
-    zoom,
-    width,
-    height
-  )
+  const markerPoint = coordinateToScreenPoint(coordinate, center, zoom, width, height, tileWidth, tileHeight)
 
   // If the screen is zoomed out the coordinate may appear many times as the display will wrap horizontally.
-  const markerPoints = createPoints(markerPoint, roundedZoom, scale, scaleWidth)
+  const markerPoints = createPoints(markerPoint, roundedZoom, scale, scaleWidth, tileWidth)
 
   return (
     <>

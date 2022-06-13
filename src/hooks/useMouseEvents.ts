@@ -13,6 +13,8 @@ export interface useMouseEventsProps {
   ref: React.RefObject<HTMLDivElement>
   defaultCenter?: Coordinate
   zoom: number
+  tileWidth: number
+  tileHeight: number
 }
 
 interface MouseState {
@@ -27,6 +29,8 @@ export default function useMouseEvents({
   ref,
   defaultCenter = LOCATIONS.greenwichObservatory,
   zoom,
+  tileWidth,
+  tileHeight,
 }: useMouseEventsProps): [Coordinate, (center: Coordinate) => void] {
   const [center, setCenter] = useState(defaultCenter)
   const mouseState = useRef<MouseState>({
@@ -65,19 +69,16 @@ export default function useMouseEvents({
       if (mouseState.current.mouseDown) {
         const mousePoint: Point = getRelativeMousePoint(event, ref.current)
         const tileDelta: Point = {
-          x: (mouseState.current.lastPoint.x - mousePoint.x) / 256,
-          y: (mouseState.current.lastPoint.y - mousePoint.y) / 256,
+          x: (mouseState.current.lastPoint.x - mousePoint.x) / tileWidth,
+          y: (mouseState.current.lastPoint.y - mousePoint.y) / tileHeight,
         }
         const tile = coordinateToTilePoint(center, zoom)
-        const newCenter = tilePointToCoordinate(
-          { x: tile.x + tileDelta.x, y: tile.y + tileDelta.y },
-          zoom
-        )
+        const newCenter = tilePointToCoordinate({ x: tile.x + tileDelta.x, y: tile.y + tileDelta.y }, zoom)
         mouseState.current.lastPoint = mousePoint
         setCenter(newCenter)
       }
     },
-    [ref, center, zoom, setCenter]
+    [ref, center, zoom, setCenter, tileWidth, tileHeight]
   )
 
   useEffect(() => {

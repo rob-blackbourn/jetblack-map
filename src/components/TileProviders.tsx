@@ -12,6 +12,8 @@ export const osmTileProvider: TileProvider = {
   },
   minZoom: 0,
   maxZoom: 19,
+  tileWidth: 256,
+  tileHeight: 256,
   attribution: (
     <span>
       &copy;&nbsp;
@@ -39,18 +41,27 @@ export const osmTileProvider: TileProvider = {
  *
  * @category Tile Provider
  */
-export function stamenTileProviderFactory(
-  map: 'toner' | 'terrain'
-): TileProvider {
+export function stamenTileProviderFactory(map: 'toner' | 'terrain'): TileProvider {
   const subdomains = ['a', 'b', 'c', 'd']
-  const zooms: { [map: string]: { minZoom: number; maxZoom: number } } = {
+  const zooms: {
+    [map: string]: {
+      minZoom: number
+      maxZoom: number
+      tileWidth: number
+      tileHeight: number
+    }
+  } = {
     toner: {
       minZoom: 0,
       maxZoom: 20,
+      tileWidth: 256,
+      tileHeight: 256,
     },
     terrain: {
       minZoom: 0,
       maxZoom: 18,
+      tileWidth: 256,
+      tileHeight: 256,
     },
   }
 
@@ -68,27 +79,15 @@ export function stamenTileProviderFactory(
           Stamen Design
         </a>
         , under{' '}
-        <a
-          href="http://creativecommons.org/licenses/by/3.0"
-          target="_blank"
-          rel="noreferrer noopener"
-        >
+        <a href="http://creativecommons.org/licenses/by/3.0" target="_blank" rel="noreferrer noopener">
           CC BY 3.0
         </a>
         . Data by{' '}
-        <a
-          href="http://openstreetmap.org"
-          target="_blank"
-          rel="noreferrer noopener"
-        >
+        <a href="http://openstreetmap.org" target="_blank" rel="noreferrer noopener">
           OpenStreetMap
         </a>
         , under{' '}
-        <a
-          href="http://www.openstreetmap.org/copyright"
-          target="_blank"
-          rel="noreferrer noopener"
-        >
+        <a href="http://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer noopener">
           ODbL
         </a>
         .

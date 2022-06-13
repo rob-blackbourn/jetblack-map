@@ -2,15 +2,7 @@ import React, { useRef } from 'react'
 
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import {
-  Coordinate,
-  Map,
-  Point,
-  TileLayer,
-  useClick,
-  useMouseEvents,
-  useZoomWheel,
-} from '..'
+import { Coordinate, Map, Point, TileLayer, useClick, useMouseEvents, useZoomWheel } from '..'
 
 export default {
   title: 'Controlled Map',
@@ -24,24 +16,21 @@ const Template: ComponentStory<typeof Map> = args => {
   const [center, setCenter] = useMouseEvents({
     ref,
     zoom,
+    tileWidth: 256,
+    tileHeight: 256,
   })
-
-  const handleClick = (coordinate: Coordinate, point: Point) => {
-    console.log('click', { coordinate, point })
-  }
-
-  const handleDoubleClick = (coordinate: Coordinate, point: Point) => {
-    console.log('doubleClick', { coordinate, point })
-    setCenter(coordinate)
-    setZoom(zoom + 1)
-  }
 
   useClick({
     ref,
     center,
     zoom,
-    onClick: handleClick,
-    onDoubleClick: handleDoubleClick,
+    tileWidth: 256,
+    tileHeight: 256,
+    onClick: (coordinate: Coordinate, point: Point) => console.log('click', { coordinate, point }),
+    onDoubleClick: (coordinate: Coordinate, point: Point) => {
+      setCenter(coordinate)
+      setZoom(zoom + 1)
+    },
   })
 
   return (

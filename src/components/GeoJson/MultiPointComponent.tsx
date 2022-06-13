@@ -38,14 +38,13 @@ export default function MultiPointComponent({
     center,
     zoom,
     bounds: { width, height },
+    tileProvider: { tileWidth, tileHeight },
   } = useContext(MapContext)
 
   return (
     <>
       {multiPoint.coordinates
-        .map(point =>
-          geoJsonPointToScreenPoint(point, center, zoom, width, height)
-        )
+        .map(point => geoJsonPointToScreenPoint(point, center, zoom, width, height, tileWidth, tileHeight))
         .map((screenPoint, i) => (
           <circle
             className={classNames.multiPoint}

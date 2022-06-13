@@ -73,6 +73,10 @@ export interface TileProvider {
   minZoom: number
   /** The maximum zoom level */
   maxZoom: number
+  /** The width of a tile */
+  tileWidth: number
+  /** The height of a tile */
+  tileHeight: number
   /** The attribution component. */
   attribution: React.ReactElement
 }

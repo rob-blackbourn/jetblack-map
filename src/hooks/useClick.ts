@@ -16,6 +16,10 @@ export interface useClickProps {
   zoom: number
   /** The time to wait in milliseconds for a double click. */
   delay?: number
+  /** The width of a map tile */
+  tileWidth: number
+  /** The height of a map tile */
+  tileHeight: number
   /** The handler for a single click event. */
   onClick?: (coordinate: Coordinate, point: Point) => void
   /** The handler for a multi click event */
@@ -36,6 +40,8 @@ export default function useClick({
   center,
   zoom,
   delay = 150,
+  tileWidth,
+  tileHeight,
   onClick,
   onDoubleClick,
 }: useClickProps): void {
@@ -94,13 +100,7 @@ export default function useClick({
           // This is a real click. Find the earth coordinate and call
           // the appropriate handler.
           const { width, height } = element.getBoundingClientRect()
-          const coordinate = screenPointToCoordinate(
-            mousePoint,
-            center,
-            zoom,
-            width,
-            height
-          )
+          const coordinate = screenPointToCoordinate(mousePoint, center, zoom, width, height, tileWidth, tileHeight)
 
           if (mouseState.current.clickCount === 1) {
             onClick && onClick(coordinate, mousePoint)
@@ -112,7 +112,7 @@ export default function useClick({
         mouseState.current.clickCount = 0
       }, delay)
     },
-    [ref, zoom, center]
+    [ref, zoom, center, tileWidth, tileHeight]
   )
 
   useEffect(() => {
