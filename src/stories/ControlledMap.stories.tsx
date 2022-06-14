@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { Coordinate, Map, Point, osmTileProvider, useClick, useMouseEvents, useZoomWheel } from '..'
+import { Coordinate, Map, Point, osmTileProvider, useClick, useDrag, useZoom } from '..'
 
 export default {
   title: 'Controlled Map',
@@ -12,8 +12,8 @@ export default {
 const Template: ComponentStory<typeof Map> = args => {
   const ref = useRef<HTMLDivElement>(null)
 
-  const [zoom, setZoom] = useZoomWheel({ ref, defaultZoom: 6 })
-  const [center, setCenter] = useMouseEvents({
+  const [zoom, setZoom] = useZoom({ ref, defaultZoom: 6 })
+  const [center, setCenter] = useDrag({
     ref,
     zoom,
     tileWidth: osmTileProvider.tileWidth,
@@ -33,7 +33,16 @@ const Template: ComponentStory<typeof Map> = args => {
     },
   })
 
-  return <Map center={center} zoom={zoom} width="1000px" height="600px" ref={ref} tileProvider={osmTileProvider} />
+  return (
+    <Map
+      center={center}
+      zoom={zoom}
+      width="1000px"
+      height="600px"
+      ref={ref}
+      tileProvider={osmTileProvider}
+    />
+  )
 }
 export const ControlledMap = Template.bind({})
 

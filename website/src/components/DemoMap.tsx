@@ -14,8 +14,8 @@ import {
   SVGPin,
   ZoomButton,
   useClick,
-  useMouseEvents,
-  useZoomWheel,
+  useDrag,
+  useZoom,
 } from '@jetblack/map'
 
 const places: { [name: string]: Coordinate } = {
@@ -32,8 +32,8 @@ const places: { [name: string]: Coordinate } = {
 export default function FrontPageMap() {
   const ref = useRef<HTMLDivElement>(null)
 
-  const [zoom, setZoom] = useZoomWheel({ ref, defaultZoom: 4 })
-  const [center, setCenter] = useMouseEvents({
+  const [zoom, setZoom] = useZoom({ ref, defaultZoom: 4 })
+  const [center, setCenter] = useDrag({
     ref,
     defaultCenter: places.greenwichObservatory,
     zoom,

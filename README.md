@@ -122,8 +122,8 @@ import {
   Point,
   SVGPin,
   useClick,
-  useMouseEvents,
-  useZoomWheel,
+  useDrag,
+  useZoom,
 } from '@jetblack/map'
 
 const GREENWICH_OBSERVATORY: Coordinate = {
@@ -139,8 +139,8 @@ const EMPIRE_STATE_BUILDING: Coordinate = {
 export default function App() {
   const ref = useRef<HTMLDivElement>(null)
 
-  const [zoom, setZoom] = useZoomWheel({ ref, defaultZoom: 6 })
-  const [center, setCenter] = useMouseEvents({
+  const [zoom, setZoom] = useZoom({ ref, defaultZoom: 6 })
+  const [center, setCenter] = useDrag({
     ref,
     defaultCenter: GREENWICH_OBSERVATORY,
     zoom,

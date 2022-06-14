@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { AttributionLayer, Map, Coordinate, Point, useClick, useMouseEvents, useZoomWheel } from '..'
+import { AttributionLayer, Map, Coordinate, Point, useClick, useDrag, useZoom } from '..'
 import { TileProvider } from '../types'
 
 export default {
@@ -16,8 +16,8 @@ const Template: ComponentStory<typeof Map> = args => {
 
   const { tileWidth, tileHeight } = tileProvider
 
-  const [zoom, setZoom] = useZoomWheel({ ref, defaultZoom: 6 })
-  const [center, setCenter] = useMouseEvents({
+  const [zoom, setZoom] = useZoom({ ref, defaultZoom: 6 })
+  const [center, setCenter] = useDrag({
     ref,
     zoom,
     tileWidth,
@@ -41,13 +41,20 @@ const Template: ComponentStory<typeof Map> = args => {
     <div>
       <p>
         Tiles from MapTiler require an API key stored in the environment variable{' '}
-        <code>STORYBOOK_MAP_TILER_API_KEY</code>. This can be put in a <code>.env</code> file in the root of the
-        project.
+        <code>STORYBOOK_MAP_TILER_API_KEY</code>. This can be put in a <code>.env</code> file in the
+        root of the project.
       </p>
 
       <pre>STORYBOOK_MAP_TILER_API_KEY=your_api_key</pre>
 
-      <Map ref={ref} width="600px" height="400px" center={center} zoom={zoom} tileProvider={tileProvider}>
+      <Map
+        ref={ref}
+        width="600px"
+        height="400px"
+        center={center}
+        zoom={zoom}
+        tileProvider={tileProvider}
+      >
         <AttributionLayer />
       </Map>
     </div>

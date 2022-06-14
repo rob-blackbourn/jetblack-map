@@ -36,15 +36,13 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/rob-blackbourn/jetblack-map/tree/main/website/',
+          editUrl: 'https://github.com/rob-blackbourn/jetblack-map/tree/main/website/',
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/rob-blackbourn/jetblack-map/tree/main/website/',
+          editUrl: 'https://github.com/rob-blackbourn/jetblack-map/tree/main/website/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -133,8 +131,8 @@ const config = {
         entryPoints: ['../src/index.ts'],
         tsconfig: '../tsconfig.json',
         sidebar: {
-          categoryLabel: 'API',
-          position: 4,
+          categoryLabel: 'Reference',
+          position: 5,
           fullNames: true,
         },
       },
