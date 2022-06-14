@@ -7,9 +7,9 @@ import { LOCATIONS } from '../constants'
 import { getRelativeMousePoint, isDraggable } from './utils'
 
 /**
- * The prop type for the [[`useMouseEvents`]] hook.
+ * The prop type for the [[`useDrag`]] hook.
  */
-export interface useMouseEventsProps {
+export interface useDragProps {
   ref: React.RefObject<HTMLDivElement>
   defaultCenter?: Coordinate
   zoom: number
@@ -25,13 +25,13 @@ interface MouseState {
 /**
  * A hook for mouse events.
  */
-export default function useMouseEvents({
+export default function useDrag({
   ref,
   defaultCenter = LOCATIONS.greenwichObservatory,
   zoom,
   tileWidth,
   tileHeight,
-}: useMouseEventsProps): [Coordinate, (center: Coordinate) => void] {
+}: useDragProps): [Coordinate, (center: Coordinate) => void] {
   const [center, setCenter] = useState(defaultCenter)
   const mouseState = useRef<MouseState>({
     mouseDown: false,
@@ -73,7 +73,10 @@ export default function useMouseEvents({
           y: (mouseState.current.lastPoint.y - mousePoint.y) / tileHeight,
         }
         const tile = coordinateToTilePoint(center, zoom)
-        const newCenter = tilePointToCoordinate({ x: tile.x + tileDelta.x, y: tile.y + tileDelta.y }, zoom)
+        const newCenter = tilePointToCoordinate(
+          { x: tile.x + tileDelta.x, y: tile.y + tileDelta.y },
+          zoom
+        )
         mouseState.current.lastPoint = mousePoint
         setCenter(newCenter)
       }

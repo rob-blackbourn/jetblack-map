@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 
 import { Feature, FeatureCollection } from 'geojson'
 
-import { Coordinate, GeoJSONLayer, Map, osmTileProvider, useMouseEvents, useZoomWheel } from '..'
+import { Coordinate, GeoJSONLayer, Map, osmTileProvider, useDrag, useZoom } from '..'
 
 export default {
   /* 👇 The title prop is optional.
@@ -105,8 +105,8 @@ const Template: ComponentStory<typeof Map> = args => {
 
   const ref = useRef<HTMLDivElement>(null)
 
-  const [zoom, setZoom] = useZoomWheel({ ref, defaultZoom: 6 })
-  const [center, setCenter] = useMouseEvents({
+  const [zoom, setZoom] = useZoom({ ref, defaultZoom: 6 })
+  const [center, setCenter] = useDrag({
     ref,
     zoom,
     defaultCenter: GREENWICH_OBSERVATORY,

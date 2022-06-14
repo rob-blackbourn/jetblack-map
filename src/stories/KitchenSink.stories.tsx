@@ -12,8 +12,8 @@ import {
   SVGPin,
   ZoomButton,
   useClick,
-  useMouseEvents,
-  useZoomWheel,
+  useDrag,
+  useZoom,
 } from '..'
 import { osmTileProvider } from '../components/TileProviders'
 
@@ -39,8 +39,8 @@ const EMPIRE_STATE_BUILDING: Coordinate = {
 const Template: ComponentStory<typeof Map> = args => {
   const ref = useRef<HTMLDivElement>(null)
 
-  const [zoom, setZoom] = useZoomWheel({ ref, defaultZoom: 6 })
-  const [center, setCenter] = useMouseEvents({
+  const [zoom, setZoom] = useZoom({ ref, defaultZoom: 6 })
+  const [center, setCenter] = useDrag({
     ref,
     zoom,
     tileWidth: osmTileProvider.tileWidth,
@@ -61,7 +61,14 @@ const Template: ComponentStory<typeof Map> = args => {
   })
 
   return (
-    <Map center={center} zoom={zoom} tileProvider={osmTileProvider} width="1000px" height="600px" ref={ref}>
+    <Map
+      center={center}
+      zoom={zoom}
+      tileProvider={osmTileProvider}
+      width="1000px"
+      height="600px"
+      ref={ref}
+    >
       <OverlayLayer>
         <Marker coordinate={GREENWICH_OBSERVATORY} render={point => <SVGPin point={point} />} />
         <Marker coordinate={EMPIRE_STATE_BUILDING} render={point => <SVGPin point={point} />} />

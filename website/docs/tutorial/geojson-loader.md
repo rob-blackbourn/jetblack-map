@@ -19,8 +19,8 @@ import {
   GeoJSONLayer,
   Map,
   useClick,
-  useMouseEvents,
-  useZoomWheel,
+  useDrag,
+  useZoom,
 } from '@jetblack/maps'
 
 export default function App() {
@@ -28,8 +28,8 @@ export default function App() {
 
   const ref = useRef(null)
 
-  const [zoom, setZoom] = useZoomWheel({ ref, defaultZoom: 6 })
-  const [center, setCenter] = useMouseEvents({
+  const [zoom, setZoom] = useZoom({ ref, defaultZoom: 6 })
+  const [center, setCenter] = useDrag({
     ref,
     zoom,
     tileWidth: 256,
@@ -106,8 +106,8 @@ import {
   Map,
   Point,
   useClick,
-  useMouseEvents,
-  useZoomWheel,
+  useDrag,
+  useZoom,
 } from '@jetblack/maps'
 
 export default function App() {
@@ -115,8 +115,8 @@ export default function App() {
 
   const ref = useRef<HTMLDivElement>(null)
 
-  const [zoom, setZoom] = useZoomWheel({ ref, defaultZoom: 6 })
-  const [center, setCenter] = useMouseEvents({
+  const [zoom, setZoom] = useZoom({ ref, defaultZoom: 6 })
+  const [center, setCenter] = useDrag({
     ref,
     zoom,
     tileWidth: 256,

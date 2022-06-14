@@ -5,9 +5,9 @@ import { boundValue } from '../tileMath'
 import { isZoomable } from './utils'
 
 /**
- * The prop type for the [[`useZoomWheel`]] hook.
+ * The prop type for the [[`useZoom`]] hook.
  */
-export interface useZoomWheelProps {
+export interface useZoomProps {
   defaultZoom?: number
   minZoom?: number
   maxZoom?: number
@@ -18,13 +18,13 @@ export interface useZoomWheelProps {
 /**
  * A hook to integrate the zoom wheel with a map.
  */
-export default function useZoomWheel({
+export default function useZoom({
   defaultZoom = DEFAULTS.zoom,
   minZoom = 0,
   maxZoom = 19,
   zoomStep = 0.1,
   ref,
-}: useZoomWheelProps): [number, (zoom: number) => void] {
+}: useZoomProps): [number, (zoom: number) => void] {
   const [zoom, setZoom] = useState(defaultZoom)
 
   const ignoreWheelUntil = useRef<number>()
@@ -37,10 +37,7 @@ export default function useZoomWheel({
       }
 
       // Throttle barrier
-      if (
-        ignoreWheelUntil.current &&
-        event.timeStamp < ignoreWheelUntil.current
-      ) {
+      if (ignoreWheelUntil.current && event.timeStamp < ignoreWheelUntil.current) {
         return
       }
 

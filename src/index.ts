@@ -13,8 +13,8 @@ import { osmTileProvider, stamenTileProviderFactory } from './components/TilePro
 import { Bounds, Coordinate, Point } from './types'
 
 import useClick, { useClickProps } from './hooks/useClick'
-import useMouseEvents, { useMouseEventsProps } from './hooks/useMouseEvents'
-import useZoomWheel, { useZoomWheelProps } from './hooks/useZoomWheel'
+import useDrag, { useDragProps } from './hooks/useDrag'
+import useZoom, { useZoomProps } from './hooks/useZoom'
 
 import { CLASS_NAMES } from './constants'
 
@@ -32,8 +32,8 @@ export type {
   Coordinate,
   Point,
   useClickProps,
-  useMouseEventsProps,
-  useZoomWheelProps,
+  useDragProps,
+  useZoomProps,
 }
 
 export {
@@ -52,8 +52,8 @@ export {
   stamenTileProviderFactory,
   // Hooks
   useClick,
-  useMouseEvents,
-  useZoomWheel,
+  useDrag,
+  useZoom,
   // Misc
   CLASS_NAMES,
 }

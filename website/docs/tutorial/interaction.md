@@ -14,8 +14,8 @@ great event hook packages out there.
 
 Three hooks are provided:
 
-* `useMouseEvents`: Handles dragging the map,
-* `useZoomWheel`: Updates the zoom level when the wheel moves.
+* `useDrag`: Handles dragging the map,
+* `useZoom`: Updates the zoom level when the wheel moves.
 * `useClick`: Registers callbacks for single or double clicks on the mouse.
 
 A ref is used to bind the mouse events to the map elements.
@@ -29,17 +29,17 @@ import { useRef } from 'react'
 import {
   Map,
   useClick,
-  useMouseEvents,
-  useZoomWheel,
+  useDrag,
+  useZoom,
 } from '@jetblack/map'
 
 export default function App() {
   // A ref is required to bind events to the map.
   const ref = useRef(null)
 
-  const [zoom, setZoom] = useZoomWheel({ ref, defaultZoom: 6 })
+  const [zoom, setZoom] = useZoom({ ref, defaultZoom: 6 })
 
-  const [center, setCenter] = useMouseEvents({
+  const [center, setCenter] = useDrag({
     ref,
     defaultCenter: { latitude: 51.4768, longitude: -0.0005 },
     zoom,
@@ -64,8 +64,8 @@ export default function App() {
   return (
     <Map
       ref={ref}        // Bind the ref to the map component.
-      center={center}  // The useMouseEvents hook updates the center property.
-      zoom={zoom}      // The useZoomWheel hook updates the zoom property.
+      center={center}  // The useDrag hook updates the center property.
+      zoom={zoom}      // The useZoom hook updates the zoom property.
       width="1000px"
       height="600px"
     />
@@ -84,17 +84,17 @@ import {
   Map,
   Point,
   useClick,
-  useMouseEvents,
-  useZoomWheel,
+  useDrag,
+  useZoom,
 } from '@jetblack/map'
 
 export default function App() {
   // A ref is required to bind events to the map.
   const ref = useRef<HTMLDivElement>(null)
 
-  const [zoom, setZoom] = useZoomWheel({ ref, defaultZoom: 6 })
+  const [zoom, setZoom] = useZoom({ ref, defaultZoom: 6 })
 
-  const [center, setCenter] = useMouseEvents({
+  const [center, setCenter] = useDrag({
     ref,
     defaultCenter: { latitude: 51.4768, longitude: -0.0005 },
     zoom,
@@ -120,8 +120,8 @@ export default function App() {
   return (
     <Map
       ref={ref}        // Bind the ref to the map component.
-      center={center}  // The useMouseEvents hook updates the center property.
-      zoom={zoom}      // The useZoomWheel hook updates the zoom property.
+      center={center}  // The useDrag hook updates the center property.
+      zoom={zoom}      // The useZoom hook updates the zoom property.
       width="1000px"
       height="600px"
     />
