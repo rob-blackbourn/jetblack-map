@@ -10,10 +10,15 @@ import { getRelativeMousePoint, isDraggable } from './utils'
  * The prop type for the [[`useDrag`]] hook.
  */
 export interface useDragProps {
+  /** A reference to the map component */
   ref: React.RefObject<HTMLDivElement>
+  /** An optional initial value for the center of the map */
   defaultCenter?: Coordinate
+  /** The current zoom level */
   zoom: number
+  /** The width of the tiles */
   tileWidth: number
+  /** The height of the tiles */
   tileHeight: number
 }
 

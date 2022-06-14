@@ -8,7 +8,7 @@ import { getRelativeMousePoint, isClickable } from './utils'
  * The prop type for the [[`useClick`]] hook.
  */
 export interface useClickProps {
-  /** A reference to the map container. */
+  /** A reference to the map component. */
   ref: React.RefObject<HTMLDivElement>
   /** The map center. */
   center: Coordinate
@@ -100,7 +100,15 @@ export default function useClick({
           // This is a real click. Find the earth coordinate and call
           // the appropriate handler.
           const { width, height } = element.getBoundingClientRect()
-          const coordinate = screenPointToCoordinate(mousePoint, center, zoom, width, height, tileWidth, tileHeight)
+          const coordinate = screenPointToCoordinate(
+            mousePoint,
+            center,
+            zoom,
+            width,
+            height,
+            tileWidth,
+            tileHeight
+          )
 
           if (mouseState.current.clickCount === 1) {
             onClick && onClick(coordinate, mousePoint)

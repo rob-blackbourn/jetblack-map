@@ -8,22 +8,27 @@ import { isZoomable } from './utils'
  * The prop type for the [[`useZoom`]] hook.
  */
 export interface useZoomProps {
-  defaultZoom?: number
-  minZoom?: number
-  maxZoom?: number
-  zoomStep?: number
+  /** A reference to the map component */
   ref: React.RefObject<HTMLDivElement>
+  /** An optional default zoom level */
+  defaultZoom?: number
+  /** The minimum zoom level */
+  minZoom?: number
+  /** The maximum zoom level */
+  maxZoom?: number
+  /** The incremental value applied to each wheel event to the zoom level */
+  zoomStep?: number
 }
 
 /**
  * A hook to integrate the zoom wheel with a map.
  */
 export default function useZoom({
+  ref,
   defaultZoom = DEFAULTS.zoom,
   minZoom = 0,
   maxZoom = 19,
   zoomStep = 0.1,
-  ref,
 }: useZoomProps): [number, (zoom: number) => void] {
   const [zoom, setZoom] = useState(defaultZoom)
 
