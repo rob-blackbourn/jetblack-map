@@ -77,9 +77,9 @@ export default function useDrag({
           x: (mouseState.current.lastPoint.x - mousePoint.x) / tileWidth,
           y: (mouseState.current.lastPoint.y - mousePoint.y) / tileHeight,
         }
-        const tile = coordinateToTilePoint(center, zoom)
+        const tileCenter = coordinateToTilePoint(center, zoom)
         const newCenter = tilePointToCoordinate(
-          { x: tile.x + tileDelta.x, y: tile.y + tileDelta.y },
+          { x: tileCenter.x + tileDelta.x, y: tileCenter.y + tileDelta.y },
           zoom
         )
         mouseState.current.lastPoint = mousePoint
