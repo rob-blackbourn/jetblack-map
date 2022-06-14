@@ -14,9 +14,11 @@ The prop type for the [[`useDrag`]] hook.
 
 • `Optional` **defaultCenter**: [`Coordinate`](Coordinate.md)
 
+An optional initial value for the center of the map
+
 #### Defined in
 
-[hooks/useDrag.ts:14](https://github.com/rob-blackbourn/jetblack-map/blob/91a620d/src/hooks/useDrag.ts#L14)
+[hooks/useDrag.ts:16](https://github.com/rob-blackbourn/jetblack-map/blob/1a80325/src/hooks/useDrag.ts#L16)
 
 ___
 
@@ -24,9 +26,11 @@ ___
 
 • **ref**: `RefObject`<`HTMLDivElement`\>
 
+A reference to the map component
+
 #### Defined in
 
-[hooks/useDrag.ts:13](https://github.com/rob-blackbourn/jetblack-map/blob/91a620d/src/hooks/useDrag.ts#L13)
+[hooks/useDrag.ts:14](https://github.com/rob-blackbourn/jetblack-map/blob/1a80325/src/hooks/useDrag.ts#L14)
 
 ___
 
@@ -34,9 +38,11 @@ ___
 
 • **tileHeight**: `number`
 
+The height of the tiles
+
 #### Defined in
 
-[hooks/useDrag.ts:17](https://github.com/rob-blackbourn/jetblack-map/blob/91a620d/src/hooks/useDrag.ts#L17)
+[hooks/useDrag.ts:22](https://github.com/rob-blackbourn/jetblack-map/blob/1a80325/src/hooks/useDrag.ts#L22)
 
 ___
 
@@ -44,9 +50,11 @@ ___
 
 • **tileWidth**: `number`
 
+The width of the tiles
+
 #### Defined in
 
-[hooks/useDrag.ts:16](https://github.com/rob-blackbourn/jetblack-map/blob/91a620d/src/hooks/useDrag.ts#L16)
+[hooks/useDrag.ts:20](https://github.com/rob-blackbourn/jetblack-map/blob/1a80325/src/hooks/useDrag.ts#L20)
 
 ___
 
@@ -54,6 +62,8 @@ ___
 
 • **zoom**: `number`
 
+The current zoom level
+
 #### Defined in
 
-[hooks/useDrag.ts:15](https://github.com/rob-blackbourn/jetblack-map/blob/91a620d/src/hooks/useDrag.ts#L15)
+[hooks/useDrag.ts:18](https://github.com/rob-blackbourn/jetblack-map/blob/1a80325/src/hooks/useDrag.ts#L18)
