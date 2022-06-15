@@ -136,7 +136,9 @@ describe('tileMath', () => {
         coordinateLondon,
         4,
         600,
-        400
+        400,
+        256,
+        256
       )
       expect(screenPoint.x).toBeCloseTo(-540.5720177777778, 6)
       expect(screenPoint.y).toBeCloseTo(377.98915302061596, 6)
@@ -147,7 +149,9 @@ describe('tileMath', () => {
         coordinateLondon,
         4,
         600,
-        400
+        400,
+        256,
+        256
       )
       expect(screenPoint.x).toBeCloseTo(300, 6)
       expect(screenPoint.y).toBeCloseTo(200, 6)
@@ -158,7 +162,9 @@ describe('tileMath', () => {
         coordinateLondon,
         4,
         600,
-        400
+        400,
+        256,
+        256
       )
       expect(screenPoint.x).toBeCloseTo(1890.3618844444445, 6)
       expect(screenPoint.y).toBeCloseTo(450.9570607998462, 6)
@@ -169,7 +175,9 @@ describe('tileMath', () => {
         coordinateLondon,
         4,
         600,
-        400
+        400,
+        256,
+        256
       )
       expect(screenPoint.x).toBeCloseTo(2021.8776177777777, 6)
       expect(screenPoint.y).toBeCloseTo(1295.9496653309598, 6)
@@ -180,7 +188,9 @@ describe('tileMath', () => {
         coordinateLondon,
         4,
         600,
-        400
+        400,
+        256,
+        256
       )
       expect(screenPoint.x).toBeCloseTo(-367.7435733333334, 6)
       expect(screenPoint.y).toBeCloseTo(1306.0638404602564, 6)
@@ -194,7 +204,9 @@ describe('tileMath', () => {
         coordinateLondon,
         4,
         600,
-        400
+        400,
+        256,
+        256
       )
       expect(screenPoint.latitude).toBeCloseTo(coordinateNewYork.latitude, 6)
       expect(screenPoint.longitude).toBeCloseTo(coordinateNewYork.longitude, 6)
@@ -205,7 +217,9 @@ describe('tileMath', () => {
         coordinateLondon,
         4,
         600,
-        400
+        400,
+        256,
+        256
       )
       expect(screenPoint.latitude).toBeCloseTo(coordinateLondon.latitude, 6)
       expect(screenPoint.longitude).toBeCloseTo(coordinateLondon.longitude, 6)
@@ -216,7 +230,9 @@ describe('tileMath', () => {
         coordinateLondon,
         4,
         600,
-        400
+        400,
+        256,
+        256
       )
       expect(screenPoint.latitude).toBeCloseTo(coordinateTokyo.latitude, 6)
       expect(screenPoint.longitude).toBeCloseTo(coordinateTokyo.longitude, 6)
@@ -227,7 +243,9 @@ describe('tileMath', () => {
         coordinateLondon,
         4,
         600,
-        400
+        400,
+        256,
+        256
       )
       expect(screenPoint.latitude).toBeCloseTo(coordinateSydney.latitude, 6)
       expect(screenPoint.longitude).toBeCloseTo(coordinateSydney.longitude, 6)
@@ -238,13 +256,12 @@ describe('tileMath', () => {
         coordinateLondon,
         4,
         600,
-        400
+        400,
+        256,
+        256
       )
       expect(screenPoint.latitude).toBeCloseTo(coordinateBuenoAires.latitude, 6)
-      expect(screenPoint.longitude).toBeCloseTo(
-        coordinateBuenoAires.longitude,
-        6
-      )
+      expect(screenPoint.longitude).toBeCloseTo(coordinateBuenoAires.longitude, 6)
     })
   })
 
@@ -255,7 +272,9 @@ describe('tileMath', () => {
         coordinateLondon,
         0,
         600,
-        400
+        400,
+        256,
+        256
       )
       expect(screenPoint.x).toBeCloseTo(247.4642488888889, 6)
       expect(screenPoint.y).toBeCloseTo(211.1243220637885, 6)
@@ -266,7 +285,9 @@ describe('tileMath', () => {
         coordinateLondon,
         0,
         600,
-        400
+        400,
+        256,
+        256
       )
       expect(screenPoint.x).toBeCloseTo(300, 6)
       expect(screenPoint.y).toBeCloseTo(200, 6)
@@ -277,7 +298,9 @@ describe('tileMath', () => {
         coordinateLondon,
         0,
         600,
-        400
+        400,
+        256,
+        256
       )
       expect(screenPoint.x).toBeCloseTo(399.3976177777778, 6)
       expect(screenPoint.y).toBeCloseTo(215.6848162999904, 6)
@@ -288,7 +311,9 @@ describe('tileMath', () => {
         coordinateLondon,
         0,
         600,
-        400
+        400,
+        256,
+        256
       )
       expect(screenPoint.x).toBeCloseTo(407.61735111111113, 6)
       expect(screenPoint.y).toBeCloseTo(268.496854083185, 6)
@@ -299,7 +324,9 @@ describe('tileMath', () => {
         coordinateLondon,
         0,
         600,
-        400
+        400,
+        256,
+        256
       )
       expect(screenPoint.x).toBeCloseTo(258.2660266666667, 6)
       expect(screenPoint.y).toBeCloseTo(269.128990028766, 6)
@@ -313,7 +340,9 @@ describe('tileMath', () => {
         coordinateLondon,
         0,
         600,
-        400
+        400,
+        256,
+        256
       )
       expect(screenPoint.latitude).toBeCloseTo(coordinateNewYork.latitude, 6)
       expect(screenPoint.longitude).toBeCloseTo(coordinateNewYork.longitude, 6)
@@ -324,7 +353,9 @@ describe('tileMath', () => {
         coordinateLondon,
         0,
         600,
-        400
+        400,
+        256,
+        256
       )
       expect(screenPoint.latitude).toBeCloseTo(coordinateLondon.latitude, 6)
       expect(screenPoint.longitude).toBeCloseTo(coordinateLondon.longitude, 6)
@@ -335,7 +366,9 @@ describe('tileMath', () => {
         coordinateLondon,
         0,
         600,
-        400
+        400,
+        256,
+        256
       )
       expect(screenPoint.latitude).toBeCloseTo(coordinateTokyo.latitude, 6)
       expect(screenPoint.longitude).toBeCloseTo(coordinateTokyo.longitude, 6)
@@ -346,7 +379,9 @@ describe('tileMath', () => {
         coordinateLondon,
         0,
         600,
-        400
+        400,
+        256,
+        256
       )
       expect(screenPoint.latitude).toBeCloseTo(coordinateSydney.latitude, 6)
       expect(screenPoint.longitude).toBeCloseTo(coordinateSydney.longitude, 6)
@@ -357,13 +392,12 @@ describe('tileMath', () => {
         coordinateLondon,
         0,
         600,
-        400
+        400,
+        256,
+        256
       )
       expect(screenPoint.latitude).toBeCloseTo(coordinateBuenoAires.latitude, 6)
-      expect(screenPoint.longitude).toBeCloseTo(
-        coordinateBuenoAires.longitude,
-        6
-      )
+      expect(screenPoint.longitude).toBeCloseTo(coordinateBuenoAires.longitude, 6)
     })
   })
 })
