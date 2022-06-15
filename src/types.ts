@@ -32,8 +32,7 @@ export type Point = {
 export interface ScaleInfo {
   roundedZoom: number
   scale: number
-  scaleWidth: number
-  scaleHeight: number
+  scaledScreen: Point
 }
 
 /**

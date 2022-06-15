@@ -1,6 +1,6 @@
 import { Position } from 'geojson'
 
-import { coordinateToScreenPoint } from '../../tileMath'
+import { recenterScreenPoint } from '../../tileMath'
 import { Coordinate, Point } from '../../types'
 
 export const geoJsonPointToCoordinate = (position: Position): Coordinate => ({
@@ -17,7 +17,7 @@ export const geoJsonPointToScreenPoint = (
   tileWidth: number,
   tileHeight: number
 ): Point =>
-  coordinateToScreenPoint(
+  recenterScreenPoint(
     {
       latitude: position[1],
       longitude: position[0],

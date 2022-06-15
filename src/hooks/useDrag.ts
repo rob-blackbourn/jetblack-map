@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react'
 
 import { Coordinate, Point } from '../types'
 
-import { coordinateToTilePoint, tilePointToCoordinate } from '../tileMath'
+import { coordinateToTilePoint, screenToTilePoint, tilePointToCoordinate } from '../tileMath'
 import { LOCATIONS } from '../constants'
 import { getRelativeMousePoint, isDraggable } from './utils'
 
@@ -72,17 +72,19 @@ export default function useDrag({
       event.preventDefault()
 
       if (mouseState.current.mouseDown) {
-        const mousePoint: Point = getRelativeMousePoint(event, ref.current)
-        const tileDelta: Point = {
-          x: (mouseState.current.lastPoint.x - mousePoint.x) / tileWidth,
-          y: (mouseState.current.lastPoint.y - mousePoint.y) / tileHeight,
+        const currentPoint: Point = getRelativeMousePoint(event, ref.current)
+        const screenDelta: Point = {
+          x: mouseState.current.lastPoint.x - currentPoint.x,
+          y: mouseState.current.lastPoint.y - currentPoint.y,
         }
+        const tileDelta: Point = screenToTilePoint(screenDelta, tileWidth, tileHeight)
         const tileCenter = coordinateToTilePoint(center, zoom)
-        const newCenter = tilePointToCoordinate(
-          { x: tileCenter.x + tileDelta.x, y: tileCenter.y + tileDelta.y },
-          zoom
-        )
-        mouseState.current.lastPoint = mousePoint
+        const newTileCenter = {
+          x: tileCenter.x + tileDelta.x,
+          y: tileCenter.y + tileDelta.y,
+        }
+        const newCenter = tilePointToCoordinate(newTileCenter, zoom)
+        mouseState.current.lastPoint = currentPoint
         setCenter(newCenter)
       }
     },

@@ -1,6 +1,6 @@
 import { Coordinate, Point, ScaleInfo, TileUrlProvider } from '../types'
 
-import { calcScaleInfo, coordinateToTilePoint } from '../tileMath'
+import { calcScaleInfo, coordinateToTilePoint, screenToTilePoint } from '../tileMath'
 import { ImageTileProps } from './ImageTile'
 
 export interface TileInfo extends ScaleInfo {
@@ -17,20 +17,23 @@ export function calcTileInfo(
   tileWidth: number,
   tileHeight: number
 ): TileInfo {
-  const { roundedZoom, scale, scaleWidth, scaleHeight } = calcScaleInfo(zoom, width, height)
+  const { roundedZoom, scale, scaledScreen } = calcScaleInfo(zoom, width, height)
 
   const tileCenter = coordinateToTilePoint(center, roundedZoom)
 
-  const halfWidth = scaleWidth / 2 / tileWidth
-  const halfHeight = scaleHeight / 2 / tileHeight
+  const scaledScreenCenter = {
+    x: scaledScreen.x / 2,
+    y: scaledScreen.y / 2,
+  }
+  const scaledTileCenter = screenToTilePoint(scaledScreenCenter, tileWidth, tileHeight)
 
   const tileMin = {
-    x: Math.floor(tileCenter.x - halfWidth),
-    y: Math.floor(tileCenter.y - halfHeight),
+    x: Math.floor(tileCenter.x - scaledTileCenter.x),
+    y: Math.floor(tileCenter.y - scaledTileCenter.y),
   }
   const tileMax = {
-    x: Math.floor(tileCenter.x + halfWidth),
-    y: Math.floor(tileCenter.y + halfHeight),
+    x: Math.floor(tileCenter.x + scaledTileCenter.x),
+    y: Math.floor(tileCenter.y + scaledTileCenter.y),
   }
 
   return {
@@ -38,8 +41,7 @@ export function calcTileInfo(
     tileMax,
     tileCenter,
     roundedZoom,
-    scaleWidth,
-    scaleHeight,
+    scaledScreen,
     scale,
   }
 }

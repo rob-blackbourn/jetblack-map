@@ -1,6 +1,7 @@
 import { useContext } from 'react'
 
 import { CLASS_NAMES } from '../constants'
+import { tileToScreenPoint } from '../tileMath'
 
 import ImageTile from './ImageTile'
 import MapContext from './MapContext'
@@ -15,7 +16,13 @@ const classNames = {
     CLASS_NAMES.clickable,
     'tile-layer',
   ].join(' '),
-  tile: [CLASS_NAMES.primary, CLASS_NAMES.draggable, CLASS_NAMES.zoomable, CLASS_NAMES.clickable, 'tile'].join(' '),
+  tile: [
+    CLASS_NAMES.primary,
+    CLASS_NAMES.draggable,
+    CLASS_NAMES.zoomable,
+    CLASS_NAMES.clickable,
+    'tile',
+  ].join(' '),
 }
 
 /**
@@ -34,7 +41,7 @@ export default function TileLayer() {
     tileProvider: { makeUrl, tileWidth, tileHeight },
   } = useContext(MapContext)
 
-  const { tileMin, tileMax, tileCenter, roundedZoom, scaleWidth, scaleHeight, scale } = calcTileInfo(
+  const { tileMin, tileMax, tileCenter, roundedZoom, scaledScreen, scale } = calcTileInfo(
     center,
     zoom,
     width,
@@ -43,18 +50,30 @@ export default function TileLayer() {
     tileHeight
   )
 
-  const imageTileProps = calcImageTileProps(tileMin, tileMax, roundedZoom, makeUrl, tileWidth, tileHeight)
+  const imageTileProps = calcImageTileProps(
+    tileMin,
+    tileMax,
+    roundedZoom,
+    makeUrl,
+    tileWidth,
+    tileHeight
+  )
 
   // Convert the top-left from tile coordinates to screen coordinates.
-  const left = -((tileCenter.x - tileMin.x) * tileWidth - scaleWidth / 2)
-  const top = -((tileCenter.y - tileMin.y) * tileHeight - scaleHeight / 2)
+  const tileTopLeft = {
+    x: tileCenter.x - tileMin.x,
+    y: tileCenter.y - tileMin.y,
+  }
+  const screenTopLeft = tileToScreenPoint(tileTopLeft, tileWidth, tileHeight)
+  const left = -(screenTopLeft.x - scaledScreen.x / 2)
+  const top = -(screenTopLeft.y - scaledScreen.y / 2)
 
   return (
     <div
       className={classNames.tile}
       style={{
-        width: scaleWidth,
-        height: scaleHeight,
+        width: scaledScreen.x,
+        height: scaledScreen.y,
         position: 'absolute',
         top: `calc((100% - ${height}px) / 2)`,
         left: `calc((100% - ${width}px) / 2)`,
