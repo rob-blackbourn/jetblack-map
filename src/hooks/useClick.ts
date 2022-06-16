@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef } from 'react'
 
 import { screenPointToCoordinate } from '../tileMath'
-import { Coordinate, Point } from '../types'
+import { Coordinate, Point, Size } from '../types'
 import { getRelativeMousePoint, isClickable } from './utils'
 
 /**
@@ -16,10 +16,8 @@ export interface useClickProps {
   zoom: number
   /** The time to wait in milliseconds for a double click. */
   delay?: number
-  /** The width of a map tile */
-  tileWidth: number
-  /** The height of a map tile */
-  tileHeight: number
+  /** The size of a map tile */
+  tileSize: Size
   /** The handler for a single click event. */
   onClick?: (coordinate: Coordinate, point: Point) => void
   /** The handler for a multi click event */
@@ -40,8 +38,7 @@ export default function useClick({
   center,
   zoom,
   delay = 150,
-  tileWidth,
-  tileHeight,
+  tileSize,
   onClick,
   onDoubleClick,
 }: useClickProps): void {
@@ -78,7 +75,7 @@ export default function useClick({
         return
       }
 
-      const element = ref.current
+      const mapDiv = ref.current
 
       if (mouseState.current.timeoutId) {
         // This was a multi click so clear the previous timeout.
@@ -91,7 +88,7 @@ export default function useClick({
 
         // If the down location is a long way away from the up location
         // treat it as a drag and ignore.
-        const mousePoint: Point = getRelativeMousePoint(event, element)
+        const mousePoint: Point = getRelativeMousePoint(event, mapDiv)
         const delta: Point = {
           x: Math.abs(mouseState.current.lastPoint.x - mousePoint.x),
           y: Math.abs(mouseState.current.lastPoint.y - mousePoint.y),
@@ -99,16 +96,8 @@ export default function useClick({
         if (delta.x + delta.y <= 2) {
           // This is a real click. Find the earth coordinate and call
           // the appropriate handler.
-          const { width, height } = element.getBoundingClientRect()
-          const coordinate = screenPointToCoordinate(
-            mousePoint,
-            center,
-            zoom,
-            width,
-            height,
-            tileWidth,
-            tileHeight
-          )
+          const screenSize = mapDiv.getBoundingClientRect()
+          const coordinate = screenPointToCoordinate(mousePoint, center, zoom, screenSize, tileSize)
 
           if (mouseState.current.clickCount === 1) {
             onClick && onClick(coordinate, mousePoint)
@@ -120,7 +109,7 @@ export default function useClick({
         mouseState.current.clickCount = 0
       }, delay)
     },
-    [ref, zoom, center, tileWidth, tileHeight]
+    [ref, zoom, center, tileSize]
   )
 
   useEffect(() => {

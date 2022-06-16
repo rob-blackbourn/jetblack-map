@@ -37,8 +37,8 @@ export default function MultiLineStringComponent({
   const {
     center,
     zoom,
-    bounds: { width, height },
-    tileProvider: { tileWidth, tileHeight },
+    bounds,
+    tileProvider: { tileSize },
   } = useContext(MapContext)
 
   return (
@@ -48,13 +48,18 @@ export default function MultiLineStringComponent({
           line =>
             'M' +
             line
-              .map(point => geoJsonPointToScreenPoint(point, center, zoom, width, height, tileWidth, tileHeight))
+              .map(point => geoJsonPointToScreenPoint(point, center, zoom, bounds, tileSize))
               .reduce((a, point) => {
                 return a + ' ' + point.x + ' ' + point.y
               }, '')
         )
         .map((d, i) => (
-          <path className={classNames.multiLineString} key={`multi-line-string-${i}`} d={d} {...props} />
+          <path
+            className={classNames.multiLineString}
+            key={`multi-line-string-${i}`}
+            d={d}
+            {...props}
+          />
         ))}
     </>
   )

@@ -35,36 +35,27 @@ const classNames = {
  */
 export default function TileLayer() {
   const {
-    bounds: { width, height },
+    bounds,
     center,
     zoom,
-    tileProvider: { makeUrl, tileWidth, tileHeight },
+    tileProvider: { makeUrl, tileSize },
   } = useContext(MapContext)
 
   const { tileMin, tileMax, tileCenter, roundedZoom, scaledScreen, scale } = calcTileInfo(
     center,
     zoom,
-    width,
-    height,
-    tileWidth,
-    tileHeight
+    bounds,
+    tileSize
   )
 
-  const imageTileProps = calcImageTileProps(
-    tileMin,
-    tileMax,
-    roundedZoom,
-    makeUrl,
-    tileWidth,
-    tileHeight
-  )
+  const imageTileProps = calcImageTileProps(tileMin, tileMax, roundedZoom, makeUrl, tileSize)
 
   // Convert the top-left from tile coordinates to screen coordinates.
   const tileTopLeft = {
     x: tileCenter.x - tileMin.x,
     y: tileCenter.y - tileMin.y,
   }
-  const screenTopLeft = tileToScreenPoint(tileTopLeft, tileWidth, tileHeight)
+  const screenTopLeft = tileToScreenPoint(tileTopLeft, tileSize)
   const left = -(screenTopLeft.x - scaledScreen.x / 2)
   const top = -(screenTopLeft.y - scaledScreen.y / 2)
 
@@ -75,8 +66,8 @@ export default function TileLayer() {
         width: scaledScreen.x,
         height: scaledScreen.y,
         position: 'absolute',
-        top: `calc((100% - ${height}px) / 2)`,
-        left: `calc((100% - ${width}px) / 2)`,
+        top: `calc((100% - ${bounds.height}px) / 2)`,
+        left: `calc((100% - ${bounds.width}px) / 2)`,
         overflow: 'hidden',
         willChange: 'transform',
         transform: `scale(${scale}, ${scale})`,
@@ -87,8 +78,8 @@ export default function TileLayer() {
         className={classNames.tile}
         style={{
           position: 'absolute',
-          width: (tileMax.x - tileMin.x + 1) * tileWidth,
-          height: (tileMax.y - tileMin.y + 1) * tileHeight,
+          width: (tileMax.x - tileMin.x + 1) * tileSize.width,
+          height: (tileMax.y - tileMin.y + 1) * tileSize.height,
           willChange: 'transform',
           transform: `translate(${left}px, ${top}px)`,
         }}

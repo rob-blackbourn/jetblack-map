@@ -16,16 +16,14 @@ const Template: ComponentStory<typeof Map> = args => {
   const [center, setCenter] = useDrag({
     ref,
     zoom,
-    tileWidth: osmTileProvider.tileWidth,
-    tileHeight: osmTileProvider.tileHeight,
+    tileSize: osmTileProvider.tileSize,
   })
 
   useClick({
     ref,
     center,
     zoom,
-    tileWidth: osmTileProvider.tileWidth,
-    tileHeight: osmTileProvider.tileHeight,
+    tileSize: osmTileProvider.tileSize,
     onClick: (coordinate: Coordinate, point: Point) => console.log('click', { coordinate, point }),
     onDoubleClick: (coordinate: Coordinate, point: Point) => {
       setCenter(coordinate)
