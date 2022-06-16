@@ -23,6 +23,8 @@ import {
   useZoom,
 } from '@jetblack/maps'
 
+const tileSize = { width: 256, height: 256 }
+
 export default function App() {
   const [data, setData] = useState({})
 
@@ -32,8 +34,7 @@ export default function App() {
   const [center, setCenter] = useDrag({
     ref,
     zoom,
-    tileWidth: 256,
-    tileHeight: 256,
+    tileSize,
     defaultCenter: GREENWICH_OBSERVATORY,
   })
 
@@ -41,8 +42,7 @@ export default function App() {
     ref,
     center,
     zoom,
-    tileWidth: 256,
-    tileHeight: 256,
+    tileSize,
     onClick: (coordinate, point) => {
       console.log('click', { coordinate, point })
     },
@@ -110,6 +110,8 @@ import {
   useZoom,
 } from '@jetblack/maps'
 
+const tileSize = { width: 256, height: 256 }
+
 export default function App() {
   const [data, setData] = useState<Feature>({} as Feature)
 
@@ -119,8 +121,7 @@ export default function App() {
   const [center, setCenter] = useDrag({
     ref,
     zoom,
-    tileWidth: 256,
-    tileHeight: 256,
+    tileSize,
     defaultCenter: GREENWICH_OBSERVATORY,
   })
 
@@ -128,8 +129,7 @@ export default function App() {
     ref,
     center,
     zoom,
-    tileWidth: 256,
-    tileHeight: 256,
+    tileSize,
     onClick: (coordinate: Coordinate, point: Point) => {
       console.log('click', { coordinate, point })
     },

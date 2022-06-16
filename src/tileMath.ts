@@ -101,8 +101,8 @@ export function calcScaleInfo(zoom: number, screenSize: Size): ScaleInfo {
 
   const scale = Math.pow(2, zoomDiff)
   const scaledScreen = {
-    x: screenSize.width / scale,
-    y: screenSize.height / scale,
+    width: screenSize.width / scale,
+    height: screenSize.height / scale,
   }
 
   return {

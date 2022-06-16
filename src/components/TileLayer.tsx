@@ -56,15 +56,15 @@ export default function TileLayer() {
     y: tileCenter.y - tileMin.y,
   }
   const screenTopLeft = tileToScreenPoint(tileTopLeft, tileSize)
-  const left = -(screenTopLeft.x - scaledScreen.x / 2)
-  const top = -(screenTopLeft.y - scaledScreen.y / 2)
+  const left = -(screenTopLeft.x - scaledScreen.width / 2)
+  const top = -(screenTopLeft.y - scaledScreen.width / 2)
 
   return (
     <div
       className={classNames.tile}
       style={{
-        width: scaledScreen.x,
-        height: scaledScreen.y,
+        width: scaledScreen.width,
+        height: scaledScreen.height,
         position: 'absolute',
         top: `calc((100% - ${bounds.height}px) / 2)`,
         left: `calc((100% - ${bounds.width}px) / 2)`,

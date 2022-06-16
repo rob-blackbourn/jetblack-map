@@ -18,14 +18,12 @@ center and zoom, must be known.
 
 ```ts
 const mousePoint: Point = getRelativeMousePoint(event, ref.current)
-const { screenWidth, screenHeight } = ref.current.getBoundingClientRect()
+const screenSize = ref.current.getBoundingClientRect()
 const coordinate = screenPointToCoordinate(
   mousePoint,
   center,
   zoom,
-  screenWidth,
-  screenHeight,
-  tileWidth,
-  tileHeight
+  screenSize,
+  tileSize
 )
 ```

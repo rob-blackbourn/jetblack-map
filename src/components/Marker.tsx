@@ -43,7 +43,13 @@ export default function Marker({ coordinate, render }: MarkerProps) {
   const markerPoint = recenterScreenPoint(coordinate, center, zoom, bounds, tileSize)
 
   // If the screen is zoomed out the coordinate may appear many times as the display will wrap horizontally.
-  const markerPoints = createPoints(markerPoint, roundedZoom, scale, scaledScreen.x, tileSize.width)
+  const markerPoints = createPoints(
+    markerPoint,
+    roundedZoom,
+    scale,
+    scaledScreen.width,
+    tileSize.width
+  )
 
   return (
     <>

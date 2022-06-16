@@ -19,8 +19,8 @@ input, and the current `center` and
     y: (lastPoint.y - currentPoint.y),
   }
   const tileDelta: Point = {
-    x: screenDelta.x / tileWidth,
-    y: screenDelta.y / tileHeight,
+    x: screenDelta.x / tileSize.width,
+    y: screenDelta.y / tileSize.Height,
   }
   const tile = coordinateToTilePoint(center, zoom)
   const newTileCenter = {

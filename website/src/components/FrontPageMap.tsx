@@ -24,6 +24,8 @@ const places: { [name: string]: Coordinate } = {
   },
 }
 
+const tileSize = { width: 256, height: 256 }
+
 export default function FrontPageMap() {
   const ref = useRef<HTMLDivElement>(null)
 
@@ -32,16 +34,14 @@ export default function FrontPageMap() {
     ref,
     defaultCenter: places.greenwichObservatory,
     zoom,
-    tileWidth: 256,
-    tileHeight: 256,
+    tileSize,
   })
 
   useClick({
     ref,
     center,
     zoom,
-    tileWidth: 256,
-    tileHeight: 256,
+    tileSize,
     onDoubleClick: (coordinate: Coordinate, point: Point) => {
       setCenter(coordinate)
       setZoom(zoom + 1)

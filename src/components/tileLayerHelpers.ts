@@ -20,8 +20,8 @@ export function calcTileInfo(
   const tileCenter = coordinateToTilePoint(center, roundedZoom)
 
   const scaledScreenCenter = {
-    x: scaledScreen.x / 2,
-    y: scaledScreen.y / 2,
+    x: scaledScreen.width / 2,
+    y: scaledScreen.height / 2,
   }
   const scaledTileCenter = screenToTilePoint(scaledScreenCenter, tileSize)
 

@@ -56,7 +56,7 @@ export interface Bounds extends Size {
 export interface ScaleInfo {
   roundedZoom: number
   scale: number
-  scaledScreen: Point
+  scaledScreen: Size
 }
 
 /**

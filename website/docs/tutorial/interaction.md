@@ -33,6 +33,8 @@ import {
   useZoom,
 } from '@jetblack/map'
 
+const tileSize = { width: 256, height: 256 }
+
 export default function App() {
   // A ref is required to bind events to the map.
   const ref = useRef(null)
@@ -43,16 +45,14 @@ export default function App() {
     ref,
     defaultCenter: { latitude: 51.4768, longitude: -0.0005 },
     zoom,
-    tileWidth: 256,
-    tileHeight: 256,
+    tileSize,
   })
 
   useClick({
     ref,
     center,
     zoom,
-    tileWidth: 256,
-    tileHeight: 256,
+    tileSize,
     onClick: (coordinate, point) => console.log('click', { coordinate, point }),
     onDoubleClick: (coordinate, point) => {
       // Zoom in on the new coordinate.
@@ -88,6 +88,8 @@ import {
   useZoom,
 } from '@jetblack/map'
 
+const tileSize = { width: 256, height: 256 }
+
 export default function App() {
   // A ref is required to bind events to the map.
   const ref = useRef<HTMLDivElement>(null)
@@ -98,16 +100,14 @@ export default function App() {
     ref,
     defaultCenter: { latitude: 51.4768, longitude: -0.0005 },
     zoom,
-    tileWidth: 256,
-    tileHeight: 256,
+    tileSize,
   })
 
   useClick({
     ref,
     center,
     zoom,
-    tileWidth: 256,
-    tileHeight: 256,
+    tileSize,
     onClick: (coordinate: Coordinate, point: Point)
       => console.log('click', { coordinate, point }),
     onDoubleClick: (coordinate: Coordinate, point: Point) => {
