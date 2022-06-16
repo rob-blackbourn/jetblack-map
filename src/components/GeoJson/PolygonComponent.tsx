@@ -30,12 +30,15 @@ export interface PolygonComponentProps {
 /**
  * Render a GeoJSON Polygon.
  */
-export default function PolygonComponent({ polygon, ...props }: PolygonComponentProps & SVGProps<SVGPathElement>) {
+export default function PolygonComponent({
+  polygon,
+  ...props
+}: PolygonComponentProps & SVGProps<SVGPathElement>) {
   const {
     center,
     zoom,
-    bounds: { width, height },
-    tileProvider: { tileWidth, tileHeight },
+    bounds,
+    tileProvider: { tileSize },
   } = useContext(MapContext)
 
   const p = polygon.coordinates.reduce(
@@ -43,7 +46,7 @@ export default function PolygonComponent({ polygon, ...props }: PolygonComponent
       a +
       ' M' +
       part
-        .map(point => geoJsonPointToScreenPoint(point, center, zoom, width, height, tileWidth, tileHeight))
+        .map(point => geoJsonPointToScreenPoint(point, center, zoom, bounds, tileSize))
         .reduce((a, pixel) => a + ' ' + pixel.x + ' ' + pixel.y, '') +
       'Z',
     ''

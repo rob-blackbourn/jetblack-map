@@ -110,8 +110,7 @@ const Template: ComponentStory<typeof Map> = args => {
     ref,
     zoom,
     defaultCenter: GREENWICH_OBSERVATORY,
-    tileWidth: osmTileProvider.tileWidth,
-    tileHeight: osmTileProvider.tileHeight,
+    tileSize: osmTileProvider.tileSize,
   })
 
   const handleRequestFeatureStyle = (feature: Feature): SVGProps<SVGElement> | null => {

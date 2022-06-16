@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 
-import { Coordinate, Point } from '../types'
+import { Coordinate, Point, Size } from '../types'
 
-import { coordinateToTilePoint, tilePointToCoordinate } from '../tileMath'
+import { coordinateToTilePoint, screenToTilePoint, tilePointToCoordinate } from '../tileMath'
 import { LOCATIONS } from '../constants'
 import { getRelativeMousePoint, isDraggable } from './utils'
 
@@ -16,10 +16,8 @@ export interface useDragProps {
   defaultCenter?: Coordinate
   /** The current zoom level */
   zoom: number
-  /** The width of the tiles */
-  tileWidth: number
-  /** The height of the tiles */
-  tileHeight: number
+  /** The size of the tiles */
+  tileSize: Size
 }
 
 interface MouseState {
@@ -34,8 +32,7 @@ export default function useDrag({
   ref,
   defaultCenter = LOCATIONS.greenwichObservatory,
   zoom,
-  tileWidth,
-  tileHeight,
+  tileSize,
 }: useDragProps): [Coordinate, (center: Coordinate) => void] {
   const [center, setCenter] = useState(defaultCenter)
   const mouseState = useRef<MouseState>({
@@ -72,21 +69,23 @@ export default function useDrag({
       event.preventDefault()
 
       if (mouseState.current.mouseDown) {
-        const mousePoint: Point = getRelativeMousePoint(event, ref.current)
-        const tileDelta: Point = {
-          x: (mouseState.current.lastPoint.x - mousePoint.x) / tileWidth,
-          y: (mouseState.current.lastPoint.y - mousePoint.y) / tileHeight,
+        const currentPoint: Point = getRelativeMousePoint(event, ref.current)
+        const screenDelta: Point = {
+          x: mouseState.current.lastPoint.x - currentPoint.x,
+          y: mouseState.current.lastPoint.y - currentPoint.y,
         }
+        const tileDelta: Point = screenToTilePoint(screenDelta, tileSize)
         const tileCenter = coordinateToTilePoint(center, zoom)
-        const newCenter = tilePointToCoordinate(
-          { x: tileCenter.x + tileDelta.x, y: tileCenter.y + tileDelta.y },
-          zoom
-        )
-        mouseState.current.lastPoint = mousePoint
+        const newTileCenter = {
+          x: tileCenter.x + tileDelta.x,
+          y: tileCenter.y + tileDelta.y,
+        }
+        const newCenter = tilePointToCoordinate(newTileCenter, zoom)
+        mouseState.current.lastPoint = currentPoint
         setCenter(newCenter)
       }
     },
-    [ref, center, zoom, setCenter, tileWidth, tileHeight]
+    [ref, center, zoom, setCenter, tileSize]
   )
 
   useEffect(() => {

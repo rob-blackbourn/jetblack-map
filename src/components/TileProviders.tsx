@@ -1,4 +1,4 @@
-import { TileProvider } from '../types'
+import { Size, TileProvider } from '../types'
 
 /**
  * A tile provider for Open Street Map.
@@ -12,8 +12,7 @@ export const osmTileProvider: TileProvider = {
   },
   minZoom: 0,
   maxZoom: 19,
-  tileWidth: 256,
-  tileHeight: 256,
+  tileSize: { width: 256, height: 256 },
   attribution: (
     <span>
       &copy;&nbsp;
@@ -47,21 +46,18 @@ export function stamenTileProviderFactory(map: 'toner' | 'terrain'): TileProvide
     [map: string]: {
       minZoom: number
       maxZoom: number
-      tileWidth: number
-      tileHeight: number
+      tileSize: Size
     }
   } = {
     toner: {
       minZoom: 0,
       maxZoom: 20,
-      tileWidth: 256,
-      tileHeight: 256,
+      tileSize: { width: 256, height: 256 },
     },
     terrain: {
       minZoom: 0,
       maxZoom: 18,
-      tileWidth: 256,
-      tileHeight: 256,
+      tileSize: { width: 256, height: 256 },
     },
   }
 
@@ -79,7 +75,11 @@ export function stamenTileProviderFactory(map: 'toner' | 'terrain'): TileProvide
           Stamen Design
         </a>
         , under{' '}
-        <a href="http://creativecommons.org/licenses/by/3.0" target="_blank" rel="noreferrer noopener">
+        <a
+          href="http://creativecommons.org/licenses/by/3.0"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
           CC BY 3.0
         </a>
         . Data by{' '}

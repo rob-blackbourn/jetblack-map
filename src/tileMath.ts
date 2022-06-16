@@ -1,4 +1,4 @@
-import { Coordinate, Point, ScaleInfo } from './types'
+import { Coordinate, Point, ScaleInfo, Size } from './types'
 
 // These functions are provided by the Open Street Map wiki.
 // See: https://wiki.openstreetmap.org/wiki/Slippy_map_tilenames
@@ -20,7 +20,9 @@ const lng2tile = (lon: number, zoom: number): number => ((lon + 180) / 360) * 2 
  * @returns The y coordinate in the tile coordinate systsem
  */
 const lat2tile = (lat: number, zoom: number): number =>
-  ((1 - Math.log(Math.tan((lat * Math.PI) / 180) + 1 / Math.cos((lat * Math.PI) / 180)) / Math.PI) / 2) * 2 ** zoom
+  ((1 - Math.log(Math.tan((lat * Math.PI) / 180) + 1 / Math.cos((lat * Math.PI) / 180)) / Math.PI) /
+    2) *
+  2 ** zoom
 
 /**
  * Calculate the longitude from an x coordinate in the tile coordinate system.
@@ -53,7 +55,8 @@ function tile2lat(y: number, zoom: number): number {
  * @param max The maximum allowable value
  * @returns The value bounded by the constraints
  */
-export const boundValue = (min: number, value: number, max: number): number => Math.max(min, Math.min(value, max))
+export const boundValue = (min: number, value: number, max: number): number =>
+  Math.max(min, Math.min(value, max))
 
 /**
  * Convert a latitude and longitude to an x and y point in the tile coordinate system.
@@ -87,25 +90,55 @@ export const tilePointToCoordinate = (tilePoint: Point, zoom: number): Coordinat
  * To provide smooth scrolling the width and height of the image tiles can be scaled.
  *
  * @param zoom The zoom level
- * @param screenWidth The screen width
- * @param screenHeight The screen height
+ * @param screenSize The screen size
  * @returns An object containing the rounded zoom, the scale, the scale width and height.
  */
-export function calcScaleInfo(zoom: number, screenWidth: number, screenHeight: number): ScaleInfo {
+export function calcScaleInfo(zoom: number, screenSize: Size): ScaleInfo {
   // The tiles are provided for discrete (integer) zoom values.
   // We achieve smooth scrolling by scaling the image.
   const roundedZoom = Math.round(zoom)
   const zoomDiff = zoom - roundedZoom
 
   const scale = Math.pow(2, zoomDiff)
-  const scaleWidth = screenWidth / scale
-  const scaleHeight = screenHeight / scale
+  const scaledScreen = {
+    x: screenSize.width / scale,
+    y: screenSize.height / scale,
+  }
 
   return {
     roundedZoom,
     scale,
-    scaleWidth,
-    scaleHeight,
+    scaledScreen,
+  }
+}
+
+/**
+ * Convert a point in the screen coordinate system to a point in the
+ * tile coordinate system.
+ *
+ * @param screenPoint A point in the screen coordinate system.
+ * @param tileSize The tile size.
+ * @returns The point in the tile coordinate system.
+ */
+export function screenToTilePoint(screenPoint: Point, tileSize: Size): Point {
+  return {
+    x: screenPoint.x / tileSize.width,
+    y: screenPoint.y / tileSize.height,
+  }
+}
+
+/**
+ * Convert a point in the tile coordinate system to a point in the
+ * screen coordinate system.
+ *
+ * @param tilePoint A point in the tile coordinate system.
+ * @param tileSize The tile size.
+ * @returns A point in the screen coordinate system.
+ */
+export function tileToScreenPoint(tilePoint: Point, tileSize: Size): Point {
+  return {
+    x: tilePoint.x * tileSize.width,
+    y: tilePoint.y * tileSize.height,
   }
 }
 
@@ -115,34 +148,34 @@ export function calcScaleInfo(zoom: number, screenWidth: number, screenHeight: n
  * @param screenPoint The point in the screen coordinate system
  * @param center The latitude and longitude of the center of the screen
  * @param zoom The zoom level
- * @param screenWidth The width of the screen
- * @param screenHeight The height of the screen
+ * @param screenSize The size of the screen
+ * @param tileSize The size of the tiles
  * @returns The longitude and latitude of the screen point
  */
 export function screenPointToCoordinate(
   screenPoint: Point,
   center: Coordinate,
   zoom: number,
-  screenWidth: number,
-  screenHeight: number,
-  tileWidth: number,
-  tileHeight: number
+  screenSize: Size,
+  tileSize: Size
 ): Coordinate {
-  // Calculate the distance from the screen center and convert to tile units.
-  const tilePoint = {
-    x: (screenPoint.x - screenWidth / 2) / tileWidth,
-    y: (screenPoint.y - screenHeight / 2) / tileHeight,
+  // Calculate the delta from the screen center to the point.
+  const screenDelta = {
+    x: screenPoint.x - screenSize.width / 2,
+    y: screenPoint.y - screenSize.height / 2,
   }
+  // Convert to tile units.
+  const tileDelta = screenToTilePoint(screenDelta, tileSize)
 
   // Find the current center for the current zoom in tile units and add the delta.
-  const centerTilePoint = coordinateToTilePoint(center, zoom)
-  const adjTilePoint = {
-    x: centerTilePoint.x + tilePoint.x,
-    y: centerTilePoint.y + tilePoint.y,
+  const tileCenter = coordinateToTilePoint(center, zoom)
+  const adjTileCenter = {
+    x: tileCenter.x + tileDelta.x,
+    y: tileCenter.y + tileDelta.y,
   }
 
   // Find the center in projection units for the given zoom level..
-  const coordinate = tilePointToCoordinate(adjTilePoint, zoom)
+  const coordinate = tilePointToCoordinate(adjTileCenter, zoom)
 
   // Clip the latitude.
   const latitude = boundValue(-90, coordinate.latitude, 90)
@@ -162,25 +195,27 @@ export function screenPointToCoordinate(
  * @param coordinate The longitude and latitude of the point
  * @param center The longitude and latitude of the center of the screen
  * @param zoom The zoom level
- * @param screenWidth The screen width
- * @param screenHeight The screen height
+ * @param screenSize The size of the screen
+ * @param tileSize The size of the tiles
  * @returns The x and y coordinates of the point in th screen coordinate system
  */
-export function coordinateToScreenPoint(
+export function recenterScreenPoint(
   coordinate: Coordinate,
   center: Coordinate,
   zoom: number,
-  screenWidth: number,
-  screenHeight: number,
-  tileWidth: number,
-  tileHeight: number
+  screenSize: Size,
+  tileSize: Size
 ): Point {
   const centerTilePoint = coordinateToTilePoint(center, zoom)
-
   const coordinateTilePoint = coordinateToTilePoint(coordinate, zoom)
+  const deltaTilePoint = {
+    x: coordinateTilePoint.x - centerTilePoint.x,
+    y: coordinateTilePoint.y - centerTilePoint.y,
+  }
+  const deltaScreenPoint = tileToScreenPoint(deltaTilePoint, tileSize)
 
   return {
-    x: (coordinateTilePoint.x - centerTilePoint.x) * tileWidth + screenWidth / 2,
-    y: (coordinateTilePoint.y - centerTilePoint.y) * tileHeight + screenHeight / 2,
+    x: deltaScreenPoint.x + screenSize.width / 2,
+    y: deltaScreenPoint.y + screenSize.height / 2,
   }
 }

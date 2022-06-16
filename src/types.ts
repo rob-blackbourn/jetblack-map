@@ -27,19 +27,19 @@ export type Point = {
 }
 
 /**
- * The type for scale information returned from [[`calcScaleInfo`]]
+ * The type for a size.
  */
-export interface ScaleInfo {
-  roundedZoom: number
-  scale: number
-  scaleWidth: number
-  scaleHeight: number
+export interface Size {
+  /** The width */
+  width: number
+  /** The height */
+  height: number
 }
 
 /**
  * The type for the screen bounds.
  */
-export interface Bounds {
+export interface Bounds extends Size {
   /** The top */
   top: number
   /** The left */
@@ -48,6 +48,15 @@ export interface Bounds {
   width: number
   /** The height */
   height: number
+}
+
+/**
+ * The type for scale information returned from [[`calcScaleInfo`]]
+ */
+export interface ScaleInfo {
+  roundedZoom: number
+  scale: number
+  scaledScreen: Point
 }
 
 /**
@@ -73,10 +82,8 @@ export interface TileProvider {
   minZoom: number
   /** The maximum zoom level */
   maxZoom: number
-  /** The width of a tile */
-  tileWidth: number
-  /** The height of a tile */
-  tileHeight: number
+  /** The size of a tile */
+  tileSize: Size
   /** The attribution component. */
   attribution: React.ReactElement
 }
