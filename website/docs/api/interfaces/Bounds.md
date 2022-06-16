@@ -8,6 +8,12 @@ custom_edit_url: null
 
 The type for the screen bounds.
 
+## Hierarchy
+
+- `Size`
+
+  ↳ **`Bounds`**
+
 ## Properties
 
 ### height
@@ -16,9 +22,13 @@ The type for the screen bounds.
 
 The height
 
+#### Overrides
+
+Size.height
+
 #### Defined in
 
-[types.ts:50](https://github.com/rob-blackbourn/jetblack-map/blob/1a80325/src/types.ts#L50)
+[types.ts:50](https://github.com/rob-blackbourn/jetblack-map/blob/673c5e5/src/types.ts#L50)
 
 ___
 
@@ -30,7 +40,7 @@ The left
 
 #### Defined in
 
-[types.ts:46](https://github.com/rob-blackbourn/jetblack-map/blob/1a80325/src/types.ts#L46)
+[types.ts:46](https://github.com/rob-blackbourn/jetblack-map/blob/673c5e5/src/types.ts#L46)
 
 ___
 
@@ -42,7 +52,7 @@ The top
 
 #### Defined in
 
-[types.ts:44](https://github.com/rob-blackbourn/jetblack-map/blob/1a80325/src/types.ts#L44)
+[types.ts:44](https://github.com/rob-blackbourn/jetblack-map/blob/673c5e5/src/types.ts#L44)
 
 ___
 
@@ -52,6 +62,10 @@ ___
 
 The width
 
+#### Overrides
+
+Size.width
+
 #### Defined in
 
-[types.ts:48](https://github.com/rob-blackbourn/jetblack-map/blob/1a80325/src/types.ts#L48)
+[types.ts:48](https://github.com/rob-blackbourn/jetblack-map/blob/673c5e5/src/types.ts#L48)

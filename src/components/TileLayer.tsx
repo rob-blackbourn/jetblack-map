@@ -57,7 +57,7 @@ export default function TileLayer() {
   }
   const screenTopLeft = tileToScreenPoint(tileTopLeft, tileSize)
   const left = -(screenTopLeft.x - scaledScreen.width / 2)
-  const top = -(screenTopLeft.y - scaledScreen.width / 2)
+  const top = -(screenTopLeft.y - scaledScreen.height / 2)
 
   return (
     <div

@@ -18,7 +18,7 @@ The map center.
 
 #### Defined in
 
-[hooks/useClick.ts:14](https://github.com/rob-blackbourn/jetblack-map/blob/1a80325/src/hooks/useClick.ts#L14)
+[hooks/useClick.ts:14](https://github.com/rob-blackbourn/jetblack-map/blob/673c5e5/src/hooks/useClick.ts#L14)
 
 ___
 
@@ -30,7 +30,7 @@ The time to wait in milliseconds for a double click.
 
 #### Defined in
 
-[hooks/useClick.ts:18](https://github.com/rob-blackbourn/jetblack-map/blob/1a80325/src/hooks/useClick.ts#L18)
+[hooks/useClick.ts:18](https://github.com/rob-blackbourn/jetblack-map/blob/673c5e5/src/hooks/useClick.ts#L18)
 
 ___
 
@@ -42,31 +42,19 @@ A reference to the map component.
 
 #### Defined in
 
-[hooks/useClick.ts:12](https://github.com/rob-blackbourn/jetblack-map/blob/1a80325/src/hooks/useClick.ts#L12)
+[hooks/useClick.ts:12](https://github.com/rob-blackbourn/jetblack-map/blob/673c5e5/src/hooks/useClick.ts#L12)
 
 ___
 
-### tileHeight
+### tileSize
 
-• **tileHeight**: `number`
+• **tileSize**: `Size`
 
-The height of a map tile
-
-#### Defined in
-
-[hooks/useClick.ts:22](https://github.com/rob-blackbourn/jetblack-map/blob/1a80325/src/hooks/useClick.ts#L22)
-
-___
-
-### tileWidth
-
-• **tileWidth**: `number`
-
-The width of a map tile
+The size of a map tile
 
 #### Defined in
 
-[hooks/useClick.ts:20](https://github.com/rob-blackbourn/jetblack-map/blob/1a80325/src/hooks/useClick.ts#L20)
+[hooks/useClick.ts:20](https://github.com/rob-blackbourn/jetblack-map/blob/673c5e5/src/hooks/useClick.ts#L20)
 
 ___
 
@@ -78,7 +66,7 @@ The current zoom level
 
 #### Defined in
 
-[hooks/useClick.ts:16](https://github.com/rob-blackbourn/jetblack-map/blob/1a80325/src/hooks/useClick.ts#L16)
+[hooks/useClick.ts:16](https://github.com/rob-blackbourn/jetblack-map/blob/673c5e5/src/hooks/useClick.ts#L16)
 
 ## Methods
 
@@ -101,7 +89,7 @@ The handler for a single click event.
 
 #### Defined in
 
-[hooks/useClick.ts:24](https://github.com/rob-blackbourn/jetblack-map/blob/1a80325/src/hooks/useClick.ts#L24)
+[hooks/useClick.ts:22](https://github.com/rob-blackbourn/jetblack-map/blob/673c5e5/src/hooks/useClick.ts#L22)
 
 ___
 
@@ -124,4 +112,4 @@ The handler for a multi click event
 
 #### Defined in
 
-[hooks/useClick.ts:26](https://github.com/rob-blackbourn/jetblack-map/blob/1a80325/src/hooks/useClick.ts#L26)
+[hooks/useClick.ts:24](https://github.com/rob-blackbourn/jetblack-map/blob/673c5e5/src/hooks/useClick.ts#L24)

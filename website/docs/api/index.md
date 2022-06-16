@@ -161,7 +161,7 @@ export default function App() {
     ref,
     center,
     zoom,
-    tilSize,
+    tileSize,
     onClick: (coordinate: Coordinate, point: Point) => {
       console.log('click', { coordinate, point })
     },
