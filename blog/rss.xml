@@ -4,10 +4,19 @@
         <title>@jetblack/map Blog</title>
         <link>https://rob-blackbourn.github.io/jetblack-map/jetblack-map/blog</link>
         <description>@jetblack/map Blog</description>
-        <lastBuildDate>Thu, 16 Jun 2022 06:16:00 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 16 Jun 2022 18:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[Release 0.1.0-alpha.19]]></title>
+            <link>https://rob-blackbourn.github.io/jetblack-map/jetblack-map/blog/release-0-1-0-alpha-19</link>
+            <guid>release-0-1-0-alpha-19</guid>
+            <pubDate>Thu, 16 Jun 2022 18:00:00 GMT</pubDate>
+            <description><![CDATA[Fixed a bug introduced by the size refactoring.]]></description>
+            <content:encoded><![CDATA[<p>Fixed a bug introduced by the size refactoring.</p><p>Rob</p>]]></content:encoded>
+            <category>release</category>
+        </item>
         <item>
             <title><![CDATA[Release 0.1.0-alpha.18]]></title>
             <link>https://rob-blackbourn.github.io/jetblack-map/jetblack-map/blog/release-0-1-0-alpha-18</link>
