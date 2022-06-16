@@ -4,14 +4,32 @@
         <title>@jetblack/map Blog</title>
         <link>https://rob-blackbourn.github.io/jetblack-map/jetblack-map/blog</link>
         <description>@jetblack/map Blog</description>
-        <lastBuildDate>Tue, 14 Jun 2022 20:26:00 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 16 Jun 2022 06:16:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
         <item>
-            <title><![CDATA[Release 0.1.0-alpha.15]]></title>
-            <link>https://rob-blackbourn.github.io/jetblack-map/jetblack-map/blog/release-0-1-0-alpha-15</link>
-            <guid>release-0-1-0-alpha-15</guid>
+            <title><![CDATA[Release 0.1.0-alpha.18]]></title>
+            <link>https://rob-blackbourn.github.io/jetblack-map/jetblack-map/blog/release-0-1-0-alpha-18</link>
+            <guid>release-0-1-0-alpha-18</guid>
+            <pubDate>Thu, 16 Jun 2022 06:16:00 GMT</pubDate>
+            <description><![CDATA[Minor bug fixes.]]></description>
+            <content:encoded><![CDATA[<p>Minor bug fixes.</p><p>Rob</p>]]></content:encoded>
+            <category>release</category>
+        </item>
+        <item>
+            <title><![CDATA[Release 0.1.0-alpha.17]]></title>
+            <link>https://rob-blackbourn.github.io/jetblack-map/jetblack-map/blog/release-0-1-0-alpha-17</link>
+            <guid>release-0-1-0-alpha-17</guid>
+            <pubDate>Thu, 16 Jun 2022 06:01:00 GMT</pubDate>
+            <description><![CDATA[Added a Size type for width and height, which has simplified the code nicely.]]></description>
+            <content:encoded><![CDATA[<p>Added a <code>Size</code> type for width and height, which has simplified the code nicely.</p><p>Rob</p>]]></content:encoded>
+            <category>release</category>
+        </item>
+        <item>
+            <title><![CDATA[Release 0.1.0-alpha.16]]></title>
+            <link>https://rob-blackbourn.github.io/jetblack-map/jetblack-map/blog/release-0-1-0-alpha-16</link>
+            <guid>release-0-1-0-alpha-16</guid>
             <pubDate>Tue, 14 Jun 2022 20:26:00 GMT</pubDate>
             <description><![CDATA[More breaking changes.]]></description>
             <content:encoded><![CDATA[<p>More breaking changes.</p><p>I finally got round to documenting the hooks. As I often find with attempting
@@ -25,9 +43,12 @@ to explain something, the process reveals things that need improvement.</p><p>Th
             <guid>release-0-1-0-alpha-15</guid>
             <pubDate>Mon, 13 Jun 2022 17:22:00 GMT</pubDate>
             <description><![CDATA[Many breaking changes in this release.]]></description>
-            <content:encoded><![CDATA[<p>More breaking changes.</p><p>I finally got round to documenting the hooks. As I often find with attempting
-to explain something, the process reveals things that need improvement.</p><p>This ended in me renaming the interaction hooks to: <code>useDrag</code>, <code>useZoom</code>, and
-<code>useClick</code>, which I find more obvious.</p><p>I think the next step is to come out of alpha versions and make a major release.</p><p>Rob</p>]]></content:encoded>
+            <content:encoded><![CDATA[<p>Many breaking changes in this release.</p><p>The primary goal was to support tile providers that served tiles of sizes other
+than 256 square (in particular 512 square, which seems to becoming very common).</p><p>This required:</p><ul><li>Adding tile width and height to the tile providers,</li><li>Passing tile width and height through to coordinate calculators,</li><li>Passing tile width and height to the interaction hooks (which calculate coordinates).</li></ul><p>The requirement to pass the tile size to so many places made it clear that the
+map (in it's current state) makes no sense without the tile layer. Because of
+this the tile layer is now always present in the map, and not exported.</p><p>As the tile provider is so significant I considered making it a mandatory
+property, but decided against it. I did make the tile width and height mandatory
+in the interaction hooks, to provide a hint that they need to be set correctly.</p><p>Rob</p>]]></content:encoded>
             <category>release</category>
         </item>
         <item>

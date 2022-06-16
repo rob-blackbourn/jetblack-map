@@ -2,15 +2,41 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://rob-blackbourn.github.io/jetblack-map/jetblack-map/blog</id>
     <title>@jetblack/map Blog</title>
-    <updated>2022-06-14T20:26:00.000Z</updated>
+    <updated>2022-06-16T06:16:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://rob-blackbourn.github.io/jetblack-map/jetblack-map/blog"/>
     <subtitle>@jetblack/map Blog</subtitle>
     <icon>https://rob-blackbourn.github.io/jetblack-map/jetblack-map/img/location.ico</icon>
     <entry>
-        <title type="html"><![CDATA[Release 0.1.0-alpha.15]]></title>
-        <id>release-0-1-0-alpha-15</id>
-        <link href="https://rob-blackbourn.github.io/jetblack-map/jetblack-map/blog/release-0-1-0-alpha-15"/>
+        <title type="html"><![CDATA[Release 0.1.0-alpha.18]]></title>
+        <id>release-0-1-0-alpha-18</id>
+        <link href="https://rob-blackbourn.github.io/jetblack-map/jetblack-map/blog/release-0-1-0-alpha-18"/>
+        <updated>2022-06-16T06:16:00.000Z</updated>
+        <summary type="html"><![CDATA[Minor bug fixes.]]></summary>
+        <content type="html"><![CDATA[<p>Minor bug fixes.</p><p>Rob</p>]]></content>
+        <author>
+            <name>Rob Blackbourn</name>
+            <uri>https://github.com/rob-blackbourn</uri>
+        </author>
+        <category label="release" term="release"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Release 0.1.0-alpha.17]]></title>
+        <id>release-0-1-0-alpha-17</id>
+        <link href="https://rob-blackbourn.github.io/jetblack-map/jetblack-map/blog/release-0-1-0-alpha-17"/>
+        <updated>2022-06-16T06:01:00.000Z</updated>
+        <summary type="html"><![CDATA[Added a Size type for width and height, which has simplified the code nicely.]]></summary>
+        <content type="html"><![CDATA[<p>Added a <code>Size</code> type for width and height, which has simplified the code nicely.</p><p>Rob</p>]]></content>
+        <author>
+            <name>Rob Blackbourn</name>
+            <uri>https://github.com/rob-blackbourn</uri>
+        </author>
+        <category label="release" term="release"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Release 0.1.0-alpha.16]]></title>
+        <id>release-0-1-0-alpha-16</id>
+        <link href="https://rob-blackbourn.github.io/jetblack-map/jetblack-map/blog/release-0-1-0-alpha-16"/>
         <updated>2022-06-14T20:26:00.000Z</updated>
         <summary type="html"><![CDATA[More breaking changes.]]></summary>
         <content type="html"><![CDATA[<p>More breaking changes.</p><p>I finally got round to documenting the hooks. As I often find with attempting
@@ -28,9 +54,12 @@ to explain something, the process reveals things that need improvement.</p><p>Th
         <link href="https://rob-blackbourn.github.io/jetblack-map/jetblack-map/blog/release-0-1-0-alpha-15"/>
         <updated>2022-06-13T17:22:00.000Z</updated>
         <summary type="html"><![CDATA[Many breaking changes in this release.]]></summary>
-        <content type="html"><![CDATA[<p>More breaking changes.</p><p>I finally got round to documenting the hooks. As I often find with attempting
-to explain something, the process reveals things that need improvement.</p><p>This ended in me renaming the interaction hooks to: <code>useDrag</code>, <code>useZoom</code>, and
-<code>useClick</code>, which I find more obvious.</p><p>I think the next step is to come out of alpha versions and make a major release.</p><p>Rob</p>]]></content>
+        <content type="html"><![CDATA[<p>Many breaking changes in this release.</p><p>The primary goal was to support tile providers that served tiles of sizes other
+than 256 square (in particular 512 square, which seems to becoming very common).</p><p>This required:</p><ul><li>Adding tile width and height to the tile providers,</li><li>Passing tile width and height through to coordinate calculators,</li><li>Passing tile width and height to the interaction hooks (which calculate coordinates).</li></ul><p>The requirement to pass the tile size to so many places made it clear that the
+map (in it's current state) makes no sense without the tile layer. Because of
+this the tile layer is now always present in the map, and not exported.</p><p>As the tile provider is so significant I considered making it a mandatory
+property, but decided against it. I did make the tile width and height mandatory
+in the interaction hooks, to provide a hint that they need to be set correctly.</p><p>Rob</p>]]></content>
         <author>
             <name>Rob Blackbourn</name>
             <uri>https://github.com/rob-blackbourn</uri>
