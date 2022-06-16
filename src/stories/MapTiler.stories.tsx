@@ -70,8 +70,7 @@ Basic.args = {
     },
     minZoom: 0,
     maxZoom: 14,
-    tileWidth: 512,
-    tileHeight: 512,
+    tileSize: { width: 512, height: 512 },
     attribution: (
       <span>
         <a href="https://www.maptiler.com/copyright/" target="_blank">
@@ -98,8 +97,7 @@ Streets.args = {
     },
     minZoom: 0,
     maxZoom: 17,
-    tileWidth: 256,
-    tileHeight: 256,
+    tileSize: { width: 256, height: 256 },
     attribution: (
       <span>
         <a href="https://www.maptiler.com/copyright/" target="_blank">
@@ -126,8 +124,7 @@ Streets512.args = {
     },
     minZoom: 0,
     maxZoom: 14,
-    tileWidth: 512,
-    tileHeight: 512,
+    tileSize: { width: 512, height: 512 },
     attribution: (
       <span>
         <a href="https://www.maptiler.com/copyright/" target="_blank">
@@ -153,8 +150,7 @@ Satellite.args = {
     },
     minZoom: 0,
     maxZoom: 17,
-    tileWidth: 256,
-    tileHeight: 256,
+    tileSize: { width: 256, height: 256 },
     attribution: (
       <span>
         <a href="https://www.maptiler.com/copyright/" target="_blank">
@@ -181,8 +177,7 @@ SatelliteHybrid.args = {
     },
     minZoom: 0,
     maxZoom: 17,
-    tileWidth: 512,
-    tileHeight: 512,
+    tileSize: { width: 512, height: 512 },
     attribution: (
       <span>
         <a href="https://www.maptiler.com/copyright/" target="_blank">
