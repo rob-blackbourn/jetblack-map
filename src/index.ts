@@ -1,5 +1,9 @@
 import AttributionLayer from './components/AttributionLayer'
-import GeoJSONLayer, { FeatureState, GeoJSONLayerProps } from './components/GeoJson'
+import GeoJSONLayer, {
+  FeatureState,
+  GeoJSONLayerProps,
+  MarkerPointComponentProps,
+} from './components/GeoJson'
 import ImageTile, { ImageTileProps } from './components/ImageTile'
 import Map, { MapProps } from './components/Map'
 import MapContext, { MapContextProps } from './components/MapContext'
@@ -31,6 +35,7 @@ export type {
   Bounds,
   Coordinate,
   Point,
+  MarkerPointComponentProps,
   useClickProps,
   useDragProps,
   useZoomProps,

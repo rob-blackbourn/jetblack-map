@@ -4,14 +4,42 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 
 import { Feature, FeatureCollection } from 'geojson'
 
-import { Coordinate, GeoJSONLayer, Map, osmTileProvider, useDrag, useZoom } from '..'
+import {
+  Coordinate,
+  GeoJSONLayer,
+  Map,
+  MarkerPointComponentProps,
+  osmTileProvider,
+  useDrag,
+  useZoom,
+} from '..'
+
+function PinMarker({ point }: MarkerPointComponentProps) {
+  const width = 29
+  const height = 34
+
+  return (
+    <g
+      style={{ pointerEvents: 'auto' }}
+      transform={`translate(${point.x - 14} ${point.y - 25}) scale(0.5 0.5)`}
+    >
+      <path
+        d="M52 31.5C52 36.8395 49.18 42.314 45.0107 47.6094C40.8672 52.872 35.619 57.678 31.1763 61.6922C30.7916 62.0398 30.2084 62.0398 29.8237 61.6922C25.381 57.678 20.1328 52.872 15.9893 47.6094C11.82 42.314 9 36.8395 9 31.5C9 18.5709 18.6801 9 30.5 9C42.3199 9 52 18.5709 52 31.5Z"
+        fill="orange"
+        stroke="white"
+        strokeWidth="4"
+      />
+      <circle cx="30.5" cy="30.5" r="8.5" fill="white" opacity={0.6} />
+    </g>
+  )
+}
 
 export default {
   /* 👇 The title prop is optional.
    * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
    * to learn how to generate automatic titles
    */
-  title: 'GeoJSON Layer',
+  title: 'GeoJSON Marker',
   component: Map,
 } as ComponentMeta<typeof Map>
 
@@ -47,59 +75,6 @@ const Template: ComponentStory<typeof Map> = args => {
         },
         properties: { name: 'French Cities' },
       },
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'LineString',
-          coordinates: [
-            [-2.5826946698502713, 51.46359918153936],
-            [-1.8773290720606506, 52.48054446053743],
-            [-2.237515760293648, 53.48344634623912],
-          ],
-        },
-        properties: {
-          name: 'Bristol-Birmingham-Manchester',
-        },
-      },
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'MultiLineString',
-          coordinates: [
-            [
-              [-1.9866601334551377, 50.71284269506134],
-              [-1.8210675694654823, 50.64988780301567],
-              [-1.6223564926778955, 49.63967630461819],
-            ],
-            [
-              [1.3185676135378612, 51.132464268639396],
-              [1.8451519670249663, 50.95964640369708],
-            ],
-          ],
-        },
-        properties: {
-          name: 'Channel Ferry Routes',
-        },
-      },
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Polygon',
-          coordinates: [
-            [
-              [-2.725202984442157, 49.59676280493421],
-              [-2.410577112861812, 49.60105585469554],
-              [-1.8674335029757423, 49.25857832678847],
-              [-1.9667890413695357, 49.07668096925981],
-              [-2.357587492385122, 49.05498200171354],
-              [-2.7980637125976053, 49.392407428298945],
-            ],
-          ],
-        },
-        properties: {
-          name: 'Channel Islands',
-        },
-      },
     ],
   }
 
@@ -134,13 +109,17 @@ const Template: ComponentStory<typeof Map> = args => {
 
   return (
     <Map ref={ref} center={center} zoom={zoom} tileProvider={osmTileProvider} {...args}>
-      <GeoJSONLayer data={data} requestFeatureStyle={handleRequestFeatureStyle} />
+      <GeoJSONLayer
+        data={data}
+        requestFeatureStyle={handleRequestFeatureStyle}
+        markerPointComponent={PinMarker}
+      />
     </Map>
   )
 }
-export const GeoJsonMap = Template.bind({})
+export const GeoJsonMarker = Template.bind({})
 
-GeoJsonMap.args = {
+GeoJsonMarker.args = {
   width: '600px',
   height: '400px',
 }

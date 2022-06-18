@@ -1,4 +1,4 @@
-import { SVGProps, useContext } from 'react'
+import React, { SVGProps, useContext } from 'react'
 
 import { MultiPoint } from 'geojson'
 
@@ -7,6 +7,8 @@ import { CLASS_NAMES } from '../../constants'
 import MapContext from '../MapContext'
 
 import { geoJsonPointToScreenPoint } from './utils'
+import { MarkerPointComponent } from './types'
+import { Circle } from './PointComponent'
 
 const classNames = {
   multiPoint: [
@@ -25,6 +27,7 @@ const classNames = {
 export interface MultiPointComponentProps {
   /** The GeoJSON MultiPoint */
   multiPoint: MultiPoint
+  markerPointComponent?: MarkerPointComponent
 }
 
 /**
@@ -32,8 +35,9 @@ export interface MultiPointComponentProps {
  */
 export default function MultiPointComponent({
   multiPoint,
+  markerPointComponent: Component = Circle,
   ...props
-}: MultiPointComponentProps & SVGProps<SVGCircleElement>) {
+}: MultiPointComponentProps & SVGProps<SVGSVGElement>) {
   const {
     center,
     zoom,
@@ -46,11 +50,10 @@ export default function MultiPointComponent({
       {multiPoint.coordinates
         .map(point => geoJsonPointToScreenPoint(point, center, zoom, bounds, tileSize))
         .map((screenPoint, i) => (
-          <circle
+          <Component
             className={classNames.multiPoint}
+            point={screenPoint}
             key={`multi-point-${i}`}
-            cx={screenPoint.x}
-            cy={screenPoint.y}
             {...props}
           />
         ))}

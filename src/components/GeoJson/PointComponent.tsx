@@ -1,12 +1,14 @@
-import { SVGProps, useContext } from 'react'
+import React, { CSSProperties, SVGProps, useContext } from 'react'
 
 import { Point } from 'geojson'
 
 import { CLASS_NAMES } from '../../constants'
+import { Point as ScreenPoint } from '../../types'
 
 import MapContext from '../MapContext'
 
 import { geoJsonPointToScreenPoint } from './utils'
+import { MarkerPointComponent, MarkerPointComponentProps } from './types'
 
 const classNames = {
   point: [
@@ -25,15 +27,21 @@ const classNames = {
 export interface PointComponentProps {
   /** The GeoJSON Point */
   point: Point
+  markerPointComponent?: MarkerPointComponent
 }
+
+export const Circle: MarkerPointComponent = ({ point, ...props }) => (
+  <circle cx={point.x} cy={point.y} {...(props as SVGProps<SVGCircleElement>)} />
+)
 
 /**
  * Render a GeoJSON Point.
  */
 export default function PointComponent({
   point,
+  markerPointComponent: Component = Circle,
   ...props
-}: PointComponentProps & SVGProps<SVGCircleElement>) {
+}: PointComponentProps & SVGProps<SVGSVGElement>) {
   const {
     center,
     zoom,
@@ -43,5 +51,5 @@ export default function PointComponent({
 
   const screenPoint = geoJsonPointToScreenPoint(point.coordinates, center, zoom, bounds, tileSize)
 
-  return <circle className={classNames.point} cx={screenPoint.x} cy={screenPoint.y} {...props} />
+  return <Component point={screenPoint} {...props} />
 }

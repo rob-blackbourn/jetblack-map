@@ -4,7 +4,7 @@ import { Feature } from 'geojson'
 
 import { CLASS_NAMES } from '../../constants'
 
-import { RequestFeatureStyleHandler } from './types'
+import { MarkerPointComponent, RequestFeatureStyleHandler } from './types'
 
 import GeometryCollectionComponent from './GeometryCollectionComponent'
 
@@ -22,7 +22,7 @@ const classNames = {
 /**
  * The default SVG properties.
  */
-export const defaultFeatureStyle: SVGProps<SVGElement> = {
+export const defaultFeatureStyle: SVGProps<SVGSVGElement> = {
   fill: '#93c0d099',
   strokeWidth: '2',
   stroke: 'white',
@@ -42,12 +42,10 @@ export interface FeatureComponentProps {
   /** A mouseout handler */
   onMouseOut?: (event: React.MouseEvent<SVGElement>, feature: Feature) => void
   /** A context menu handler */
-  onContextMenu?: (
-    event: React.MouseEvent<SVGElement>,
-    feature: Feature
-  ) => void
+  onContextMenu?: (event: React.MouseEvent<SVGElement>, feature: Feature) => void
   /** A callback to request the SVG props for a feature */
   requestFeatureStyle?: RequestFeatureStyleHandler
+  markerPointComponent?: MarkerPointComponent
 }
 
 /**
@@ -60,12 +58,12 @@ export function FeatureComponent({
   onMouseOut,
   onContextMenu,
   requestFeatureStyle,
+  markerPointComponent,
 }: FeatureComponentProps) {
   const [mouseOver, setMouseOver] = useState(false)
 
   const featureStyle =
-    (requestFeatureStyle && requestFeatureStyle(feature, { mouseOver })) ||
-    defaultFeatureStyle
+    (requestFeatureStyle && requestFeatureStyle(feature, { mouseOver })) || defaultFeatureStyle
 
   return (
     <g
@@ -85,6 +83,7 @@ export function FeatureComponent({
     >
       <GeometryCollectionComponent
         geometry={feature.geometry}
+        markerPointComponent={markerPointComponent}
         {...featureStyle}
       />
     </g>
