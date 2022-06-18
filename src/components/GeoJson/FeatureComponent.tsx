@@ -4,7 +4,7 @@ import { Feature } from 'geojson'
 
 import { CLASS_NAMES } from '../../constants'
 
-import { MarkerPointComponent, RequestFeatureStyleHandler } from './types'
+import { MarkerComponent, RequestFeatureStyleHandler } from './types'
 
 import GeometryCollectionComponent from './GeometryCollectionComponent'
 
@@ -45,7 +45,7 @@ export interface FeatureComponentProps {
   onContextMenu?: (event: React.MouseEvent<SVGElement>, feature: Feature) => void
   /** A callback to request the SVG props for a feature */
   requestFeatureStyle?: RequestFeatureStyleHandler
-  markerPointComponent?: MarkerPointComponent
+  markerComponent?: MarkerComponent
 }
 
 /**
@@ -58,7 +58,7 @@ export function FeatureComponent({
   onMouseOut,
   onContextMenu,
   requestFeatureStyle,
-  markerPointComponent,
+  markerComponent,
 }: FeatureComponentProps) {
   const [mouseOver, setMouseOver] = useState(false)
 
@@ -83,7 +83,8 @@ export function FeatureComponent({
     >
       <GeometryCollectionComponent
         geometry={feature.geometry}
-        markerPointComponent={markerPointComponent}
+        feature={feature}
+        markerComponent={markerComponent}
         {...featureStyle}
       />
     </g>

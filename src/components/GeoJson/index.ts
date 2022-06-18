@@ -1,7 +1,7 @@
 import GeoJSONLayer, { GeoJSONLayerProps } from './GeoJsonLayer'
 
-import { FeatureState, MarkerPointComponent, MarkerPointComponentProps } from './types'
+import { FeatureState, MarkerComponent, MarkerComponentProps } from './types'
 
-export type { FeatureState, GeoJSONLayerProps, MarkerPointComponent, MarkerPointComponentProps }
+export type { FeatureState, GeoJSONLayerProps, MarkerComponent, MarkerComponentProps }
 
 export default GeoJSONLayer

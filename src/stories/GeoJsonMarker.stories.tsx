@@ -1,23 +1,20 @@
-import React, { SVGProps, useRef } from 'react'
+import React, { useRef } from 'react'
 
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { Feature, FeatureCollection } from 'geojson'
+import { FeatureCollection } from 'geojson'
 
 import {
   Coordinate,
   GeoJSONLayer,
   Map,
-  MarkerPointComponentProps,
+  MarkerComponentProps,
   osmTileProvider,
   useDrag,
   useZoom,
 } from '..'
 
-function PinMarker({ point }: MarkerPointComponentProps) {
-  const width = 29
-  const height = 34
-
+function PinMarker({ point }: MarkerComponentProps) {
   return (
     <g
       style={{ pointerEvents: 'auto' }}
@@ -88,32 +85,9 @@ const Template: ComponentStory<typeof Map> = args => {
     tileSize: osmTileProvider.tileSize,
   })
 
-  const handleRequestFeatureStyle = (feature: Feature): SVGProps<SVGSVGElement> | null => {
-    if (feature?.properties?.name === 'French Cities') {
-      return {
-        fill: '#93c0d099',
-        strokeWidth: '2',
-        stroke: 'red',
-        r: '15',
-      }
-    } else if (feature?.properties?.name === 'Bristol-Birmingham-Manchester') {
-      return {
-        fill: 'none',
-        strokeWidth: '2',
-        stroke: 'blue',
-      }
-    } else {
-      return null
-    }
-  }
-
   return (
     <Map ref={ref} center={center} zoom={zoom} tileProvider={osmTileProvider} {...args}>
-      <GeoJSONLayer
-        data={data}
-        requestFeatureStyle={handleRequestFeatureStyle}
-        markerPointComponent={PinMarker}
-      />
+      <GeoJSONLayer data={data} markerComponent={PinMarker} />
     </Map>
   )
 }

@@ -9,6 +9,7 @@ import {
   MultiLineString,
   Polygon,
   MultiPolygon,
+  Feature,
 } from 'geojson'
 
 import PointComponent from './PointComponent'
@@ -17,7 +18,7 @@ import LineStringComponent from './LineStringComponent'
 import MultiLineStringComponent from './MultiLineStringComponent'
 import PolygonComponent from './PolygonComponent'
 import MultiPolygonComponent from './MultiPolygonComponent'
-import { MarkerPointComponent } from './types'
+import { MarkerComponent } from './types'
 
 /**
  * The prop type for a [[`GeometryCollectionComponent`]].
@@ -25,7 +26,8 @@ import { MarkerPointComponent } from './types'
 export interface GeometryCollectionComponentProps {
   /** The GeoJSON geometry */
   geometry: Geometry
-  markerPointComponent?: MarkerPointComponent
+  feature: Feature
+  markerComponent?: MarkerComponent
 }
 
 /**
@@ -33,7 +35,8 @@ export interface GeometryCollectionComponentProps {
  */
 export default function GeometryCollectionComponent({
   geometry,
-  markerPointComponent,
+  feature,
+  markerComponent,
   ...props
 }: GeometryCollectionComponentProps & SVGProps<SVGSVGElement>) {
   if (geometry.type === 'GeometryCollection') {
@@ -41,7 +44,7 @@ export default function GeometryCollectionComponent({
     return (
       <>
         {geometryCollection.geometries.map((g, i) => (
-          <GeometryCollectionComponent key={i} geometry={g} {...props} />
+          <GeometryCollectionComponent key={i} feature={feature} geometry={g} {...props} />
         ))}
       </>
     )
@@ -49,7 +52,8 @@ export default function GeometryCollectionComponent({
     return (
       <PointComponent
         point={geometry as Point}
-        markerPointComponent={markerPointComponent}
+        feature={feature}
+        markerComponent={markerComponent}
         {...props}
       />
     )
@@ -57,7 +61,8 @@ export default function GeometryCollectionComponent({
     return (
       <MultiPointComponent
         multiPoint={geometry as MultiPoint}
-        markerPointComponent={markerPointComponent}
+        feature={feature}
+        markerComponent={markerComponent}
         {...props}
       />
     )
@@ -65,6 +70,7 @@ export default function GeometryCollectionComponent({
     return (
       <LineStringComponent
         lineString={geometry as LineString}
+        feature={feature}
         {...(props as SVGProps<SVGPathElement>)}
       />
     )
@@ -72,18 +78,24 @@ export default function GeometryCollectionComponent({
     return (
       <MultiLineStringComponent
         multiLineString={geometry as MultiLineString}
+        feature={feature}
         {...(props as SVGProps<SVGPathElement>)}
       />
     )
   } else if (geometry.type === 'Polygon') {
     return (
-      <PolygonComponent polygon={geometry as Polygon} {...(props as SVGProps<SVGCircleElement>)} />
+      <PolygonComponent
+        polygon={geometry as Polygon}
+        feature={feature}
+        {...(props as SVGProps<SVGPathElement>)}
+      />
     )
   } else if (geometry.type === 'MultiPolygon') {
     return (
       <MultiPolygonComponent
         multiPolygon={geometry as MultiPolygon}
-        {...(props as SVGProps<SVGCircleElement>)}
+        feature={feature}
+        {...(props as SVGProps<SVGPathElement>)}
       />
     )
   } else {

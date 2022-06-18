@@ -1,6 +1,6 @@
 import { useContext, SVGProps } from 'react'
 
-import { LineString } from 'geojson'
+import { Feature, LineString } from 'geojson'
 
 import { CLASS_NAMES } from '../../constants'
 
@@ -25,6 +25,7 @@ const classNames = {
 export interface LineStringComponentProps {
   /** The GeoJSON LineString */
   lineString: LineString
+  feature: Feature
 }
 
 /**

@@ -12,7 +12,8 @@ export type RequestFeatureStyleHandler = (
   state: FeatureState
 ) => SVGProps<SVGSVGElement> | null
 
-export interface MarkerPointComponentProps extends SVGProps<SVGSVGElement> {
+export interface MarkerComponentProps extends SVGProps<SVGSVGElement> {
   point: Point
+  feature: Feature
 }
-export type MarkerPointComponent = React.FC<MarkerPointComponentProps>
+export type MarkerComponent = React.FC<MarkerComponentProps>

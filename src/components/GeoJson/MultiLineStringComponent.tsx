@@ -1,6 +1,6 @@
 import { SVGProps, useContext } from 'react'
 
-import { MultiLineString } from 'geojson'
+import { Feature, MultiLineString } from 'geojson'
 
 import { CLASS_NAMES } from '../../constants'
 
@@ -25,6 +25,7 @@ const classNames = {
 export interface MultiLineStringComponentProps {
   /** The GeoJSON MultiLineString */
   multiLineString: MultiLineString
+  feature: Feature
 }
 
 /**

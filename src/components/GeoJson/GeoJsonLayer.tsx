@@ -5,7 +5,7 @@ import { CLASS_NAMES } from '../../constants'
 
 import MapContext from '../MapContext'
 
-import { MarkerPointComponent, RequestFeatureStyleHandler } from './types'
+import { MarkerComponent, RequestFeatureStyleHandler } from './types'
 
 import { FeatureComponent } from './FeatureComponent'
 import { Point } from '../../types'
@@ -30,7 +30,7 @@ export interface GeoJSONLayerProps {
   /** A callback to request the SVG props for a feature */
   requestFeatureStyle?: RequestFeatureStyleHandler
   renderPopup?: (feature: Feature) => React.ReactElement | null
-  markerPointComponent?: MarkerPointComponent
+  markerComponent?: MarkerComponent
 }
 
 /**
@@ -40,7 +40,7 @@ export default function GeoJSONLayer({
   data,
   requestFeatureStyle,
   renderPopup,
-  markerPointComponent,
+  markerComponent,
 }: GeoJSONLayerProps) {
   const {
     bounds: { width, height, top, left },
@@ -64,7 +64,7 @@ export default function GeoJSONLayer({
       return (
         <FeatureComponent
           feature={data as Feature}
-          markerPointComponent={markerPointComponent}
+          markerComponent={markerComponent}
           requestFeatureStyle={requestFeatureStyle}
           onMouseOver={handleMouseOver}
           onMouseOut={handleMouseOut}
@@ -77,7 +77,7 @@ export default function GeoJSONLayer({
             <FeatureComponent
               key={`feature-${i}`}
               feature={feature}
-              markerPointComponent={markerPointComponent}
+              markerComponent={markerComponent}
               requestFeatureStyle={requestFeatureStyle}
               onMouseOver={handleMouseOver}
               onMouseOut={handleMouseOut}

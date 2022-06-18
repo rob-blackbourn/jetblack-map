@@ -1,6 +1,6 @@
 import React, { CSSProperties, SVGProps, useContext } from 'react'
 
-import { Point } from 'geojson'
+import { Feature, Point } from 'geojson'
 
 import { CLASS_NAMES } from '../../constants'
 import { Point as ScreenPoint } from '../../types'
@@ -8,7 +8,7 @@ import { Point as ScreenPoint } from '../../types'
 import MapContext from '../MapContext'
 
 import { geoJsonPointToScreenPoint } from './utils'
-import { MarkerPointComponent, MarkerPointComponentProps } from './types'
+import { MarkerComponent, MarkerComponentProps } from './types'
 
 const classNames = {
   point: [
@@ -27,10 +27,11 @@ const classNames = {
 export interface PointComponentProps {
   /** The GeoJSON Point */
   point: Point
-  markerPointComponent?: MarkerPointComponent
+  feature: Feature
+  markerComponent?: MarkerComponent
 }
 
-export const Circle: MarkerPointComponent = ({ point, ...props }) => (
+export const Circle: MarkerComponent = ({ point, ...props }) => (
   <circle cx={point.x} cy={point.y} {...(props as SVGProps<SVGCircleElement>)} />
 )
 
@@ -39,7 +40,7 @@ export const Circle: MarkerPointComponent = ({ point, ...props }) => (
  */
 export default function PointComponent({
   point,
-  markerPointComponent: Component = Circle,
+  markerComponent: Component = Circle,
   ...props
 }: PointComponentProps & SVGProps<SVGSVGElement>) {
   const {
