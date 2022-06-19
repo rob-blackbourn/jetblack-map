@@ -25,7 +25,6 @@ const classNames = {
 export interface PolygonComponentProps {
   /** The GeoJSON Polygon */
   polygon: Polygon
-  feature: Feature
 }
 
 /**

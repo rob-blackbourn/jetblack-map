@@ -25,7 +25,6 @@ const classNames = {
 export interface MultiLineStringComponentProps {
   /** The GeoJSON MultiLineString */
   multiLineString: MultiLineString
-  feature: Feature
 }
 
 /**

@@ -25,7 +25,6 @@ const classNames = {
 export interface MultiPolygonComponentProps {
   /** The GeoJSON MultiPolygon */
   multiPolygon: MultiPolygon
-  feature: Feature
 }
 
 /**

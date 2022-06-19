@@ -70,7 +70,6 @@ export default function GeometryCollectionComponent({
     return (
       <LineStringComponent
         lineString={geometry as LineString}
-        feature={feature}
         {...(props as SVGProps<SVGPathElement>)}
       />
     )
@@ -78,23 +77,17 @@ export default function GeometryCollectionComponent({
     return (
       <MultiLineStringComponent
         multiLineString={geometry as MultiLineString}
-        feature={feature}
         {...(props as SVGProps<SVGPathElement>)}
       />
     )
   } else if (geometry.type === 'Polygon') {
     return (
-      <PolygonComponent
-        polygon={geometry as Polygon}
-        feature={feature}
-        {...(props as SVGProps<SVGPathElement>)}
-      />
+      <PolygonComponent polygon={geometry as Polygon} {...(props as SVGProps<SVGPathElement>)} />
     )
   } else if (geometry.type === 'MultiPolygon') {
     return (
       <MultiPolygonComponent
         multiPolygon={geometry as MultiPolygon}
-        feature={feature}
         {...(props as SVGProps<SVGPathElement>)}
       />
     )
