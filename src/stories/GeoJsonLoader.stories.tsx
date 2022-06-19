@@ -27,7 +27,7 @@ const Template: ComponentStory<typeof Map> = args => {
 
   const ref = useRef<HTMLDivElement>(null)
 
-  const [zoom, setZoom] = useZoom({ ref, defaultZoom: 6 })
+  const [zoom, setZoom] = useZoom({ ref, defaultZoom: 5 })
   const [center, setCenter] = useDrag({
     ref,
     zoom,
@@ -58,7 +58,7 @@ const Template: ComponentStory<typeof Map> = args => {
   const handleRequestFeatureStyle = (
     feature: Feature,
     state: FeatureState
-  ): SVGProps<SVGAElement> | null => {
+  ): SVGProps<SVGSVGElement> | null => {
     if (state.mouseOver) {
       return {
         fill: '#93c0d099',
@@ -83,41 +83,26 @@ const Template: ComponentStory<typeof Map> = args => {
     }
 
     return (
-      <dl
+      <div
         style={{
-          width: '100%',
-          overflow: 'hidden',
-          padding: 0,
-          margin: 0,
-          fontFamily: 'sans-serif',
-          fontSize: 'smaller',
+          backgroundColor: 'black',
+          color: 'white',
+          padding: 2,
+          borderRadius: 5,
+          fontSize: '75%',
         }}
       >
-        {Object.entries(feature.properties).map(([key, value]) => (
-          <>
-            <dt
-              style={{
-                float: 'left',
-                width: '25%',
-                padding: 0,
-                margin: 0,
-              }}
-            >
-              {key}
-            </dt>
-            <dd
-              style={{
-                float: 'left',
-                width: '75%',
-                padding: 0,
-                margin: 0,
-              }}
-            >
-              {value}
-            </dd>
-          </>
-        ))}
-      </dl>
+        <table>
+          <tbody>
+            {Object.entries(feature.properties).map(([key, value]) => (
+              <tr>
+                <th style={{ textAlign: 'left' }}>{key}</th>
+                <td>{value}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     )
   }
 
@@ -135,6 +120,6 @@ const Template: ComponentStory<typeof Map> = args => {
 export const GeoJsonLoader = Template.bind({})
 
 GeoJsonLoader.args = {
-  width: '600px',
-  height: '400px',
+  width: '1000px',
+  height: '600px',
 }
