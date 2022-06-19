@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { FeatureCollection } from 'geojson'
+import { Feature, FeatureCollection } from 'geojson'
 
 import {
   Coordinate,
@@ -85,9 +85,31 @@ const Template: ComponentStory<typeof Map> = args => {
     tileSize: osmTileProvider.tileSize,
   })
 
+  const handleRenderFeature = (feature: Feature) => {
+    if (!(feature && feature.properties)) {
+      return null
+    }
+
+    const name = Object.entries(feature.properties).filter(([key, value]) => key === 'name')[0][1]
+
+    return (
+      <div
+        style={{
+          backgroundColor: 'black',
+          color: 'white',
+          padding: 2,
+          borderRadius: 5,
+          fontSize: '75%',
+        }}
+      >
+        {name}
+      </div>
+    )
+  }
+
   return (
     <Map ref={ref} center={center} zoom={zoom} tileProvider={osmTileProvider} {...args}>
-      <GeoJSONLayer data={data} markerComponent={PinMarker} />
+      <GeoJSONLayer data={data} markerComponent={PinMarker} renderPopup={handleRenderFeature} />
     </Map>
   )
 }
