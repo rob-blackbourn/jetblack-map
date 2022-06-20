@@ -1648,7 +1648,7 @@ ___
 
 #### Defined in
 
-[src/components/GeoJson/types.ts:17](https://github.com/rob-blackbourn/jetblack-map/blob/c05345a/src/components/GeoJson/types.ts#L17)
+[src/components/GeoJson/types.ts:17](https://github.com/rob-blackbourn/jetblack-map/blob/303d233/src/components/GeoJson/types.ts#L17)
 
 ___
 
@@ -5190,7 +5190,7 @@ ___
 
 #### Defined in
 
-[src/components/GeoJson/types.ts:16](https://github.com/rob-blackbourn/jetblack-map/blob/c05345a/src/components/GeoJson/types.ts#L16)
+[src/components/GeoJson/types.ts:16](https://github.com/rob-blackbourn/jetblack-map/blob/303d233/src/components/GeoJson/types.ts#L16)
 
 ___
 

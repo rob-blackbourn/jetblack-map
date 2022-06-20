@@ -18,4 +18,4 @@ The markers to render
 
 #### Defined in
 
-[src/components/OverlayLayer.tsx:22](https://github.com/rob-blackbourn/jetblack-map/blob/c05345a/src/components/OverlayLayer.tsx#L22)
+[src/components/OverlayLayer.tsx:22](https://github.com/rob-blackbourn/jetblack-map/blob/303d233/src/components/OverlayLayer.tsx#L22)

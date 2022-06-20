@@ -14,4 +14,4 @@ custom_edit_url: null
 
 #### Defined in
 
-[src/components/GeoJson/types.ts:7](https://github.com/rob-blackbourn/jetblack-map/blob/c05345a/src/components/GeoJson/types.ts#L7)
+[src/components/GeoJson/types.ts:7](https://github.com/rob-blackbourn/jetblack-map/blob/303d233/src/components/GeoJson/types.ts#L7)
