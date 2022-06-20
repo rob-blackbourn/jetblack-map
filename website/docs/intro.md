@@ -8,8 +8,6 @@ import DemoMap from '@site/src/components/DemoMap'
 
 A map component for React.
 
-This is work in progress!
-
 ## Overview
 
 This package provides a tiled map component with support for interaction and markers.

@@ -18,7 +18,7 @@ An optional default zoom level
 
 #### Defined in
 
-[src/hooks/useZoom.ts:14](https://github.com/rob-blackbourn/jetblack-map/blob/b3b8376/src/hooks/useZoom.ts#L14)
+[src/hooks/useZoom.ts:14](https://github.com/rob-blackbourn/jetblack-map/blob/3b34dfe/src/hooks/useZoom.ts#L14)
 
 ___
 
@@ -30,7 +30,7 @@ The maximum zoom level
 
 #### Defined in
 
-[src/hooks/useZoom.ts:18](https://github.com/rob-blackbourn/jetblack-map/blob/b3b8376/src/hooks/useZoom.ts#L18)
+[src/hooks/useZoom.ts:18](https://github.com/rob-blackbourn/jetblack-map/blob/3b34dfe/src/hooks/useZoom.ts#L18)
 
 ___
 
@@ -42,7 +42,7 @@ The minimum zoom level
 
 #### Defined in
 
-[src/hooks/useZoom.ts:16](https://github.com/rob-blackbourn/jetblack-map/blob/b3b8376/src/hooks/useZoom.ts#L16)
+[src/hooks/useZoom.ts:16](https://github.com/rob-blackbourn/jetblack-map/blob/3b34dfe/src/hooks/useZoom.ts#L16)
 
 ___
 
@@ -54,7 +54,7 @@ A reference to the map component
 
 #### Defined in
 
-[src/hooks/useZoom.ts:12](https://github.com/rob-blackbourn/jetblack-map/blob/b3b8376/src/hooks/useZoom.ts#L12)
+[src/hooks/useZoom.ts:12](https://github.com/rob-blackbourn/jetblack-map/blob/3b34dfe/src/hooks/useZoom.ts#L12)
 
 ___
 
@@ -66,4 +66,4 @@ The incremental value applied to each wheel event to the zoom level
 
 #### Defined in
 
-[src/hooks/useZoom.ts:20](https://github.com/rob-blackbourn/jetblack-map/blob/b3b8376/src/hooks/useZoom.ts#L20)
+[src/hooks/useZoom.ts:20](https://github.com/rob-blackbourn/jetblack-map/blob/3b34dfe/src/hooks/useZoom.ts#L20)
