@@ -20,7 +20,7 @@ The bounds of the map in hte screen coordinate system
 
 #### Defined in
 
-[src/components/MapContext.ts:18](https://github.com/rob-blackbourn/jetblack-map/blob/303d233/src/components/MapContext.ts#L18)
+[src/components/MapContext.ts:18](https://github.com/rob-blackbourn/jetblack-map/blob/b3b8376/src/components/MapContext.ts#L18)
 
 ___
 
@@ -32,7 +32,7 @@ The latitude and longitude of the center of the map
 
 #### Defined in
 
-[src/components/MapContext.ts:14](https://github.com/rob-blackbourn/jetblack-map/blob/303d233/src/components/MapContext.ts#L14)
+[src/components/MapContext.ts:14](https://github.com/rob-blackbourn/jetblack-map/blob/b3b8376/src/components/MapContext.ts#L14)
 
 ___
 
@@ -44,7 +44,7 @@ The tile provider
 
 #### Defined in
 
-[src/components/MapContext.ts:20](https://github.com/rob-blackbourn/jetblack-map/blob/303d233/src/components/MapContext.ts#L20)
+[src/components/MapContext.ts:20](https://github.com/rob-blackbourn/jetblack-map/blob/b3b8376/src/components/MapContext.ts#L20)
 
 ___
 
@@ -56,4 +56,4 @@ The zoom level
 
 #### Defined in
 
-[src/components/MapContext.ts:16](https://github.com/rob-blackbourn/jetblack-map/blob/303d233/src/components/MapContext.ts#L16)
+[src/components/MapContext.ts:16](https://github.com/rob-blackbourn/jetblack-map/blob/b3b8376/src/components/MapContext.ts#L16)

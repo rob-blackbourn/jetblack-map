@@ -18,7 +18,7 @@ The GeoJSON data
 
 #### Defined in
 
-[src/components/GeoJson/GeoJsonLayer.tsx:29](https://github.com/rob-blackbourn/jetblack-map/blob/303d233/src/components/GeoJson/GeoJsonLayer.tsx#L29)
+[src/components/GeoJson/GeoJsonLayer.tsx:29](https://github.com/rob-blackbourn/jetblack-map/blob/b3b8376/src/components/GeoJson/GeoJsonLayer.tsx#L29)
 
 ___
 
@@ -30,7 +30,7 @@ A marker component to be used for points
 
 #### Defined in
 
-[src/components/GeoJson/GeoJsonLayer.tsx:35](https://github.com/rob-blackbourn/jetblack-map/blob/303d233/src/components/GeoJson/GeoJsonLayer.tsx#L35)
+[src/components/GeoJson/GeoJsonLayer.tsx:35](https://github.com/rob-blackbourn/jetblack-map/blob/b3b8376/src/components/GeoJson/GeoJsonLayer.tsx#L35)
 
 ___
 
@@ -42,7 +42,7 @@ A callback to request the SVG props for a feature
 
 #### Defined in
 
-[src/components/GeoJson/GeoJsonLayer.tsx:31](https://github.com/rob-blackbourn/jetblack-map/blob/303d233/src/components/GeoJson/GeoJsonLayer.tsx#L31)
+[src/components/GeoJson/GeoJsonLayer.tsx:31](https://github.com/rob-blackbourn/jetblack-map/blob/b3b8376/src/components/GeoJson/GeoJsonLayer.tsx#L31)
 
 ## Methods
 
@@ -64,4 +64,4 @@ A callback to provide a popup when the pointer is over the feature
 
 #### Defined in
 
-[src/components/GeoJson/GeoJsonLayer.tsx:33](https://github.com/rob-blackbourn/jetblack-map/blob/303d233/src/components/GeoJson/GeoJsonLayer.tsx#L33)
+[src/components/GeoJson/GeoJsonLayer.tsx:33](https://github.com/rob-blackbourn/jetblack-map/blob/b3b8376/src/components/GeoJson/GeoJsonLayer.tsx#L33)
