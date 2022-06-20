@@ -1,6 +1,6 @@
 import { SVGProps, useContext } from 'react'
 
-import { MultiPolygon } from 'geojson'
+import { Feature, MultiPolygon } from 'geojson'
 
 import { CLASS_NAMES } from '../../constants'
 

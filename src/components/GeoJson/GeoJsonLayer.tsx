@@ -5,7 +5,7 @@ import { CLASS_NAMES } from '../../constants'
 
 import MapContext from '../MapContext'
 
-import { RequestFeatureStyleHandler } from './types'
+import { MarkerComponent, RequestFeatureStyleHandler } from './types'
 
 import { FeatureComponent } from './FeatureComponent'
 import { Point } from '../../types'
@@ -29,7 +29,10 @@ export interface GeoJSONLayerProps {
   data: GeoJSON
   /** A callback to request the SVG props for a feature */
   requestFeatureStyle?: RequestFeatureStyleHandler
+  /** A callback to provide a popup when the pointer is over the feature */
   renderPopup?: (feature: Feature) => React.ReactElement | null
+  /** A marker component to be used for points */
+  markerComponent?: MarkerComponent
 }
 
 /**
@@ -39,6 +42,7 @@ export default function GeoJSONLayer({
   data,
   requestFeatureStyle,
   renderPopup,
+  markerComponent,
 }: GeoJSONLayerProps) {
   const {
     bounds: { width, height, top, left },
@@ -47,18 +51,12 @@ export default function GeoJSONLayer({
   const [hoverPoint, setHoverPoint] = useState<Point>()
   const [hoverFeature, setHoverFeature] = useState<Feature>()
 
-  const handleMouseOver = (
-    event: React.MouseEvent<SVGElement, MouseEvent>,
-    feature: Feature
-  ) => {
+  const handleMouseOver = (event: React.MouseEvent<SVGElement, MouseEvent>, feature: Feature) => {
     setHoverPoint({ x: event.clientX, y: event.clientY })
     setHoverFeature(feature)
   }
 
-  const handleMouseOut = (
-    event: React.MouseEvent<SVGElement, MouseEvent>,
-    feature: Feature
-  ) => {
+  const handleMouseOut = (event: React.MouseEvent<SVGElement, MouseEvent>, feature: Feature) => {
     setHoverPoint(undefined)
     setHoverFeature(undefined)
   }
@@ -68,6 +66,7 @@ export default function GeoJSONLayer({
       return (
         <FeatureComponent
           feature={data as Feature}
+          markerComponent={markerComponent}
           requestFeatureStyle={requestFeatureStyle}
           onMouseOver={handleMouseOver}
           onMouseOut={handleMouseOut}
@@ -80,6 +79,7 @@ export default function GeoJSONLayer({
             <FeatureComponent
               key={`feature-${i}`}
               feature={feature}
+              markerComponent={markerComponent}
               requestFeatureStyle={requestFeatureStyle}
               onMouseOver={handleMouseOver}
               onMouseOut={handleMouseOut}
@@ -103,12 +103,7 @@ export default function GeoJSONLayer({
         cursor: 'pointer',
       }}
     >
-      <svg
-        width={width}
-        height={height}
-        viewBox={`0 0 ${width} ${height}`}
-        fill="none"
-      >
+      <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} fill="none">
         {features()}
       </svg>
       <div

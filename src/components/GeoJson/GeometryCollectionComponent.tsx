@@ -9,6 +9,7 @@ import {
   MultiLineString,
   Polygon,
   MultiPolygon,
+  Feature,
 } from 'geojson'
 
 import PointComponent from './PointComponent'
@@ -17,6 +18,7 @@ import LineStringComponent from './LineStringComponent'
 import MultiLineStringComponent from './MultiLineStringComponent'
 import PolygonComponent from './PolygonComponent'
 import MultiPolygonComponent from './MultiPolygonComponent'
+import { MarkerComponent } from './types'
 
 /**
  * The prop type for a [[`GeometryCollectionComponent`]].
@@ -24,6 +26,8 @@ import MultiPolygonComponent from './MultiPolygonComponent'
 export interface GeometryCollectionComponentProps {
   /** The GeoJSON geometry */
   geometry: Geometry
+  feature: Feature
+  markerComponent?: MarkerComponent
 }
 
 /**
@@ -31,14 +35,16 @@ export interface GeometryCollectionComponentProps {
  */
 export default function GeometryCollectionComponent({
   geometry,
+  feature,
+  markerComponent,
   ...props
-}: GeometryCollectionComponentProps & SVGProps<SVGElement>) {
+}: GeometryCollectionComponentProps & SVGProps<SVGSVGElement>) {
   if (geometry.type === 'GeometryCollection') {
     const geometryCollection = geometry as GeometryCollection
     return (
       <>
         {geometryCollection.geometries.map((g, i) => (
-          <GeometryCollectionComponent key={i} geometry={g} {...props} />
+          <GeometryCollectionComponent key={i} feature={feature} geometry={g} {...props} />
         ))}
       </>
     )
@@ -46,14 +52,18 @@ export default function GeometryCollectionComponent({
     return (
       <PointComponent
         point={geometry as Point}
-        {...(props as SVGProps<SVGCircleElement>)}
+        feature={feature}
+        markerComponent={markerComponent}
+        {...props}
       />
     )
   } else if (geometry.type === 'MultiPoint') {
     return (
       <MultiPointComponent
         multiPoint={geometry as MultiPoint}
-        {...(props as SVGProps<SVGCircleElement>)}
+        feature={feature}
+        markerComponent={markerComponent}
+        {...props}
       />
     )
   } else if (geometry.type === 'LineString') {
@@ -72,16 +82,13 @@ export default function GeometryCollectionComponent({
     )
   } else if (geometry.type === 'Polygon') {
     return (
-      <PolygonComponent
-        polygon={geometry as Polygon}
-        {...(props as SVGProps<SVGCircleElement>)}
-      />
+      <PolygonComponent polygon={geometry as Polygon} {...(props as SVGProps<SVGPathElement>)} />
     )
   } else if (geometry.type === 'MultiPolygon') {
     return (
       <MultiPolygonComponent
         multiPolygon={geometry as MultiPolygon}
-        {...(props as SVGProps<SVGCircleElement>)}
+        {...(props as SVGProps<SVGPathElement>)}
       />
     )
   } else {

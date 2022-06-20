@@ -113,15 +113,15 @@ const Template: ComponentStory<typeof Map> = args => {
     tileSize: osmTileProvider.tileSize,
   })
 
-  const handleRequestFeatureStyle = (feature: Feature): SVGProps<SVGElement> | null => {
-    if (feature.properties.name === 'French Cities') {
+  const handleRequestFeatureStyle = (feature: Feature): SVGProps<SVGSVGElement> | null => {
+    if (feature?.properties?.name === 'French Cities') {
       return {
         fill: '#93c0d099',
         strokeWidth: '2',
         stroke: 'red',
         r: '15',
       }
-    } else if ((feature.properties.name = 'Bristol-Birmingham-Manchester')) {
+    } else if (feature?.properties?.name === 'Bristol-Birmingham-Manchester') {
       return {
         fill: 'none',
         strokeWidth: '2',

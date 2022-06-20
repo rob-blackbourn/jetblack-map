@@ -18,7 +18,19 @@ The GeoJSON data
 
 #### Defined in
 
-[components/GeoJson/GeoJsonLayer.tsx:29](https://github.com/rob-blackbourn/jetblack-map/blob/53b6913/src/components/GeoJson/GeoJsonLayer.tsx#L29)
+[src/components/GeoJson/GeoJsonLayer.tsx:29](https://github.com/rob-blackbourn/jetblack-map/blob/c05345a/src/components/GeoJson/GeoJsonLayer.tsx#L29)
+
+___
+
+### markerComponent
+
+• `Optional` **markerComponent**: `MarkerComponent`
+
+A marker component to be used for points
+
+#### Defined in
+
+[src/components/GeoJson/GeoJsonLayer.tsx:35](https://github.com/rob-blackbourn/jetblack-map/blob/c05345a/src/components/GeoJson/GeoJsonLayer.tsx#L35)
 
 ___
 
@@ -30,13 +42,15 @@ A callback to request the SVG props for a feature
 
 #### Defined in
 
-[components/GeoJson/GeoJsonLayer.tsx:31](https://github.com/rob-blackbourn/jetblack-map/blob/53b6913/src/components/GeoJson/GeoJsonLayer.tsx#L31)
+[src/components/GeoJson/GeoJsonLayer.tsx:31](https://github.com/rob-blackbourn/jetblack-map/blob/c05345a/src/components/GeoJson/GeoJsonLayer.tsx#L31)
 
 ## Methods
 
 ### renderPopup
 
 ▸ `Optional` **renderPopup**(`feature`): ``null`` \| `ReactElement`<`any`, `string` \| `JSXElementConstructor`<`any`\>\>
+
+A callback to provide a popup when the pointer is over the feature
 
 #### Parameters
 
@@ -50,4 +64,4 @@ A callback to request the SVG props for a feature
 
 #### Defined in
 
-[components/GeoJson/GeoJsonLayer.tsx:32](https://github.com/rob-blackbourn/jetblack-map/blob/53b6913/src/components/GeoJson/GeoJsonLayer.tsx#L32)
+[src/components/GeoJson/GeoJsonLayer.tsx:33](https://github.com/rob-blackbourn/jetblack-map/blob/c05345a/src/components/GeoJson/GeoJsonLayer.tsx#L33)

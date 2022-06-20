@@ -80,11 +80,10 @@ export default function App() {
   }
 
   return (
-    <Map ref={ref} center={center} zoom={zoom} {...args}>
+    <Map ref={ref} center={center} zoom={zoom} width={600} height={400}>
       <GeoJSONLayer
         data={data}
         requestFeatureStyle={handleRequestFeatureStyle}
-        renderPopup={handleRenderFeature}
       />
     </Map>
   )
@@ -170,11 +169,10 @@ export default function App() {
   }
 
   return (
-    <Map ref={ref} center={center} zoom={zoom} {...args}>
+    <Map ref={ref} center={center} zoom={zoom} width={600} height={400}>
       <GeoJSONLayer
         data={data}
         requestFeatureStyle={handleRequestFeatureStyle}
-        renderPopup={handleRenderFeature}
       />
     </Map>
   )
