@@ -7,6 +7,7 @@ import { Point } from '../types'
  * @param roundedZoom The rounded zoom
  * @param scale The scale.
  * @param screenWidth The screen width.
+ * @param tileWidth The tile width.
  * @returns A list of the points
  *
  * @ignore

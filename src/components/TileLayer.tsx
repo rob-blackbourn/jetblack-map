@@ -28,8 +28,7 @@ const classNames = {
 /**
  * Render a tile layer.
  *
- * @param props The props.
- * @returns A map.
+ * @returns The tile layer.
  *
  * @category Component
  */
