@@ -4,10 +4,19 @@
         <title>@jetblack/map Blog</title>
         <link>https://rob-blackbourn.github.io/jetblack-map/jetblack-map/blog</link>
         <description>@jetblack/map Blog</description>
-        <lastBuildDate>Mon, 20 Jun 2022 07:16:00 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 20 Jun 2022 17:18:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[Release 1.0.0]]></title>
+            <link>https://rob-blackbourn.github.io/jetblack-map/jetblack-map/blog/release-1-0-0</link>
+            <guid>release-1-0-0</guid>
+            <pubDate>Mon, 20 Jun 2022 17:18:00 GMT</pubDate>
+            <description><![CDATA[This is the first production release.]]></description>
+            <content:encoded><![CDATA[<p>This is the first production release.</p><p>There will be no breaking changes, only bug fixes and feature enhancements.</p><p>Rob</p>]]></content:encoded>
+            <category>release</category>
+        </item>
         <item>
             <title><![CDATA[Release 0.1.0-alpha.20]]></title>
             <link>https://rob-blackbourn.github.io/jetblack-map/jetblack-map/blog/release-0-1-0-alpha-20</link>
