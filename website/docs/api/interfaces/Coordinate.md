@@ -20,7 +20,7 @@ from 90 degrees in the north to -90 degrees in the south.
 
 #### Defined in
 
-[types.ts:11](https://github.com/rob-blackbourn/jetblack-map/blob/53b6913/src/types.ts#L11)
+[src/types.ts:11](https://github.com/rob-blackbourn/jetblack-map/blob/c05345a/src/types.ts#L11)
 
 ___
 
@@ -33,4 +33,4 @@ the east to -180 degrees in the west.
 
 #### Defined in
 
-[types.ts:16](https://github.com/rob-blackbourn/jetblack-map/blob/53b6913/src/types.ts#L16)
+[src/types.ts:16](https://github.com/rob-blackbourn/jetblack-map/blob/c05345a/src/types.ts#L16)

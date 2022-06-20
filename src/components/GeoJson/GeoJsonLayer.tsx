@@ -29,7 +29,9 @@ export interface GeoJSONLayerProps {
   data: GeoJSON
   /** A callback to request the SVG props for a feature */
   requestFeatureStyle?: RequestFeatureStyleHandler
+  /** A callback to provide a popup when the pointer is over the feature */
   renderPopup?: (feature: Feature) => React.ReactElement | null
+  /** A marker component to be used for points */
   markerComponent?: MarkerComponent
 }
 
