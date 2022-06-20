@@ -18,7 +18,7 @@ The color of the pin
 
 #### Defined in
 
-[src/components/SVGPin.tsx:18](https://github.com/rob-blackbourn/jetblack-map/blob/3b34dfe/src/components/SVGPin.tsx#L18)
+[src/components/SVGPin.tsx:18](https://github.com/rob-blackbourn/jetblack-map/blob/cdc3f14/src/components/SVGPin.tsx#L18)
 
 ___
 
@@ -30,7 +30,7 @@ The point in the screen coordinate system.
 
 #### Defined in
 
-[src/components/SVGPin.tsx:14](https://github.com/rob-blackbourn/jetblack-map/blob/3b34dfe/src/components/SVGPin.tsx#L14)
+[src/components/SVGPin.tsx:14](https://github.com/rob-blackbourn/jetblack-map/blob/cdc3f14/src/components/SVGPin.tsx#L14)
 
 ___
 
@@ -42,7 +42,7 @@ The size of the pin
 
 #### Defined in
 
-[src/components/SVGPin.tsx:16](https://github.com/rob-blackbourn/jetblack-map/blob/3b34dfe/src/components/SVGPin.tsx#L16)
+[src/components/SVGPin.tsx:16](https://github.com/rob-blackbourn/jetblack-map/blob/cdc3f14/src/components/SVGPin.tsx#L16)
 
 ## Methods
 
@@ -64,7 +64,7 @@ A handler for click events
 
 #### Defined in
 
-[src/components/SVGPin.tsx:24](https://github.com/rob-blackbourn/jetblack-map/blob/3b34dfe/src/components/SVGPin.tsx#L24)
+[src/components/SVGPin.tsx:24](https://github.com/rob-blackbourn/jetblack-map/blob/cdc3f14/src/components/SVGPin.tsx#L24)
 
 ___
 
@@ -86,7 +86,7 @@ A handler for a context menu event
 
 #### Defined in
 
-[src/components/SVGPin.tsx:26](https://github.com/rob-blackbourn/jetblack-map/blob/3b34dfe/src/components/SVGPin.tsx#L26)
+[src/components/SVGPin.tsx:26](https://github.com/rob-blackbourn/jetblack-map/blob/cdc3f14/src/components/SVGPin.tsx#L26)
 
 ___
 
@@ -108,7 +108,7 @@ A handler for mouse-out events
 
 #### Defined in
 
-[src/components/SVGPin.tsx:20](https://github.com/rob-blackbourn/jetblack-map/blob/3b34dfe/src/components/SVGPin.tsx#L20)
+[src/components/SVGPin.tsx:20](https://github.com/rob-blackbourn/jetblack-map/blob/cdc3f14/src/components/SVGPin.tsx#L20)
 
 ___
 
@@ -130,4 +130,4 @@ A handler for mouse-over events
 
 #### Defined in
 
-[src/components/SVGPin.tsx:22](https://github.com/rob-blackbourn/jetblack-map/blob/3b34dfe/src/components/SVGPin.tsx#L22)
+[src/components/SVGPin.tsx:22](https://github.com/rob-blackbourn/jetblack-map/blob/cdc3f14/src/components/SVGPin.tsx#L22)

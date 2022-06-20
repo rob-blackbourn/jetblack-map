@@ -18,7 +18,7 @@ An optional initial value for the center of the map
 
 #### Defined in
 
-[src/hooks/useDrag.ts:16](https://github.com/rob-blackbourn/jetblack-map/blob/3b34dfe/src/hooks/useDrag.ts#L16)
+[src/hooks/useDrag.ts:16](https://github.com/rob-blackbourn/jetblack-map/blob/cdc3f14/src/hooks/useDrag.ts#L16)
 
 ___
 
@@ -30,7 +30,7 @@ A reference to the map component
 
 #### Defined in
 
-[src/hooks/useDrag.ts:14](https://github.com/rob-blackbourn/jetblack-map/blob/3b34dfe/src/hooks/useDrag.ts#L14)
+[src/hooks/useDrag.ts:14](https://github.com/rob-blackbourn/jetblack-map/blob/cdc3f14/src/hooks/useDrag.ts#L14)
 
 ___
 
@@ -42,7 +42,7 @@ The size of the tiles
 
 #### Defined in
 
-[src/hooks/useDrag.ts:20](https://github.com/rob-blackbourn/jetblack-map/blob/3b34dfe/src/hooks/useDrag.ts#L20)
+[src/hooks/useDrag.ts:20](https://github.com/rob-blackbourn/jetblack-map/blob/cdc3f14/src/hooks/useDrag.ts#L20)
 
 ___
 
@@ -54,4 +54,4 @@ The current zoom level
 
 #### Defined in
 
-[src/hooks/useDrag.ts:18](https://github.com/rob-blackbourn/jetblack-map/blob/3b34dfe/src/hooks/useDrag.ts#L18)
+[src/hooks/useDrag.ts:18](https://github.com/rob-blackbourn/jetblack-map/blob/cdc3f14/src/hooks/useDrag.ts#L18)
