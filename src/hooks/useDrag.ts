@@ -80,9 +80,12 @@ export default function useDrag({
           x: tileCenter.x + tileDelta.x,
           y: tileCenter.y + tileDelta.y,
         }
-        const newCenter = tilePointToCoordinate(newTileCenter, zoom)
+        const { latitude, longitude } = tilePointToCoordinate(newTileCenter, zoom)
         mouseState.current.lastPoint = currentPoint
-        setCenter(newCenter)
+        setCenter({
+          latitude,
+          longitude: longitude % 180,
+        })
       }
     },
     [ref, center, zoom, setCenter, tileSize]

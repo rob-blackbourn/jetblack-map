@@ -157,7 +157,8 @@ export function screenPointToCoordinate(
   center: Coordinate,
   zoom: number,
   screenSize: Size,
-  tileSize: Size
+  tileSize: Size,
+  wrapLongitude: boolean = true
 ): Coordinate {
   // Calculate the delta from the screen center to the point.
   const screenDelta = {
@@ -180,8 +181,11 @@ export function screenPointToCoordinate(
   // Clip the latitude.
   const latitude = boundValue(-90, coordinate.latitude, 90)
 
-  // Allow the longitude to wrap.
-  let longitude = coordinate.longitude % 180
+  let longitude = coordinate.longitude
+  if (wrapLongitude) {
+    // Allow the longitude to wrap.
+    longitude %= 180
+  }
 
   return {
     latitude,
@@ -218,4 +222,9 @@ export function recenterScreenPoint(
     x: deltaScreenPoint.x + screenSize.width / 2,
     y: deltaScreenPoint.y + screenSize.height / 2,
   }
+}
+
+export function range(start: number, stop: number, step: number = 1): number[] {
+  const length = Math.ceil((stop - start) / step)
+  return Array.from({ length }, (_, i) => i * step + start)
 }

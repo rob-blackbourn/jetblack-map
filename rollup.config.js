@@ -1,39 +1,40 @@
-import typescript from "rollup-plugin-typescript2";
-import pkg from "./package.json";
+import typescript from 'rollup-plugin-typescript2'
+import pkg from './package.json'
 
-const extensions = [".js", ".jsx", ".ts", ".tsx"];
-const input = "src/index.ts";
+const extensions = ['.js', '.jsx', '.ts', '.tsx']
+const input = 'src/index.ts'
 
 const external = [
   ...Object.keys(pkg.dependencies || {}),
   ...Object.keys(pkg.peerDependencies || {}),
-];
+  'react/jsx-runtime',
+]
 
 const plugins = [
   typescript({
-    typescript: require("typescript"),
+    typescript: require('typescript'),
   }),
-];
+]
 
 export default [
   {
     input,
     output: {
       file: pkg.module,
-      format: "esm",
+      format: 'esm',
       sourcemap: true,
     },
     plugins,
-    external
+    external,
   },
   {
     input,
     output: {
       file: pkg.main,
-      format: "cjs",
+      format: 'cjs',
       sourcemap: true,
     },
     plugins,
-    external
+    external,
   },
-];
+]
