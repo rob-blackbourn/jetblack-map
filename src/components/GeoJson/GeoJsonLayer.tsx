@@ -114,6 +114,7 @@ export default function GeoJSONLayer({
         top: '0',
         pointerEvents: 'none',
         cursor: 'pointer',
+        overflow: 'hidden',
       }}
     >
       <svg
