@@ -9,7 +9,13 @@ import TileLayer from './TileLayer'
 import { osmTileProvider } from './TileProviders'
 
 const classNames = {
-  map: [CLASS_NAMES.primary, CLASS_NAMES.draggable, CLASS_NAMES.zoomable, CLASS_NAMES.clickable, 'map'].join(' '),
+  map: [
+    CLASS_NAMES.primary,
+    CLASS_NAMES.draggable,
+    CLASS_NAMES.zoomable,
+    CLASS_NAMES.clickable,
+    'map',
+  ].join(' '),
 }
 
 /**
@@ -30,6 +36,8 @@ export interface MapProps {
   tileProvider?: TileProvider
   /** Map components */
   children?: React.ReactNode
+  /** The untilled background */
+  background?: string | number | undefined
 }
 
 /**
@@ -49,6 +57,7 @@ const Map = React.forwardRef<HTMLDivElement, MapProps>(
       height = DEFAULTS.height,
       tileProvider = osmTileProvider,
       children,
+      background = '#dddddd',
     },
     forwardedRef
   ) => {
@@ -88,8 +97,7 @@ const Map = React.forwardRef<HTMLDivElement, MapProps>(
             height,
             position: 'relative',
             display: 'inline-block',
-            overflow: 'hidden',
-            background: '#dddddd',
+            background,
           }}
           ref={ref}
         >
