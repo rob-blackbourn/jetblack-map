@@ -25,7 +25,7 @@ const classNames = {
  */
 export interface GeoJSONLayerProps {
   /** The GeoJSON data */
-  data: GeoJSON
+  data: GeoJSON | undefined
   /** A callback to request the SVG props for a feature */
   requestFeatureStyle?: RequestFeatureStyleHandler
   /** A callback to provide a popup when the pointer is over the feature */
@@ -65,7 +65,7 @@ export default function GeoJSONLayer({
   }
 
   const features = (centers: Coordinate[]) => {
-    if (data.type === 'Feature') {
+    if (data?.type === 'Feature') {
       return (
         <FeatureComponent
           feature={data as Feature}
@@ -79,7 +79,7 @@ export default function GeoJSONLayer({
           tileSize={tileSize}
         />
       )
-    } else if (data.type === 'FeatureCollection') {
+    } else if (data?.type === 'FeatureCollection') {
       return (
         <>
           {(data as FeatureCollection).features.map((feature, i) => (

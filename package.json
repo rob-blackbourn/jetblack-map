@@ -1,6 +1,6 @@
 {
   "name": "@jetblack/map",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A map component for React",
   "repository": "https://github.com/rob-blackbourn/jetblack-map",
   "homepage": "https://rob-blackbourn.github.io/jetblack-map/",
