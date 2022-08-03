@@ -44,6 +44,8 @@ export default function OverlayLayer({ children }: OverlayLayerProps) {
         height: height,
         top: `calc((100% - ${height}px) / 2)`,
         left: `calc((100% - ${width}px) / 2)`,
+        pointerEvents: 'none',
+        cursor: 'pointer',
       }}
     >
       {children}

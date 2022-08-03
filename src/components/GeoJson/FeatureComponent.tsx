@@ -4,7 +4,7 @@ import { Feature } from 'geojson'
 
 import { CLASS_NAMES } from '../../constants'
 
-import { MarkerComponent, RequestFeatureStyleHandler } from './types'
+import { ComponentProps, MarkerComponent, RequestFeatureStyleHandler } from './types'
 
 import GeometryCollectionComponent from './GeometryCollectionComponent'
 
@@ -32,7 +32,7 @@ export const defaultFeatureStyle: SVGProps<SVGSVGElement> = {
 /**
  * The prop type for [[`FeatureComponent`]].
  */
-export interface FeatureComponentProps {
+export interface FeatureComponentProps extends ComponentProps {
   /** The GeoJSON Feature */
   feature: Feature
   /** A click handler */
@@ -59,6 +59,7 @@ export function FeatureComponent({
   onContextMenu,
   requestFeatureStyle,
   markerComponent,
+  ...componentProps
 }: FeatureComponentProps) {
   const [mouseOver, setMouseOver] = useState(false)
 
@@ -85,6 +86,7 @@ export function FeatureComponent({
         geometry={feature.geometry}
         feature={feature}
         markerComponent={markerComponent}
+        {...componentProps}
         {...featureStyle}
       />
     </g>

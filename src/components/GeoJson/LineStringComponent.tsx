@@ -1,11 +1,11 @@
-import { useContext, SVGProps } from 'react'
+import { SVGProps } from 'react'
 
-import { LineString } from 'geojson'
+import { LineString, Position } from 'geojson'
 
 import { CLASS_NAMES } from '../../constants'
+import { Coordinate } from '../../types'
 
-import MapContext from '../MapContext'
-
+import { ComponentProps } from './types'
 import { geoJsonPointToScreenPoint } from './utils'
 
 const classNames = {
@@ -22,7 +22,7 @@ const classNames = {
 /**
  * The prop type for a [[`LineStringComponent`]].
  */
-export interface LineStringComponentProps {
+export interface LineStringComponentProps extends ComponentProps {
   /** The GeoJSON LineString */
   lineString: LineString
 }
@@ -32,22 +32,28 @@ export interface LineStringComponentProps {
  */
 export default function LineStringComponent({
   lineString,
+  centers,
+  zoom,
+  bounds,
+  tileSize,
   ...props
 }: LineStringComponentProps & SVGProps<SVGPathElement>) {
-  const {
-    center,
-    zoom,
-    bounds,
-    tileProvider: { tileSize },
-  } = useContext(MapContext)
+  const toScreenPoint = (point: Position, center: Coordinate) =>
+    geoJsonPointToScreenPoint(point, center, zoom, bounds, tileSize)
 
-  const path =
+  const toPath = (lineString: LineString, center: Coordinate) =>
     'M' +
     lineString.coordinates
-      .map(point => geoJsonPointToScreenPoint(point, center, zoom, bounds, tileSize))
+      .map(point => toScreenPoint(point, center))
       .reduce((a, point) => {
         return a + ' ' + point.x + ' ' + point.y
       }, '')
 
-  return <path className={classNames.lineString} d={path} {...props} />
+  return (
+    <>
+      {centers.map((center, i) => (
+        <path key={i} className={classNames.lineString} d={toPath(lineString, center)} {...props} />
+      ))}
+    </>
+  )
 }

@@ -55,7 +55,7 @@ export default function useZoom({
       newZoom = boundValue(minZoom, newZoom, maxZoom)
       setZoom(newZoom)
     },
-    [zoom, setZoom, minZoom, maxZoom, zoomStep]
+    [ref, zoom, setZoom, minZoom, maxZoom, zoomStep]
   )
 
   useEffect(() => {

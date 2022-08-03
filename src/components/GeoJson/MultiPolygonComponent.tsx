@@ -1,11 +1,11 @@
 import { SVGProps, useContext } from 'react'
 
-import { Feature, MultiPolygon } from 'geojson'
+import { MultiPolygon, Position } from 'geojson'
 
 import { CLASS_NAMES } from '../../constants'
+import { Coordinate } from '../../types'
 
-import MapContext from '../MapContext'
-
+import { ComponentProps } from './types'
 import { geoJsonPointToScreenPoint } from './utils'
 
 const classNames = {
@@ -22,7 +22,7 @@ const classNames = {
 /**
  * The prop type for a [[`MultiPolygonComponent`]].
  */
-export interface MultiPolygonComponentProps {
+export interface MultiPolygonComponentProps extends ComponentProps {
   /** The GeoJSON MultiPolygon */
   multiPolygon: MultiPolygon
 }
@@ -32,32 +32,33 @@ export interface MultiPolygonComponentProps {
  */
 export default function MultiPolygonComponent({
   multiPolygon,
+  centers,
+  zoom,
+  bounds,
+  tileSize,
   ...props
 }: MultiPolygonComponentProps & SVGProps<SVGPathElement>) {
-  const {
-    center,
-    zoom,
-    bounds,
-    tileProvider: { tileSize },
-  } = useContext(MapContext)
+  const toScreenPoint = (point: Position, center: Coordinate) =>
+    geoJsonPointToScreenPoint(point, center, zoom, bounds, tileSize)
+
+  const toPath = (polygon: Position[][], center: Coordinate) =>
+    polygon.reduce(
+      (a, part) =>
+        a +
+        ' M' +
+        part
+          .map(point => toScreenPoint(point, center))
+          .reduce((a, pixel) => a + ' ' + pixel.x + ' ' + pixel.y, '') +
+        'Z',
+      ''
+    )
 
   return (
     <>
-      {multiPolygon.coordinates
-        .map((polygon, i) =>
-          polygon.reduce(
-            (a, part) =>
-              a +
-              ' M' +
-              part
-                .map(point => geoJsonPointToScreenPoint(point, center, zoom, bounds, tileSize))
-                .reduce((a, pixel) => a + ' ' + pixel.x + ' ' + pixel.y, '') +
-              'Z',
-            ''
-          )
-        )
+      {centers
+        .flatMap(center => multiPolygon.coordinates.map((polygon, i) => toPath(polygon, center)))
         .map((d, i) => (
-          <path className={classNames.multiPolygon} key={`multi-polygon-${i}`} d={d} {...props} />
+          <path key={i} className={classNames.multiPolygon} d={d} {...props} />
         ))}
     </>
   )

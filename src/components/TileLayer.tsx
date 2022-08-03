@@ -60,7 +60,7 @@ export default function TileLayer() {
 
   return (
     <div
-      className={classNames.tile}
+      className={classNames.tileLayer}
       style={{
         width: scaledScreen.width,
         height: scaledScreen.height,

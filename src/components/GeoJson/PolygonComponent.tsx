@@ -1,11 +1,11 @@
-import { SVGProps, useContext } from 'react'
+import { SVGProps } from 'react'
 
-import { Feature, Polygon } from 'geojson'
+import { Polygon, Position } from 'geojson'
 
 import { CLASS_NAMES } from '../../constants'
+import { Coordinate } from '../../types'
 
-import MapContext from '../MapContext'
-
+import { ComponentProps } from './types'
 import { geoJsonPointToScreenPoint } from './utils'
 
 const classNames = {
@@ -22,7 +22,7 @@ const classNames = {
 /**
  * The prop type for a [[`PolygonComponent`]].
  */
-export interface PolygonComponentProps {
+export interface PolygonComponentProps extends ComponentProps {
   /** The GeoJSON Polygon */
   polygon: Polygon
 }
@@ -32,25 +32,32 @@ export interface PolygonComponentProps {
  */
 export default function PolygonComponent({
   polygon,
+  centers,
+  zoom,
+  bounds,
+  tileSize,
   ...props
 }: PolygonComponentProps & SVGProps<SVGPathElement>) {
-  const {
-    center,
-    zoom,
-    bounds,
-    tileProvider: { tileSize },
-  } = useContext(MapContext)
+  const toScreenPoint = (point: Position, center: Coordinate) =>
+    geoJsonPointToScreenPoint(point, center, zoom, bounds, tileSize)
 
-  const p = polygon.coordinates.reduce(
-    (a, part) =>
-      a +
-      ' M' +
-      part
-        .map(point => geoJsonPointToScreenPoint(point, center, zoom, bounds, tileSize))
-        .reduce((a, pixel) => a + ' ' + pixel.x + ' ' + pixel.y, '') +
-      'Z',
-    ''
+  const toPath = (polygon: Polygon, center: Coordinate) =>
+    polygon.coordinates.reduce(
+      (a, part) =>
+        a +
+        ' M' +
+        part
+          .map(point => toScreenPoint(point, center))
+          .reduce((a, pixel) => a + ' ' + pixel.x + ' ' + pixel.y, '') +
+        'Z',
+      ''
+    )
+
+  return (
+    <>
+      {centers.map((center, i) => (
+        <path key={i} className={classNames.polygon} d={toPath(polygon, center)} {...props} />
+      ))}
+    </>
   )
-
-  return <path className={classNames.polygon} d={p} {...props} />
 }

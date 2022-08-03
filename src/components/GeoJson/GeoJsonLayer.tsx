@@ -1,14 +1,14 @@
 import { Feature, FeatureCollection, GeoJSON } from 'geojson'
-import React, { SVGProps, useContext, useState } from 'react'
+import React, { useContext, useState } from 'react'
 
 import { CLASS_NAMES } from '../../constants'
+import { Coordinate, Point } from '../../types'
 
 import MapContext from '../MapContext'
 
-import { MarkerComponent, RequestFeatureStyleHandler } from './types'
-
 import { FeatureComponent } from './FeatureComponent'
-import { Point } from '../../types'
+import { MarkerComponent, RequestFeatureStyleHandler } from './types'
+import { calcCenters } from './utils'
 
 const classNames = {
   geoJsonLayer: [
@@ -17,7 +17,6 @@ const classNames = {
     CLASS_NAMES.zoomable,
     CLASS_NAMES.clickable,
     'geojson-layer',
-    'layer',
   ].join(' '),
 }
 
@@ -45,7 +44,11 @@ export default function GeoJSONLayer({
   markerComponent,
 }: GeoJSONLayerProps) {
   const {
+    center,
+    zoom,
+    bounds,
     bounds: { width, height, top, left },
+    tileProvider: { tileSize },
   } = useContext(MapContext)
 
   const [hoverPoint, setHoverPoint] = useState<Point>()
@@ -61,7 +64,7 @@ export default function GeoJSONLayer({
     setHoverFeature(undefined)
   }
 
-  const features = () => {
+  const features = (centers: Coordinate[]) => {
     if (data.type === 'Feature') {
       return (
         <FeatureComponent
@@ -70,9 +73,13 @@ export default function GeoJSONLayer({
           requestFeatureStyle={requestFeatureStyle}
           onMouseOver={handleMouseOver}
           onMouseOut={handleMouseOut}
+          centers={centers}
+          zoom={zoom}
+          bounds={bounds}
+          tileSize={tileSize}
         />
       )
-    } else if (data.type == 'FeatureCollection') {
+    } else if (data.type === 'FeatureCollection') {
       return (
         <>
           {(data as FeatureCollection).features.map((feature, i) => (
@@ -83,6 +90,10 @@ export default function GeoJSONLayer({
               requestFeatureStyle={requestFeatureStyle}
               onMouseOver={handleMouseOver}
               onMouseOut={handleMouseOut}
+              centers={centers}
+              zoom={zoom}
+              bounds={bounds}
+              tileSize={tileSize}
             />
           ))}
         </>
@@ -91,6 +102,8 @@ export default function GeoJSONLayer({
       return null
     }
   }
+
+  const centers = calcCenters(center, zoom, bounds, tileSize)
 
   return (
     <div
@@ -103,8 +116,14 @@ export default function GeoJSONLayer({
         cursor: 'pointer',
       }}
     >
-      <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} fill="none">
-        {features()}
+      <svg
+        width={width}
+        height={height}
+        viewBox={`0 0 ${width} ${height}`}
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        {features(centers)}
       </svg>
       <div
         style={{
