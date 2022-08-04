@@ -87,3 +87,8 @@ export interface TileProvider {
   /** The attribution component. */
   attribution: React.ReactElement
 }
+
+export interface CoordinateRect {
+  topLeft: Coordinate
+  bottomRight: Coordinate
+}

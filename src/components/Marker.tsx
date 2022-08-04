@@ -3,7 +3,7 @@ import React, { useContext } from 'react'
 import { Coordinate, Point } from '../types'
 
 import { CLASS_NAMES } from '../constants'
-import { calcScaleInfo, recenterScreenPoint } from '../tileMath'
+import { calcScaleInfo, isCoordinateInWorldBounds, recenterScreenPoint } from '../tileMath'
 
 import MapContext from './MapContext'
 import { createPoints } from './markerHelpers'
@@ -35,32 +35,35 @@ export default function Marker({ coordinate, render }: MarkerProps) {
     center,
     zoom,
     bounds,
+    worldBounds,
     tileProvider: { tileSize },
   } = useContext(MapContext)
+  const toPoints = (coordinate: Coordinate) => {
+    // Get the screen coordinate of the point.
+    const { roundedZoom, scale } = calcScaleInfo(zoom, bounds)
+    const markerPoint = recenterScreenPoint(coordinate, center, zoom, bounds, tileSize)
 
-  // Get the screen coordinate of the point.
-  const { roundedZoom, scale } = calcScaleInfo(zoom, bounds)
-  const markerPoint = recenterScreenPoint(coordinate, center, zoom, bounds, tileSize)
-
-  // If the screen is zoomed out the coordinate may appear many times as the display will wrap horizontally.
-  const markerPoints = createPoints(markerPoint, roundedZoom, scale, bounds.width, tileSize.width)
+    // If the screen is zoomed out the coordinate may appear many times as the display will wrap horizontally.
+    return createPoints(markerPoint, roundedZoom, scale, bounds.width, tileSize.width)
+  }
 
   return (
     <>
-      {markerPoints.map(point => (
-        <div
-          className={classNames.marker}
-          key={`${point.x}-${point.y}`}
-          style={{
-            position: 'absolute',
-            pointerEvents: 'none',
-            cursor: 'pointer',
-            transform: `translate(${point.x}px, ${point.y}px)`,
-          }}
-        >
-          {render(point)}
-        </div>
-      ))}
+      {isCoordinateInWorldBounds(coordinate, worldBounds) &&
+        toPoints(coordinate).map(point => (
+          <div
+            className={classNames.marker}
+            key={`${point.x}-${point.y}`}
+            style={{
+              position: 'absolute',
+              pointerEvents: 'none',
+              cursor: 'pointer',
+              transform: `translate(${point.x}px, ${point.y}px)`,
+            }}
+          >
+            {render(point)}
+          </div>
+        ))}
     </>
   )
 }

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 
-import { Bounds, Coordinate, TileProvider } from '../types'
+import { Bounds, Coordinate, CoordinateRect, TileProvider } from '../types'
 
 import { LOCATIONS, DEFAULTS, CLASS_NAMES } from '../constants'
 
@@ -73,6 +73,18 @@ const Map = React.forwardRef<HTMLDivElement, MapProps>(
       height: 0,
     })
 
+    // The world coordinate system calculated from the containing div rectangle.
+    const [worldBounds, setWorldBounds] = useState<CoordinateRect>({
+      topLeft: {
+        latitude: 0,
+        longitude: 0,
+      },
+      bottomRight: {
+        latitude: 0,
+        longitude: 0,
+      },
+    })
+
     useEffect(() => {
       if (ref.current) {
         // Update the bounds when the browser has found them.
@@ -87,6 +99,7 @@ const Map = React.forwardRef<HTMLDivElement, MapProps>(
           center,
           zoom,
           bounds,
+          worldBounds,
           tileProvider,
         }}
       >

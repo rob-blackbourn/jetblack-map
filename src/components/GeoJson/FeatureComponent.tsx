@@ -7,6 +7,8 @@ import { CLASS_NAMES } from '../../constants'
 import { ComponentProps, MarkerComponent, RequestFeatureStyleHandler } from './types'
 
 import GeometryCollectionComponent from './GeometryCollectionComponent'
+import { CoordinateRect } from '../../types'
+import { isFeatureInWorldBounds } from './utils'
 
 const classNames = {
   feature: [
@@ -45,7 +47,10 @@ export interface FeatureComponentProps extends ComponentProps {
   onContextMenu?: (event: React.MouseEvent<SVGElement>, feature: Feature) => void
   /** A callback to request the SVG props for a feature */
   requestFeatureStyle?: RequestFeatureStyleHandler
+  /** A marker component */
   markerComponent?: MarkerComponent
+  /** The world bounds */
+  worldBounds: CoordinateRect
 }
 
 /**
@@ -59,6 +64,7 @@ export function FeatureComponent({
   onContextMenu,
   requestFeatureStyle,
   markerComponent,
+  worldBounds,
   ...componentProps
 }: FeatureComponentProps) {
   const [mouseOver, setMouseOver] = useState(false)
@@ -67,28 +73,32 @@ export function FeatureComponent({
     (requestFeatureStyle && requestFeatureStyle(feature, { mouseOver })) || defaultFeatureStyle
 
   return (
-    <g
-      className={classNames.feature}
-      clipRule="evenodd"
-      style={{ pointerEvents: 'auto' }}
-      onClick={onClick && (event => onClick(event, feature))}
-      onMouseOver={event => {
-        onMouseOver && onMouseOver(event, feature)
-        setMouseOver(true)
-      }}
-      onMouseOut={event => {
-        onMouseOut && onMouseOut(event, feature)
-        setMouseOver(false)
-      }}
-      onContextMenu={onContextMenu && (event => onContextMenu(event, feature))}
-    >
-      <GeometryCollectionComponent
-        geometry={feature.geometry}
-        feature={feature}
-        markerComponent={markerComponent}
-        {...componentProps}
-        {...featureStyle}
-      />
-    </g>
+    <>
+      {isFeatureInWorldBounds(feature, worldBounds) && (
+        <g
+          className={classNames.feature}
+          clipRule="evenodd"
+          style={{ pointerEvents: 'auto' }}
+          onClick={onClick && (event => onClick(event, feature))}
+          onMouseOver={event => {
+            onMouseOver && onMouseOver(event, feature)
+            setMouseOver(true)
+          }}
+          onMouseOut={event => {
+            onMouseOut && onMouseOut(event, feature)
+            setMouseOver(false)
+          }}
+          onContextMenu={onContextMenu && (event => onContextMenu(event, feature))}
+        >
+          <GeometryCollectionComponent
+            geometry={feature.geometry}
+            feature={feature}
+            markerComponent={markerComponent}
+            {...componentProps}
+            {...featureStyle}
+          />
+        </g>
+      )}
+    </>
   )
 }
