@@ -7,6 +7,7 @@ import { LOCATIONS, DEFAULTS, CLASS_NAMES } from '../constants'
 import MapContext from './MapContext'
 import TileLayer from './TileLayer'
 import { osmTileProvider } from './TileProviders'
+import { calcWorldBounds } from '../tileMath'
 
 const classNames = {
   map: [
@@ -91,6 +92,10 @@ const Map = React.forwardRef<HTMLDivElement, MapProps>(
         setBounds(ref.current.getBoundingClientRect())
       }
     }, [ref])
+
+    useEffect(() => {
+      setWorldBounds(calcWorldBounds(center, zoom, bounds, tileProvider.tileSize))
+    }, [center, zoom, bounds, tileProvider.tileSize])
 
     // Wrap everything in a context to allow child components access to the map state.
     return (
