@@ -47,7 +47,7 @@ export default function GeoJSONLayer({
     center,
     zoom,
     bounds,
-    bounds: { width, height, top, left },
+    worldBounds,
     tileProvider: { tileSize },
   } = useContext(MapContext)
 
@@ -76,6 +76,7 @@ export default function GeoJSONLayer({
           centers={centers}
           zoom={zoom}
           bounds={bounds}
+          worldBounds={worldBounds}
           tileSize={tileSize}
         />
       )
@@ -93,6 +94,7 @@ export default function GeoJSONLayer({
               centers={centers}
               zoom={zoom}
               bounds={bounds}
+              worldBounds={worldBounds}
               tileSize={tileSize}
             />
           ))}
@@ -103,7 +105,7 @@ export default function GeoJSONLayer({
     }
   }
 
-  const centers = calcCenters(center, zoom, bounds, tileSize)
+  const centers = calcCenters(center, worldBounds)
 
   return (
     <div
@@ -118,9 +120,9 @@ export default function GeoJSONLayer({
       }}
     >
       <svg
-        width={width}
-        height={height}
-        viewBox={`0 0 ${width} ${height}`}
+        width={bounds.width}
+        height={bounds.height}
+        viewBox={`0 0 ${bounds.width} ${bounds.height}`}
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -129,8 +131,8 @@ export default function GeoJSONLayer({
       <div
         style={{
           display: hoverPoint ? 'block' : 'none',
-          top: !hoverPoint ? 0 : hoverPoint.y - top,
-          left: !hoverPoint ? 0 : hoverPoint.x - left,
+          top: !hoverPoint ? 0 : hoverPoint.y - bounds.top,
+          left: !hoverPoint ? 0 : hoverPoint.x - bounds.left,
           position: 'absolute',
         }}
       >

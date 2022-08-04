@@ -1,4 +1,4 @@
-import { Coordinate, Point, ScaleInfo, Size } from './types'
+import { Bounds, Coordinate, CoordinateRect, Point, ScaleInfo, Size } from './types'
 
 // These functions are provided by the Open Street Map wiki.
 // See: https://wiki.openstreetmap.org/wiki/Slippy_map_tilenames
@@ -227,4 +227,43 @@ export function recenterScreenPoint(
 export function range(start: number, stop: number, step: number = 1): number[] {
   const length = Math.ceil((stop - start) / step)
   return Array.from({ length }, (_, i) => i * step + start)
+}
+
+export function calcWorldBounds(
+  center: Coordinate,
+  zoom: number,
+  bounds: Bounds,
+  tileSize: Size
+): CoordinateRect {
+  return {
+    topLeft: screenPointToCoordinate({ x: 0, y: 0 }, center, zoom, bounds, tileSize, false),
+    bottomRight: screenPointToCoordinate(
+      { x: bounds.width, y: bounds.height },
+      center,
+      zoom,
+      bounds,
+      tileSize,
+      false
+    ),
+  }
+}
+
+export function isInWorldBounds(
+  latitude: number,
+  longitude: number,
+  { topLeft, bottomRight }: CoordinateRect
+): boolean {
+  return (
+    latitude <= topLeft.latitude &&
+    latitude >= bottomRight.latitude &&
+    longitude >= topLeft.longitude &&
+    longitude <= bottomRight.longitude
+  )
+}
+
+export function isCoordinateInWorldBounds(
+  { latitude, longitude }: Coordinate,
+  worldBounds: CoordinateRect
+): boolean {
+  return isInWorldBounds(latitude, longitude, worldBounds)
 }
