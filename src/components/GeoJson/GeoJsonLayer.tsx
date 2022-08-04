@@ -29,7 +29,7 @@ export interface GeoJSONLayerProps {
   /** A callback to request the SVG props for a feature */
   requestFeatureStyle?: RequestFeatureStyleHandler
   /** A callback to provide a popup when the pointer is over the feature */
-  renderPopup?: (feature: Feature) => React.ReactElement | null
+  renderPopup?: (feature: Feature, point: Point) => React.ReactElement | null
   /** A marker component to be used for points */
   markerComponent?: MarkerComponent
 }
@@ -136,7 +136,7 @@ export default function GeoJSONLayer({
           position: 'absolute',
         }}
       >
-        {renderPopup && hoverFeature && renderPopup(hoverFeature)}
+        {renderPopup && hoverFeature && hoverPoint && renderPopup(hoverFeature, hoverPoint)}
       </div>
     </div>
   )
