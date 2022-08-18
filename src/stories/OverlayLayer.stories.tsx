@@ -27,19 +27,23 @@ export default {
   component: Map,
 } as ComponentMeta<typeof Map>
 
-const GREENWICH_OBSERVATORY: Coordinate = {
-  latitude: 51.47684676353231,
-  longitude: -0.0005261695762532147,
-}
-
-const BUCKINGHAM_PALACE: Coordinate = {
-  latitude: 51.501200111998415,
-  longitude: -0.14182556179982908,
-}
-
-const ARC_DE_TRIOMPHE = {
-  latitude: 48.87378957393155,
-  longitude: 2.2950172762947645,
+const places = {
+  greenwichObservatory: {
+    latitude: 51.47684676353231,
+    longitude: -0.0005261695762532147,
+  },
+  buckinghamPalace: {
+    latitude: 51.501200111998415,
+    longitude: -0.14182556179982908,
+  },
+  arcDeTriomphe: {
+    latitude: 48.87378957393155,
+    longitude: 2.2950172762947645,
+  },
+  eiffelTower: {
+    latitude: 48.85826418143489,
+    longitude: 2.294514079300189,
+  },
 }
 
 export interface CircleMarkerProps {
@@ -99,7 +103,7 @@ const Template: ComponentStory<typeof Map> = args => {
     },
   })
 
-  const handleRenderPopup = (data: string, point: Point, size: Size) => {
+  const handleRenderPopup = (point: Point, size: Size, data?: string) => {
     return (
       <Popup
         style={{
@@ -113,7 +117,7 @@ const Template: ComponentStory<typeof Map> = args => {
         leftShift={-size.width}
         upShift={-size.height * 2}
       >
-        <span>{data}</span>
+        <span>{data || 'Unknown'}</span>
       </Popup>
     )
   }
@@ -128,19 +132,48 @@ const Template: ComponentStory<typeof Map> = args => {
       tileProvider={osmTileProvider}
     >
       <OverlayLayer>
-        <Marker coordinate={GREENWICH_OBSERVATORY} render={point => <SVGPin point={point} />} />
         <Marker
-          coordinate={BUCKINGHAM_PALACE}
+          coordinate={places.greenwichObservatory}
+          render={point => <SVGPin point={point} />}
+        />
+
+        <Marker
+          coordinate={places.eiffelTower}
+          render={point => (
+            <Pin point={point} data="Eiffel Tower" renderPopup={handleRenderPopup} />
+          )}
+        />
+
+        <Marker
+          coordinate={places.buckinghamPalace}
           render={point => (
             <Pin
               point={point}
               size={1.25}
-              data="Buckingham Palace"
-              renderPopup={handleRenderPopup}
+              renderPopup={(point, size) => (
+                <Popup
+                  style={{
+                    backgroundColor: 'black',
+                    color: 'white',
+                    padding: 2,
+                    borderRadius: 5,
+                    fontSize: '75%',
+                  }}
+                  point={point}
+                  leftShift={-size.width}
+                  upShift={-size.height * 2}
+                >
+                  <span>Buckingham Palace</span>
+                </Popup>
+              )}
             />
           )}
         />
-        <Marker coordinate={ARC_DE_TRIOMPHE} render={point => <CircleMarker point={point} />} />
+
+        <Marker
+          coordinate={places.arcDeTriomphe}
+          render={point => <CircleMarker point={point} />}
+        />
       </OverlayLayer>
     </Map>
   )
@@ -151,5 +184,5 @@ OverlayMap.args = {
   width: '600px',
   height: '400px',
   zoom: 11,
-  center: BUCKINGHAM_PALACE,
+  center: places.buckinghamPalace,
 }

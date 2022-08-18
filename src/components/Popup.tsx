@@ -1,17 +1,22 @@
 import React, { useContext } from 'react'
 
-import { Point, Size } from '../types'
+import { Point } from '../types'
 import MapContext from './MapContext'
 
 export interface PopupProps {
   /** The point in the screen coordinate system. */
   point: Point
-  /** The amount to shift the pop */
+  /** The amount to shift the popup left when on the right side of the map */
   leftShift?: number
+  /** The amount to shift the popup right when on the left side of the map */
   rightShift?: number
+  /** The amount to shift the popup up when on the bottom half of the map */
   upShift?: number
+  /** The amount to shift the popup down when on the top half of the map */
   downShift?: number
+  /** Styles to apply to the containing `div` element. */
   style?: React.CSSProperties
+  /** The contents of the popup */
   children: React.ReactElement
 }
 

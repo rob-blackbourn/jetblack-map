@@ -13,28 +13,28 @@ export interface PinProps<T> {
   /** The point in the screen coordinate system. */
   point: Point
   /** Data for the pin */
-  data: T
+  data?: T
   /** The size of the pin */
   size?: number
   /** The color of the pin */
   color?: string
   /** A function called to render a popup when the mouse is over the pin */
-  renderPopup?: (data: T, point: Point, size: Size) => React.ReactElement
+  renderPopup?: (point: Point, size: Size, data?: T) => React.ReactElement
   /** A function called when the mouse enters or leaves the pin */
-  onHover?: (mouseOver: boolean, data: T, point: Point, size: Size) => void
+  onHover?: (mouseOver: boolean, point: Point, size: Size, data?: T) => void
   /** A handler for click events */
   onClick?: (
     event: React.MouseEvent<SVGElement, MouseEvent>,
-    data: T,
     point: Point,
-    size: Size
+    size: Size,
+    data?: T
   ) => void
   /** A handler for a context menu event */
   onContextMenu?: (
     event: React.MouseEvent<SVGElement, MouseEvent>,
-    data: T,
     point: Point,
-    size: Size
+    size: Size,
+    data?: T
   ) => void
 }
 
@@ -63,12 +63,12 @@ export default function Pin<T = unknown>({
 
   const handleMouseOver = useCallback(() => {
     setMouseOver(true)
-    onHover && onHover(true, data, point, { width, height })
+    onHover && onHover(true, point, { width, height }, data)
   }, [setMouseOver, data, point, onHover])
 
   const handleMouseOut = useCallback(() => {
     setMouseOver(false)
-    onHover && onHover(false, data, point, { width, height })
+    onHover && onHover(false, point, { width, height }, data)
   }, [])
 
   return (
@@ -87,9 +87,9 @@ export default function Pin<T = unknown>({
       >
         <g
           style={{ pointerEvents: 'auto' }}
-          onClick={event => onClick && onClick(event, data, point, { width, height })}
+          onClick={event => onClick && onClick(event, point, { width, height }, data)}
           onContextMenu={event =>
-            onContextMenu && onContextMenu(event, data, point, { width, height })
+            onContextMenu && onContextMenu(event, point, { width, height }, data)
           }
           onMouseOver={handleMouseOver}
           onMouseOut={handleMouseOut}
@@ -103,7 +103,7 @@ export default function Pin<T = unknown>({
           <circle cx="30.5" cy="30.5" r="8.5" fill="white" opacity={mouseOver ? 0.98 : 0.6} />
         </g>
       </svg>
-      {renderPopup && mouseOver && renderPopup(data, point, { width, height })}
+      {renderPopup && mouseOver && renderPopup(point, { width, height }, data)}
     </div>
   )
 }
