@@ -9,12 +9,14 @@ import Map, { MapProps } from './components/Map'
 import MapContext, { MapContextProps } from './components/MapContext'
 import Marker, { MarkerProps } from './components/Marker'
 import OverlayLayer, { OverlayLayerProps } from './components/OverlayLayer'
+import Pin, { PinProps } from './components/Pin'
+import Popup, { PopupProps } from './components/Popup'
 import SVGPin, { SVGPinProps } from './components/SVGPin'
 import ZoomButton, { ZoomButtonPops } from './components/ZoomButton'
 
 import { osmTileProvider, stamenTileProviderFactory } from './components/TileProviders'
 
-import { Bounds, Coordinate, Point } from './types'
+import { Bounds, Coordinate, Point, Size } from './types'
 
 import useClick, { useClickProps } from './hooks/useClick'
 import useDrag, { useDragProps } from './hooks/useDrag'
@@ -30,11 +32,14 @@ export type {
   MapContextProps,
   MarkerProps,
   OverlayLayerProps,
+  PinProps,
+  PopupProps,
   SVGPinProps,
   ZoomButtonPops,
   Bounds,
   Coordinate,
   Point,
+  Size,
   MarkerComponentProps,
   useClickProps,
   useDragProps,
@@ -50,6 +55,8 @@ export {
   MapContext,
   Marker,
   OverlayLayer,
+  Pin,
+  Popup,
   SVGPin,
   ZoomButton,
   // Tile Providers
