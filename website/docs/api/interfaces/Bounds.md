@@ -10,7 +10,7 @@ The type for the screen bounds.
 
 ## Hierarchy
 
-- `Size`
+- [`Size`](Size.md)
 
   ↳ **`Bounds`**
 
@@ -24,11 +24,11 @@ The height
 
 #### Overrides
 
-Size.height
+[Size](Size.md).[height](Size.md#height)
 
 #### Defined in
 
-[src/types.ts:50](https://github.com/rob-blackbourn/jetblack-map/blob/cdc3f14/src/types.ts#L50)
+[src/types.ts:50](https://github.com/rob-blackbourn/jetblack-map/blob/0342e44/src/types.ts#L50)
 
 ___
 
@@ -40,7 +40,7 @@ The left
 
 #### Defined in
 
-[src/types.ts:46](https://github.com/rob-blackbourn/jetblack-map/blob/cdc3f14/src/types.ts#L46)
+[src/types.ts:46](https://github.com/rob-blackbourn/jetblack-map/blob/0342e44/src/types.ts#L46)
 
 ___
 
@@ -52,7 +52,7 @@ The top
 
 #### Defined in
 
-[src/types.ts:44](https://github.com/rob-blackbourn/jetblack-map/blob/cdc3f14/src/types.ts#L44)
+[src/types.ts:44](https://github.com/rob-blackbourn/jetblack-map/blob/0342e44/src/types.ts#L44)
 
 ___
 
@@ -64,8 +64,8 @@ The width
 
 #### Overrides
 
-Size.width
+[Size](Size.md).[width](Size.md#width)
 
 #### Defined in
 
-[src/types.ts:48](https://github.com/rob-blackbourn/jetblack-map/blob/cdc3f14/src/types.ts#L48)
+[src/types.ts:48](https://github.com/rob-blackbourn/jetblack-map/blob/0342e44/src/types.ts#L48)

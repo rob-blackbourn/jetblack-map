@@ -12,13 +12,13 @@ The prop type for the [[`GeoJSONLayer`]] component.
 
 ### data
 
-• **data**: `GeoJSON`
+• **data**: `undefined` \| `GeoJSON`
 
 The GeoJSON data
 
 #### Defined in
 
-[src/components/GeoJson/GeoJsonLayer.tsx:29](https://github.com/rob-blackbourn/jetblack-map/blob/cdc3f14/src/components/GeoJson/GeoJsonLayer.tsx#L29)
+[src/components/GeoJson/GeoJsonLayer.tsx:28](https://github.com/rob-blackbourn/jetblack-map/blob/0342e44/src/components/GeoJson/GeoJsonLayer.tsx#L28)
 
 ___
 
@@ -30,7 +30,7 @@ A marker component to be used for points
 
 #### Defined in
 
-[src/components/GeoJson/GeoJsonLayer.tsx:35](https://github.com/rob-blackbourn/jetblack-map/blob/cdc3f14/src/components/GeoJson/GeoJsonLayer.tsx#L35)
+[src/components/GeoJson/GeoJsonLayer.tsx:34](https://github.com/rob-blackbourn/jetblack-map/blob/0342e44/src/components/GeoJson/GeoJsonLayer.tsx#L34)
 
 ___
 
@@ -42,13 +42,13 @@ A callback to request the SVG props for a feature
 
 #### Defined in
 
-[src/components/GeoJson/GeoJsonLayer.tsx:31](https://github.com/rob-blackbourn/jetblack-map/blob/cdc3f14/src/components/GeoJson/GeoJsonLayer.tsx#L31)
+[src/components/GeoJson/GeoJsonLayer.tsx:30](https://github.com/rob-blackbourn/jetblack-map/blob/0342e44/src/components/GeoJson/GeoJsonLayer.tsx#L30)
 
 ## Methods
 
 ### renderPopup
 
-▸ `Optional` **renderPopup**(`feature`): ``null`` \| `ReactElement`<`any`, `string` \| `JSXElementConstructor`<`any`\>\>
+▸ `Optional` **renderPopup**(`feature`, `point`): ``null`` \| `ReactElement`<`any`, `string` \| `JSXElementConstructor`<`any`\>\>
 
 A callback to provide a popup when the pointer is over the feature
 
@@ -57,6 +57,7 @@ A callback to provide a popup when the pointer is over the feature
 | Name | Type |
 | :------ | :------ |
 | `feature` | `Feature`<`Geometry`, `GeoJsonProperties`\> |
+| `point` | [`Point`](../modules.md#point) |
 
 #### Returns
 
@@ -64,4 +65,4 @@ A callback to provide a popup when the pointer is over the feature
 
 #### Defined in
 
-[src/components/GeoJson/GeoJsonLayer.tsx:33](https://github.com/rob-blackbourn/jetblack-map/blob/cdc3f14/src/components/GeoJson/GeoJsonLayer.tsx#L33)
+[src/components/GeoJson/GeoJsonLayer.tsx:32](https://github.com/rob-blackbourn/jetblack-map/blob/0342e44/src/components/GeoJson/GeoJsonLayer.tsx#L32)

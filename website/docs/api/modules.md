@@ -24,7 +24,10 @@ custom_edit_url: null
 - [GeoJSONLayerProps](interfaces/GeoJSONLayerProps.md)
 - [MarkerComponentProps](interfaces/MarkerComponentProps.md)
 - [OverlayLayerProps](interfaces/OverlayLayerProps.md)
+- [PinProps](interfaces/PinProps.md)
+- [PopupProps](interfaces/PopupProps.md)
 - [SVGPinProps](interfaces/SVGPinProps.md)
+- [Size](interfaces/Size.md)
 - [ZoomButtonPops](interfaces/ZoomButtonPops.md)
 - [useClickProps](interfaces/useClickProps.md)
 - [useDragProps](interfaces/useDragProps.md)
@@ -52,6 +55,8 @@ custom_edit_url: null
 - [ImageTile](modules.md#imagetile)
 - [Marker](modules.md#marker)
 - [OverlayLayer](modules.md#overlaylayer)
+- [Pin](modules.md#pin)
+- [Popup](modules.md#popup)
 - [SVGPin](modules.md#svgpin)
 - [ZoomButton](modules.md#zoombutton)
 
@@ -83,7 +88,7 @@ A point in the Cartesian coordinate system.
 
 #### Defined in
 
-[src/types.ts:22](https://github.com/rob-blackbourn/jetblack-map/blob/cdc3f14/src/types.ts#L22)
+[src/types.ts:22](https://github.com/rob-blackbourn/jetblack-map/blob/0342e44/src/types.ts#L22)
 
 ## Component Variables
 
@@ -99,7 +104,7 @@ Render a map.
 
 #### Defined in
 
-[src/components/Map.tsx:43](https://github.com/rob-blackbourn/jetblack-map/blob/cdc3f14/src/components/Map.tsx#L43)
+[src/components/Map.tsx:52](https://github.com/rob-blackbourn/jetblack-map/blob/0342e44/src/components/Map.tsx#L52)
 
 ___
 
@@ -113,7 +118,7 @@ The map context.
 
 #### Defined in
 
-[src/components/MapContext.ts:28](https://github.com/rob-blackbourn/jetblack-map/blob/cdc3f14/src/components/MapContext.ts#L28)
+[src/components/MapContext.ts:30](https://github.com/rob-blackbourn/jetblack-map/blob/0342e44/src/components/MapContext.ts#L30)
 
 ___
 
@@ -134,7 +139,7 @@ ___
 
 #### Defined in
 
-[src/constants.ts:40](https://github.com/rob-blackbourn/jetblack-map/blob/cdc3f14/src/constants.ts#L40)
+[src/constants.ts:40](https://github.com/rob-blackbourn/jetblack-map/blob/0342e44/src/constants.ts#L40)
 
 ___
 
@@ -148,7 +153,7 @@ A tile provider for Open Street Map.
 
 #### Defined in
 
-[src/components/TileProviders.tsx:8](https://github.com/rob-blackbourn/jetblack-map/blob/cdc3f14/src/components/TileProviders.tsx#L8)
+[src/components/TileProviders.tsx:8](https://github.com/rob-blackbourn/jetblack-map/blob/0342e44/src/components/TileProviders.tsx#L8)
 
 ## Component Functions
 
@@ -164,7 +169,7 @@ Render the attribution layer.
 
 #### Defined in
 
-[src/components/AttributionLayer.tsx:15](https://github.com/rob-blackbourn/jetblack-map/blob/cdc3f14/src/components/AttributionLayer.tsx#L15)
+[src/components/AttributionLayer.tsx:15](https://github.com/rob-blackbourn/jetblack-map/blob/0342e44/src/components/AttributionLayer.tsx#L15)
 
 ___
 
@@ -190,7 +195,7 @@ An image tile.
 
 #### Defined in
 
-[src/components/ImageTile.tsx:41](https://github.com/rob-blackbourn/jetblack-map/blob/cdc3f14/src/components/ImageTile.tsx#L41)
+[src/components/ImageTile.tsx:41](https://github.com/rob-blackbourn/jetblack-map/blob/0342e44/src/components/ImageTile.tsx#L41)
 
 ___
 
@@ -214,7 +219,7 @@ A map.
 
 #### Defined in
 
-[src/components/Marker.tsx:33](https://github.com/rob-blackbourn/jetblack-map/blob/cdc3f14/src/components/Marker.tsx#L33)
+[src/components/Marker.tsx:33](https://github.com/rob-blackbourn/jetblack-map/blob/0342e44/src/components/Marker.tsx#L33)
 
 ___
 
@@ -238,7 +243,71 @@ A map.
 
 #### Defined in
 
-[src/components/OverlayLayer.tsx:33](https://github.com/rob-blackbourn/jetblack-map/blob/cdc3f14/src/components/OverlayLayer.tsx#L33)
+[src/components/OverlayLayer.tsx:33](https://github.com/rob-blackbourn/jetblack-map/blob/0342e44/src/components/OverlayLayer.tsx#L33)
+
+___
+
+### Pin
+
+▸ **Pin**<`T`\>(`props`): `Element`
+
+Render a pin.
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | `unknown` |
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `props` | [`PinProps`](interfaces/PinProps.md)<`T`\> | The props. |
+
+#### Returns
+
+`Element`
+
+A pin at the point.
+
+#### Defined in
+
+[src/components/Pin.tsx:49](https://github.com/rob-blackbourn/jetblack-map/blob/0342e44/src/components/Pin.tsx#L49)
+
+___
+
+### Popup
+
+▸ **Popup**<`T`\>(`props`): `Element`
+
+Render a popup.
+
+The popup will attempt to stay inside the map space by
+checking if the point is in the left/right and top/bottom
+of the screen and positioning the containing `div` appropriately.
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | `unknown` |
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `props` | [`PopupProps`](interfaces/PopupProps.md)<`T`\> | The props. |
+
+#### Returns
+
+`Element`
+
+A popup near the point.
+
+#### Defined in
+
+[src/components/Popup.tsx:32](https://github.com/rob-blackbourn/jetblack-map/blob/0342e44/src/components/Popup.tsx#L32)
 
 ___
 
@@ -262,7 +331,7 @@ A map.
 
 #### Defined in
 
-[src/components/SVGPin.tsx:37](https://github.com/rob-blackbourn/jetblack-map/blob/cdc3f14/src/components/SVGPin.tsx#L37)
+[src/components/SVGPin.tsx:37](https://github.com/rob-blackbourn/jetblack-map/blob/0342e44/src/components/SVGPin.tsx#L37)
 
 ___
 
@@ -286,7 +355,7 @@ A map.
 
 #### Defined in
 
-[src/components/ZoomButton.tsx:43](https://github.com/rob-blackbourn/jetblack-map/blob/cdc3f14/src/components/ZoomButton.tsx#L43)
+[src/components/ZoomButton.tsx:43](https://github.com/rob-blackbourn/jetblack-map/blob/0342e44/src/components/ZoomButton.tsx#L43)
 
 ___
 
@@ -310,7 +379,7 @@ Render a GeoJSON layer.
 
 #### Defined in
 
-[src/components/GeoJson/GeoJsonLayer.tsx:41](https://github.com/rob-blackbourn/jetblack-map/blob/cdc3f14/src/components/GeoJson/GeoJsonLayer.tsx#L41)
+[src/components/GeoJson/GeoJsonLayer.tsx:40](https://github.com/rob-blackbourn/jetblack-map/blob/0342e44/src/components/GeoJson/GeoJsonLayer.tsx#L40)
 
 ___
 
@@ -332,7 +401,7 @@ The useClick hook.
 
 #### Defined in
 
-[src/hooks/useClick.ts:36](https://github.com/rob-blackbourn/jetblack-map/blob/cdc3f14/src/hooks/useClick.ts#L36)
+[src/hooks/useClick.ts:36](https://github.com/rob-blackbourn/jetblack-map/blob/0342e44/src/hooks/useClick.ts#L36)
 
 ___
 
@@ -354,7 +423,7 @@ A hook for mouse events.
 
 #### Defined in
 
-[src/hooks/useDrag.ts:31](https://github.com/rob-blackbourn/jetblack-map/blob/cdc3f14/src/hooks/useDrag.ts#L31)
+[src/hooks/useDrag.ts:31](https://github.com/rob-blackbourn/jetblack-map/blob/0342e44/src/hooks/useDrag.ts#L31)
 
 ___
 
@@ -376,7 +445,7 @@ A hook to integrate the zoom wheel with a map.
 
 #### Defined in
 
-[src/hooks/useZoom.ts:26](https://github.com/rob-blackbourn/jetblack-map/blob/cdc3f14/src/hooks/useZoom.ts#L26)
+[src/hooks/useZoom.ts:26](https://github.com/rob-blackbourn/jetblack-map/blob/0342e44/src/hooks/useZoom.ts#L26)
 
 ___
 
@@ -402,4 +471,4 @@ A tile provider for the requested Stamen map
 
 #### Defined in
 
-[src/components/TileProviders.tsx:43](https://github.com/rob-blackbourn/jetblack-map/blob/cdc3f14/src/components/TileProviders.tsx#L43)
+[src/components/TileProviders.tsx:43](https://github.com/rob-blackbourn/jetblack-map/blob/0342e44/src/components/TileProviders.tsx#L43)
