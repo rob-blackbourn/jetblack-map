@@ -10,6 +10,7 @@ import MapContext, { MapContextProps } from './components/MapContext'
 import Marker, { MarkerProps } from './components/Marker'
 import OverlayLayer, { OverlayLayerProps } from './components/OverlayLayer'
 import Pin, { PinProps } from './components/Pin'
+import Popup, { PopupProps } from './components/Popup'
 import SVGPin, { SVGPinProps } from './components/SVGPin'
 import ZoomButton, { ZoomButtonPops } from './components/ZoomButton'
 
@@ -32,6 +33,7 @@ export type {
   MarkerProps,
   OverlayLayerProps,
   PinProps,
+  PopupProps,
   SVGPinProps,
   ZoomButtonPops,
   Bounds,
@@ -54,6 +56,7 @@ export {
   Marker,
   OverlayLayer,
   Pin,
+  Popup,
   SVGPin,
   ZoomButton,
   // Tile Providers

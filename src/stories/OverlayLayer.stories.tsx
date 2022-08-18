@@ -7,12 +7,15 @@ import {
   Map,
   Marker,
   OverlayLayer,
+  Pin,
   Point,
+  Popup,
   SVGPin,
   osmTileProvider,
   useDrag,
   useZoom,
   useClick,
+  Size,
 } from '..'
 
 export default {
@@ -96,9 +99,9 @@ const Template: ComponentStory<typeof Map> = args => {
     },
   })
 
-  const handleRenderPopup = () => {
+  const handleRenderPopup = (data: string, point: Point, size: Size) => {
     return (
-      <div
+      <Popup
         style={{
           backgroundColor: 'black',
           color: 'white',
@@ -106,9 +109,12 @@ const Template: ComponentStory<typeof Map> = args => {
           borderRadius: 5,
           fontSize: '75%',
         }}
-      >
-        Arc De Triomphe
-      </div>
+        data={data}
+        point={point}
+        leftShift={-size.width}
+        upShift={-size.height * 2}
+        renderPopup={() => <span>{data}</span>}
+      />
     )
   }
 
@@ -125,7 +131,14 @@ const Template: ComponentStory<typeof Map> = args => {
         <Marker coordinate={GREENWICH_OBSERVATORY} render={point => <SVGPin point={point} />} />
         <Marker
           coordinate={BUCKINGHAM_PALACE}
-          render={point => <SVGPin point={point} size={1.25} />}
+          render={point => (
+            <Pin
+              point={point}
+              size={1.25}
+              data="Buckingham Palace"
+              renderPopup={handleRenderPopup}
+            />
+          )}
         />
         <Marker coordinate={ARC_DE_TRIOMPHE} render={point => <CircleMarker point={point} />} />
       </OverlayLayer>

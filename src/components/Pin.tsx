@@ -42,7 +42,7 @@ export interface PinProps<T> {
  * Render a pin.
  *
  * @param props The props.
- * @returns A map.
+ * @returns A pin at the point.
  *
  * @category Component
  */
@@ -61,15 +61,12 @@ export default function Pin<T = unknown>({
   const width = 29 * size
   const height = 34 * size
 
-  const handleMouseOver = useCallback(
-    (event: React.MouseEvent<SVGAElement>) => {
-      setMouseOver(true)
-      onHover && onHover(true, data, point, { width, height })
-    },
-    [setMouseOver, data, point, onHover]
-  )
+  const handleMouseOver = useCallback(() => {
+    setMouseOver(true)
+    onHover && onHover(true, data, point, { width, height })
+  }, [setMouseOver, data, point, onHover])
 
-  const handleMouseOut = useCallback((event: React.MouseEvent<SVGAElement>) => {
+  const handleMouseOut = useCallback(() => {
     setMouseOver(false)
     onHover && onHover(false, data, point, { width, height })
   }, [])
@@ -106,7 +103,7 @@ export default function Pin<T = unknown>({
           <circle cx="30.5" cy="30.5" r="8.5" fill="white" opacity={mouseOver ? 0.98 : 0.6} />
         </g>
       </svg>
-      {renderPopup && renderPopup(data, point, { width, height })}
+      {renderPopup && mouseOver && renderPopup(data, point, { width, height })}
     </div>
   )
 }
