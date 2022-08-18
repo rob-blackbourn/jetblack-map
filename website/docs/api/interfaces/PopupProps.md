@@ -1,28 +1,22 @@
 ---
 id: "PopupProps"
-title: "Interface: PopupProps<T>"
+title: "Interface: PopupProps"
 sidebar_label: "PopupProps"
 sidebar_position: 0
 custom_edit_url: null
 ---
 
-## Type parameters
-
-| Name |
-| :------ |
-| `T` |
-
 ## Properties
 
-### data
+### children
 
-• **data**: `T`
+• **children**: `ReactElement`<`any`, `string` \| `JSXElementConstructor`<`any`\>\>
 
-Data for the popup
+The contents of the popup
 
 #### Defined in
 
-[src/components/Popup.tsx:10](https://github.com/rob-blackbourn/jetblack-map/blob/0342e44/src/components/Popup.tsx#L10)
+[src/components/Popup.tsx:20](https://github.com/rob-blackbourn/jetblack-map/blob/472c22c/src/components/Popup.tsx#L20)
 
 ___
 
@@ -30,9 +24,11 @@ ___
 
 • `Optional` **downShift**: `number`
 
+The amount to shift the popup down when on the top half of the map
+
 #### Defined in
 
-[src/components/Popup.tsx:14](https://github.com/rob-blackbourn/jetblack-map/blob/0342e44/src/components/Popup.tsx#L14)
+[src/components/Popup.tsx:16](https://github.com/rob-blackbourn/jetblack-map/blob/472c22c/src/components/Popup.tsx#L16)
 
 ___
 
@@ -40,9 +36,11 @@ ___
 
 • `Optional` **leftShift**: `number`
 
+The amount to shift the popup left when on the right side of the map
+
 #### Defined in
 
-[src/components/Popup.tsx:11](https://github.com/rob-blackbourn/jetblack-map/blob/0342e44/src/components/Popup.tsx#L11)
+[src/components/Popup.tsx:10](https://github.com/rob-blackbourn/jetblack-map/blob/472c22c/src/components/Popup.tsx#L10)
 
 ___
 
@@ -54,7 +52,7 @@ The point in the screen coordinate system.
 
 #### Defined in
 
-[src/components/Popup.tsx:8](https://github.com/rob-blackbourn/jetblack-map/blob/0342e44/src/components/Popup.tsx#L8)
+[src/components/Popup.tsx:8](https://github.com/rob-blackbourn/jetblack-map/blob/472c22c/src/components/Popup.tsx#L8)
 
 ___
 
@@ -62,9 +60,11 @@ ___
 
 • `Optional` **rightShift**: `number`
 
+The amount to shift the popup right when on the left side of the map
+
 #### Defined in
 
-[src/components/Popup.tsx:12](https://github.com/rob-blackbourn/jetblack-map/blob/0342e44/src/components/Popup.tsx#L12)
+[src/components/Popup.tsx:12](https://github.com/rob-blackbourn/jetblack-map/blob/472c22c/src/components/Popup.tsx#L12)
 
 ___
 
@@ -72,9 +72,11 @@ ___
 
 • `Optional` **style**: `CSSProperties`
 
+Styles to apply to the containing `div` element.
+
 #### Defined in
 
-[src/components/Popup.tsx:17](https://github.com/rob-blackbourn/jetblack-map/blob/0342e44/src/components/Popup.tsx#L17)
+[src/components/Popup.tsx:18](https://github.com/rob-blackbourn/jetblack-map/blob/472c22c/src/components/Popup.tsx#L18)
 
 ___
 
@@ -82,28 +84,8 @@ ___
 
 • `Optional` **upShift**: `number`
 
-#### Defined in
-
-[src/components/Popup.tsx:13](https://github.com/rob-blackbourn/jetblack-map/blob/0342e44/src/components/Popup.tsx#L13)
-
-## Methods
-
-### renderPopup
-
-▸ **renderPopup**(`data`): `ReactElement`<`any`, `string` \| `JSXElementConstructor`<`any`\>\>
-
-A function called to render a popup when the mouse is over the pin
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `data` | `T` |
-
-#### Returns
-
-`ReactElement`<`any`, `string` \| `JSXElementConstructor`<`any`\>\>
+The amount to shift the popup up when on the bottom half of the map
 
 #### Defined in
 
-[src/components/Popup.tsx:16](https://github.com/rob-blackbourn/jetblack-map/blob/0342e44/src/components/Popup.tsx#L16)
+[src/components/Popup.tsx:14](https://github.com/rob-blackbourn/jetblack-map/blob/472c22c/src/components/Popup.tsx#L14)
