@@ -109,12 +109,12 @@ const Template: ComponentStory<typeof Map> = args => {
           borderRadius: 5,
           fontSize: '75%',
         }}
-        data={data}
         point={point}
         leftShift={-size.width}
         upShift={-size.height * 2}
-        renderPopup={() => <span>{data}</span>}
-      />
+      >
+        <span>{data}</span>
+      </Popup>
     )
   }
 

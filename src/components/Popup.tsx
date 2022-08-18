@@ -3,18 +3,16 @@ import React, { useContext } from 'react'
 import { Point, Size } from '../types'
 import MapContext from './MapContext'
 
-export interface PopupProps<T> {
+export interface PopupProps {
   /** The point in the screen coordinate system. */
   point: Point
-  /** Data for the popup */
-  data: T
+  /** The amount to shift the pop */
   leftShift?: number
   rightShift?: number
   upShift?: number
   downShift?: number
-  /** A function called to render a popup when the mouse is over the pin */
-  renderPopup: (data: T) => React.ReactElement
   style?: React.CSSProperties
+  children: React.ReactElement
 }
 
 /**
@@ -29,16 +27,15 @@ export interface PopupProps<T> {
  *
  * @category Component
  */
-export default function Popup<T = unknown>({
+export default function Popup({
   point,
-  data,
   leftShift = 0,
   rightShift = 0,
   upShift = 0,
   downShift = 0,
-  renderPopup,
   style = {},
-}: PopupProps<T>) {
+  children,
+}: PopupProps) {
   // Discover the region on the screen that the point is in.
   const { bounds } = useContext(MapContext)
   const isTop = point.y < bounds.height / 2
@@ -67,7 +64,7 @@ export default function Popup<T = unknown>({
         ...style,
       }}
     >
-      {renderPopup(data)}
+      {children}
     </div>
   )
 }
