@@ -16,7 +16,7 @@ The contents of the popup
 
 #### Defined in
 
-[src/components/Popup.tsx:20](https://github.com/rob-blackbourn/jetblack-map/blob/472c22c/src/components/Popup.tsx#L20)
+[src/components/Popup.tsx:20](https://github.com/rob-blackbourn/jetblack-map/blob/c03dbd7/src/components/Popup.tsx#L20)
 
 ___
 
@@ -28,7 +28,7 @@ The amount to shift the popup down when on the top half of the map
 
 #### Defined in
 
-[src/components/Popup.tsx:16](https://github.com/rob-blackbourn/jetblack-map/blob/472c22c/src/components/Popup.tsx#L16)
+[src/components/Popup.tsx:16](https://github.com/rob-blackbourn/jetblack-map/blob/c03dbd7/src/components/Popup.tsx#L16)
 
 ___
 
@@ -40,7 +40,7 @@ The amount to shift the popup left when on the right side of the map
 
 #### Defined in
 
-[src/components/Popup.tsx:10](https://github.com/rob-blackbourn/jetblack-map/blob/472c22c/src/components/Popup.tsx#L10)
+[src/components/Popup.tsx:10](https://github.com/rob-blackbourn/jetblack-map/blob/c03dbd7/src/components/Popup.tsx#L10)
 
 ___
 
@@ -52,7 +52,7 @@ The point in the screen coordinate system.
 
 #### Defined in
 
-[src/components/Popup.tsx:8](https://github.com/rob-blackbourn/jetblack-map/blob/472c22c/src/components/Popup.tsx#L8)
+[src/components/Popup.tsx:8](https://github.com/rob-blackbourn/jetblack-map/blob/c03dbd7/src/components/Popup.tsx#L8)
 
 ___
 
@@ -64,7 +64,7 @@ The amount to shift the popup right when on the left side of the map
 
 #### Defined in
 
-[src/components/Popup.tsx:12](https://github.com/rob-blackbourn/jetblack-map/blob/472c22c/src/components/Popup.tsx#L12)
+[src/components/Popup.tsx:12](https://github.com/rob-blackbourn/jetblack-map/blob/c03dbd7/src/components/Popup.tsx#L12)
 
 ___
 
@@ -76,7 +76,7 @@ Styles to apply to the containing `div` element.
 
 #### Defined in
 
-[src/components/Popup.tsx:18](https://github.com/rob-blackbourn/jetblack-map/blob/472c22c/src/components/Popup.tsx#L18)
+[src/components/Popup.tsx:18](https://github.com/rob-blackbourn/jetblack-map/blob/c03dbd7/src/components/Popup.tsx#L18)
 
 ___
 
@@ -88,4 +88,4 @@ The amount to shift the popup up when on the bottom half of the map
 
 #### Defined in
 
-[src/components/Popup.tsx:14](https://github.com/rob-blackbourn/jetblack-map/blob/472c22c/src/components/Popup.tsx#L14)
+[src/components/Popup.tsx:14](https://github.com/rob-blackbourn/jetblack-map/blob/c03dbd7/src/components/Popup.tsx#L14)
