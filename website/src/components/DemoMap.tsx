@@ -74,7 +74,7 @@ export default function FrontPageMap() {
   const handleRequestFeatureStyle = (
     feature: Feature,
     state: FeatureState
-  ): SVGProps<SVGAElement> | null => {
+  ): SVGProps<SVGSVGElement> | null => {
     if (state.mouseOver) {
       return {
         fill: '#93c0d099',
