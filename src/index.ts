@@ -48,9 +48,6 @@ export type {
   useClickProps,
   useDragProps,
   useZoomProps,
-  createPoints,
-  calcScaleInfo,
-  recenterScreenPoint,
 }
 
 export {
@@ -73,6 +70,10 @@ export {
   useClick,
   useDrag,
   useZoom,
+  // Utilities
+  createPoints,
+  calcScaleInfo,
+  recenterScreenPoint,
   // Misc
   CLASS_NAMES,
 }
