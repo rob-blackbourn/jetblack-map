@@ -16,11 +16,14 @@ import ZoomButton, { ZoomButtonPops } from './components/ZoomButton'
 
 import { osmTileProvider, stamenTileProviderFactory } from './components/TileProviders'
 
-import { Bounds, Coordinate, Point, Size } from './types'
+import { Bounds, Coordinate, Point, ScaleInfo, Size } from './types'
 
 import useClick, { useClickProps } from './hooks/useClick'
 import useDrag, { useDragProps } from './hooks/useDrag'
 import useZoom, { useZoomProps } from './hooks/useZoom'
+
+import { createPoints } from './components/markerHelpers'
+import { calcScaleInfo, recenterScreenPoint } from './tileMath'
 
 import { CLASS_NAMES } from './constants'
 
@@ -39,11 +42,15 @@ export type {
   Bounds,
   Coordinate,
   Point,
+  ScaleInfo,
   Size,
   MarkerComponentProps,
   useClickProps,
   useDragProps,
   useZoomProps,
+  createPoints,
+  calcScaleInfo,
+  recenterScreenPoint,
 }
 
 export {
