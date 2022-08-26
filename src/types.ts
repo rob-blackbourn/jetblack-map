@@ -88,7 +88,12 @@ export interface TileProvider {
   attribution: React.ReactElement
 }
 
-export interface CoordinateRect {
-  topLeft: Coordinate
-  bottomRight: Coordinate
+/**
+ * Bounds for a world coordinate.
+ */
+export interface CoordinateBounds {
+  /** The most north westerly point, where both the latitude and longitude are the largest. */
+  northWest: Coordinate
+  /** The most south easterly point, where both the latitude and longitude are the smallest. */
+  southEast: Coordinate
 }

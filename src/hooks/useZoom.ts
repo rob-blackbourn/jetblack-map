@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 
 import { DEFAULTS } from '../constants'
-import { boundValue } from '../tileMath'
+import { limitValue } from '../utils'
 import { isZoomable } from './utils'
 
 /**
@@ -52,7 +52,7 @@ export default function useZoom({
 
       let newZoom = event.deltaY > 0 ? zoom - zoomStep : zoom + zoomStep
       newZoom = Math.round(newZoom * 100) / 100
-      newZoom = boundValue(minZoom, newZoom, maxZoom)
+      newZoom = limitValue(newZoom, minZoom, maxZoom)
       setZoom(newZoom)
     },
     [ref, zoom, setZoom, minZoom, maxZoom, zoomStep]

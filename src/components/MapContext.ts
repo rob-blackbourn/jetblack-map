@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Bounds, Coordinate, CoordinateRect, TileProvider } from '../types'
+import { Bounds, Coordinate, CoordinateBounds, TileProvider } from '../types'
 
 /**
  * The prop type of a [[`MapContext`]].
@@ -17,7 +17,7 @@ export interface MapContextProps {
   /** The bounds of the map in the screen coordinate system */
   bounds: Bounds
   /** The bounds of the map in the world coordinate system */
-  worldBounds: CoordinateRect
+  worldBounds: CoordinateBounds
   /** The tile provider */
   tileProvider: TileProvider
 }

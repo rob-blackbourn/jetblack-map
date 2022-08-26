@@ -1,8 +1,10 @@
+import { LOCATIONS } from '../src/constants'
 import {
   coordinateToTilePoint,
   tilePointToCoordinate,
   recenterScreenPoint,
   screenPointToCoordinate,
+  limitCoordinate,
 } from '../src/tileMath'
 import { Coordinate, Point, Size } from '../src/types'
 
@@ -360,6 +362,22 @@ describe('tileMath', () => {
       )
       expect(screenPoint.latitude).toBeCloseTo(coordinateBuenoAires.latitude, 6)
       expect(screenPoint.longitude).toBeCloseTo(coordinateBuenoAires.longitude, 6)
+    })
+  })
+
+  describe('limitCoordinate', () => {
+    it('should limit with defaults', () => {
+      const limitedNegative = limitCoordinate({
+        latitude: -100,
+        longitude: -200,
+      })
+      expect(limitedNegative).toEqual(LOCATIONS.southWest)
+
+      const limitedPositive = limitCoordinate({
+        latitude: 100,
+        longitude: 200,
+      })
+      expect(limitedPositive).toEqual(LOCATIONS.northEast)
     })
   })
 })

@@ -1,4 +1,7 @@
-import { Bounds, Coordinate, CoordinateRect, Point, ScaleInfo, Size } from './types'
+import { Bounds, Coordinate, CoordinateBounds, Point, ScaleInfo, Size } from './types'
+
+import { LOCATIONS } from './constants'
+import { limitValue } from './utils'
 
 // These functions are provided by the Open Street Map wiki.
 // See: https://wiki.openstreetmap.org/wiki/Slippy_map_tilenames
@@ -17,7 +20,7 @@ const lng2tile = (lon: number, zoom: number): number => ((lon + 180) / 360) * 2 
  *
  * @param lat The latitude
  * @param zoom The zoom level
- * @returns The y coordinate in the tile coordinate systsem
+ * @returns The y coordinate in the tile coordinate system
  */
 const lat2tile = (lat: number, zoom: number): number =>
   ((1 - Math.log(Math.tan((lat * Math.PI) / 180) + 1 / Math.cos((lat * Math.PI) / 180)) / Math.PI) /
@@ -46,17 +49,6 @@ function tile2lat(y: number, zoom: number): number {
   const n = Math.PI - (2 * Math.PI * y) / 2 ** zoom
   return (180 / Math.PI) * Math.atan(0.5 * (Math.exp(n) - Math.exp(-n)))
 }
-
-/**
- * Ensure the value is between the minimum and maximum value.
- *
- * @param min The minimum allowed value
- * @param value The value to be constrained
- * @param max The maximum allowable value
- * @returns The value bounded by the constraints
- */
-export const boundValue = (min: number, value: number, max: number): number =>
-  Math.max(min, Math.min(value, max))
 
 /**
  * Convert a latitude and longitude to an x and y point in the tile coordinate system.
@@ -179,7 +171,7 @@ export function screenPointToCoordinate(
   const coordinate = tilePointToCoordinate(adjTileCenter, zoom)
 
   // Clip the latitude.
-  const latitude = boundValue(-90, coordinate.latitude, 90)
+  const latitude = limitValue(coordinate.latitude, -90, 90)
 
   let longitude = coordinate.longitude
   if (wrapLongitude) {
@@ -224,20 +216,68 @@ export function recenterScreenPoint(
   }
 }
 
-export function range(start: number, stop: number, step: number = 1): number[] {
-  const length = Math.ceil((stop - start) / step)
-  return Array.from({ length }, (_, i) => i * step + start)
+/**
+ * Find all the points that would be visible.
+ *
+ * @param point The starting pointy.
+ * @param roundedZoom The rounded zoom
+ * @param scale The scale.
+ * @param screenWidth The screen width.
+ * @param tileWidth The tile width.
+ * @returns A list of the points
+ *
+ * @ignore
+ */
+export function createVisiblePoints(
+  point: Point,
+  roundedZoom: number,
+  scale: number,
+  screenWidth: number,
+  tileWidth: number
+): Point[] {
+  const maxTiles = 2 ** roundedZoom
+  const expectedWidth = maxTiles * tileWidth * scale
+
+  // If the screen is zoomed out the coordinate may appear many times as the display will wrap horizontally.
+  const elementPoints: Point[] = [point]
+  // Points to the left.
+  for (
+    let p = { x: point.x - expectedWidth, y: point.y };
+    p.x >= 0;
+    p = { x: p.x - expectedWidth, y: p.y }
+  ) {
+    elementPoints.push(p)
+  }
+  // Points to the right.
+  for (
+    let p = { x: point.x + expectedWidth, y: point.y };
+    p.x < screenWidth;
+    p = { x: p.x + expectedWidth, y: p.y }
+  ) {
+    elementPoints.push(p)
+  }
+
+  return elementPoints
 }
 
+/**
+ * Return the bounds of the view area in the world coordinate system.
+ *
+ * @param center The center of the map in world coordinates.
+ * @param zoom The zoom level.
+ * @param bounds The bounds of the view area in the screen coordinate system.
+ * @param tileSize The size of a tile
+ * @returns The bounds of the view area in the world coordinate system.
+ */
 export function calcWorldBounds(
   center: Coordinate,
   zoom: number,
   bounds: Bounds,
   tileSize: Size
-): CoordinateRect {
+): CoordinateBounds {
   return {
-    topLeft: screenPointToCoordinate({ x: 0, y: 0 }, center, zoom, bounds, tileSize, false),
-    bottomRight: screenPointToCoordinate(
+    northWest: screenPointToCoordinate({ x: 0, y: 0 }, center, zoom, bounds, tileSize, false),
+    southEast: screenPointToCoordinate(
       { x: bounds.width, y: bounds.height },
       center,
       zoom,
@@ -248,22 +288,57 @@ export function calcWorldBounds(
   }
 }
 
+/**
+ * Determine if a coordinate is inside the viewable area given in the world
+ * coordinate system.
+ *
+ * @param latitude The latitude.
+ * @param longitude The longitude.
+ * @param bounds The bounds of the viewable area in the world coordinate system.
+ * @returns True if the coordinate was within the bounds; otherwise false.
+ */
 export function isInWorldBounds(
   latitude: number,
   longitude: number,
-  { topLeft, bottomRight }: CoordinateRect
+  { northWest, southEast }: CoordinateBounds
 ): boolean {
   return (
-    latitude <= topLeft.latitude &&
-    latitude >= bottomRight.latitude &&
-    longitude >= topLeft.longitude &&
-    longitude <= bottomRight.longitude
+    latitude <= northWest.latitude &&
+    latitude >= southEast.latitude &&
+    longitude >= northWest.longitude &&
+    longitude <= southEast.longitude
   )
 }
 
+/**
+ * Determine if a coordinate is inside the viewable area given in the world
+ * coordinate system.
+ *
+ * @param coordinate The coordinate in the world coordinate system.
+ * @param worldBounds The bounds of the viewable area in the world coordinate system.
+ * @returns True if the coordinate was within the bounds; otherwise false.
+ */
 export function isCoordinateInWorldBounds(
   { latitude, longitude }: Coordinate,
-  worldBounds: CoordinateRect
+  worldBounds: CoordinateBounds
 ): boolean {
   return isInWorldBounds(latitude, longitude, worldBounds)
 }
+
+/**
+ * Limit a coordinate in the world coordinate system to be within the bounds
+ * of a minimum and maximum coordinate.
+ *
+ * @param coordinate The coordinate to limit.
+ * @param min The minimum allowed value.
+ * @param max The maximum allowed value in the world coordinate system.
+ * @returns The value, limited by the minimum and maximum values.
+ */
+export const limitCoordinate = (
+  { latitude, longitude }: Coordinate,
+  min: Coordinate = LOCATIONS.southWest,
+  max: Coordinate = LOCATIONS.northEast
+): Coordinate => ({
+  latitude: limitValue(latitude, min.latitude, max.latitude),
+  longitude: limitValue(longitude, min.longitude, max.longitude),
+})

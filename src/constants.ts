@@ -1,6 +1,22 @@
 import { Coordinate } from './types'
 
 export const LOCATIONS: { [place: string]: Coordinate } = {
+  northWest: {
+    latitude: 90,
+    longitude: -180,
+  },
+  southEast: {
+    latitude: -90,
+    longitude: 180,
+  },
+  southWest: {
+    latitude: -90,
+    longitude: -180,
+  },
+  northEast: {
+    latitude: 90,
+    longitude: 180,
+  },
   greenwichObservatory: {
     latitude: 51.47684676353231,
     longitude: -0.0005261695762532147,
