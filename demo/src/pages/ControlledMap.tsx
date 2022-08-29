@@ -1,15 +1,8 @@
 import React, { useRef } from 'react'
 
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { Coordinate, Map, Point, osmTileProvider, useClick, useDrag, useZoom } from '../../../dist'
 
-import { Coordinate, Map, Point, osmTileProvider, useClick, useDrag, useZoom } from '..'
-
-export default {
-  title: 'Controlled Map',
-  component: Map,
-} as ComponentMeta<typeof Map>
-
-const Template: ComponentStory<typeof Map> = args => {
+export default function ControlledMap() {
   const ref = useRef<HTMLDivElement>(null)
 
   const [zoom, setZoom] = useZoom({ ref, defaultZoom: 6 })
@@ -41,10 +34,4 @@ const Template: ComponentStory<typeof Map> = args => {
       tileProvider={osmTileProvider}
     />
   )
-}
-export const ControlledMap = Template.bind({})
-
-ControlledMap.args = {
-  width: '600px',
-  height: '400px',
 }

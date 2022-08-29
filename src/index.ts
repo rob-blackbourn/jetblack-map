@@ -11,7 +11,7 @@ import ZoomButton, { ZoomButtonPops } from './components/ZoomButton'
 
 import { osmTileProvider, stamenTileProviderFactory } from './components/TileProviders'
 
-import { Bounds, Coordinate, CoordinateBounds, Point, ScaleInfo, Size } from './types'
+import { Bounds, Coordinate, CoordinateBounds, Point, ScaleInfo, Size, TileProvider } from './types'
 
 import useClick, { useClickProps } from './hooks/useClick'
 import useDrag, { useDragProps } from './hooks/useDrag'
@@ -49,6 +49,7 @@ export type {
   Point,
   ScaleInfo,
   Size,
+  TileProvider,
   useClickProps,
   useDragProps,
   useZoomProps,

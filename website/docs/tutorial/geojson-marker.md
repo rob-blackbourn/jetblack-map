@@ -21,12 +21,12 @@ The following code replaces the default circle marker with a pin.
 import React, { useRef } from 'react'
 
 import {
-  GeoJSONLayer,
   Map,
   osmTileProvider,
   useDrag,
   useZoom,
 } from '@jetblack/maps'
+import { GeoJSONLayer } from '@jetblack/map-geojson'
 
 // This is the custom marker.
 function PinMarker({ point }) {
@@ -144,13 +144,13 @@ import { Feature, FeatureCollection } from 'geojson'
 
 import {
   Coordinate,
-  GeoJSONLayer,
   Map,
   MarkerComponentProps,
   osmTileProvider,
   useDrag,
   useZoom,
 } from '@jetblack/maps'
+import { GeoJSONLayer } from '@jetblack/map-geojson'
 
 // This is the custom marker.
 function PinMarker({ point }: MarkerComponentProps) {

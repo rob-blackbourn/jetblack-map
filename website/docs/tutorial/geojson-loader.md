@@ -16,12 +16,12 @@ The data can also be loaded dynamically.
 import React, { useEffect, useRef, useState } from 'react'
 
 import {
-  GeoJSONLayer,
   Map,
   useClick,
   useDrag,
   useZoom,
 } from '@jetblack/maps'
+import { GeoJSONLayer } from '@jetblack/map-geojson'
 
 const tileSize = { width: 256, height: 256 }
 
@@ -101,13 +101,13 @@ import { Feature } from 'geojson'
 import {
   Coordinate,
   FeatureState,
-  GeoJSONLayer,
   Map,
   Point,
   useClick,
   useDrag,
   useZoom,
 } from '@jetblack/maps'
+import { GeoJSONLayer } from '@jetblack/map-geojson'
 
 const tileSize = { width: 256, height: 256 }
 
