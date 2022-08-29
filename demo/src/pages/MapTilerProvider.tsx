@@ -129,7 +129,7 @@ const tileProviders = {
 }
 
 export default function App() {
-  const tileProvider = args.tileProvider as TileProvider
+  const tileProvider = tileProviders.basic.tileProvider as TileProvider
   const ref = useRef<HTMLDivElement>(null)
 
   const { tileSize } = tileProvider
