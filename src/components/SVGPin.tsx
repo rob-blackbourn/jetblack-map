@@ -36,7 +36,7 @@ export interface SVGPinProps {
  */
 export default function SVGPin({
   size = 1,
-  color = 'DarkSlateGrey',
+  color = '#2F4F4F',
   onMouseOut,
   onMouseOver,
   onClick,
