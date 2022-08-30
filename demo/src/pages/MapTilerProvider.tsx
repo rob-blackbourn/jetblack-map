@@ -171,30 +171,7 @@ function MapTilerProvider({ tileProvider }: MapTilerProviderProps) {
 }
 
 export default function MapTilerProviderWrapper() {
-  const tileProvider = tileProviders.basic.tileProvider as TileProvider
-  const ref = useRef<HTMLDivElement>(null)
   const [tileProviderKey, setTileProviderKey] = useState('basic')
-
-  const { tileSize } = tileProvider
-
-  const [zoom, setZoom] = useZoom({ ref, defaultZoom: 6 })
-  const [center, setCenter] = useDrag({
-    ref,
-    zoom,
-    tileSize,
-  })
-
-  useClick({
-    ref,
-    center,
-    zoom,
-    tileSize,
-    onClick: (coordinate: Coordinate, point: Point) => console.log('click', { coordinate, point }),
-    onDoubleClick: (coordinate: Coordinate, point: Point) => {
-      setCenter(coordinate)
-      setZoom(zoom + 1)
-    },
-  })
 
   const handleSelect = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setTileProviderKey(event.target.value)
