@@ -30,6 +30,13 @@ npm install --save @jetblack/map
 
 React is a peer dependency and will not be automatically installed.
 
+## Packages
+
+There are two official packages:
+
+* [@jetblack/map-geojson](https://github.com/rob-blackbourn/jetblack-map-geojson) - support for geojson
+* [@jetblack/map-cluster-marker](https://github.com/rob-blackbourn/jetblack-map-cluster-marker) - cluster markers
+
 ## Usage
 
 ### Basic

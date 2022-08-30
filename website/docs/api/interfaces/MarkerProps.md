@@ -18,7 +18,7 @@ The coordinate of the marker
 
 #### Defined in
 
-[src/components/Marker.tsx:20](https://github.com/rob-blackbourn/jetblack-map/blob/c03dbd7/src/components/Marker.tsx#L20)
+[components/Marker.tsx:24](https://github.com/rob-blackbourn/jetblack-map/blob/4867b73/src/components/Marker.tsx#L24)
 
 ## Methods
 
@@ -40,4 +40,4 @@ A function to render the marker
 
 #### Defined in
 
-[src/components/Marker.tsx:22](https://github.com/rob-blackbourn/jetblack-map/blob/c03dbd7/src/components/Marker.tsx#L22)
+[components/Marker.tsx:26](https://github.com/rob-blackbourn/jetblack-map/blob/4867b73/src/components/Marker.tsx#L26)
