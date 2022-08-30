@@ -16,7 +16,7 @@ The type for scale information returned from [[`calcScaleInfo`]]
 
 #### Defined in
 
-[types.ts:57](https://github.com/rob-blackbourn/jetblack-map/blob/32451b5/src/types.ts#L57)
+[types.ts:57](https://github.com/rob-blackbourn/jetblack-map/blob/0ed4bc5/src/types.ts#L57)
 
 ___
 
@@ -26,7 +26,7 @@ ___
 
 #### Defined in
 
-[types.ts:58](https://github.com/rob-blackbourn/jetblack-map/blob/32451b5/src/types.ts#L58)
+[types.ts:58](https://github.com/rob-blackbourn/jetblack-map/blob/0ed4bc5/src/types.ts#L58)
 
 ___
 
@@ -36,4 +36,4 @@ ___
 
 #### Defined in
 
-[types.ts:59](https://github.com/rob-blackbourn/jetblack-map/blob/32451b5/src/types.ts#L59)
+[types.ts:59](https://github.com/rob-blackbourn/jetblack-map/blob/0ed4bc5/src/types.ts#L59)

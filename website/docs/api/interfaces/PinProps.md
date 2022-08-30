@@ -24,7 +24,7 @@ The color of the pin
 
 #### Defined in
 
-[components/Pin.tsx:20](https://github.com/rob-blackbourn/jetblack-map/blob/32451b5/src/components/Pin.tsx#L20)
+[components/Pin.tsx:20](https://github.com/rob-blackbourn/jetblack-map/blob/0ed4bc5/src/components/Pin.tsx#L20)
 
 ___
 
@@ -36,7 +36,7 @@ Data for the pin
 
 #### Defined in
 
-[components/Pin.tsx:16](https://github.com/rob-blackbourn/jetblack-map/blob/32451b5/src/components/Pin.tsx#L16)
+[components/Pin.tsx:16](https://github.com/rob-blackbourn/jetblack-map/blob/0ed4bc5/src/components/Pin.tsx#L16)
 
 ___
 
@@ -48,7 +48,7 @@ The point in the screen coordinate system.
 
 #### Defined in
 
-[components/Pin.tsx:14](https://github.com/rob-blackbourn/jetblack-map/blob/32451b5/src/components/Pin.tsx#L14)
+[components/Pin.tsx:14](https://github.com/rob-blackbourn/jetblack-map/blob/0ed4bc5/src/components/Pin.tsx#L14)
 
 ___
 
@@ -60,7 +60,7 @@ The size of the pin
 
 #### Defined in
 
-[components/Pin.tsx:18](https://github.com/rob-blackbourn/jetblack-map/blob/32451b5/src/components/Pin.tsx#L18)
+[components/Pin.tsx:18](https://github.com/rob-blackbourn/jetblack-map/blob/0ed4bc5/src/components/Pin.tsx#L18)
 
 ## Methods
 
@@ -85,7 +85,7 @@ A handler for click events
 
 #### Defined in
 
-[components/Pin.tsx:26](https://github.com/rob-blackbourn/jetblack-map/blob/32451b5/src/components/Pin.tsx#L26)
+[components/Pin.tsx:26](https://github.com/rob-blackbourn/jetblack-map/blob/0ed4bc5/src/components/Pin.tsx#L26)
 
 ___
 
@@ -110,7 +110,7 @@ A handler for a context menu event
 
 #### Defined in
 
-[components/Pin.tsx:33](https://github.com/rob-blackbourn/jetblack-map/blob/32451b5/src/components/Pin.tsx#L33)
+[components/Pin.tsx:33](https://github.com/rob-blackbourn/jetblack-map/blob/0ed4bc5/src/components/Pin.tsx#L33)
 
 ___
 
@@ -135,7 +135,7 @@ A function called when the mouse enters or leaves the pin
 
 #### Defined in
 
-[components/Pin.tsx:24](https://github.com/rob-blackbourn/jetblack-map/blob/32451b5/src/components/Pin.tsx#L24)
+[components/Pin.tsx:24](https://github.com/rob-blackbourn/jetblack-map/blob/0ed4bc5/src/components/Pin.tsx#L24)
 
 ___
 
@@ -159,4 +159,4 @@ A function called to render a popup when the mouse is over the pin
 
 #### Defined in
 
-[components/Pin.tsx:22](https://github.com/rob-blackbourn/jetblack-map/blob/32451b5/src/components/Pin.tsx#L22)
+[components/Pin.tsx:22](https://github.com/rob-blackbourn/jetblack-map/blob/0ed4bc5/src/components/Pin.tsx#L22)

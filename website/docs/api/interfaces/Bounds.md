@@ -28,7 +28,7 @@ The height
 
 #### Defined in
 
-[types.ts:50](https://github.com/rob-blackbourn/jetblack-map/blob/32451b5/src/types.ts#L50)
+[types.ts:50](https://github.com/rob-blackbourn/jetblack-map/blob/0ed4bc5/src/types.ts#L50)
 
 ___
 
@@ -40,7 +40,7 @@ The left
 
 #### Defined in
 
-[types.ts:46](https://github.com/rob-blackbourn/jetblack-map/blob/32451b5/src/types.ts#L46)
+[types.ts:46](https://github.com/rob-blackbourn/jetblack-map/blob/0ed4bc5/src/types.ts#L46)
 
 ___
 
@@ -52,7 +52,7 @@ The top
 
 #### Defined in
 
-[types.ts:44](https://github.com/rob-blackbourn/jetblack-map/blob/32451b5/src/types.ts#L44)
+[types.ts:44](https://github.com/rob-blackbourn/jetblack-map/blob/0ed4bc5/src/types.ts#L44)
 
 ___
 
@@ -68,4 +68,4 @@ The width
 
 #### Defined in
 
-[types.ts:48](https://github.com/rob-blackbourn/jetblack-map/blob/32451b5/src/types.ts#L48)
+[types.ts:48](https://github.com/rob-blackbourn/jetblack-map/blob/0ed4bc5/src/types.ts#L48)

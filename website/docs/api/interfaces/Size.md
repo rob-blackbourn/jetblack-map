@@ -24,7 +24,7 @@ The height
 
 #### Defined in
 
-[types.ts:36](https://github.com/rob-blackbourn/jetblack-map/blob/32451b5/src/types.ts#L36)
+[types.ts:36](https://github.com/rob-blackbourn/jetblack-map/blob/0ed4bc5/src/types.ts#L36)
 
 ___
 
@@ -36,4 +36,4 @@ The width
 
 #### Defined in
 
-[types.ts:34](https://github.com/rob-blackbourn/jetblack-map/blob/32451b5/src/types.ts#L34)
+[types.ts:34](https://github.com/rob-blackbourn/jetblack-map/blob/0ed4bc5/src/types.ts#L34)
