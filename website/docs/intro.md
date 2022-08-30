@@ -18,6 +18,13 @@ The component has a few unique features:
 * When zoomed out the map can scroll continuously in the horizontal direction.
 * It uses hooks to provide interaction with the map.
 
+## Packages
+
+There are two official packages:
+
+* [@jetblack/map-geojson](https://github.com/rob-blackbourn/jetblack-map-geojson) - support for geojson
+* [@jetblack/map-cluster-marker](https://github.com/rob-blackbourn/jetblack-map-cluster-marker) - cluster markers
+
 ## Demo
 
 <DemoMap />

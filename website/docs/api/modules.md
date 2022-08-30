@@ -20,14 +20,14 @@ custom_edit_url: null
 
 - [Bounds](interfaces/Bounds.md)
 - [Coordinate](interfaces/Coordinate.md)
-- [FeatureState](interfaces/FeatureState.md)
-- [GeoJSONLayerProps](interfaces/GeoJSONLayerProps.md)
-- [MarkerComponentProps](interfaces/MarkerComponentProps.md)
+- [CoordinateBounds](interfaces/CoordinateBounds.md)
 - [OverlayLayerProps](interfaces/OverlayLayerProps.md)
 - [PinProps](interfaces/PinProps.md)
 - [PopupProps](interfaces/PopupProps.md)
 - [SVGPinProps](interfaces/SVGPinProps.md)
+- [ScaleInfo](interfaces/ScaleInfo.md)
 - [Size](interfaces/Size.md)
+- [TileProvider](interfaces/TileProvider.md)
 - [ZoomButtonPops](interfaces/ZoomButtonPops.md)
 - [useClickProps](interfaces/useClickProps.md)
 - [useDragProps](interfaces/useDragProps.md)
@@ -62,7 +62,16 @@ custom_edit_url: null
 
 ## Other Functions
 
-- [GeoJSONLayer](modules.md#geojsonlayer)
+- [calcScaleInfo](modules.md#calcscaleinfo)
+- [calcWorldBounds](modules.md#calcworldbounds)
+- [coordinateToTilePoint](modules.md#coordinatetotilepoint)
+- [isCoordinateInWorldBounds](modules.md#iscoordinateinworldbounds)
+- [isInWorldBounds](modules.md#isinworldbounds)
+- [limitCoordinate](modules.md#limitcoordinate)
+- [recenterScreenPoint](modules.md#recenterscreenpoint)
+- [screenPointToCoordinate](modules.md#screenpointtocoordinate)
+- [screenToTilePoint](modules.md#screentotilepoint)
+- [tilePointToCoordinate](modules.md#tilepointtocoordinate)
 - [useClick](modules.md#useclick)
 - [useDrag](modules.md#usedrag)
 - [useZoom](modules.md#usezoom)
@@ -88,7 +97,7 @@ A point in the Cartesian coordinate system.
 
 #### Defined in
 
-[src/types.ts:22](https://github.com/rob-blackbourn/jetblack-map/blob/c03dbd7/src/types.ts#L22)
+[types.ts:22](https://github.com/rob-blackbourn/jetblack-map/blob/0ed4bc5/src/types.ts#L22)
 
 ## Component Variables
 
@@ -104,7 +113,7 @@ Render a map.
 
 #### Defined in
 
-[src/components/Map.tsx:52](https://github.com/rob-blackbourn/jetblack-map/blob/c03dbd7/src/components/Map.tsx#L52)
+[components/Map.tsx:52](https://github.com/rob-blackbourn/jetblack-map/blob/0ed4bc5/src/components/Map.tsx#L52)
 
 ___
 
@@ -118,7 +127,7 @@ The map context.
 
 #### Defined in
 
-[src/components/MapContext.ts:30](https://github.com/rob-blackbourn/jetblack-map/blob/c03dbd7/src/components/MapContext.ts#L30)
+[components/MapContext.ts:30](https://github.com/rob-blackbourn/jetblack-map/blob/0ed4bc5/src/components/MapContext.ts#L30)
 
 ___
 
@@ -139,7 +148,7 @@ ___
 
 #### Defined in
 
-[src/constants.ts:40](https://github.com/rob-blackbourn/jetblack-map/blob/c03dbd7/src/constants.ts#L40)
+[constants.ts:56](https://github.com/rob-blackbourn/jetblack-map/blob/0ed4bc5/src/constants.ts#L56)
 
 ___
 
@@ -147,13 +156,13 @@ ___
 
 ### osmTileProvider
 
-• `Const` **osmTileProvider**: `TileProvider`
+• `Const` **osmTileProvider**: [`TileProvider`](interfaces/TileProvider.md)
 
 A tile provider for Open Street Map.
 
 #### Defined in
 
-[src/components/TileProviders.tsx:8](https://github.com/rob-blackbourn/jetblack-map/blob/c03dbd7/src/components/TileProviders.tsx#L8)
+[components/TileProviders.tsx:8](https://github.com/rob-blackbourn/jetblack-map/blob/0ed4bc5/src/components/TileProviders.tsx#L8)
 
 ## Component Functions
 
@@ -169,7 +178,7 @@ Render the attribution layer.
 
 #### Defined in
 
-[src/components/AttributionLayer.tsx:15](https://github.com/rob-blackbourn/jetblack-map/blob/c03dbd7/src/components/AttributionLayer.tsx#L15)
+[components/AttributionLayer.tsx:15](https://github.com/rob-blackbourn/jetblack-map/blob/0ed4bc5/src/components/AttributionLayer.tsx#L15)
 
 ___
 
@@ -195,7 +204,7 @@ An image tile.
 
 #### Defined in
 
-[src/components/ImageTile.tsx:41](https://github.com/rob-blackbourn/jetblack-map/blob/c03dbd7/src/components/ImageTile.tsx#L41)
+[components/ImageTile.tsx:41](https://github.com/rob-blackbourn/jetblack-map/blob/0ed4bc5/src/components/ImageTile.tsx#L41)
 
 ___
 
@@ -219,7 +228,7 @@ A map.
 
 #### Defined in
 
-[src/components/Marker.tsx:33](https://github.com/rob-blackbourn/jetblack-map/blob/c03dbd7/src/components/Marker.tsx#L33)
+[components/Marker.tsx:37](https://github.com/rob-blackbourn/jetblack-map/blob/0ed4bc5/src/components/Marker.tsx#L37)
 
 ___
 
@@ -243,7 +252,7 @@ A map.
 
 #### Defined in
 
-[src/components/OverlayLayer.tsx:33](https://github.com/rob-blackbourn/jetblack-map/blob/c03dbd7/src/components/OverlayLayer.tsx#L33)
+[components/OverlayLayer.tsx:33](https://github.com/rob-blackbourn/jetblack-map/blob/0ed4bc5/src/components/OverlayLayer.tsx#L33)
 
 ___
 
@@ -273,7 +282,7 @@ A pin at the point.
 
 #### Defined in
 
-[src/components/Pin.tsx:49](https://github.com/rob-blackbourn/jetblack-map/blob/c03dbd7/src/components/Pin.tsx#L49)
+[components/Pin.tsx:49](https://github.com/rob-blackbourn/jetblack-map/blob/0ed4bc5/src/components/Pin.tsx#L49)
 
 ___
 
@@ -301,7 +310,7 @@ A popup near the point.
 
 #### Defined in
 
-[src/components/Popup.tsx:35](https://github.com/rob-blackbourn/jetblack-map/blob/c03dbd7/src/components/Popup.tsx#L35)
+[components/Popup.tsx:35](https://github.com/rob-blackbourn/jetblack-map/blob/0ed4bc5/src/components/Popup.tsx#L35)
 
 ___
 
@@ -325,7 +334,7 @@ A map.
 
 #### Defined in
 
-[src/components/SVGPin.tsx:37](https://github.com/rob-blackbourn/jetblack-map/blob/c03dbd7/src/components/SVGPin.tsx#L37)
+[components/SVGPin.tsx:37](https://github.com/rob-blackbourn/jetblack-map/blob/0ed4bc5/src/components/SVGPin.tsx#L37)
 
 ___
 
@@ -349,31 +358,278 @@ A map.
 
 #### Defined in
 
-[src/components/ZoomButton.tsx:43](https://github.com/rob-blackbourn/jetblack-map/blob/c03dbd7/src/components/ZoomButton.tsx#L43)
+[components/ZoomButton.tsx:43](https://github.com/rob-blackbourn/jetblack-map/blob/0ed4bc5/src/components/ZoomButton.tsx#L43)
 
 ___
 
 ## Other Functions
 
-### GeoJSONLayer
+### calcScaleInfo
 
-▸ **GeoJSONLayer**(`__namedParameters`): `Element`
+▸ **calcScaleInfo**(`zoom`, `screenSize`): [`ScaleInfo`](interfaces/ScaleInfo.md)
 
-Render a GeoJSON layer.
+Calculate scale factors.
+
+The tiles are provide at discrete zoom levels starting at 0 where a single tile represents the world.
+
+To provide smooth scrolling the width and height of the image tiles can be scaled.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `__namedParameters` | [`GeoJSONLayerProps`](interfaces/GeoJSONLayerProps.md) |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `zoom` | `number` | The zoom level |
+| `screenSize` | [`Size`](interfaces/Size.md) | The screen size |
 
 #### Returns
 
-`Element`
+[`ScaleInfo`](interfaces/ScaleInfo.md)
+
+An object containing the rounded zoom, the scale, the scale width and height.
 
 #### Defined in
 
-[src/components/GeoJson/GeoJsonLayer.tsx:40](https://github.com/rob-blackbourn/jetblack-map/blob/c03dbd7/src/components/GeoJson/GeoJsonLayer.tsx#L40)
+[tileMath.ts:88](https://github.com/rob-blackbourn/jetblack-map/blob/0ed4bc5/src/tileMath.ts#L88)
+
+___
+
+### calcWorldBounds
+
+▸ **calcWorldBounds**(`center`, `zoom`, `bounds`, `tileSize`): [`CoordinateBounds`](interfaces/CoordinateBounds.md)
+
+Return the bounds of the view area in the world coordinate system.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `center` | [`Coordinate`](interfaces/Coordinate.md) | The center of the map in world coordinates. |
+| `zoom` | `number` | The zoom level. |
+| `bounds` | [`Bounds`](interfaces/Bounds.md) | The bounds of the view area in the screen coordinate system. |
+| `tileSize` | [`Size`](interfaces/Size.md) | The size of a tile |
+
+#### Returns
+
+[`CoordinateBounds`](interfaces/CoordinateBounds.md)
+
+The bounds of the view area in the world coordinate system.
+
+#### Defined in
+
+[tileMath.ts:272](https://github.com/rob-blackbourn/jetblack-map/blob/0ed4bc5/src/tileMath.ts#L272)
+
+___
+
+### coordinateToTilePoint
+
+▸ **coordinateToTilePoint**(`coordinate`, `zoom`): [`Point`](modules.md#point)
+
+Convert a latitude and longitude to an x and y point in the tile coordinate system.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `coordinate` | [`Coordinate`](interfaces/Coordinate.md) | The coordinate from which to calculate a tile point |
+| `zoom` | `number` | The zoom level |
+
+#### Returns
+
+[`Point`](modules.md#point)
+
+The point in the tile coordinate system
+
+#### Defined in
+
+[tileMath.ts:60](https://github.com/rob-blackbourn/jetblack-map/blob/0ed4bc5/src/tileMath.ts#L60)
+
+___
+
+### isCoordinateInWorldBounds
+
+▸ **isCoordinateInWorldBounds**(`coordinate`, `worldBounds`): `boolean`
+
+Determine if a coordinate is inside the viewable area given in the world
+coordinate system.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `coordinate` | [`Coordinate`](interfaces/Coordinate.md) | The coordinate in the world coordinate system. |
+| `worldBounds` | [`CoordinateBounds`](interfaces/CoordinateBounds.md) | The bounds of the viewable area in the world coordinate system. |
+
+#### Returns
+
+`boolean`
+
+True if the coordinate was within the bounds; otherwise false.
+
+#### Defined in
+
+[tileMath.ts:321](https://github.com/rob-blackbourn/jetblack-map/blob/0ed4bc5/src/tileMath.ts#L321)
+
+___
+
+### isInWorldBounds
+
+▸ **isInWorldBounds**(`latitude`, `longitude`, `bounds`): `boolean`
+
+Determine if a coordinate is inside the viewable area given in the world
+coordinate system.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `latitude` | `number` | The latitude. |
+| `longitude` | `number` | The longitude. |
+| `bounds` | [`CoordinateBounds`](interfaces/CoordinateBounds.md) | The bounds of the viewable area in the world coordinate system. |
+
+#### Returns
+
+`boolean`
+
+True if the coordinate was within the bounds; otherwise false.
+
+#### Defined in
+
+[tileMath.ts:300](https://github.com/rob-blackbourn/jetblack-map/blob/0ed4bc5/src/tileMath.ts#L300)
+
+___
+
+### limitCoordinate
+
+▸ **limitCoordinate**(`coordinate`, `min?`, `max?`): [`Coordinate`](interfaces/Coordinate.md)
+
+Limit a coordinate in the world coordinate system to be within the bounds
+of a minimum and maximum coordinate.
+
+#### Parameters
+
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `coordinate` | [`Coordinate`](interfaces/Coordinate.md) | `undefined` | The coordinate to limit. |
+| `min` | [`Coordinate`](interfaces/Coordinate.md) | `LOCATIONS.southWest` | The minimum allowed value. |
+| `max` | [`Coordinate`](interfaces/Coordinate.md) | `LOCATIONS.northEast` | The maximum allowed value in the world coordinate system. |
+
+#### Returns
+
+[`Coordinate`](interfaces/Coordinate.md)
+
+The value, limited by the minimum and maximum values.
+
+#### Defined in
+
+[tileMath.ts:337](https://github.com/rob-blackbourn/jetblack-map/blob/0ed4bc5/src/tileMath.ts#L337)
+
+___
+
+### recenterScreenPoint
+
+▸ **recenterScreenPoint**(`coordinate`, `center`, `zoom`, `screenSize`, `tileSize`): [`Point`](modules.md#point)
+
+Convert a longitude and latitude to an x and y in the screen coordinate system.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `coordinate` | [`Coordinate`](interfaces/Coordinate.md) | The longitude and latitude of the point |
+| `center` | [`Coordinate`](interfaces/Coordinate.md) | The longitude and latitude of the center of the screen |
+| `zoom` | `number` | The zoom level |
+| `screenSize` | [`Size`](interfaces/Size.md) | The size of the screen |
+| `tileSize` | [`Size`](interfaces/Size.md) | The size of the tiles |
+
+#### Returns
+
+[`Point`](modules.md#point)
+
+The x and y coordinates of the point in th screen coordinate system
+
+#### Defined in
+
+[tileMath.ts:198](https://github.com/rob-blackbourn/jetblack-map/blob/0ed4bc5/src/tileMath.ts#L198)
+
+___
+
+### screenPointToCoordinate
+
+▸ **screenPointToCoordinate**(`screenPoint`, `center`, `zoom`, `screenSize`, `tileSize`, `wrapLongitude?`): [`Coordinate`](interfaces/Coordinate.md)
+
+Convert a screen point to a longitude and latitude.
+
+#### Parameters
+
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `screenPoint` | [`Point`](modules.md#point) | `undefined` | The point in the screen coordinate system |
+| `center` | [`Coordinate`](interfaces/Coordinate.md) | `undefined` | The latitude and longitude of the center of the screen |
+| `zoom` | `number` | `undefined` | The zoom level |
+| `screenSize` | [`Size`](interfaces/Size.md) | `undefined` | The size of the screen |
+| `tileSize` | [`Size`](interfaces/Size.md) | `undefined` | The size of the tiles |
+| `wrapLongitude` | `boolean` | `true` | - |
+
+#### Returns
+
+[`Coordinate`](interfaces/Coordinate.md)
+
+The longitude and latitude of the screen point
+
+#### Defined in
+
+[tileMath.ts:147](https://github.com/rob-blackbourn/jetblack-map/blob/0ed4bc5/src/tileMath.ts#L147)
+
+___
+
+### screenToTilePoint
+
+▸ **screenToTilePoint**(`screenPoint`, `tileSize`): [`Point`](modules.md#point)
+
+Convert a point in the screen coordinate system to a point in the
+tile coordinate system.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `screenPoint` | [`Point`](modules.md#point) | A point in the screen coordinate system. |
+| `tileSize` | [`Size`](interfaces/Size.md) | The tile size. |
+
+#### Returns
+
+[`Point`](modules.md#point)
+
+The point in the tile coordinate system.
+
+#### Defined in
+
+[tileMath.ts:115](https://github.com/rob-blackbourn/jetblack-map/blob/0ed4bc5/src/tileMath.ts#L115)
+
+___
+
+### tilePointToCoordinate
+
+▸ **tilePointToCoordinate**(`tilePoint`, `zoom`): [`Coordinate`](interfaces/Coordinate.md)
+
+Convert an x and y point to a longitude and latitude coordinate.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `tilePoint` | [`Point`](modules.md#point) | The x and y point in the tile coordinate system. |
+| `zoom` | `number` | The zoom level |
+
+#### Returns
+
+[`Coordinate`](interfaces/Coordinate.md)
+
+The coordinate as a latitude and longitude
+
+#### Defined in
+
+[tileMath.ts:72](https://github.com/rob-blackbourn/jetblack-map/blob/0ed4bc5/src/tileMath.ts#L72)
 
 ___
 
@@ -395,7 +651,7 @@ The useClick hook.
 
 #### Defined in
 
-[src/hooks/useClick.ts:36](https://github.com/rob-blackbourn/jetblack-map/blob/c03dbd7/src/hooks/useClick.ts#L36)
+[hooks/useClick.ts:36](https://github.com/rob-blackbourn/jetblack-map/blob/0ed4bc5/src/hooks/useClick.ts#L36)
 
 ___
 
@@ -417,7 +673,7 @@ A hook for mouse events.
 
 #### Defined in
 
-[src/hooks/useDrag.ts:31](https://github.com/rob-blackbourn/jetblack-map/blob/c03dbd7/src/hooks/useDrag.ts#L31)
+[hooks/useDrag.ts:31](https://github.com/rob-blackbourn/jetblack-map/blob/0ed4bc5/src/hooks/useDrag.ts#L31)
 
 ___
 
@@ -439,7 +695,7 @@ A hook to integrate the zoom wheel with a map.
 
 #### Defined in
 
-[src/hooks/useZoom.ts:26](https://github.com/rob-blackbourn/jetblack-map/blob/c03dbd7/src/hooks/useZoom.ts#L26)
+[hooks/useZoom.ts:26](https://github.com/rob-blackbourn/jetblack-map/blob/0ed4bc5/src/hooks/useZoom.ts#L26)
 
 ___
 
@@ -447,7 +703,7 @@ ___
 
 ### stamenTileProviderFactory
 
-▸ **stamenTileProviderFactory**(`map`): `TileProvider`
+▸ **stamenTileProviderFactory**(`map`): [`TileProvider`](interfaces/TileProvider.md)
 
 A tile provider factory for Stamen.
 
@@ -459,10 +715,10 @@ A tile provider factory for Stamen.
 
 #### Returns
 
-`TileProvider`
+[`TileProvider`](interfaces/TileProvider.md)
 
 A tile provider for the requested Stamen map
 
 #### Defined in
 
-[src/components/TileProviders.tsx:43](https://github.com/rob-blackbourn/jetblack-map/blob/c03dbd7/src/components/TileProviders.tsx#L43)
+[components/TileProviders.tsx:43](https://github.com/rob-blackbourn/jetblack-map/blob/0ed4bc5/src/components/TileProviders.tsx#L43)

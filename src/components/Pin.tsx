@@ -50,7 +50,7 @@ export default function Pin<T = unknown>({
   point,
   data,
   size = 1,
-  color = '#93C0D0',
+  color = '#2F4F4F',
   renderPopup,
   onHover,
   onClick,

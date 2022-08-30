@@ -3,10 +3,14 @@ import React, { useContext } from 'react'
 import { Coordinate, Point } from '../types'
 
 import { CLASS_NAMES } from '../constants'
-import { calcScaleInfo, isCoordinateInWorldBounds, recenterScreenPoint } from '../tileMath'
+import {
+  calcScaleInfo,
+  createVisiblePoints,
+  isCoordinateInWorldBounds,
+  recenterScreenPoint,
+} from '../tileMath'
 
 import MapContext from './MapContext'
-import { createPoints } from './markerHelpers'
 
 const classNames = { marker: [CLASS_NAMES.primary, 'marker'].join(' ') }
 
@@ -44,7 +48,7 @@ export default function Marker({ coordinate, render }: MarkerProps) {
     const markerPoint = recenterScreenPoint(coordinate, center, zoom, bounds, tileSize)
 
     // If the screen is zoomed out the coordinate may appear many times as the display will wrap horizontally.
-    return createPoints(markerPoint, roundedZoom, scale, bounds.width, tileSize.width)
+    return createVisiblePoints(markerPoint, roundedZoom, scale, bounds.width, tileSize.width)
   }
 
   return (

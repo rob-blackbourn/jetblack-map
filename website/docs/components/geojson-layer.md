@@ -7,6 +7,13 @@ import TabItem from '@theme/TabItem';
 
 # GeoJSONLayer
 
+The GeoJson layer can be installed from the package
+[@jetblack/map-geojson](https://www.npmjs.com/package/@jetblack/map-geojson),
+
+```bash
+npm install --save @jetblack/map-geojson
+```
+
 This layer displays data presented in the [geojson](https://geojson.org/)
 format. This data can be provided by code, JSON files, or dynamically
 loaded from the internet. Typescript types are available [here](https://www.npmjs.com/package/@types/geojson).

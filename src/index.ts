@@ -1,9 +1,4 @@
 import AttributionLayer from './components/AttributionLayer'
-import GeoJSONLayer, {
-  FeatureState,
-  GeoJSONLayerProps,
-  MarkerComponentProps,
-} from './components/GeoJson'
 import ImageTile, { ImageTileProps } from './components/ImageTile'
 import Map, { MapProps } from './components/Map'
 import MapContext, { MapContextProps } from './components/MapContext'
@@ -16,20 +11,29 @@ import ZoomButton, { ZoomButtonPops } from './components/ZoomButton'
 
 import { osmTileProvider, stamenTileProviderFactory } from './components/TileProviders'
 
-import { Bounds, Coordinate, Point, ScaleInfo, Size } from './types'
+import { Bounds, Coordinate, CoordinateBounds, Point, ScaleInfo, Size, TileProvider } from './types'
 
 import useClick, { useClickProps } from './hooks/useClick'
 import useDrag, { useDragProps } from './hooks/useDrag'
 import useZoom, { useZoomProps } from './hooks/useZoom'
 
-import { createPoints } from './components/markerHelpers'
-import { calcScaleInfo, recenterScreenPoint } from './tileMath'
+import {
+  calcScaleInfo,
+  calcWorldBounds,
+  coordinateToTilePoint,
+  createVisiblePoints,
+  isCoordinateInWorldBounds,
+  isInWorldBounds,
+  limitCoordinate,
+  recenterScreenPoint,
+  screenPointToCoordinate,
+  screenToTilePoint,
+  tilePointToCoordinate,
+} from './tileMath'
 
 import { CLASS_NAMES } from './constants'
 
 export type {
-  FeatureState,
-  GeoJSONLayerProps,
   ImageTileProps,
   MapProps,
   MapContextProps,
@@ -41,10 +45,11 @@ export type {
   ZoomButtonPops,
   Bounds,
   Coordinate,
+  CoordinateBounds,
   Point,
   ScaleInfo,
   Size,
-  MarkerComponentProps,
+  TileProvider,
   useClickProps,
   useDragProps,
   useZoomProps,
@@ -53,7 +58,6 @@ export type {
 export {
   // Components
   AttributionLayer,
-  GeoJSONLayer,
   ImageTile,
   Map,
   MapContext,
@@ -70,10 +74,18 @@ export {
   useClick,
   useDrag,
   useZoom,
-  // Utilities
-  createPoints,
+  // Tile Maths
   calcScaleInfo,
+  calcWorldBounds,
+  coordinateToTilePoint,
+  createVisiblePoints,
+  isCoordinateInWorldBounds,
+  isInWorldBounds,
+  limitCoordinate,
   recenterScreenPoint,
+  screenPointToCoordinate,
+  screenToTilePoint,
+  tilePointToCoordinate,
   // Misc
   CLASS_NAMES,
 }

@@ -18,7 +18,7 @@ The untilled background
 
 #### Defined in
 
-[src/components/Map.tsx:41](https://github.com/rob-blackbourn/jetblack-map/blob/c03dbd7/src/components/Map.tsx#L41)
+[components/Map.tsx:41](https://github.com/rob-blackbourn/jetblack-map/blob/0ed4bc5/src/components/Map.tsx#L41)
 
 ___
 
@@ -30,7 +30,7 @@ The center of the map
 
 #### Defined in
 
-[src/components/Map.tsx:29](https://github.com/rob-blackbourn/jetblack-map/blob/c03dbd7/src/components/Map.tsx#L29)
+[components/Map.tsx:29](https://github.com/rob-blackbourn/jetblack-map/blob/0ed4bc5/src/components/Map.tsx#L29)
 
 ___
 
@@ -42,7 +42,7 @@ Map components
 
 #### Defined in
 
-[src/components/Map.tsx:39](https://github.com/rob-blackbourn/jetblack-map/blob/c03dbd7/src/components/Map.tsx#L39)
+[components/Map.tsx:39](https://github.com/rob-blackbourn/jetblack-map/blob/0ed4bc5/src/components/Map.tsx#L39)
 
 ___
 
@@ -54,19 +54,19 @@ The screen height
 
 #### Defined in
 
-[src/components/Map.tsx:35](https://github.com/rob-blackbourn/jetblack-map/blob/c03dbd7/src/components/Map.tsx#L35)
+[components/Map.tsx:35](https://github.com/rob-blackbourn/jetblack-map/blob/0ed4bc5/src/components/Map.tsx#L35)
 
 ___
 
 ### tileProvider
 
-• `Optional` **tileProvider**: `TileProvider`
+• `Optional` **tileProvider**: [`TileProvider`](TileProvider.md)
 
 The tile provider
 
 #### Defined in
 
-[src/components/Map.tsx:37](https://github.com/rob-blackbourn/jetblack-map/blob/c03dbd7/src/components/Map.tsx#L37)
+[components/Map.tsx:37](https://github.com/rob-blackbourn/jetblack-map/blob/0ed4bc5/src/components/Map.tsx#L37)
 
 ___
 
@@ -78,7 +78,7 @@ The screen width
 
 #### Defined in
 
-[src/components/Map.tsx:33](https://github.com/rob-blackbourn/jetblack-map/blob/c03dbd7/src/components/Map.tsx#L33)
+[components/Map.tsx:33](https://github.com/rob-blackbourn/jetblack-map/blob/0ed4bc5/src/components/Map.tsx#L33)
 
 ___
 
@@ -90,4 +90,4 @@ The zoom level
 
 #### Defined in
 
-[src/components/Map.tsx:31](https://github.com/rob-blackbourn/jetblack-map/blob/c03dbd7/src/components/Map.tsx#L31)
+[components/Map.tsx:31](https://github.com/rob-blackbourn/jetblack-map/blob/0ed4bc5/src/components/Map.tsx#L31)

@@ -1,7 +1,5 @@
 import React, { useRef } from 'react'
 
-import { ComponentStory, ComponentMeta } from '@storybook/react'
-
 import {
   Coordinate,
   Map,
@@ -16,16 +14,7 @@ import {
   useZoom,
   useClick,
   Size,
-} from '..'
-
-export default {
-  /* 👇 The title prop is optional.
-   * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
-   * to learn how to generate automatic titles
-   */
-  title: 'Overlay Layer',
-  component: Map,
-} as ComponentMeta<typeof Map>
+} from '../../../dist'
 
 const places = {
   greenwichObservatory: {
@@ -81,7 +70,7 @@ function CircleMarker({
   )
 }
 
-const Template: ComponentStory<typeof Map> = args => {
+export default function App() {
   const ref = useRef<HTMLDivElement>(null)
 
   const [zoom, setZoom] = useZoom({ ref, defaultZoom: 6 })
@@ -177,12 +166,4 @@ const Template: ComponentStory<typeof Map> = args => {
       </OverlayLayer>
     </Map>
   )
-}
-export const OverlayMap = Template.bind({})
-
-OverlayMap.args = {
-  width: '600px',
-  height: '400px',
-  zoom: 11,
-  center: places.buckinghamPalace,
 }
