@@ -18,7 +18,7 @@ The most north westerly point, where both the latitude and longitude are the lar
 
 #### Defined in
 
-[types.ts:96](https://github.com/rob-blackbourn/jetblack-map/blob/4867b73/src/types.ts#L96)
+[types.ts:96](https://github.com/rob-blackbourn/jetblack-map/blob/32451b5/src/types.ts#L96)
 
 ___
 
@@ -30,4 +30,4 @@ The most south easterly point, where both the latitude and longitude are the sma
 
 #### Defined in
 
-[types.ts:98](https://github.com/rob-blackbourn/jetblack-map/blob/4867b73/src/types.ts#L98)
+[types.ts:98](https://github.com/rob-blackbourn/jetblack-map/blob/32451b5/src/types.ts#L98)

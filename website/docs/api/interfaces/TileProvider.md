@@ -16,7 +16,7 @@ The attribution component.
 
 #### Defined in
 
-[types.ts:88](https://github.com/rob-blackbourn/jetblack-map/blob/4867b73/src/types.ts#L88)
+[types.ts:88](https://github.com/rob-blackbourn/jetblack-map/blob/32451b5/src/types.ts#L88)
 
 ___
 
@@ -28,7 +28,7 @@ Make a tile url.
 
 #### Defined in
 
-[types.ts:80](https://github.com/rob-blackbourn/jetblack-map/blob/4867b73/src/types.ts#L80)
+[types.ts:80](https://github.com/rob-blackbourn/jetblack-map/blob/32451b5/src/types.ts#L80)
 
 ___
 
@@ -40,7 +40,7 @@ The maximum zoom level
 
 #### Defined in
 
-[types.ts:84](https://github.com/rob-blackbourn/jetblack-map/blob/4867b73/src/types.ts#L84)
+[types.ts:84](https://github.com/rob-blackbourn/jetblack-map/blob/32451b5/src/types.ts#L84)
 
 ___
 
@@ -52,7 +52,7 @@ The minimum zoom level
 
 #### Defined in
 
-[types.ts:82](https://github.com/rob-blackbourn/jetblack-map/blob/4867b73/src/types.ts#L82)
+[types.ts:82](https://github.com/rob-blackbourn/jetblack-map/blob/32451b5/src/types.ts#L82)
 
 ___
 
@@ -64,4 +64,4 @@ The size of a tile
 
 #### Defined in
 
-[types.ts:86](https://github.com/rob-blackbourn/jetblack-map/blob/4867b73/src/types.ts#L86)
+[types.ts:86](https://github.com/rob-blackbourn/jetblack-map/blob/32451b5/src/types.ts#L86)

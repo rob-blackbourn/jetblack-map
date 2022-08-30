@@ -97,7 +97,7 @@ A point in the Cartesian coordinate system.
 
 #### Defined in
 
-[types.ts:22](https://github.com/rob-blackbourn/jetblack-map/blob/4867b73/src/types.ts#L22)
+[types.ts:22](https://github.com/rob-blackbourn/jetblack-map/blob/32451b5/src/types.ts#L22)
 
 ## Component Variables
 
@@ -113,7 +113,7 @@ Render a map.
 
 #### Defined in
 
-[components/Map.tsx:52](https://github.com/rob-blackbourn/jetblack-map/blob/4867b73/src/components/Map.tsx#L52)
+[components/Map.tsx:52](https://github.com/rob-blackbourn/jetblack-map/blob/32451b5/src/components/Map.tsx#L52)
 
 ___
 
@@ -127,7 +127,7 @@ The map context.
 
 #### Defined in
 
-[components/MapContext.ts:30](https://github.com/rob-blackbourn/jetblack-map/blob/4867b73/src/components/MapContext.ts#L30)
+[components/MapContext.ts:30](https://github.com/rob-blackbourn/jetblack-map/blob/32451b5/src/components/MapContext.ts#L30)
 
 ___
 
@@ -148,7 +148,7 @@ ___
 
 #### Defined in
 
-[constants.ts:56](https://github.com/rob-blackbourn/jetblack-map/blob/4867b73/src/constants.ts#L56)
+[constants.ts:56](https://github.com/rob-blackbourn/jetblack-map/blob/32451b5/src/constants.ts#L56)
 
 ___
 
@@ -162,7 +162,7 @@ A tile provider for Open Street Map.
 
 #### Defined in
 
-[components/TileProviders.tsx:8](https://github.com/rob-blackbourn/jetblack-map/blob/4867b73/src/components/TileProviders.tsx#L8)
+[components/TileProviders.tsx:8](https://github.com/rob-blackbourn/jetblack-map/blob/32451b5/src/components/TileProviders.tsx#L8)
 
 ## Component Functions
 
@@ -178,7 +178,7 @@ Render the attribution layer.
 
 #### Defined in
 
-[components/AttributionLayer.tsx:15](https://github.com/rob-blackbourn/jetblack-map/blob/4867b73/src/components/AttributionLayer.tsx#L15)
+[components/AttributionLayer.tsx:15](https://github.com/rob-blackbourn/jetblack-map/blob/32451b5/src/components/AttributionLayer.tsx#L15)
 
 ___
 
@@ -204,7 +204,7 @@ An image tile.
 
 #### Defined in
 
-[components/ImageTile.tsx:41](https://github.com/rob-blackbourn/jetblack-map/blob/4867b73/src/components/ImageTile.tsx#L41)
+[components/ImageTile.tsx:41](https://github.com/rob-blackbourn/jetblack-map/blob/32451b5/src/components/ImageTile.tsx#L41)
 
 ___
 
@@ -228,7 +228,7 @@ A map.
 
 #### Defined in
 
-[components/Marker.tsx:37](https://github.com/rob-blackbourn/jetblack-map/blob/4867b73/src/components/Marker.tsx#L37)
+[components/Marker.tsx:37](https://github.com/rob-blackbourn/jetblack-map/blob/32451b5/src/components/Marker.tsx#L37)
 
 ___
 
@@ -252,7 +252,7 @@ A map.
 
 #### Defined in
 
-[components/OverlayLayer.tsx:33](https://github.com/rob-blackbourn/jetblack-map/blob/4867b73/src/components/OverlayLayer.tsx#L33)
+[components/OverlayLayer.tsx:33](https://github.com/rob-blackbourn/jetblack-map/blob/32451b5/src/components/OverlayLayer.tsx#L33)
 
 ___
 
@@ -282,7 +282,7 @@ A pin at the point.
 
 #### Defined in
 
-[components/Pin.tsx:49](https://github.com/rob-blackbourn/jetblack-map/blob/4867b73/src/components/Pin.tsx#L49)
+[components/Pin.tsx:49](https://github.com/rob-blackbourn/jetblack-map/blob/32451b5/src/components/Pin.tsx#L49)
 
 ___
 
@@ -310,7 +310,7 @@ A popup near the point.
 
 #### Defined in
 
-[components/Popup.tsx:35](https://github.com/rob-blackbourn/jetblack-map/blob/4867b73/src/components/Popup.tsx#L35)
+[components/Popup.tsx:35](https://github.com/rob-blackbourn/jetblack-map/blob/32451b5/src/components/Popup.tsx#L35)
 
 ___
 
@@ -334,7 +334,7 @@ A map.
 
 #### Defined in
 
-[components/SVGPin.tsx:37](https://github.com/rob-blackbourn/jetblack-map/blob/4867b73/src/components/SVGPin.tsx#L37)
+[components/SVGPin.tsx:37](https://github.com/rob-blackbourn/jetblack-map/blob/32451b5/src/components/SVGPin.tsx#L37)
 
 ___
 
@@ -358,7 +358,7 @@ A map.
 
 #### Defined in
 
-[components/ZoomButton.tsx:43](https://github.com/rob-blackbourn/jetblack-map/blob/4867b73/src/components/ZoomButton.tsx#L43)
+[components/ZoomButton.tsx:43](https://github.com/rob-blackbourn/jetblack-map/blob/32451b5/src/components/ZoomButton.tsx#L43)
 
 ___
 
@@ -389,7 +389,7 @@ An object containing the rounded zoom, the scale, the scale width and height.
 
 #### Defined in
 
-[tileMath.ts:88](https://github.com/rob-blackbourn/jetblack-map/blob/4867b73/src/tileMath.ts#L88)
+[tileMath.ts:88](https://github.com/rob-blackbourn/jetblack-map/blob/32451b5/src/tileMath.ts#L88)
 
 ___
 
@@ -416,7 +416,7 @@ The bounds of the view area in the world coordinate system.
 
 #### Defined in
 
-[tileMath.ts:272](https://github.com/rob-blackbourn/jetblack-map/blob/4867b73/src/tileMath.ts#L272)
+[tileMath.ts:272](https://github.com/rob-blackbourn/jetblack-map/blob/32451b5/src/tileMath.ts#L272)
 
 ___
 
@@ -441,7 +441,7 @@ The point in the tile coordinate system
 
 #### Defined in
 
-[tileMath.ts:60](https://github.com/rob-blackbourn/jetblack-map/blob/4867b73/src/tileMath.ts#L60)
+[tileMath.ts:60](https://github.com/rob-blackbourn/jetblack-map/blob/32451b5/src/tileMath.ts#L60)
 
 ___
 
@@ -467,7 +467,7 @@ True if the coordinate was within the bounds; otherwise false.
 
 #### Defined in
 
-[tileMath.ts:321](https://github.com/rob-blackbourn/jetblack-map/blob/4867b73/src/tileMath.ts#L321)
+[tileMath.ts:321](https://github.com/rob-blackbourn/jetblack-map/blob/32451b5/src/tileMath.ts#L321)
 
 ___
 
@@ -494,7 +494,7 @@ True if the coordinate was within the bounds; otherwise false.
 
 #### Defined in
 
-[tileMath.ts:300](https://github.com/rob-blackbourn/jetblack-map/blob/4867b73/src/tileMath.ts#L300)
+[tileMath.ts:300](https://github.com/rob-blackbourn/jetblack-map/blob/32451b5/src/tileMath.ts#L300)
 
 ___
 
@@ -521,7 +521,7 @@ The value, limited by the minimum and maximum values.
 
 #### Defined in
 
-[tileMath.ts:337](https://github.com/rob-blackbourn/jetblack-map/blob/4867b73/src/tileMath.ts#L337)
+[tileMath.ts:337](https://github.com/rob-blackbourn/jetblack-map/blob/32451b5/src/tileMath.ts#L337)
 
 ___
 
@@ -549,7 +549,7 @@ The x and y coordinates of the point in th screen coordinate system
 
 #### Defined in
 
-[tileMath.ts:198](https://github.com/rob-blackbourn/jetblack-map/blob/4867b73/src/tileMath.ts#L198)
+[tileMath.ts:198](https://github.com/rob-blackbourn/jetblack-map/blob/32451b5/src/tileMath.ts#L198)
 
 ___
 
@@ -578,7 +578,7 @@ The longitude and latitude of the screen point
 
 #### Defined in
 
-[tileMath.ts:147](https://github.com/rob-blackbourn/jetblack-map/blob/4867b73/src/tileMath.ts#L147)
+[tileMath.ts:147](https://github.com/rob-blackbourn/jetblack-map/blob/32451b5/src/tileMath.ts#L147)
 
 ___
 
@@ -604,7 +604,7 @@ The point in the tile coordinate system.
 
 #### Defined in
 
-[tileMath.ts:115](https://github.com/rob-blackbourn/jetblack-map/blob/4867b73/src/tileMath.ts#L115)
+[tileMath.ts:115](https://github.com/rob-blackbourn/jetblack-map/blob/32451b5/src/tileMath.ts#L115)
 
 ___
 
@@ -629,7 +629,7 @@ The coordinate as a latitude and longitude
 
 #### Defined in
 
-[tileMath.ts:72](https://github.com/rob-blackbourn/jetblack-map/blob/4867b73/src/tileMath.ts#L72)
+[tileMath.ts:72](https://github.com/rob-blackbourn/jetblack-map/blob/32451b5/src/tileMath.ts#L72)
 
 ___
 
@@ -651,7 +651,7 @@ The useClick hook.
 
 #### Defined in
 
-[hooks/useClick.ts:36](https://github.com/rob-blackbourn/jetblack-map/blob/4867b73/src/hooks/useClick.ts#L36)
+[hooks/useClick.ts:36](https://github.com/rob-blackbourn/jetblack-map/blob/32451b5/src/hooks/useClick.ts#L36)
 
 ___
 
@@ -673,7 +673,7 @@ A hook for mouse events.
 
 #### Defined in
 
-[hooks/useDrag.ts:31](https://github.com/rob-blackbourn/jetblack-map/blob/4867b73/src/hooks/useDrag.ts#L31)
+[hooks/useDrag.ts:31](https://github.com/rob-blackbourn/jetblack-map/blob/32451b5/src/hooks/useDrag.ts#L31)
 
 ___
 
@@ -695,7 +695,7 @@ A hook to integrate the zoom wheel with a map.
 
 #### Defined in
 
-[hooks/useZoom.ts:26](https://github.com/rob-blackbourn/jetblack-map/blob/4867b73/src/hooks/useZoom.ts#L26)
+[hooks/useZoom.ts:26](https://github.com/rob-blackbourn/jetblack-map/blob/32451b5/src/hooks/useZoom.ts#L26)
 
 ___
 
@@ -721,4 +721,4 @@ A tile provider for the requested Stamen map
 
 #### Defined in
 
-[components/TileProviders.tsx:43](https://github.com/rob-blackbourn/jetblack-map/blob/4867b73/src/components/TileProviders.tsx#L43)
+[components/TileProviders.tsx:43](https://github.com/rob-blackbourn/jetblack-map/blob/32451b5/src/components/TileProviders.tsx#L43)
