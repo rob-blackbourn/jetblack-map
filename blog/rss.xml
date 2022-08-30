@@ -4,10 +4,21 @@
         <title>@jetblack/map Blog</title>
         <link>https://rob-blackbourn.github.io/jetblack-map/jetblack-map/blog</link>
         <description>@jetblack/map Blog</description>
-        <lastBuildDate>Thu, 18 Aug 2022 08:41:00 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 30 Aug 2022 16:11:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[Release 2.0.0]]></title>
+            <link>https://rob-blackbourn.github.io/jetblack-map/jetblack-map/blog/release-2-0-0</link>
+            <guid>release-2-0-0</guid>
+            <pubDate>Tue, 30 Aug 2022 16:11:00 GMT</pubDate>
+            <description><![CDATA[A major release was added in order to add the cluster marker, which comes with]]></description>
+            <content:encoded><![CDATA[<p>A major release was added in order to add the cluster marker, which comes with
+dependencies. It was decided to take the opportunity to move the geojson
+functionality to a separate package.</p><p>Rob</p>]]></content:encoded>
+            <category>release</category>
+        </item>
         <item>
             <title><![CDATA[Release 1.5.1]]></title>
             <link>https://rob-blackbourn.github.io/jetblack-map/jetblack-map/blog/release-1-5-1</link>
