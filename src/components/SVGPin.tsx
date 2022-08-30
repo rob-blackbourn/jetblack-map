@@ -36,7 +36,7 @@ export interface SVGPinProps {
  */
 export default function SVGPin({
   size = 1,
-  color = '#93C0D0',
+  color = 'DarkSlateGrey',
   onMouseOut,
   onMouseOver,
   onClick,
@@ -78,13 +78,7 @@ export default function SVGPin({
           stroke="white"
           strokeWidth="4"
         />
-        <circle
-          cx="30.5"
-          cy="30.5"
-          r="8.5"
-          fill="white"
-          opacity={mouseOver ? 0.98 : 0.6}
-        />
+        <circle cx="30.5" cy="30.5" r="8.5" fill="white" opacity={mouseOver ? 0.98 : 0.6} />
       </g>
     </svg>
   )

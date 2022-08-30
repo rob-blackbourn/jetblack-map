@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Link, Routes, Route } from 'react-router-dom'
+import { HashRouter as Router, Link, Routes, Route } from 'react-router-dom'
 
 import SimpleMap from './pages/SimpleMap'
 import ControlledMap from './pages/ControlledMap'
@@ -11,11 +11,11 @@ import KitchenSink from './pages/KitchenSink'
 export default function App() {
   return (
     <div>
-      <BrowserRouter>
+      <Router>
         <div>
-          <h1>Home</h1>
+          <h1>Map Demo</h1>
           <nav>
-            <Link to="/">Simpler</Link>
+            <Link to="/">Simple</Link>
             &nbsp;|&nbsp;
             <Link to="/controlled">Controlled</Link>
             &nbsp;|&nbsp;
@@ -36,7 +36,7 @@ export default function App() {
           <Route path="/map-tiler" element={<MapTilerProvider />} />
           <Route path="/kitchen-sink" element={<KitchenSink />} />
         </Routes>
-      </BrowserRouter>
+      </Router>
     </div>
   )
 }

@@ -6,6 +6,7 @@ import { nodeResolve } from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import replace from '@rollup/plugin-replace'
 import { terser } from 'rollup-plugin-terser'
+import 'dotenv/config'
 
 /**
  * @type {import('rollup').RollupOptions}
@@ -27,7 +28,8 @@ export default {
       extensions: ['.js'],
     }),
     replace({
-      'process.env.NODE_ENV': JSON.stringify('development'),
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
+      'process.env.MAP_TILER_API_KEY': JSON.stringify(process.env.MAP_TILER_API_KEY),
       preventAssignment: true,
     }),
     commonjs(),
