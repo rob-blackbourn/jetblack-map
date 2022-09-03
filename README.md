@@ -12,6 +12,14 @@ The component has a few unique features:
 
 You can see a demo of the map [here](https://rob-blackbourn.github.io/jetblack-example-map/).
 
+There are some examples of map usage in the `demos` folder. These can be run
+with `npm`.
+
+```bash
+npm install
+npm start
+```
+
 ## Installation
 
 Install from npmjs:
