@@ -157,14 +157,7 @@ function MapTilerProvider({ tileProvider }: MapTilerProviderProps) {
   })
 
   return (
-    <Map
-      ref={ref}
-      width="600px"
-      height="400px"
-      center={center}
-      zoom={zoom}
-      tileProvider={tileProvider}
-    >
+    <Map ref={ref} width={800} height={600} center={center} zoom={zoom} tileProvider={tileProvider}>
       <AttributionLayer />
     </Map>
   )
@@ -179,7 +172,9 @@ export default function MapTilerProviderWrapper() {
 
   return (
     <div>
-      <div>
+      <div style={{ marginBottom: 5 }}>
+        <h2>Tiles from MapTiler</h2>
+
         <p>
           Tiles from MapTiler require an API key stored in the environment variable{' '}
           <code>MAP_TILER_API_KEY</code>. This can be put in a <code>.env</code> file in the root of
@@ -187,6 +182,10 @@ export default function MapTilerProviderWrapper() {
         </p>
 
         <pre>MAP_TILER_API_KEY=your_api_key</pre>
+
+        <p>
+          Once you have setup a key this demo will show a number of different tile types and sizes.
+        </p>
 
         <select onChange={handleSelect}>
           {Object.entries(tileProviders).map(([key, value]) => (

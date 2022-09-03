@@ -112,58 +112,70 @@ export default function App() {
   }
 
   return (
-    <Map
-      center={center}
-      zoom={zoom}
-      width="1000px"
-      height="600px"
-      ref={ref}
-      tileProvider={osmTileProvider}
-    >
-      <OverlayLayer>
-        <Marker
-          coordinate={places.greenwichObservatory}
-          render={point => <SVGPin point={point} />}
-        />
+    <div>
+      <div>
+        <h2>OverlayLayer example</h2>
 
-        <Marker
-          coordinate={places.eiffelTower}
-          render={point => (
-            <Pin point={point} data="Eiffel Tower" renderPopup={handleRenderPopup} />
-          )}
-        />
+        <p>
+          This example demonstrates the use of the <code>OverlayLayer</code>
+          with <code>Marker</code>, <code>Pin</code>, and <code>Popup</code>
+          components.
+        </p>
+      </div>
 
-        <Marker
-          coordinate={places.buckinghamPalace}
-          render={point => (
-            <Pin
-              point={point}
-              size={1.25}
-              renderPopup={(point, size) => (
-                <Popup
-                  style={{
-                    backgroundColor: 'black',
-                    color: 'white',
-                    padding: 2,
-                    borderRadius: 5,
-                    fontSize: '75%',
-                  }}
-                  point={point}
-                  leftShift={-size.width}
-                  upShift={-size.height * 2}
-                >
-                  <span>Buckingham Palace</span>
-                </Popup>
-              )}
-            />
-          )}
-        />
+      <Map
+        center={center}
+        zoom={zoom}
+        width={800}
+        height={600}
+        ref={ref}
+        tileProvider={osmTileProvider}
+      >
+        <OverlayLayer>
+          <Marker
+            coordinate={places.greenwichObservatory}
+            render={point => <SVGPin point={point} />}
+          />
 
-        <Marker
-          coordinate={places.arcDeTriomphe}
-          render={point => <CircleMarker point={point} />}
-        />
-      </OverlayLayer>
-    </Map>
+          <Marker
+            coordinate={places.eiffelTower}
+            render={point => (
+              <Pin point={point} data="Eiffel Tower" renderPopup={handleRenderPopup} />
+            )}
+          />
+
+          <Marker
+            coordinate={places.buckinghamPalace}
+            render={point => (
+              <Pin
+                point={point}
+                size={1.25}
+                renderPopup={(point, size) => (
+                  <Popup
+                    style={{
+                      backgroundColor: 'black',
+                      color: 'white',
+                      padding: 2,
+                      borderRadius: 5,
+                      fontSize: '75%',
+                    }}
+                    point={point}
+                    leftShift={-size.width}
+                    upShift={-size.height * 2}
+                  >
+                    <span>Buckingham Palace</span>
+                  </Popup>
+                )}
+              />
+            )}
+          />
+
+          <Marker
+            coordinate={places.arcDeTriomphe}
+            render={point => <CircleMarker point={point} />}
+          />
+        </OverlayLayer>
+      </Map>
+    </div>
   )
 }

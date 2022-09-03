@@ -37,16 +37,24 @@ function Example({ tileProvider }: { tileProvider: TileProvider }) {
   })
 
   return (
-    <Map
-      ref={ref}
-      width="600px"
-      height="400px"
-      center={center}
-      zoom={zoom}
-      tileProvider={tileProvider}
-    >
-      <AttributionLayer />
-    </Map>
+    <div>
+      <div>
+        <h2>Tile Providers</h2>
+
+        <p>An example of using different tile providers.</p>
+      </div>
+
+      <Map
+        ref={ref}
+        width={800}
+        height={600}
+        center={center}
+        zoom={zoom}
+        tileProvider={tileProvider}
+      >
+        <AttributionLayer />
+      </Map>
+    </div>
   )
 }
 

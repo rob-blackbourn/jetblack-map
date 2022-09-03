@@ -10,10 +10,11 @@ import KitchenSink from './pages/KitchenSink'
 
 export default function App() {
   return (
-    <div>
+    <div style={{ marginTop: 50 }}>
       <Router>
         <div>
-          <h1>Map Demo</h1>
+          <h1>@jetblack/map demos</h1>
+
           <nav>
             <Link to="/">Simple</Link>
             &nbsp;|&nbsp;
@@ -28,6 +29,7 @@ export default function App() {
             <Link to="/kitchen-sink">Kitchen Sink</Link>
           </nav>
         </div>
+
         <Routes>
           <Route path="/" element={<SimpleMap />}></Route>
           <Route path="/controlled" element={<ControlledMap />} />

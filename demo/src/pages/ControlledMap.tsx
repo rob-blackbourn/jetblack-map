@@ -25,13 +25,39 @@ export default function ControlledMap() {
   })
 
   return (
-    <Map
-      center={center}
-      zoom={zoom}
-      width="1000px"
-      height="600px"
-      ref={ref}
-      tileProvider={osmTileProvider}
-    />
+    <div>
+      <div>
+        <h2>A controlled map</h2>
+
+        <p>
+          The map uses the following hooks to control movement, zoom and clicks.
+          <ul>
+            <li>
+              <code>useZoom</code> for zooming with the mouse wheel,
+            </li>
+            <li>
+              <code>useDrag</code> for dragging,
+            </li>
+            <li>
+              <code>useClick</code> for handling single and double clicks.
+            </li>
+          </ul>
+        </p>
+
+        <p>
+          Note the use of <code>useRef</code> to pass the reference to the map component to the
+          hooks.
+        </p>
+      </div>
+
+      <Map
+        center={center}
+        zoom={zoom}
+        width={800}
+        height={600}
+        ref={ref}
+        tileProvider={osmTileProvider}
+      />
+    </div>
   )
 }

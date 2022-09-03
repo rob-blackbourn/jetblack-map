@@ -48,20 +48,28 @@ export default function KitchenSink() {
   })
 
   return (
-    <Map
-      center={center}
-      zoom={zoom}
-      tileProvider={osmTileProvider}
-      width="1000px"
-      height="600px"
-      ref={ref}
-    >
-      <OverlayLayer>
-        <Marker coordinate={GREENWICH_OBSERVATORY} render={point => <SVGPin point={point} />} />
-        <Marker coordinate={EMPIRE_STATE_BUILDING} render={point => <SVGPin point={point} />} />
-        <ZoomButton point={{ x: 10, y: 10 }} onChange={zoom => setZoom(zoom)} />
-      </OverlayLayer>
-      <AttributionLayer />
-    </Map>
+    <div>
+      <div>
+        <h2>The kitchen sink</h2>
+
+        <p>This example uses a bunch of components and hooks.</p>
+      </div>
+
+      <Map
+        center={center}
+        zoom={zoom}
+        tileProvider={osmTileProvider}
+        width={800}
+        height={600}
+        ref={ref}
+      >
+        <OverlayLayer>
+          <Marker coordinate={GREENWICH_OBSERVATORY} render={point => <SVGPin point={point} />} />
+          <Marker coordinate={EMPIRE_STATE_BUILDING} render={point => <SVGPin point={point} />} />
+          <ZoomButton point={{ x: 10, y: 10 }} onChange={zoom => setZoom(zoom)} />
+        </OverlayLayer>
+        <AttributionLayer />
+      </Map>
+    </div>
   )
 }
