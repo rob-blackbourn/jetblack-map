@@ -84,7 +84,7 @@ export default function useDrag({
         mouseState.current.lastPoint = currentPoint
         setCenter({
           latitude,
-          longitude: longitude % 180,
+          longitude: ((longitude + 180) % 360) - 180,
         })
       }
     },
