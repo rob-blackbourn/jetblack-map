@@ -3,6 +3,7 @@ import { HashRouter as Router, Link, Routes, Route } from 'react-router-dom'
 
 import SimpleMap from './pages/SimpleMap'
 import ControlledMap from './pages/ControlledMap'
+import ControlledMapWithMeta from './pages/ControlledMapWithMeta'
 import OverlayExample from './pages/OverlayExample'
 import TileProviderExample from './pages/TileProviderExample'
 import MapTilerProvider from './pages/MapTilerProvider'
@@ -20,6 +21,8 @@ export default function App() {
             &nbsp;|&nbsp;
             <Link to="/controlled">Controlled</Link>
             &nbsp;|&nbsp;
+            <Link to="/controlled-with-meta">Controlled With Meta</Link>
+            &nbsp;|&nbsp;
             <Link to="/overlay">Overlay</Link>
             &nbsp;|&nbsp;
             <Link to="/tile-provider">Tile Provider</Link>
@@ -33,6 +36,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<SimpleMap />}></Route>
           <Route path="/controlled" element={<ControlledMap />} />
+          <Route path="/controlled-with-meta" element={<ControlledMapWithMeta />} />
           <Route path="/overlay" element={<OverlayExample />} />
           <Route path="/tile-provider" element={<TileProviderExample />} />
           <Route path="/map-tiler" element={<MapTilerProvider />} />

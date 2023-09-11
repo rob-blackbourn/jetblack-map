@@ -7,7 +7,7 @@ import { LOCATIONS, DEFAULTS, CLASS_NAMES } from '../constants'
 import MapContext from './MapContext'
 import TileLayer from './TileLayer'
 import { osmTileProvider } from './TileProviders'
-import { calcWorldBounds } from '../tileMath'
+import { calcWorldBounds } from '../mathUtils'
 
 const classNames = {
   map: [

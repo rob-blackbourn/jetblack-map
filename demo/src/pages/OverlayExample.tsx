@@ -126,7 +126,7 @@ export default function App() {
       <Map
         center={center}
         zoom={zoom}
-        width={800}
+        width={1700}
         height={600}
         ref={ref}
         tileProvider={osmTileProvider}

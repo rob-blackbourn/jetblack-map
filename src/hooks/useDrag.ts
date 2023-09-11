@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react'
 
 import { Coordinate, Point, Size } from '../types'
 
-import { coordinateToTilePoint, screenToTilePoint, tilePointToCoordinate } from '../tileMath'
+import { coordinateToTilePoint, screenToTilePoint, tilePointToCoordinate } from '../mathUtils'
 import { LOCATIONS } from '../constants'
 import { getRelativeMousePoint, isDraggable } from './utils'
 

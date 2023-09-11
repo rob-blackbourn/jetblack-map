@@ -10,14 +10,21 @@ import { isZoomable } from './utils'
 export interface useZoomProps {
   /** A reference to the map component */
   ref: React.RefObject<HTMLDivElement>
+
   /** An optional default zoom level */
   defaultZoom?: number
+
   /** The minimum zoom level */
   minZoom?: number
+
   /** The maximum zoom level */
   maxZoom?: number
+
   /** The incremental value applied to each wheel event to the zoom level */
   zoomStep?: number
+
+  /** Require the meta key to be pressed with the mouse to zoom. */
+  requireMeta?: boolean
 }
 
 /**
@@ -29,6 +36,7 @@ export default function useZoom({
   minZoom = 0,
   maxZoom = 19,
   zoomStep = 0.1,
+  requireMeta = false,
 }: useZoomProps): [number, (zoom: number) => void] {
   const [zoom, setZoom] = useState(defaultZoom)
 
@@ -40,6 +48,12 @@ export default function useZoom({
       if (!(ref.current && target && isZoomable(target))) {
         return
       }
+      if (requireMeta && !(event.metaKey || event.ctrlKey)) {
+        return
+      }
+      console.log({ requireMeta, metaKey: event.metaKey, ctrlKey: event.ctrlKey })
+
+      event.preventDefault()
 
       // Throttle barrier
       if (ignoreWheelUntil.current && event.timeStamp < ignoreWheelUntil.current) {

@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef } from 'react'
 
-import { screenPointToCoordinate } from '../tileMath'
+import { screenPointToCoordinate } from '../mathUtils'
 import { Coordinate, Point, Size } from '../types'
 import { getRelativeMousePoint, isClickable } from './utils'
 

@@ -8,7 +8,7 @@ import {
   createVisiblePoints,
   isCoordinateInWorldBounds,
   recenterScreenPoint,
-} from '../tileMath'
+} from '../mathUtils'
 
 import MapContext from './MapContext'
 

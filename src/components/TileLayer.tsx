@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 
 import { CLASS_NAMES } from '../constants'
-import { tileToScreenPoint } from '../tileMath'
+import { tileToScreenPoint } from '../mathUtils'
 
 import ImageTile from './ImageTile'
 import MapContext from './MapContext'

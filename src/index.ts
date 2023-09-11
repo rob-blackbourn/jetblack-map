@@ -17,7 +17,7 @@ import useClick, { useClickProps } from './hooks/useClick'
 import useDrag, { useDragProps } from './hooks/useDrag'
 import useZoom, { useZoomProps } from './hooks/useZoom'
 
-import {
+export {
   calcScaleInfo,
   calcWorldBounds,
   coordinateToTilePoint,
@@ -29,7 +29,9 @@ import {
   screenPointToCoordinate,
   screenToTilePoint,
   tilePointToCoordinate,
-} from './tileMath'
+} from './mathUtils'
+
+export { lat2tile, lng2tile, tile2lat, tile2lng } from './tileMath'
 
 import { CLASS_NAMES } from './constants'
 
@@ -74,18 +76,6 @@ export {
   useClick,
   useDrag,
   useZoom,
-  // Tile Maths
-  calcScaleInfo,
-  calcWorldBounds,
-  coordinateToTilePoint,
-  createVisiblePoints,
-  isCoordinateInWorldBounds,
-  isInWorldBounds,
-  limitCoordinate,
-  recenterScreenPoint,
-  screenPointToCoordinate,
-  screenToTilePoint,
-  tilePointToCoordinate,
   // Misc
   CLASS_NAMES,
 }

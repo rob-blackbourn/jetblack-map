@@ -1,6 +1,6 @@
 import { Coordinate, Point, ScaleInfo, Size, TileUrlProvider } from '../types'
 
-import { calcScaleInfo, coordinateToTilePoint, screenToTilePoint } from '../tileMath'
+import { calcScaleInfo, coordinateToTilePoint, screenToTilePoint } from '../mathUtils'
 import { ImageTileProps } from './ImageTile'
 
 export interface TileInfo extends ScaleInfo {

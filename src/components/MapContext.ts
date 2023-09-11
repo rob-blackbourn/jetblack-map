@@ -12,12 +12,16 @@ import { Bounds, Coordinate, CoordinateBounds, TileProvider } from '../types'
 export interface MapContextProps {
   /** The latitude and longitude of the center of the map */
   center: Coordinate
+
   /** The zoom level */
   zoom: number
+
   /** The bounds of the map in the screen coordinate system */
   bounds: Bounds
+
   /** The bounds of the map in the world coordinate system */
   worldBounds: CoordinateBounds
+
   /** The tile provider */
   tileProvider: TileProvider
 }
