@@ -38,13 +38,7 @@ export interface ImageTileProps {
  * @category Component
  * @internal
  */
-export default function ImageTile({
-  url,
-  left,
-  top,
-  width,
-  height,
-}: ImageTileProps) {
+export function ImageTile({ url, left, top, width, height }: ImageTileProps) {
   return (
     <img
       className={classNames.imageTile}

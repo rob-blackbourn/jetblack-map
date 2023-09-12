@@ -12,16 +12,22 @@ const classNames = { svgPin: [CLASS_NAMES.primary, 'svg-pin'].join(' ') }
 export interface SVGPinProps {
   /** The point in the screen coordinate system. */
   point: Point
+
   /** The size of the pin */
   size?: number
+
   /** The color of the pin */
   color?: string
+
   /** A handler for mouse-out events */
   onMouseOut?: (event: React.MouseEvent<SVGElement, MouseEvent>) => void
+
   /** A handler for mouse-over events */
   onMouseOver?: (event: React.MouseEvent<SVGElement, MouseEvent>) => void
+
   /** A handler for click events */
   onClick?: (event: React.MouseEvent<SVGElement, MouseEvent>) => void
+
   /** A handler for a context menu event */
   onContextMenu?: (event: React.MouseEvent<SVGElement, MouseEvent>) => void
 }
@@ -34,7 +40,7 @@ export interface SVGPinProps {
  *
  * @category Component
  */
-export default function SVGPin({
+export function SVGPin({
   size = 1,
   color = '#2F4F4F',
   onMouseOut,

@@ -4,8 +4,8 @@ import { Bounds, Coordinate, CoordinateBounds, TileProvider } from '../types'
 
 import { LOCATIONS, DEFAULTS, CLASS_NAMES } from '../constants'
 
-import MapContext from './MapContext'
-import TileLayer from './TileLayer'
+import { MapContext } from './MapContext'
+import { TileLayer } from './TileLayer'
 import { osmTileProvider } from './TileProviders'
 import { calcWorldBounds } from '../mathUtils'
 
@@ -27,16 +27,22 @@ const classNames = {
 export interface MapProps {
   /** The center of the map */
   center?: Coordinate
+
   /** The zoom level */
   zoom?: number
+
   /** The screen width */
   width?: number | string
+
   /** The screen height */
   height?: number | string
+
   /** The tile provider */
   tileProvider?: TileProvider
+
   /** Map components */
   children?: React.ReactNode
+
   /** The untilled background */
   background?: string | number | undefined
 }
@@ -49,7 +55,7 @@ export interface MapProps {
  *
  * @category Component
  */
-const Map = React.forwardRef<HTMLDivElement, MapProps>(
+export const Map = React.forwardRef<HTMLDivElement, MapProps>(
   (
     {
       center = LOCATIONS.greenwichObservatory,
@@ -126,5 +132,3 @@ const Map = React.forwardRef<HTMLDivElement, MapProps>(
     )
   }
 )
-
-export default Map

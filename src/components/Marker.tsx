@@ -10,7 +10,7 @@ import {
   recenterScreenPoint,
 } from '../mathUtils'
 
-import MapContext from './MapContext'
+import { MapContext } from './MapContext'
 
 const classNames = { marker: [CLASS_NAMES.primary, 'marker'].join(' ') }
 
@@ -34,7 +34,7 @@ export interface MarkerProps {
  *
  * @category Component
  */
-export default function Marker({ coordinate, render }: MarkerProps) {
+export function Marker({ coordinate, render }: MarkerProps) {
   const {
     center,
     zoom,

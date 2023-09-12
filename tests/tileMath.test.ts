@@ -1,4 +1,5 @@
 import { toDegrees, toRadians, lng2tile, lat2tile, tile2lng, tile2lat } from '../src/tileMath'
+import { LATITUDE_LIMIT } from '../src/constants'
 
 describe('tileMath2', () => {
   describe('toDegrees', () => {
@@ -68,11 +69,11 @@ describe('tileMath2', () => {
       expect(actual).toBeCloseTo(0.5, 6)
     })
     it('should convert latitude -85.0511, zoom 0', () => {
-      const actual = lat2tile(-85.0511, 0)
-      expect(actual).toBeCloseTo(1, 5)
+      const actual = lat2tile(-LATITUDE_LIMIT, 0)
+      expect(actual).toBeCloseTo(1, 9)
     })
     it('should convert latitude 85.0511, zoom 0', () => {
-      const actual = lat2tile(85.0511, 0)
+      const actual = lat2tile(LATITUDE_LIMIT, 0)
       expect(actual).toBeCloseTo(0, 5)
     })
     it('should convert latitude -90, zoom 0', () => {
@@ -111,7 +112,7 @@ describe('tileMath2', () => {
   describe('tile2lat', () => {
     it('should convert y=0, zoom=0', () => {
       const actual = tile2lat(0, 0)
-      expect(actual).toBeCloseTo(85.0511287798066, 9)
+      expect(actual).toBeCloseTo(LATITUDE_LIMIT, 9)
     })
     it('should convert y=0.5, zoom=0', () => {
       const actual = tile2lat(0.5, 0)
@@ -119,7 +120,15 @@ describe('tileMath2', () => {
     })
     it('should convert y=1, zoom=0', () => {
       const actual = tile2lat(1, 0)
-      expect(actual).toBeCloseTo(-85.0511287798066, 9)
+      expect(actual).toBeCloseTo(-LATITUDE_LIMIT, 9)
+    })
+    it('should show y < 0, zoom = 0, tends to 90 degrees', () => {
+      const actual = tile2lat(-0.5, 0)
+      expect(actual).toBeCloseTo(89.7860070747368, 6)
+    })
+    it('should show y > 1, zoom=0, tends to -90 degrees', () => {
+      const actual = tile2lat(1.5, 0)
+      expect(actual).toBeCloseTo(-89.7860070747368, 9)
     })
   })
 })

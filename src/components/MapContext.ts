@@ -31,6 +31,4 @@ export interface MapContextProps {
  *
  * @category Context
  */
-const MapContext = React.createContext<MapContextProps>({} as MapContextProps)
-
-export default MapContext
+export const MapContext = React.createContext<MapContextProps>({} as MapContextProps)

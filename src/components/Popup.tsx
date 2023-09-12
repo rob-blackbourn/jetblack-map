@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 
 import { Point } from '../types'
-import MapContext from './MapContext'
+import { MapContext } from './MapContext'
 
 export interface PopupProps {
   /** The point in the screen coordinate system. */
@@ -32,7 +32,7 @@ export interface PopupProps {
  *
  * @category Component
  */
-export default function Popup({
+export function Popup({
   point,
   leftShift = 0,
   rightShift = 0,

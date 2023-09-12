@@ -46,7 +46,7 @@ export interface PinProps<T> {
  *
  * @category Component
  */
-export default function Pin<T = unknown>({
+export function Pin<T = unknown>({
   point,
   data,
   size = 1,

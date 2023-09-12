@@ -28,7 +28,7 @@ interface MouseState {
 /**
  * A hook for mouse events.
  */
-export default function useDrag({
+export function useDrag({
   ref,
   defaultCenter = LOCATIONS.greenwichObservatory,
   zoom,

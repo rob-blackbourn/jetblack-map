@@ -3,8 +3,8 @@ import { useContext } from 'react'
 import { CLASS_NAMES } from '../constants'
 import { tileToScreenPoint } from '../mathUtils'
 
-import ImageTile from './ImageTile'
-import MapContext from './MapContext'
+import { ImageTile } from './ImageTile'
+import { MapContext } from './MapContext'
 
 import { calcTileInfo, calcImageTileProps } from './tileLayerHelpers'
 
@@ -32,7 +32,7 @@ const classNames = {
  *
  * @category Component
  */
-export default function TileLayer() {
+export function TileLayer() {
   const {
     bounds,
     center,

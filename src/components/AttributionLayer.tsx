@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 
 import { CLASS_NAMES } from '../constants'
-import MapContext from './MapContext'
+import { MapContext } from './MapContext'
 
 const classNames = {
   attributionLayer: [CLASS_NAMES.primary, 'attribution-layer'].join(' '),
@@ -12,7 +12,7 @@ const classNames = {
  *
  * @category Component
  */
-export default function AttributionLayer() {
+export function AttributionLayer() {
   const { tileProvider } = useContext(MapContext)
 
   return (

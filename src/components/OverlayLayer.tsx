@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 
 import { CLASS_NAMES } from '../constants'
 
-import MapContext from './MapContext'
+import { MapContext } from './MapContext'
 
 const classNames = {
   overlayLayer: [
@@ -30,7 +30,7 @@ export interface OverlayLayerProps {
  *
  * @category Component
  */
-export default function OverlayLayer({ children }: OverlayLayerProps) {
+export function OverlayLayer({ children }: OverlayLayerProps) {
   const {
     bounds: { width, height },
   } = useContext(MapContext)

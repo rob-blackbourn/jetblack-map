@@ -30,7 +30,7 @@ export interface useZoomProps {
 /**
  * A hook to integrate the zoom wheel with a map.
  */
-export default function useZoom({
+export function useZoom({
   ref,
   defaultZoom = DEFAULTS.zoom,
   minZoom = 0,

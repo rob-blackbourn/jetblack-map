@@ -33,7 +33,7 @@ interface MouseState {
 /**
  * The useClick hook.
  */
-export default function useClick({
+export function useClick({
   ref,
   center,
   zoom,

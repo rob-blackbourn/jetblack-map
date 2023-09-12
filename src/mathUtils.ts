@@ -4,6 +4,8 @@ import { LOCATIONS } from './constants'
 import { limitValue } from './utils'
 
 import { lat2tile, lng2tile, tile2lat, tile2lng } from './tileMath'
+import { LATITUDE_LIMIT } from './constants'
+
 /**
  * Convert a latitude and longitude to an x and y point in the tile coordinate system.
  *
@@ -125,7 +127,7 @@ export function screenPointToCoordinate(
   const coordinate = tilePointToCoordinate(adjTileCenter, zoom)
 
   // Clip the latitude.
-  const latitude = limitValue(coordinate.latitude, -90, 90)
+  const latitude = limitValue(coordinate.latitude, -LATITUDE_LIMIT, LATITUDE_LIMIT)
 
   let longitude = coordinate.longitude
   if (wrapLongitude) {

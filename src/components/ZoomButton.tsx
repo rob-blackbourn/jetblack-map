@@ -3,7 +3,7 @@ import React, { useContext } from 'react'
 import { CLASS_NAMES } from '../constants'
 import { Point } from '../types'
 
-import MapContext from './MapContext'
+import { MapContext } from './MapContext'
 
 const classNames = {
   container: [
@@ -22,12 +22,16 @@ const classNames = {
 export interface ZoomButtonPops {
   /** The screen point where the button will be placed. */
   point?: Point
+
   /** The minimum zoom level. */
   minZoom?: number
+
   /** The maximum zoom level. */
   maxZoom?: number
+
   /** The amount by which the zoom will be changed on each click. */
   zoomStep?: number
+
   /** A callback with the requested zoom level. */
   onChange: (value: number) => void
 }
@@ -40,7 +44,7 @@ export interface ZoomButtonPops {
  *
  * @category Component
  */
-export default function ZoomButton({
+export function ZoomButton({
   point = { x: 10, y: 10 },
   minZoom,
   maxZoom,
@@ -52,10 +56,8 @@ export default function ZoomButton({
     tileProvider: { minZoom: absMinZoom, maxZoom: absMaxZoom },
   } = useContext(MapContext)
 
-  const actualMinZoom =
-    minZoom == null ? absMinZoom : Math.max(minZoom, absMinZoom)
-  const actualMaxZoom =
-    maxZoom == null ? absMaxZoom : Math.min(maxZoom, absMaxZoom)
+  const actualMinZoom = minZoom == null ? absMinZoom : Math.max(minZoom, absMinZoom)
+  const actualMaxZoom = maxZoom == null ? absMaxZoom : Math.min(maxZoom, absMaxZoom)
 
   return (
     <div
